@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const routeContainer = document.getElementById('active-routes-container');
 
-    // Simulate Live Bus Movements
-    function spawnLiveBus() {
+    // Simulate Live Bus Movements along ACTUAL ROADS using OSRM
+    async function spawnLiveBus() {
         if(stops.length < 2) return;
         
         const start = stops[Math.floor(Math.random() * stops.length)];
@@ -134,78 +134,103 @@ document.addEventListener('DOMContentLoaded', async () => {
             end = stops[Math.floor(Math.random() * stops.length)];
         }
 
-        // Calculate accurate distance using Haversine (Leaflet map.distance)
-        const startLatLng = L.latLng(start.lat, start.lng);
-        const endLatLng = L.latLng(end.lat, end.lng);
-        const distanceMeters = startLatLng.distanceTo(endLatLng);
-        const distanceKm = (distanceMeters / 1000).toFixed(1);
-        
-        // Assume avg speed of 40 km/h
-        const timeHours = distanceKm / 40;
-        const timeMins = Math.round(timeHours * 60);
-
-        // Draw Route Line
-        const polyline = L.polyline([startLatLng, endLatLng], {
-            color: '#10b981', weight: 3, opacity: 0.6, dashArray: '5, 10'
-        }).addTo(map);
-
-        // Moving Bus Marker
-        const busIcon = L.divIcon({
-            className: 'moving-bus-icon',
-            html: `<div style="background-color: #ef4444; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 1000;"><span style="font-size: 13px; color: white;">🚌</span></div>`,
-            iconSize: [26, 26],
-            iconAnchor: [13, 13]
-        });
-        const movingMarker = L.marker(startLatLng, {icon: busIcon}).addTo(map);
-
-        // Add to Info Panel
-        const cardId = 'route-' + Math.floor(Math.random() * 10000);
-        const card = document.createElement('div');
-        card.className = 'live-route-card';
-        card.id = cardId;
-        card.innerHTML = `
-            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                <strong style="color:var(--primary); font-size:0.9rem;">Express Route</strong>
-                <span style="font-size:0.75rem; color:#64748b; font-weight:bold;">${distanceKm} km</span>
-            </div>
-            <div style="font-size:0.8rem; color:#334155;">
-                <div>🟢 ${start.name}</div>
-                <div style="margin:4px 0 4px 6px; border-left:2px solid #cbd5e1; padding-left:10px; color:#ef4444; font-weight:bold;">ETA: ${timeMins} mins</div>
-                <div>📍 ${end.name}</div>
-            </div>
-        `;
-        routeContainer.prepend(card);
-        if(routeContainer.children.length > 5) {
-            routeContainer.removeChild(routeContainer.lastChild);
-        }
-
-        // Animate
-        const duration = 8000; // 8 seconds animation
-        const startFrame = performance.now();
-
-        function animateBus(time) {
-            const elapsed = time - startFrame;
-            const progress = Math.min(elapsed / duration, 1.0);
+        try {
+            // Fetch real road route from OSRM
+            const url = `https://router.project-osrm.org/route/v1/driving/${start.lng},${start.lat};${end.lng},${end.lat}?overview=full&geometries=geojson`;
+            const routeRes = await fetch(url);
+            const routeData = await routeRes.json();
             
-            const currentLat = start.lat + (end.lat - start.lat) * progress;
-            const currentLng = start.lng + (end.lng - start.lng) * progress;
+            if (routeData.code !== 'Ok') return;
             
-            movingMarker.setLatLng([currentLat, currentLng]);
+            const route = routeData.routes[0];
+            const coordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]); // Leaflet uses [lat, lng]
             
-            if (progress < 1.0) {
-                requestAnimationFrame(animateBus);
-            } else {
-                map.removeLayer(polyline);
-                map.removeLayer(movingMarker);
-                const el = document.getElementById(cardId);
-                if(el) el.style.opacity = '0.5'; // mark arrived
+            const distanceKm = (route.distance / 1000).toFixed(1);
+            const timeHours = Math.floor(route.duration / 3600);
+            const timeMins = Math.round((route.duration % 3600) / 60);
+            const etaStr = timeHours > 0 ? `${timeHours} hr ${timeMins} mins` : `${timeMins} mins`;
+
+            // Draw Real Road Route Line
+            const polyline = L.polyline(coordinates, {
+                color: '#10b981', weight: 4, opacity: 0.7, dashArray: '10, 15'
+            }).addTo(map);
+
+            // Moving Bus Marker
+            const busIcon = L.divIcon({
+                className: 'moving-bus-icon',
+                html: `<div style="background-color: #ef4444; width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 1000;"><span style="font-size: 14px; color: white;">🚌</span></div>`,
+                iconSize: [28, 28],
+                iconAnchor: [14, 14]
+            });
+            const movingMarker = L.marker(coordinates[0], {icon: busIcon}).addTo(map);
+
+            // Add to Info Panel
+            const cardId = 'route-' + Math.floor(Math.random() * 10000);
+            const card = document.createElement('div');
+            card.className = 'live-route-card';
+            card.id = cardId;
+            card.innerHTML = `
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <strong style="color:var(--primary); font-size:0.9rem;">Live Fleet Tracking</strong>
+                    <span style="font-size:0.75rem; color:#64748b; font-weight:bold;">${distanceKm} km</span>
+                </div>
+                <div style="font-size:0.8rem; color:#334155;">
+                    <div>🟢 ${start.name}</div>
+                    <div style="margin:4px 0 4px 6px; border-left:2px solid #cbd5e1; padding-left:10px; color:#ef4444; font-weight:bold;">Real ETA: ${etaStr}</div>
+                    <div>📍 ${end.name}</div>
+                </div>
+            `;
+            routeContainer.prepend(card);
+            if(routeContainer.children.length > 5) {
+                routeContainer.removeChild(routeContainer.lastChild);
             }
+
+            // Animate along the road coordinates
+            // We scale the animation time based on actual duration (e.g. 1 min real = 1 sec animation)
+            // But we keep a min of 10s and max of 60s for demo purposes so it doesn't take 3 hours on screen
+            let demoDurationMs = (route.duration / 60) * 1000; 
+            if (demoDurationMs < 10000) demoDurationMs = 10000;
+            if (demoDurationMs > 60000) demoDurationMs = 60000;
+
+            const startFrame = performance.now();
+
+            function animateBus(time) {
+                const elapsed = time - startFrame;
+                const progress = Math.min(elapsed / demoDurationMs, 1.0);
+                
+                // Find current segment
+                const totalPoints = coordinates.length - 1;
+                const exactPoint = progress * totalPoints;
+                const index = Math.floor(exactPoint);
+                const nextIndex = Math.min(index + 1, totalPoints);
+                const segmentProgress = exactPoint - index;
+                
+                if (index < totalPoints) {
+                    const currentLat = coordinates[index][0] + (coordinates[nextIndex][0] - coordinates[index][0]) * segmentProgress;
+                    const currentLng = coordinates[index][1] + (coordinates[nextIndex][1] - coordinates[index][1]) * segmentProgress;
+                    movingMarker.setLatLng([currentLat, currentLng]);
+                }
+                
+                if (progress < 1.0) {
+                    requestAnimationFrame(animateBus);
+                } else {
+                    map.removeLayer(polyline);
+                    map.removeLayer(movingMarker);
+                    const el = document.getElementById(cardId);
+                    if(el) el.style.opacity = '0.4'; // mark arrived
+                }
+            }
+            requestAnimationFrame(animateBus);
+            
+        } catch (err) {
+            console.error("OSRM Routing failed", err);
         }
-        requestAnimationFrame(animateBus);
     }
 
-    setInterval(spawnLiveBus, 4000);
+    // Spawn buses slightly slower so OSRM API doesn't rate limit us
+    setInterval(spawnLiveBus, 8000);
     setTimeout(spawnLiveBus, 1000);
+    setTimeout(spawnLiveBus, 4000);
 });
 </script>
 {% endblock %}

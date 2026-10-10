@@ -10,53 +10,80 @@ let currentMarkers = {};
 let selectedStopId = null;
 let currentDistrict = 'all';
 
-// Animated map routing with moving bus
-window.drawDispatchRoute = function(fromLatLng, toLatLng, color) {
+// Animated map routing with moving bus along actual roads (OSRM)
+window.drawDispatchRoute = async function(fromLatLng, toLatLng, color) {
     if(!map) return;
     
-    // Draw the dashed line
-    const polyline = L.polyline([fromLatLng, toLatLng], {
-        color: color || '#8b5cf6', // purple
-        weight: 4,
-        dashArray: '10, 15',
-        opacity: 0.8,
-        lineCap: 'round',
-        className: 'animated-route'
-    }).addTo(map);
-
-    // Create a small moving bus icon
-    const busIcon = L.divIcon({
-        className: 'moving-bus-icon',
-        html: `<div style="background-color: ${color || '#8b5cf6'}; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 6px rgba(0,0,0,0.5); z-index: 1000;"><span style="font-size: 11px; color: white;">🚌</span></div>`,
-        iconSize: [24, 24],
-        iconAnchor: [12, 12]
-    });
-    
-    const movingMarker = L.marker(fromLatLng, {icon: busIcon}).addTo(map);
-
-    const duration = 6000; // 6 seconds for the bus to travel
-    const startFrame = performance.now();
-
-    function animateBus(time) {
-        const elapsed = time - startFrame;
-        const progress = Math.min(elapsed / duration, 1.0);
+    try {
+        // Fetch real road route from OSRM
+        const url = `https://router.project-osrm.org/route/v1/driving/${fromLatLng[1]},${fromLatLng[0]};${toLatLng[1]},${toLatLng[0]}?overview=full&geometries=geojson`;
+        const res = await fetch(url);
+        const data = await res.json();
         
-        // Math to calculate intermediate point
-        const currentLat = fromLatLng[0] + (toLatLng[0] - fromLatLng[0]) * progress;
-        const currentLng = fromLatLng[1] + (toLatLng[1] - fromLatLng[1]) * progress;
+        if (data.code !== 'Ok') return;
         
-        movingMarker.setLatLng([currentLat, currentLng]);
+        const route = data.routes[0];
+        const coordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]); // Leaflet uses [lat, lng]
         
-        if (progress < 1.0) {
-            requestAnimationFrame(animateBus);
-        } else {
-            // Remove from map after animation completes
-            if(map.hasLayer(polyline)) map.removeLayer(polyline);
-            if(map.hasLayer(movingMarker)) map.removeLayer(movingMarker);
+        // Draw the road line
+        const polyline = L.polyline(coordinates, {
+            color: color || '#8b5cf6', // purple
+            weight: 4,
+            dashArray: '10, 15',
+            opacity: 0.8,
+            lineCap: 'round',
+            className: 'animated-route'
+        }).addTo(map);
+
+        // Create a small moving bus icon
+        const busIcon = L.divIcon({
+            className: 'moving-bus-icon',
+            html: `<div style="background-color: ${color || '#8b5cf6'}; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 6px rgba(0,0,0,0.5); z-index: 1000;"><span style="font-size: 13px; color: white;">🚌</span></div>`,
+            iconSize: [26, 26],
+            iconAnchor: [13, 13]
+        });
+        
+        const movingMarker = L.marker(coordinates[0], {icon: busIcon}).addTo(map);
+
+        // Scale animation time based on actual duration. 
+        // We clamp it between 10s and 60s for demo purposes so it's realistic but watchable.
+        let demoDurationMs = (route.duration / 60) * 1000; 
+        if (demoDurationMs < 10000) demoDurationMs = 10000;
+        if (demoDurationMs > 60000) demoDurationMs = 60000;
+        
+        const startFrame = performance.now();
+
+        function animateBus(time) {
+            const elapsed = time - startFrame;
+            const progress = Math.min(elapsed / demoDurationMs, 1.0);
+            
+            // Find current segment in coordinates array
+            const totalPoints = coordinates.length - 1;
+            const exactPoint = progress * totalPoints;
+            const index = Math.floor(exactPoint);
+            const nextIndex = Math.min(index + 1, totalPoints);
+            const segmentProgress = exactPoint - index;
+            
+            if (index < totalPoints) {
+                const currentLat = coordinates[index][0] + (coordinates[nextIndex][0] - coordinates[index][0]) * segmentProgress;
+                const currentLng = coordinates[index][1] + (coordinates[nextIndex][1] - coordinates[index][1]) * segmentProgress;
+                movingMarker.setLatLng([currentLat, currentLng]);
+            }
+            
+            if (progress < 1.0) {
+                requestAnimationFrame(animateBus);
+            } else {
+                // Remove from map after animation completes
+                if(map.hasLayer(polyline)) map.removeLayer(polyline);
+                if(map.hasLayer(movingMarker)) map.removeLayer(movingMarker);
+            }
         }
+        
+        requestAnimationFrame(animateBus);
+        
+    } catch (err) {
+        console.error('OSRM Map routing failed:', err);
     }
-    
-    requestAnimationFrame(animateBus);
 };
 
 // Fleet Tracking State

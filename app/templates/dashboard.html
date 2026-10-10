@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-grid">
+    <!-- Top KPIs -->
+    <div class="metric-row">
+        <div class="card kpi-card blue">
+            <div class="kpi-icon blue">👥</div>
+            <div class="kpi-info-flex">
+                <h4>Total Passengers (estimated)</h4>
+                <h2>40,000</h2>
+                <p>👥 Expected to leave in 2 hours</p>
+            </div>
+        </div>
+        <div class="card kpi-card green">
+            <div class="kpi-icon green">🚍</div>
+            <div class="kpi-info-flex">
+                <h4>Buses in Operation</h4>
+                <h2>16</h2>
+                <p>of 16 available</p>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 100%"></div></div>
+            </div>
+        </div>
+        <div class="card kpi-card red">
+            <div class="kpi-icon red">⚠️</div>
+            <div class="kpi-info">
+                <h4>High Crowd Risk Stops</h4>
+                <h2>2</h2>
+                <p>(> 85% capacity)</p>
+            </div>
+        </div>
+        <div class="card kpi-card purple">
+            <div class="kpi-icon purple">🕒</div>
+            <div class="kpi-info">
+                <h4>Next Major Surge</h4>
+                <h2>7:45 PM - 8:30 PM</h2>
+                <p>(Main Bus Stand)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Panel -->
+    <div class="card map-panel">
+        <div class="panel-title mb-0">
+            <span>Live Map – Bus Stands & Crowd Levels</span>
+            <div class="map-legend">
+                <span><span class="status-dot dot-green"></span>Low</span>
+                <span><span class="status-dot dot-orange"></span>Moderate</span>
+                <span><span class="status-dot dot-red"></span>High</span>
+                <span class="legend-divider">🚍 Bus Stand</span>
+                <span>🚏 Bus</span>
+            </div>
+        </div>
+        <div id="dashboard-map" class="map-container"></div>
+    </div>
+
+    <!-- AI Panel -->
+    <div class="ai-panel">
+        <div class="panel-title">
+            <span>✨ AI Recommendations</span>
+            <a href="/optimization" class="view-all-link">View All</a>
+        </div>
+        <div id="ai-recs-container">
+            <!-- Populated by JS -->
+        </div>
+        
+        <div class="ai-footer-note">
+            <div class="ai-footer-icon">ℹ️</div>
+            <div>Each move shows the benefit and the service impact at the stop that loses the bus.</div>
+        </div>
+    </div>
+
+    <!-- Bottom Row: Chart -->
+    <div class="card chart-panel">
+        <div class="panel-title">
+            <span class="panel-title-flex">📊 Passenger Demand Forecast</span>
+        </div>
+        <div class="chart-container">
+            <canvas id="demandChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Bottom Row: Activity -->
+    <div class="card activity-panel">
+        <div class="panel-title">
+            <span class="panel-title-flex">🕒 Recent Activity</span>
+        </div>
+        <ul class="activity-list">
+            <li>
+                <div class="activity-icon green">🚍</div>
+                <div style="flex-grow: 1; display: flex; gap: 1rem;">
+                    <span class="activity-time">07:35 PM</span>
+                    <span><strong>TN-01-N-2345</strong> arrived at Periyar Stand</span>
+                </div>
+            </li>
+            <li>
+                <div class="activity-icon red">⚠️</div>
+                <div style="flex-grow: 1; display: flex; gap: 1rem;">
+                    <span class="activity-time">07:28 PM</span>
+                    <span>Crowd level at Main Stand crossed 100%</span>
+                </div>
+            </li>
+            <li>
+                <div class="activity-icon blue">🚐</div>
+                <div style="flex-grow: 1; display: flex; gap: 1rem;">
+                    <span class="activity-time">07:12 PM</span>
+                    <span>Bus TN-01-N-1768 departed to Main Stand</span>
+                </div>
+            </li>
+            <li>
+                <div class="activity-icon purple">⛅</div>
+                <div style="flex-grow: 1; display: flex; gap: 1rem;">
+                    <span class="activity-time">06:58 PM</span>
+                    <span>Weather updated <span class="text-muted">(Light rain expected after 9 PM)</span></span>
+                </div>
+            </li>
+            <li>
+                <div class="activity-icon green">📈</div>
+                <div style="flex-grow: 1; display: flex; gap: 1rem;">
+                    <span class="activity-time">06:42 PM</span>
+                    <span>Demand forecast <span class="text-muted">for next 2 hours updated</span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Bottom Row: Fleet Status -->
+    <div class="card fleet-panel">
+        <div class="panel-title">
+            <span class="panel-title-flex">🚍 Bus Fleet Status</span>
+            <a href="/fleet" class="view-all-link">View All</a>
+        </div>
+        
+        <div class="fleet-circles">
+            <div class="fleet-circle-item">
+                <div class="fleet-circle green">12</div>
+                <span class="fleet-label">At Main Stand</span>
+            </div>
+            <div class="fleet-circle-item">
+                <div class="fleet-circle orange">4</div>
+                <span class="fleet-label">At East Stop</span>
+            </div>
+            <div class="fleet-circle-item">
+                <div class="fleet-circle blue">0</div>
+                <span class="fleet-label">On Route</span>
+            </div>
+            <div class="fleet-circle-item">
+                <div class="fleet-circle gray">0</div>
+                <span class="fleet-label">In Depot</span>
+            </div>
+        </div>
+        
+        <div class="quick-info-box">
+            <div>
+                <h4 style="color: var(--warning); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">💡 Quick Info</h4>
+                <div style="color: var(--success); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.25rem;">✓ All systems operational</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Maps, forecasts and recommendations are live.</div>
+            </div>
+            <div style="font-size: 2.5rem; opacity: 0.8;">🚌</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

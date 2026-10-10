@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FestivalFlow AI{% endblock %}</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="logo-icon">🚌</div>
+                <div class="brand-text">
+                    <h2>FestivalFlow AI</h2>
+                    <p>Smarter Buses. Safer Journeys.</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/dashboard" class="active">🏠 Home</a></li>
+                    <li><a href="/map">📍 Live Map</a></li>
+                    <li><a href="/forecasting">📊 Crowd Forecast</a></li>
+                    <li><a href="/optimization">🚍 Bus Allocation</a></li>
+                    <li><a href="/routes">🛤️ Routes & Stops</a></li>
+                    <li><a href="/schedule">📅 Festival Schedule</a></li>
+                    <li><a href="/reports">📄 Reports</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div style="font-size: 1.25rem;">ℹ️</div>
+                <div>Real-time data helps us manage the crowd and keep everyone safe.</div>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-location">
+                    <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/TamilNadu_Logo.svg" alt="TN Logo" style="height: 40px; margin-right: 0.5rem;"></div>
+                    <div>
+                        <h3>Tamil Nadu Temple Festival</h3>
+                        <p>Crowd & Bus Management</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="header-item">
+                        <div class="header-item-icon">📅</div>
+                        <div class="header-item-text">
+                            <strong>18 May 2025</strong>
+                            <span class="muted">(Closing Night)</span>
+                        </div>
+                    </div>
+                    <div class="header-item">
+                        <div class="header-item-icon">🕒</div>
+                        <div class="header-item-text">
+                            <strong>07:42 PM</strong>
+                            <span>Live Updates</span>
+                        </div>
+                    </div>
+                    <div class="header-item">
+                        <div class="header-item-icon">⛅</div>
+                        <div class="header-item-text">
+                            <strong>28°C</strong>
+                            <span class="muted">Partly Cloudy<br>Chennai, TN</span>
+                        </div>
+                    </div>
+                    <div class="header-item">
+                        <div class="header-item-icon">👤</div>
+                        <div class="header-item-text">
+                            <strong>Public View</strong>
+                            <span class="muted">Transport Info</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-area">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

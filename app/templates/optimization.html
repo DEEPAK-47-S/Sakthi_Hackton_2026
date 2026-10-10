@@ -346,6 +346,36 @@
             label.className = 'auto-style-17551';
         }
 
+        // ==========================================
+        // NEW: ENDLESS LOOP SIMULATION RESET
+        // ==========================================
+        // After dispatching, wait a random time (15-25 seconds) and reset 
+        // the hub back to "Monitoring" state to simulate continuous crowd buildup
+        setTimeout(() => {
+            if (statusEl) {
+                statusEl.innerHTML = '🤖 AI Auto-Warden Monitoring...';
+                statusEl.style.background = '#f8fafc';
+                statusEl.style.color = '#64748b';
+                statusEl.style.border = '1px dashed #cbd5e1';
+                statusEl.dataset.dispatched = 'false';
+            }
+            if (badge) {
+                badge.innerText = '90% LOAD (Building)';
+                badge.className = 'badge badge-warning';
+            }
+            if (deficitEl) {
+                deficitEl.innerText = '-12 Buses';
+                deficitEl.style.color = '#f59e0b';
+            }
+            if (bar) {
+                bar.style.width = '90%';
+                bar.style.background = 'var(--warning)';
+            }
+            if (label) {
+                label.innerText = '90% Capacity';
+            }
+        }, Math.floor(Math.random() * 10000) + 15000);
+
         // Increment reallocated buses KPI
         const reallocEl = document.getElementById('buses-reallocated');
         if (reallocEl) {

@@ -1,10 +1,346 @@
 {% extends "base.html" %}
-{% block title %}Routes - FestivalFlow AI{% endblock %}
+{% block title %}Routes & Stops Directory - Tamil Nadu Smart Transit{% endblock %}
+
+{% block extra_css %}
+<style>
+.routes-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    background: var(--surface);
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+}
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 160px;
+}
+.filter-item label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+.filter-item input, .filter-item select {
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    background: var(--bg-main);
+    color: var(--text-main);
+    outline: none;
+}
+.table-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+.table-responsive {
+    overflow-x: auto;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    text-align: left;
+}
+.data-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+}
+.data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: var(--text-main);
+}
+.data-table tr:hover {
+    background: #f8fafc;
+}
+.pagination-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: #fafafa;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+}
+.pagination-btns {
+    display: flex;
+    gap: 8px;
+}
+.page-btn {
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.page-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card auto-style-30471" >
-    <div class="auto-style-44179">🛤️</div>
-    <h2>Routes & Stops Management</h2>
-    <p class="text-muted">Configure and view all active bus routes and stop capacities here.</p>
-    <a href="/dashboard" class="badge badge-info auto-style-94444" >Return to Dashboard</a>
+<div class="routes-layout">
+    <!-- Top Stat Metrics -->
+    <div class="metric-row">
+        <div class="card kpi-card blue">
+            <div class="kpi-icon blue">📍</div>
+            <div class="kpi-info-flex">
+                <h4>Total Bus Stops</h4>
+                <h2 id="kpi-total-stops">852</h2>
+                <p>Complete State Coverage</p>
+            </div>
+        </div>
+        <div class="card kpi-card green">
+            <div class="kpi-icon green">🗺️</div>
+            <div class="kpi-info-flex">
+                <h4>Districts Covered</h4>
+                <h2>38</h2>
+                <p>100% Tamil Nadu Covered</p>
+            </div>
+        </div>
+        <div class="card kpi-card red">
+            <div class="kpi-icon red">🏢</div>
+            <div class="kpi-info-flex">
+                <h4>Main Terminuses</h4>
+                <h2>38</h2>
+                <p>Primary State Terminals</p>
+            </div>
+        </div>
+        <div class="card kpi-card orange">
+            <div class="kpi-icon orange">🚏</div>
+            <div class="kpi-info-flex">
+                <h4>Town & Local Stops</h4>
+                <h2>814</h2>
+                <p>175 Town + 639 Local Stops</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="filters-bar">
+        <div class="filter-item" style="flex: 2;">
+            <label>Search Stops</label>
+            <input type="text" id="search-input" placeholder="Search by Stop Name, Town, or ID (e.g., CMBT, Ariyalur, TN0001)...">
+        </div>
+        <div class="filter-item">
+            <label>District (38)</label>
+            <select id="district-filter">
+                <option value="all">All Districts (38)</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label>Stop Type</label>
+            <select id="type-filter">
+                <option value="all">All Stop Types</option>
+                <option value="main_terminus">Main Terminus (38)</option>
+                <option value="town_stand">Town Stand (175)</option>
+                <option value="local_stop">Local Stop (639)</option>
+            </select>
+        </div>
+        <div class="filter-item" style="flex: 0.8;">
+            <label>Tier</label>
+            <select id="tier-filter">
+                <option value="all">All Tiers</option>
+                <option value="A">Tier A (Metropolitan)</option>
+                <option value="B">Tier B (Urban)</option>
+                <option value="C">Tier C (Rural/Town)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Stop ID</th>
+                        <th>Stop Name</th>
+                        <th>District</th>
+                        <th>Town</th>
+                        <th>Stop Type</th>
+                        <th>Tier</th>
+                        <th>Capacity</th>
+                        <th>Coordinates</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="stops-table-body">
+                    <tr>
+                        <td colspan="9" style="text-align: center; padding: 40px; color: #64748b;">
+                            Loading stops from database...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-bar">
+            <span id="page-info">Showing 0 of 0 stops</span>
+            <div class="pagination-btns">
+                <button id="btn-prev" class="page-btn" disabled>← Previous</button>
+                <button id="btn-next" class="page-btn">Next →</button>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    let allStops = [];
+    let filteredStops = [];
+    let currentPage = 1;
+    const pageSize = 25;
+
+    const tbody = document.getElementById('stops-table-body');
+    const districtSelect = document.getElementById('district-filter');
+    const typeSelect = document.getElementById('type-filter');
+    const tierSelect = document.getElementById('tier-filter');
+    const searchInput = document.getElementById('search-input');
+    const pageInfo = document.getElementById('page-info');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+
+    try {
+        const res = await fetch('/static/data/bus_stops.json');
+        const data = await res.json();
+        allStops = data.stops;
+        filteredStops = allStops;
+
+        // Populate districts
+        data.districts.forEach(d => {
+            const opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = `${d} (${data.by_district[d].total_stops})`;
+            districtSelect.appendChild(opt);
+        });
+
+        applyFilters();
+    } catch (err) {
+        console.error('Failed to load stops:', err);
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:red;">Failed to load data</td></tr>';
+    }
+
+    function applyFilters() {
+        const search = searchInput.value.toLowerCase().trim();
+        const district = districtSelect.value;
+        const type = typeSelect.value;
+        const tier = tierSelect.value;
+
+        filteredStops = allStops.filter(s => {
+            const matchSearch = !search || 
+                s.name.toLowerCase().includes(search) || 
+                s.town.toLowerCase().includes(search) || 
+                s.id.toLowerCase().includes(search);
+            const matchDistrict = (district === 'all' || s.district === district);
+            const matchType = (type === 'all' || s.type === type);
+            const matchTier = (tier === 'all' || s.tier === tier);
+            return matchSearch && matchDistrict && matchType && matchTier;
+        });
+
+        currentPage = 1;
+        renderTable();
+    }
+
+    function renderTable() {
+        const total = filteredStops.length;
+        const totalPages = Math.ceil(total / pageSize) || 1;
+        const start = (currentPage - 1) * pageSize;
+        const end = Math.min(start + pageSize, total);
+        const pageItems = filteredStops.slice(start, end);
+
+        if (total === 0) {
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 30px; color: #64748b;">No stops matching your search criteria.</td></tr>';
+            pageInfo.textContent = 'Showing 0 stops';
+            btnPrev.disabled = true;
+            btnNext.disabled = true;
+            return;
+        }
+
+        let html = '';
+        pageItems.forEach(s => {
+            let typeBadge = '';
+            if (s.type === 'main_terminus') {
+                typeBadge = '<span class="badge badge-danger">Main Terminus</span>';
+            } else if (s.type === 'town_stand') {
+                typeBadge = '<span class="badge badge-warning" style="color:white;">Town Stand</span>';
+            } else {
+                typeBadge = '<span class="badge badge-info">Local Stop</span>';
+            }
+
+            let tierBadge = `<span class="badge" style="background:#f1f5f9; color:#475569;">Tier ${s.tier}</span>`;
+
+            html += `
+                <tr>
+                    <td><strong>${s.id}</strong></td>
+                    <td><strong>${s.name}</strong></td>
+                    <td>${s.district}</td>
+                    <td>${s.town}</td>
+                    <td>${typeBadge}</td>
+                    <td>${tierBadge}</td>
+                    <td><strong>${s.capacity.toLocaleString()}</strong></td>
+                    <td style="color:#64748b; font-size:0.8rem;">${s.lat.toFixed(4)}, ${s.lng.toFixed(4)}</td>
+                    <td>
+                        <a href="/map?stop=${s.id}&district=${s.district}" class="badge badge-info" style="text-decoration:none;">📍 Map</a>
+                    </td>
+                </tr>
+            `;
+        });
+
+        tbody.innerHTML = html;
+        pageInfo.textContent = `Showing ${start + 1} to ${end} of ${total} stops (Page ${currentPage} of ${totalPages})`;
+        btnPrev.disabled = currentPage <= 1;
+        btnNext.disabled = currentPage >= totalPages;
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', applyFilters);
+    districtSelect.addEventListener('change', applyFilters);
+    typeSelect.addEventListener('change', applyFilters);
+    tierSelect.addEventListener('change', applyFilters);
+
+    btnPrev.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    });
+
+    btnNext.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredStops.length / pageSize);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable();
+        }
+    });
+});
+</script>
 {% endblock %}

@@ -25,6 +25,9 @@ def create_app(config_name='dev'):
     
     from app.routes.optimization_routes import bp as optimization_bp
     app.register_blueprint(optimization_bp)
+
+    from app.routes.transport_routes import bp as transport_bp
+    app.register_blueprint(transport_bp)
     # Error Handlers
     @app.errorhandler(403)
     def forbidden(e):

@@ -25,7 +25,10 @@ if not exist ".env" (
     )
 )
 
-echo [INFO] Starting Flask Server...
+echo ===================================================
+echo Server is launching at: http://127.0.0.1:5000
+echo Press Ctrl+C in this window to stop the server.
+echo ===================================================
 python wsgi.py
 
 pause

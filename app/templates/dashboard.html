@@ -41,13 +41,19 @@
 
     <!-- Map Panel -->
     <div class="card map-panel">
-        <div class="panel-title mb-0">
-            <span>Live Map – Tamil Nadu State Transit</span>
+        <div class="panel-title mb-0" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span>Live Map – Tamil Nadu State Transit</span>
+                <select id="district-selector" style="padding: 4px 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; font-weight: 500; background: white; color: #1e293b; cursor: pointer;">
+                    <option value="all">🗺️ All 38 Districts (Statewide)</option>
+                </select>
+                <span id="map-stop-counter" class="badge badge-info" style="font-size: 0.75rem;">Loading stops...</span>
+            </div>
             <div class="map-legend">
                 <span><span class="status-dot dot-green"></span>Low</span>
                 <span><span class="status-dot dot-orange"></span>Moderate</span>
                 <span><span class="status-dot dot-red"></span>High</span>
-                <span class="legend-divider">👆 Click any stop for live stats</span>
+                <span class="legend-divider">👆 Click stop for live stats</span>
             </div>
         </div>
         <div id="dashboard-map" class="map-container"></div>

@@ -1,18 +1,308 @@
 {% extends "base.html" %}
-{% block title %}Live Map - FestivalFlow AI{% endblock %}
+{% block title %}Statewide Live Map - Tamil Nadu Smart Transit{% endblock %}
+
+{% block extra_css %}
+<style>
+.map-view-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+    gap: 12px;
+}
+.map-controls-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 12px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: var(--shadow-sm);
+}
+.controls-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.map-input {
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--text-main);
+    background: var(--bg-main);
+    outline: none;
+    min-width: 200px;
+}
+.map-select {
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-main);
+    background: var(--surface);
+    cursor: pointer;
+}
+.btn-filter {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-filter.active, .btn-filter:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+.map-container-box {
+    position: relative;
+    flex: 1;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+#live-state-map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.map-floating-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    box-shadow: var(--shadow-lg);
+    font-size: 0.85rem;
+    max-width: 280px;
+}
+.legend-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="card auto-style-53150" >
-    <div class="panel-title">
-        <span>📍 Full Screen Live Map</span>
+<div class="map-view-wrapper">
+    <!-- Controls Header -->
+    <div class="map-controls-card">
+        <div class="controls-group">
+            <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+                📍 Statewide Live Transit Map
+            </span>
+            <select id="district-filter" class="map-select">
+                <option value="all">🗺️ All 38 Districts</option>
+            </select>
+            <input type="text" id="stop-search" placeholder="Search by stop name, town, or ID..." class="map-input">
+        </div>
+
+        <div class="controls-group">
+            <div class="filter-pills">
+                <button class="btn-filter active" data-type="all">All Stops (852)</button>
+                <button class="btn-filter" data-type="main_terminus">🏢 Main Terminuses (38)</button>
+                <button class="btn-filter" data-type="town_stand">🚏 Town Stands (175)</button>
+                <button class="btn-filter" data-type="local_stop">📍 Local Stops (639)</button>
+            </div>
+            <span id="visible-counter" class="badge badge-info" style="font-size: 0.8rem;">852 Stops Visible</span>
+        </div>
     </div>
-    <div id="full-map" class="auto-style-74943"></div>
+
+    <!-- Map Container -->
+    <div class="map-container-box">
+        <div id="live-state-map"></div>
+
+        <!-- Floating Quick Stats -->
+        <div class="map-floating-panel">
+            <div style="font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 8px; color: var(--text-main);">
+                🗺️ Transit Coverage
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span class="text-muted">Total Stops:</span>
+                <strong>852 stops</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                <span class="text-muted">Districts:</span>
+                <strong>38 / 38 Covered</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span class="text-muted">State Capacity:</span>
+                <strong style="color: var(--primary);">1,283,703 pax</strong>
+            </div>
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 6px; font-size: 0.78rem; color: #64748b;">
+                🔴 Terminus &nbsp; 🟠 Town Stand &nbsp; 🔵 Local
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
+
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const map = L.map('full-map').setView([10.2289, 78.4326], 8);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(map);
+document.addEventListener('DOMContentLoaded', async () => {
+    const map = L.map('live-state-map', {
+        zoomControl: true,
+        attributionControl: false
+    }).setView([10.8505, 78.6569], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const markerClusterGroup = L.layerGroup().addTo(map);
+
+    let allStops = [];
+    let currentDistrict = 'all';
+    let currentType = 'all';
+    let currentSearch = '';
+
+    const createPin = (color, size, label) => {
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: `<div style="background-color: ${color}; width: ${size}px; height: ${size}px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"><span style="font-size: ${size/2.2}px; color: white;">${label}</span></div>`,
+            iconSize: [size, size],
+            iconAnchor: [size/2, size/2]
+        });
+    };
+
+    try {
+        const res = await fetch('/static/data/bus_stops.json');
+        const data = await res.json();
+        allStops = data.stops;
+
+        // Populate district selector
+        const districtSelect = document.getElementById('district-filter');
+        data.districts.forEach(d => {
+            const opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = `${d} (${data.by_district[d].total_stops} stops)`;
+            districtSelect.appendChild(opt);
+        });
+
+        renderMapMarkers();
+
+        // Check for URL query param e.g. /map?district=Chennai or /map?stop=TN0045
+        const urlParams = new URLSearchParams(window.location.search);
+        const qDistrict = urlParams.get('district');
+        const qStop = urlParams.get('stop');
+
+        if (qDistrict && data.districts.includes(qDistrict)) {
+            districtSelect.value = qDistrict;
+            currentDistrict = qDistrict;
+            renderMapMarkers();
+        } else if (qStop) {
+            const match = allStops.find(s => s.id.toLowerCase() === qStop.toLowerCase());
+            if (match) {
+                map.setView([match.lat, match.lng], 14);
+            }
+        }
+    } catch (e) {
+        console.error('Failed to load stops:', e);
+    }
+
+    function renderMapMarkers() {
+        markerClusterGroup.clearLayers();
+
+        let filtered = allStops.filter(s => {
+            const matchDistrict = (currentDistrict === 'all' || s.district === currentDistrict);
+            const matchType = (currentType === 'all' || s.type === currentType);
+            const matchSearch = (!currentSearch || 
+                s.name.toLowerCase().includes(currentSearch) || 
+                s.town.toLowerCase().includes(currentSearch) || 
+                s.id.toLowerCase().includes(currentSearch));
+            return matchDistrict && matchType && matchSearch;
+        });
+
+        document.getElementById('visible-counter').textContent = `${filtered.length} Stops Visible`;
+
+        if (filtered.length > 0 && currentDistrict !== 'all') {
+            const bounds = L.latLngBounds(filtered.map(s => [s.lat, s.lng]));
+            map.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 });
+        } else if (currentDistrict === 'all' && !currentSearch) {
+            map.setView([10.8505, 78.6569], 7);
+        }
+
+        // To keep performance high on statewide all-stops, render appropriate batch
+        filtered.forEach(s => {
+            let color = '#3b82f6';
+            let size = 18;
+            let iconText = '📍';
+
+            if (s.type === 'main_terminus') {
+                color = '#ef4444';
+                size = 28;
+                iconText = '🏢';
+            } else if (s.type === 'town_stand') {
+                color = '#f59e0b';
+                size = 22;
+                iconText = '🚏';
+            }
+
+            const icon = createPin(color, size, iconText);
+            const marker = L.marker([s.lat, s.lng], { icon: icon }).addTo(markerClusterGroup);
+
+            const badgeHtml = s.type === 'main_terminus' 
+                ? '<span class="badge badge-danger">Main Terminus</span>' 
+                : (s.type === 'town_stand' ? '<span class="badge badge-warning" style="color:white;">Town Stand</span>' : '<span class="badge badge-info">Local Stop</span>');
+
+            const popup = `
+                <div style="min-width: 210px; font-family: 'Inter', sans-serif;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                        <span style="font-weight:700; color:#64748b; font-size:0.75rem;">${s.id}</span>
+                        ${badgeHtml}
+                    </div>
+                    <strong style="font-size: 1.05rem; display:block; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; margin-bottom: 6px;">${s.name}</strong>
+                    <div style="font-size:0.85rem; margin-bottom: 3px;"><strong>District:</strong> ${s.district}</div>
+                    <div style="font-size:0.85rem; margin-bottom: 3px;"><strong>Town:</strong> ${s.town}</div>
+                    <div style="font-size:0.85rem; margin-bottom: 3px;"><strong>Capacity:</strong> ${s.capacity.toLocaleString()} pax (Tier ${s.tier})</div>
+                    <div style="font-size:0.75rem; color:#64748b; margin-bottom: 6px;">Coords: ${s.lat.toFixed(4)}, ${s.lng.toFixed(4)}</div>
+                    <div style="margin-top: 6px; border-top: 1px solid #e2e8f0; padding-top: 6px;">
+                        <a href="/optimization" class="badge badge-info" style="display:block; text-align:center; text-decoration:none; padding:4px;">⚡ Optimize Route Allocations</a>
+                    </div>
+                </div>
+            `;
+            marker.bindPopup(popup, { className: 'custom-popup' });
+        });
+    }
+
+    // Event Listeners
+    document.getElementById('district-filter').addEventListener('change', (e) => {
+        currentDistrict = e.target.value;
+        renderMapMarkers();
     });
+
+    document.getElementById('stop-search').addEventListener('input', (e) => {
+        currentSearch = e.target.value.toLowerCase().trim();
+        renderMapMarkers();
+    });
+
+    document.querySelectorAll('.btn-filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentType = btn.getAttribute('data-type');
+            renderMapMarkers();
+        });
+    });
+});
 </script>
 {% endblock %}

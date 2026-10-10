@@ -1,0 +1,853 @@
+stop_id,stop_name,district,town,stop_type,lat,lng,tier,capacity,is_synthetic
+TN0001,Ariyalur Bus Stand,Ariyalur,Ariyalur,main_terminus,11.14,79.0786,C,5814,0
+TN0002,Ariyalur Railway Station Road Stop,Ariyalur,Ariyalur,local_stop,11.1286,79.0732,C,377,1
+TN0003,Ariyalur Market Junction Stop,Ariyalur,Ariyalur,local_stop,11.13135,79.06906,C,459,1
+TN0004,Ariyalur Government Hospital Stop,Ariyalur,Ariyalur,local_stop,11.13009,79.07673,C,327,1
+TN0005,Jayankondam Bus Stand,Ariyalur,Jayankondam,town_stand,11.2133,79.3633,C,2295,0
+TN0006,Jayankondam Railway Station Road Stop,Ariyalur,Jayankondam,local_stop,11.20655,79.36343,C,326,1
+TN0007,Jayankondam Market Junction Stop,Ariyalur,Jayankondam,local_stop,11.21477,79.36848,C,459,1
+TN0008,Jayankondam Government Hospital Stop,Ariyalur,Jayankondam,local_stop,11.21137,79.36208,C,391,1
+TN0009,Sendurai Bus Stand,Ariyalur,Sendurai,town_stand,11.253,79.1,C,2206,0
+TN0010,Sendurai Railway Station Road Stop,Ariyalur,Sendurai,local_stop,11.25921,79.09183,C,428,1
+TN0011,Sendurai Market Junction Stop,Ariyalur,Sendurai,local_stop,11.24917,79.09173,C,406,1
+TN0012,Sendurai Government Hospital Stop,Ariyalur,Sendurai,local_stop,11.24345,79.09712,C,411,1
+TN0013,Udayarpalayam Bus Stand,Ariyalur,Udayarpalayam,town_stand,11.199,79.277,C,2552,0
+TN0014,Udayarpalayam Railway Station Road Stop,Ariyalur,Udayarpalayam,local_stop,11.20149,79.28437,C,437,1
+TN0015,Udayarpalayam Market Junction Stop,Ariyalur,Udayarpalayam,local_stop,11.19987,79.28835,C,416,1
+TN0016,Udayarpalayam Government Hospital Stop,Ariyalur,Udayarpalayam,local_stop,11.18889,79.27204,C,480,1
+TN0017,Thirumanur Bus Stand,Ariyalur,Thirumanur,town_stand,10.999,79.259,C,2570,0
+TN0018,Thirumanur Railway Station Road Stop,Ariyalur,Thirumanur,local_stop,11.00086,79.26391,C,331,1
+TN0019,Thirumanur Market Junction Stop,Ariyalur,Thirumanur,local_stop,11.00287,79.26555,C,340,1
+TN0020,Thirumanur Government Hospital Stop,Ariyalur,Thirumanur,local_stop,11.00753,79.2678,C,417,1
+TN0021,Chengalpattu Bus Stand,Chengalpattu,Chengalpattu,main_terminus,12.6819,79.9888,B,8984,0
+TN0022,Chengalpattu Railway Station Road Stop,Chengalpattu,Chengalpattu,local_stop,12.68078,79.99682,B,561,1
+TN0023,Chengalpattu Market Junction Stop,Chengalpattu,Chengalpattu,local_stop,12.67878,79.98183,B,588,1
+TN0024,Chengalpattu Government Hospital Stop,Chengalpattu,Chengalpattu,local_stop,12.68674,79.99321,B,538,1
+TN0025,Maraimalai Nagar Bus Stand,Chengalpattu,Maraimalai Nagar,town_stand,12.79,80.02,B,3375,0
+TN0026,Maraimalai Nagar Railway Station Road Stop,Chengalpattu,Maraimalai Nagar,local_stop,12.79082,80.01388,B,638,1
+TN0027,Maraimalai Nagar Market Junction Stop,Chengalpattu,Maraimalai Nagar,local_stop,12.78711,80.03175,B,662,1
+TN0028,Maraimalai Nagar Government Hospital Stop,Chengalpattu,Maraimalai Nagar,local_stop,12.78327,80.01578,B,534,1
+TN0029,Tambaram Bus Stand,Chengalpattu,Tambaram,town_stand,12.9249,80.1,B,3434,0
+TN0030,Tambaram Railway Station Road Stop,Chengalpattu,Tambaram,local_stop,12.93262,80.10732,B,622,1
+TN0031,Tambaram Market Junction Stop,Chengalpattu,Tambaram,local_stop,12.91933,80.09306,B,665,1
+TN0032,Tambaram Government Hospital Stop,Chengalpattu,Tambaram,local_stop,12.93393,80.09555,B,647,1
+TN0033,Madurantakam Bus Stand,Chengalpattu,Madurantakam,town_stand,12.498,79.894,B,3605,0
+TN0034,Madurantakam Railway Station Road Stop,Chengalpattu,Madurantakam,local_stop,12.50723,79.89743,B,556,1
+TN0035,Madurantakam Market Junction Stop,Chengalpattu,Madurantakam,local_stop,12.49236,79.88792,B,663,1
+TN0036,Madurantakam Government Hospital Stop,Chengalpattu,Madurantakam,local_stop,12.49894,79.89993,B,629,1
+TN0037,Thirukalukundram Bus Stand,Chengalpattu,Thirukalukundram,town_stand,12.61,80.06,B,3797,0
+TN0038,Thirukalukundram Railway Station Road Stop,Chengalpattu,Thirukalukundram,local_stop,12.60759,80.05326,B,555,1
+TN0039,Thirukalukundram Market Junction Stop,Chengalpattu,Thirukalukundram,local_stop,12.61023,80.05018,B,532,1
+TN0040,Thirukalukundram Government Hospital Stop,Chengalpattu,Thirukalukundram,local_stop,12.61867,80.05167,B,560,1
+TN0041,Mamallapuram Bus Stand,Chengalpattu,Mamallapuram,town_stand,12.6172,80.1927,B,3632,0
+TN0042,Mamallapuram Railway Station Road Stop,Chengalpattu,Mamallapuram,local_stop,12.61951,80.18993,B,672,1
+TN0043,Mamallapuram Market Junction Stop,Chengalpattu,Mamallapuram,local_stop,12.62911,80.1934,B,661,1
+TN0044,Mamallapuram Government Hospital Stop,Chengalpattu,Mamallapuram,local_stop,12.62586,80.18098,B,549,1
+TN0045,Koyambedu CMBT Bus Stand,Chennai,Koyambedu CMBT,main_terminus,13.0694,80.1948,A,14249,0
+TN0046,Koyambedu CMBT Railway Station Road Stop,Chennai,Koyambedu CMBT,local_stop,13.07542,80.20125,A,907,1
+TN0047,Koyambedu CMBT Market Junction Stop,Chennai,Koyambedu CMBT,local_stop,13.06008,80.19323,A,936,1
+TN0048,Koyambedu CMBT Government Hospital Stop,Chennai,Koyambedu CMBT,local_stop,13.05748,80.20013,A,887,1
+TN0049,Broadway Bus Stand,Chennai,Broadway,town_stand,13.0878,80.2785,A,5212,0
+TN0050,Broadway Railway Station Road Stop,Chennai,Broadway,local_stop,13.09409,80.27868,A,847,1
+TN0051,Broadway Market Junction Stop,Chennai,Broadway,local_stop,13.09669,80.27366,A,949,1
+TN0052,Broadway Government Hospital Stop,Chennai,Broadway,local_stop,13.09042,80.27017,A,861,1
+TN0053,T Nagar Bus Stand,Chennai,T Nagar,town_stand,13.0418,80.2341,A,5252,0
+TN0054,T Nagar Railway Station Road Stop,Chennai,T Nagar,local_stop,13.05268,80.24424,A,820,1
+TN0055,T Nagar Market Junction Stop,Chennai,T Nagar,local_stop,13.04417,80.23383,A,848,1
+TN0056,T Nagar Government Hospital Stop,Chennai,T Nagar,local_stop,13.0521,80.24319,A,898,1
+TN0057,Guindy Bus Stand,Chennai,Guindy,town_stand,13.0067,80.2206,A,4945,0
+TN0058,Guindy Railway Station Road Stop,Chennai,Guindy,local_stop,12.99609,80.22967,A,840,1
+TN0059,Guindy Market Junction Stop,Chennai,Guindy,local_stop,12.99676,80.22026,A,837,1
+TN0060,Guindy Government Hospital Stop,Chennai,Guindy,local_stop,13.01817,80.22138,A,852,1
+TN0061,Vadapalani Bus Stand,Chennai,Vadapalani,town_stand,13.05,80.2121,A,4831,0
+TN0062,Vadapalani Railway Station Road Stop,Chennai,Vadapalani,local_stop,13.05383,80.22282,A,862,1
+TN0063,Vadapalani Market Junction Stop,Chennai,Vadapalani,local_stop,13.04436,80.22104,A,928,1
+TN0064,Vadapalani Government Hospital Stop,Chennai,Vadapalani,local_stop,13.06114,80.22239,A,871,1
+TN0065,Adyar Bus Stand,Chennai,Adyar,town_stand,13.0012,80.2565,A,5019,0
+TN0066,Adyar Railway Station Road Stop,Chennai,Adyar,local_stop,12.99878,80.26062,A,915,1
+TN0067,Adyar Market Junction Stop,Chennai,Adyar,local_stop,12.99971,80.25692,A,850,1
+TN0068,Adyar Government Hospital Stop,Chennai,Adyar,local_stop,12.99515,80.24604,A,825,1
+TN0069,Anna Nagar Bus Stand,Chennai,Anna Nagar,town_stand,13.085,80.2101,A,5267,0
+TN0070,Anna Nagar Railway Station Road Stop,Chennai,Anna Nagar,local_stop,13.07852,80.20339,A,838,1
+TN0071,Anna Nagar Market Junction Stop,Chennai,Anna Nagar,local_stop,13.08999,80.19951,A,837,1
+TN0072,Anna Nagar Government Hospital Stop,Chennai,Anna Nagar,local_stop,13.09473,80.21873,A,838,1
+TN0073,Thiruvanmiyur Bus Stand,Chennai,Thiruvanmiyur,town_stand,12.983,80.2594,A,5226,0
+TN0074,Thiruvanmiyur Railway Station Road Stop,Chennai,Thiruvanmiyur,local_stop,12.97671,80.26346,A,874,1
+TN0075,Thiruvanmiyur Market Junction Stop,Chennai,Thiruvanmiyur,local_stop,12.98394,80.26476,A,966,1
+TN0076,Thiruvanmiyur Government Hospital Stop,Chennai,Thiruvanmiyur,local_stop,12.98483,80.25323,A,941,1
+TN0077,Gandhipuram Bus Stand,Coimbatore,Gandhipuram,main_terminus,11.0183,76.9725,A,14116,0
+TN0078,Gandhipuram Railway Station Road Stop,Coimbatore,Gandhipuram,local_stop,11.01087,76.96283,A,930,1
+TN0079,Gandhipuram Market Junction Stop,Coimbatore,Gandhipuram,local_stop,11.0148,76.97037,A,833,1
+TN0080,Gandhipuram Government Hospital Stop,Coimbatore,Gandhipuram,local_stop,11.02246,76.98412,A,845,1
+TN0081,Ukkadam Bus Stand,Coimbatore,Ukkadam,town_stand,10.9917,76.9614,A,4762,0
+TN0082,Ukkadam Railway Station Road Stop,Coimbatore,Ukkadam,local_stop,10.98936,76.95754,A,847,1
+TN0083,Ukkadam Market Junction Stop,Coimbatore,Ukkadam,local_stop,10.98567,76.95397,A,934,1
+TN0084,Ukkadam Government Hospital Stop,Coimbatore,Ukkadam,local_stop,10.98306,76.9538,A,938,1
+TN0085,Singanallur Bus Stand,Coimbatore,Singanallur,town_stand,10.999,77.027,A,4955,0
+TN0086,Singanallur Railway Station Road Stop,Coimbatore,Singanallur,local_stop,11.00799,77.01681,A,960,1
+TN0087,Singanallur Market Junction Stop,Coimbatore,Singanallur,local_stop,10.98935,77.03065,A,958,1
+TN0088,Singanallur Government Hospital Stop,Coimbatore,Singanallur,local_stop,11.00706,77.03826,A,880,1
+TN0089,Mettupalayam Bus Stand,Coimbatore,Mettupalayam,town_stand,11.299,76.938,A,4870,0
+TN0090,Mettupalayam Railway Station Road Stop,Coimbatore,Mettupalayam,local_stop,11.29675,76.93755,A,922,1
+TN0091,Mettupalayam Market Junction Stop,Coimbatore,Mettupalayam,local_stop,11.30866,76.92995,A,820,1
+TN0092,Mettupalayam Government Hospital Stop,Coimbatore,Mettupalayam,local_stop,11.31065,76.93236,A,936,1
+TN0093,Pollachi Bus Stand,Coimbatore,Pollachi,town_stand,10.658,77.008,A,4992,0
+TN0094,Pollachi Railway Station Road Stop,Coimbatore,Pollachi,local_stop,10.65615,77.01898,A,962,1
+TN0095,Pollachi Market Junction Stop,Coimbatore,Pollachi,local_stop,10.66188,77.00768,A,868,1
+TN0096,Pollachi Government Hospital Stop,Coimbatore,Pollachi,local_stop,10.65312,77.01925,A,968,1
+TN0097,Sulur Bus Stand,Coimbatore,Sulur,town_stand,11.023,77.129,A,5255,0
+TN0098,Sulur Railway Station Road Stop,Coimbatore,Sulur,local_stop,11.01246,77.12453,A,832,1
+TN0099,Sulur Market Junction Stop,Coimbatore,Sulur,local_stop,11.02502,77.12907,A,955,1
+TN0100,Sulur Government Hospital Stop,Coimbatore,Sulur,local_stop,11.01478,77.14006,A,840,1
+TN0101,Valparai Bus Stand,Coimbatore,Valparai,town_stand,10.327,76.951,A,4890,0
+TN0102,Valparai Railway Station Road Stop,Coimbatore,Valparai,local_stop,10.31664,76.94063,A,880,1
+TN0103,Valparai Market Junction Stop,Coimbatore,Valparai,local_stop,10.32469,76.9616,A,965,1
+TN0104,Valparai Government Hospital Stop,Coimbatore,Valparai,local_stop,10.32091,76.95327,A,978,1
+TN0105,Cuddalore Bus Stand,Cuddalore,Cuddalore,main_terminus,11.748,79.7714,B,8783,0
+TN0106,Cuddalore Railway Station Road Stop,Cuddalore,Cuddalore,local_stop,11.74606,79.77341,B,653,1
+TN0107,Cuddalore Market Junction Stop,Cuddalore,Cuddalore,local_stop,11.74359,79.76566,B,600,1
+TN0108,Cuddalore Government Hospital Stop,Cuddalore,Cuddalore,local_stop,11.74173,79.7689,B,596,1
+TN0109,Chidambaram Bus Stand,Cuddalore,Chidambaram,town_stand,11.3993,79.6933,B,3668,0
+TN0110,Chidambaram Railway Station Road Stop,Cuddalore,Chidambaram,local_stop,11.39489,79.69934,B,538,1
+TN0111,Chidambaram Market Junction Stop,Cuddalore,Chidambaram,local_stop,11.38752,79.69621,B,664,1
+TN0112,Chidambaram Government Hospital Stop,Cuddalore,Chidambaram,local_stop,11.41121,79.68306,B,574,1
+TN0113,Neyveli Bus Stand,Cuddalore,Neyveli,town_stand,11.545,79.48,B,3718,0
+TN0114,Neyveli Railway Station Road Stop,Cuddalore,Neyveli,local_stop,11.53936,79.4904,B,537,1
+TN0115,Neyveli Market Junction Stop,Cuddalore,Neyveli,local_stop,11.5541,79.47687,B,560,1
+TN0116,Neyveli Government Hospital Stop,Cuddalore,Neyveli,local_stop,11.54352,79.48104,B,597,1
+TN0117,Virudhachalam Bus Stand,Cuddalore,Virudhachalam,town_stand,11.519,79.324,B,3741,0
+TN0118,Virudhachalam Railway Station Road Stop,Cuddalore,Virudhachalam,local_stop,11.50719,79.33161,B,596,1
+TN0119,Virudhachalam Market Junction Stop,Cuddalore,Virudhachalam,local_stop,11.52936,79.31449,B,554,1
+TN0120,Virudhachalam Government Hospital Stop,Cuddalore,Virudhachalam,local_stop,11.51335,79.33335,B,661,1
+TN0121,Panruti Bus Stand,Cuddalore,Panruti,town_stand,11.777,79.553,B,3359,0
+TN0122,Panruti Railway Station Road Stop,Cuddalore,Panruti,local_stop,11.77154,79.55552,B,607,1
+TN0123,Panruti Market Junction Stop,Cuddalore,Panruti,local_stop,11.76989,79.55622,B,587,1
+TN0124,Panruti Government Hospital Stop,Cuddalore,Panruti,local_stop,11.77713,79.54703,B,533,1
+TN0125,Kurinjipadi Bus Stand,Cuddalore,Kurinjipadi,town_stand,11.56,79.59,B,3294,0
+TN0126,Kurinjipadi Railway Station Road Stop,Cuddalore,Kurinjipadi,local_stop,11.56322,79.5979,B,531,1
+TN0127,Kurinjipadi Market Junction Stop,Cuddalore,Kurinjipadi,local_stop,11.54809,79.59651,B,587,1
+TN0128,Kurinjipadi Government Hospital Stop,Cuddalore,Kurinjipadi,local_stop,11.55188,79.5886,B,629,1
+TN0129,Dharmapuri Bus Stand,Dharmapuri,Dharmapuri,main_terminus,12.1211,78.1582,C,6274,0
+TN0130,Dharmapuri Railway Station Road Stop,Dharmapuri,Dharmapuri,local_stop,12.10933,78.14801,C,358,1
+TN0131,Dharmapuri Market Junction Stop,Dharmapuri,Dharmapuri,local_stop,12.12219,78.16623,C,469,1
+TN0132,Dharmapuri Government Hospital Stop,Dharmapuri,Dharmapuri,local_stop,12.12236,78.15651,C,330,1
+TN0133,Harur Bus Stand,Dharmapuri,Harur,town_stand,12.05,78.48,C,2515,0
+TN0134,Harur Railway Station Road Stop,Dharmapuri,Harur,local_stop,12.04675,78.49039,C,330,1
+TN0135,Harur Market Junction Stop,Dharmapuri,Harur,local_stop,12.05957,78.47304,C,383,1
+TN0136,Harur Government Hospital Stop,Dharmapuri,Harur,local_stop,12.05401,78.47649,C,463,1
+TN0137,Palacode Bus Stand,Dharmapuri,Palacode,town_stand,12.305,78.072,C,2616,0
+TN0138,Palacode Railway Station Road Stop,Dharmapuri,Palacode,local_stop,12.31637,78.07799,C,380,1
+TN0139,Palacode Market Junction Stop,Dharmapuri,Palacode,local_stop,12.31375,78.08343,C,365,1
+TN0140,Palacode Government Hospital Stop,Dharmapuri,Palacode,local_stop,12.31415,78.06059,C,405,1
+TN0141,Pennagaram Bus Stand,Dharmapuri,Pennagaram,town_stand,12.135,77.897,C,2621,0
+TN0142,Pennagaram Railway Station Road Stop,Dharmapuri,Pennagaram,local_stop,12.14225,77.90574,C,383,1
+TN0143,Pennagaram Market Junction Stop,Dharmapuri,Pennagaram,local_stop,12.1294,77.9039,C,347,1
+TN0144,Pennagaram Government Hospital Stop,Dharmapuri,Pennagaram,local_stop,12.13218,77.88593,C,440,1
+TN0145,Pappireddipatti Bus Stand,Dharmapuri,Pappireddipatti,town_stand,11.95,78.36,C,2427,0
+TN0146,Pappireddipatti Railway Station Road Stop,Dharmapuri,Pappireddipatti,local_stop,11.94279,78.37004,C,409,1
+TN0147,Pappireddipatti Market Junction Stop,Dharmapuri,Pappireddipatti,local_stop,11.94532,78.36709,C,378,1
+TN0148,Pappireddipatti Government Hospital Stop,Dharmapuri,Pappireddipatti,local_stop,11.94335,78.36384,C,422,1
+TN0149,Dindigul Bus Stand,Dindigul,Dindigul,main_terminus,10.3673,77.9803,B,9036,0
+TN0150,Dindigul Railway Station Road Stop,Dindigul,Dindigul,local_stop,10.36199,77.96997,B,591,1
+TN0151,Dindigul Market Junction Stop,Dindigul,Dindigul,local_stop,10.36373,77.98053,B,657,1
+TN0152,Dindigul Government Hospital Stop,Dindigul,Dindigul,local_stop,10.36325,77.96896,B,586,1
+TN0153,Palani Bus Stand,Dindigul,Palani,town_stand,10.45,77.52,B,3382,0
+TN0154,Palani Railway Station Road Stop,Dindigul,Palani,local_stop,10.45193,77.53161,B,529,1
+TN0155,Palani Market Junction Stop,Dindigul,Palani,local_stop,10.4406,77.51843,B,600,1
+TN0156,Palani Government Hospital Stop,Dindigul,Palani,local_stop,10.44847,77.53162,B,549,1
+TN0157,Kodaikanal Bus Stand,Dindigul,Kodaikanal,town_stand,10.2381,77.4892,B,3594,0
+TN0158,Kodaikanal Railway Station Road Stop,Dindigul,Kodaikanal,local_stop,10.24769,77.48176,B,531,1
+TN0159,Kodaikanal Market Junction Stop,Dindigul,Kodaikanal,local_stop,10.24311,77.47724,B,657,1
+TN0160,Kodaikanal Government Hospital Stop,Dindigul,Kodaikanal,local_stop,10.24258,77.49977,B,570,1
+TN0161,Oddanchatram Bus Stand,Dindigul,Oddanchatram,town_stand,10.48,77.75,B,3572,0
+TN0162,Oddanchatram Railway Station Road Stop,Dindigul,Oddanchatram,local_stop,10.47835,77.76077,B,604,1
+TN0163,Oddanchatram Market Junction Stop,Dindigul,Oddanchatram,local_stop,10.48296,77.75392,B,551,1
+TN0164,Oddanchatram Government Hospital Stop,Dindigul,Oddanchatram,local_stop,10.48527,77.74521,B,599,1
+TN0165,Vedasandur Bus Stand,Dindigul,Vedasandur,town_stand,10.53,77.95,B,3618,0
+TN0166,Vedasandur Railway Station Road Stop,Dindigul,Vedasandur,local_stop,10.52583,77.95473,B,661,1
+TN0167,Vedasandur Market Junction Stop,Dindigul,Vedasandur,local_stop,10.52105,77.94809,B,617,1
+TN0168,Vedasandur Government Hospital Stop,Dindigul,Vedasandur,local_stop,10.53426,77.95967,B,677,1
+TN0169,Natham Bus Stand,Dindigul,Natham,town_stand,10.23,78.23,B,3782,0
+TN0170,Natham Railway Station Road Stop,Dindigul,Natham,local_stop,10.22522,78.23115,B,520,1
+TN0171,Natham Market Junction Stop,Dindigul,Natham,local_stop,10.22529,78.22304,B,668,1
+TN0172,Natham Government Hospital Stop,Dindigul,Natham,local_stop,10.23256,78.22573,B,633,1
+TN0173,Erode Bus Stand,Erode,Erode,main_terminus,11.341,77.7172,B,9152,0
+TN0174,Erode Railway Station Road Stop,Erode,Erode,local_stop,11.34522,77.71747,B,563,1
+TN0175,Erode Market Junction Stop,Erode,Erode,local_stop,11.34481,77.71201,B,678,1
+TN0176,Erode Government Hospital Stop,Erode,Erode,local_stop,11.33704,77.72484,B,580,1
+TN0177,Bhavani Bus Stand,Erode,Bhavani,town_stand,11.445,77.682,B,3517,0
+TN0178,Bhavani Railway Station Road Stop,Erode,Bhavani,local_stop,11.43839,77.67478,B,526,1
+TN0179,Bhavani Market Junction Stop,Erode,Bhavani,local_stop,11.43411,77.69361,B,676,1
+TN0180,Bhavani Government Hospital Stop,Erode,Bhavani,local_stop,11.45339,77.67175,B,626,1
+TN0181,Gobichettipalayam Bus Stand,Erode,Gobichettipalayam,town_stand,11.453,77.435,B,3789,0
+TN0182,Gobichettipalayam Railway Station Road Stop,Erode,Gobichettipalayam,local_stop,11.44567,77.43971,B,646,1
+TN0183,Gobichettipalayam Market Junction Stop,Erode,Gobichettipalayam,local_stop,11.45059,77.42654,B,521,1
+TN0184,Gobichettipalayam Government Hospital Stop,Erode,Gobichettipalayam,local_stop,11.46242,77.44365,B,547,1
+TN0185,Perundurai Bus Stand,Erode,Perundurai,town_stand,11.275,77.587,B,3635,0
+TN0186,Perundurai Railway Station Road Stop,Erode,Perundurai,local_stop,11.26825,77.5943,B,652,1
+TN0187,Perundurai Market Junction Stop,Erode,Perundurai,local_stop,11.27415,77.58838,B,551,1
+TN0188,Perundurai Government Hospital Stop,Erode,Perundurai,local_stop,11.27396,77.59423,B,655,1
+TN0189,Sathyamangalam Bus Stand,Erode,Sathyamangalam,town_stand,11.505,77.238,B,3772,0
+TN0190,Sathyamangalam Railway Station Road Stop,Erode,Sathyamangalam,local_stop,11.50729,77.2488,B,633,1
+TN0191,Sathyamangalam Market Junction Stop,Erode,Sathyamangalam,local_stop,11.5077,77.24326,B,649,1
+TN0192,Sathyamangalam Government Hospital Stop,Erode,Sathyamangalam,local_stop,11.50324,77.24776,B,634,1
+TN0193,Anthiyur Bus Stand,Erode,Anthiyur,town_stand,11.575,77.59,B,3362,0
+TN0194,Anthiyur Railway Station Road Stop,Erode,Anthiyur,local_stop,11.58085,77.58939,B,586,1
+TN0195,Anthiyur Market Junction Stop,Erode,Anthiyur,local_stop,11.58104,77.59816,B,590,1
+TN0196,Anthiyur Government Hospital Stop,Erode,Anthiyur,local_stop,11.58138,77.59051,B,680,1
+TN0197,Kallakurichi Bus Stand,Kallakurichi,Kallakurichi,main_terminus,11.7383,78.9639,C,5944,0
+TN0198,Kallakurichi Railway Station Road Stop,Kallakurichi,Kallakurichi,local_stop,11.73289,78.95376,C,393,1
+TN0199,Kallakurichi Market Junction Stop,Kallakurichi,Kallakurichi,local_stop,11.73193,78.95996,C,458,1
+TN0200,Kallakurichi Government Hospital Stop,Kallakurichi,Kallakurichi,local_stop,11.72823,78.95552,C,418,1
+TN0201,Sankarapuram Bus Stand,Kallakurichi,Sankarapuram,town_stand,11.88,78.85,C,2356,0
+TN0202,Sankarapuram Railway Station Road Stop,Kallakurichi,Sankarapuram,local_stop,11.88495,78.83954,C,424,1
+TN0203,Sankarapuram Market Junction Stop,Kallakurichi,Sankarapuram,local_stop,11.87594,78.84918,C,335,1
+TN0204,Sankarapuram Government Hospital Stop,Kallakurichi,Sankarapuram,local_stop,11.87296,78.84808,C,469,1
+TN0205,Chinnasalem Bus Stand,Kallakurichi,Chinnasalem,town_stand,11.645,78.883,C,2220,0
+TN0206,Chinnasalem Railway Station Road Stop,Kallakurichi,Chinnasalem,local_stop,11.65356,78.88937,C,417,1
+TN0207,Chinnasalem Market Junction Stop,Kallakurichi,Chinnasalem,local_stop,11.64445,78.89363,C,396,1
+TN0208,Chinnasalem Government Hospital Stop,Kallakurichi,Chinnasalem,local_stop,11.65108,78.89148,C,427,1
+TN0209,Ulundurpet Bus Stand,Kallakurichi,Ulundurpet,town_stand,11.693,79.281,C,2751,0
+TN0210,Ulundurpet Railway Station Road Stop,Kallakurichi,Ulundurpet,local_stop,11.69894,79.28211,C,474,1
+TN0211,Ulundurpet Market Junction Stop,Kallakurichi,Ulundurpet,local_stop,11.70255,79.28072,C,389,1
+TN0212,Ulundurpet Government Hospital Stop,Kallakurichi,Ulundurpet,local_stop,11.69146,79.2697,C,406,1
+TN0213,Tirukkoyilur Bus Stand,Kallakurichi,Tirukkoyilur,town_stand,11.967,79.201,C,2614,0
+TN0214,Tirukkoyilur Railway Station Road Stop,Kallakurichi,Tirukkoyilur,local_stop,11.97238,79.20917,C,352,1
+TN0215,Tirukkoyilur Market Junction Stop,Kallakurichi,Tirukkoyilur,local_stop,11.97854,79.20182,C,420,1
+TN0216,Tirukkoyilur Government Hospital Stop,Kallakurichi,Tirukkoyilur,local_stop,11.96921,79.20491,C,341,1
+TN0217,Kanchipuram Bus Stand,Kanchipuram,Kanchipuram,main_terminus,12.8342,79.7036,B,9138,0
+TN0218,Kanchipuram Railway Station Road Stop,Kanchipuram,Kanchipuram,local_stop,12.82546,79.70268,B,532,1
+TN0219,Kanchipuram Market Junction Stop,Kanchipuram,Kanchipuram,local_stop,12.82844,79.69946,B,636,1
+TN0220,Kanchipuram Government Hospital Stop,Kanchipuram,Kanchipuram,local_stop,12.83004,79.70987,B,617,1
+TN0221,Sriperumbudur Bus Stand,Kanchipuram,Sriperumbudur,town_stand,12.967,79.942,B,3484,0
+TN0222,Sriperumbudur Railway Station Road Stop,Kanchipuram,Sriperumbudur,local_stop,12.97305,79.94997,B,584,1
+TN0223,Sriperumbudur Market Junction Stop,Kanchipuram,Sriperumbudur,local_stop,12.97504,79.94129,B,658,1
+TN0224,Sriperumbudur Government Hospital Stop,Kanchipuram,Sriperumbudur,local_stop,12.95625,79.95285,B,577,1
+TN0225,Walajabad Bus Stand,Kanchipuram,Walajabad,town_stand,12.796,79.833,B,3270,0
+TN0226,Walajabad Railway Station Road Stop,Kanchipuram,Walajabad,local_stop,12.80275,79.83664,B,527,1
+TN0227,Walajabad Market Junction Stop,Kanchipuram,Walajabad,local_stop,12.80679,79.82578,B,525,1
+TN0228,Walajabad Government Hospital Stop,Kanchipuram,Walajabad,local_stop,12.79891,79.82673,B,641,1
+TN0229,Uthiramerur Bus Stand,Kanchipuram,Uthiramerur,town_stand,12.614,79.757,B,3317,0
+TN0230,Uthiramerur Railway Station Road Stop,Kanchipuram,Uthiramerur,local_stop,12.61554,79.75023,B,585,1
+TN0231,Uthiramerur Market Junction Stop,Kanchipuram,Uthiramerur,local_stop,12.62041,79.74903,B,675,1
+TN0232,Uthiramerur Government Hospital Stop,Kanchipuram,Uthiramerur,local_stop,12.62513,79.76224,B,561,1
+TN0233,Kundrathur Bus Stand,Kanchipuram,Kundrathur,town_stand,12.998,80.097,B,3518,0
+TN0234,Kundrathur Railway Station Road Stop,Kanchipuram,Kundrathur,local_stop,12.98859,80.08562,B,599,1
+TN0235,Kundrathur Market Junction Stop,Kanchipuram,Kundrathur,local_stop,12.99982,80.10679,B,616,1
+TN0236,Kundrathur Government Hospital Stop,Kanchipuram,Kundrathur,local_stop,12.99552,80.10216,B,539,1
+TN0237,Nagercoil Bus Stand,Kanyakumari,Nagercoil,main_terminus,8.1833,77.4119,B,8948,0
+TN0238,Nagercoil Railway Station Road Stop,Kanyakumari,Nagercoil,local_stop,8.17375,77.41844,B,673,1
+TN0239,Nagercoil Market Junction Stop,Kanyakumari,Nagercoil,local_stop,8.19063,77.41901,B,664,1
+TN0240,Nagercoil Government Hospital Stop,Kanyakumari,Nagercoil,local_stop,8.19008,77.40823,B,629,1
+TN0241,Kanyakumari Bus Stand,Kanyakumari,Kanyakumari,town_stand,8.0883,77.5385,B,3579,0
+TN0242,Kanyakumari Railway Station Road Stop,Kanyakumari,Kanyakumari,local_stop,8.07795,77.54204,B,523,1
+TN0243,Kanyakumari Market Junction Stop,Kanyakumari,Kanyakumari,local_stop,8.09669,77.54624,B,547,1
+TN0244,Kanyakumari Government Hospital Stop,Kanyakumari,Kanyakumari,local_stop,8.0867,77.53519,B,637,1
+TN0245,Marthandam Bus Stand,Kanyakumari,Marthandam,town_stand,8.305,77.222,B,3356,0
+TN0246,Marthandam Railway Station Road Stop,Kanyakumari,Marthandam,local_stop,8.30345,77.22761,B,589,1
+TN0247,Marthandam Market Junction Stop,Kanyakumari,Marthandam,local_stop,8.30778,77.23207,B,643,1
+TN0248,Marthandam Government Hospital Stop,Kanyakumari,Marthandam,local_stop,8.30416,77.22982,B,671,1
+TN0249,Colachel Bus Stand,Kanyakumari,Colachel,town_stand,8.178,77.257,B,3474,0
+TN0250,Colachel Railway Station Road Stop,Kanyakumari,Colachel,local_stop,8.17374,77.25089,B,542,1
+TN0251,Colachel Market Junction Stop,Kanyakumari,Colachel,local_stop,8.17269,77.25582,B,638,1
+TN0252,Colachel Government Hospital Stop,Kanyakumari,Colachel,local_stop,8.17968,77.26104,B,606,1
+TN0253,Thuckalay Bus Stand,Kanyakumari,Thuckalay,town_stand,8.248,77.304,B,3229,0
+TN0254,Thuckalay Railway Station Road Stop,Kanyakumari,Thuckalay,local_stop,8.24786,77.2998,B,644,1
+TN0255,Thuckalay Market Junction Stop,Kanyakumari,Thuckalay,local_stop,8.24109,77.31115,B,607,1
+TN0256,Thuckalay Government Hospital Stop,Kanyakumari,Thuckalay,local_stop,8.24271,77.30631,B,590,1
+TN0257,Padmanabhapuram Bus Stand,Kanyakumari,Padmanabhapuram,town_stand,8.248,77.329,B,3769,0
+TN0258,Padmanabhapuram Railway Station Road Stop,Kanyakumari,Padmanabhapuram,local_stop,8.23624,77.33975,B,541,1
+TN0259,Padmanabhapuram Market Junction Stop,Kanyakumari,Padmanabhapuram,local_stop,8.24179,77.32675,B,662,1
+TN0260,Padmanabhapuram Government Hospital Stop,Kanyakumari,Padmanabhapuram,local_stop,8.2542,77.33357,B,645,1
+TN0261,Karur Bus Stand,Karur,Karur,main_terminus,10.9601,78.0766,C,6158,0
+TN0262,Karur Railway Station Road Stop,Karur,Karur,local_stop,10.96713,78.06683,C,376,1
+TN0263,Karur Market Junction Stop,Karur,Karur,local_stop,10.95781,78.07044,C,468,1
+TN0264,Karur Government Hospital Stop,Karur,Karur,local_stop,10.95696,78.07788,C,408,1
+TN0265,Kulithalai Bus Stand,Karur,Kulithalai,town_stand,10.934,78.414,C,2635,0
+TN0266,Kulithalai Railway Station Road Stop,Karur,Kulithalai,local_stop,10.94592,78.41521,C,410,1
+TN0267,Kulithalai Market Junction Stop,Karur,Kulithalai,local_stop,10.93887,78.4085,C,384,1
+TN0268,Kulithalai Government Hospital Stop,Karur,Kulithalai,local_stop,10.92753,78.41931,C,400,1
+TN0269,Aravakurichi Bus Stand,Karur,Aravakurichi,town_stand,10.777,77.9,C,2322,0
+TN0270,Aravakurichi Railway Station Road Stop,Karur,Aravakurichi,local_stop,10.78283,77.91082,C,367,1
+TN0271,Aravakurichi Market Junction Stop,Karur,Aravakurichi,local_stop,10.7696,77.90573,C,390,1
+TN0272,Aravakurichi Government Hospital Stop,Karur,Aravakurichi,local_stop,10.78239,77.91144,C,454,1
+TN0273,Krishnarayapuram Bus Stand,Karur,Krishnarayapuram,town_stand,10.95,78.33,C,2489,0
+TN0274,Krishnarayapuram Railway Station Road Stop,Karur,Krishnarayapuram,local_stop,10.96153,78.33798,C,395,1
+TN0275,Krishnarayapuram Market Junction Stop,Karur,Krishnarayapuram,local_stop,10.94346,78.32231,C,323,1
+TN0276,Krishnarayapuram Government Hospital Stop,Karur,Krishnarayapuram,local_stop,10.95499,78.32104,C,331,1
+TN0277,Pugalur Bus Stand,Karur,Pugalur,town_stand,10.96,77.98,C,2255,0
+TN0278,Pugalur Railway Station Road Stop,Karur,Pugalur,local_stop,10.96128,77.98474,C,352,1
+TN0279,Pugalur Market Junction Stop,Karur,Pugalur,local_stop,10.96331,77.98607,C,346,1
+TN0280,Pugalur Government Hospital Stop,Karur,Pugalur,local_stop,10.96895,77.98178,C,440,1
+TN0281,Krishnagiri Bus Stand,Krishnagiri,Krishnagiri,main_terminus,12.5186,78.2137,B,9190,0
+TN0282,Krishnagiri Railway Station Road Stop,Krishnagiri,Krishnagiri,local_stop,12.51717,78.20612,B,533,1
+TN0283,Krishnagiri Market Junction Stop,Krishnagiri,Krishnagiri,local_stop,12.51266,78.22238,B,549,1
+TN0284,Krishnagiri Government Hospital Stop,Krishnagiri,Krishnagiri,local_stop,12.52633,78.21132,B,538,1
+TN0285,Hosur Bus Stand,Krishnagiri,Hosur,town_stand,12.7409,77.8253,B,3790,0
+TN0286,Hosur Railway Station Road Stop,Krishnagiri,Hosur,local_stop,12.74401,77.81459,B,558,1
+TN0287,Hosur Market Junction Stop,Krishnagiri,Hosur,local_stop,12.74837,77.83608,B,541,1
+TN0288,Hosur Government Hospital Stop,Krishnagiri,Hosur,local_stop,12.75275,77.81614,B,626,1
+TN0289,Denkanikottai Bus Stand,Krishnagiri,Denkanikottai,town_stand,12.53,77.789,B,3431,0
+TN0290,Denkanikottai Railway Station Road Stop,Krishnagiri,Denkanikottai,local_stop,12.53662,77.78613,B,633,1
+TN0291,Denkanikottai Market Junction Stop,Krishnagiri,Denkanikottai,local_stop,12.52514,77.79112,B,629,1
+TN0292,Denkanikottai Government Hospital Stop,Krishnagiri,Denkanikottai,local_stop,12.52533,77.7919,B,676,1
+TN0293,Uthangarai Bus Stand,Krishnagiri,Uthangarai,town_stand,12.264,78.533,B,3301,0
+TN0294,Uthangarai Railway Station Road Stop,Krishnagiri,Uthangarai,local_stop,12.27474,78.52599,B,574,1
+TN0295,Uthangarai Market Junction Stop,Krishnagiri,Uthangarai,local_stop,12.25835,78.52295,B,581,1
+TN0296,Uthangarai Government Hospital Stop,Krishnagiri,Uthangarai,local_stop,12.25617,78.5228,B,520,1
+TN0297,Pochampalli Bus Stand,Krishnagiri,Pochampalli,town_stand,12.35,78.37,B,3618,0
+TN0298,Pochampalli Railway Station Road Stop,Krishnagiri,Pochampalli,local_stop,12.34881,78.37225,B,594,1
+TN0299,Pochampalli Market Junction Stop,Krishnagiri,Pochampalli,local_stop,12.33878,78.36491,B,592,1
+TN0300,Pochampalli Government Hospital Stop,Krishnagiri,Pochampalli,local_stop,12.35487,78.3689,B,579,1
+TN0301,Bargur Bus Stand,Krishnagiri,Bargur,town_stand,12.543,78.355,B,3470,0
+TN0302,Bargur Railway Station Road Stop,Krishnagiri,Bargur,local_stop,12.54991,78.358,B,570,1
+TN0303,Bargur Market Junction Stop,Krishnagiri,Bargur,local_stop,12.5412,78.35607,B,558,1
+TN0304,Bargur Government Hospital Stop,Krishnagiri,Bargur,local_stop,12.5528,78.36284,B,538,1
+TN0305,Mattuthavani Bus Stand,Madurai,Mattuthavani,main_terminus,9.94,78.158,A,13761,0
+TN0306,Mattuthavani Railway Station Road Stop,Madurai,Mattuthavani,local_stop,9.93198,78.15338,A,965,1
+TN0307,Mattuthavani Market Junction Stop,Madurai,Mattuthavani,local_stop,9.95011,78.15654,A,939,1
+TN0308,Mattuthavani Government Hospital Stop,Madurai,Mattuthavani,local_stop,9.94453,78.16279,A,889,1
+TN0309,Periyar Bus Stand,Madurai,Periyar,town_stand,9.9177,78.113,A,5212,0
+TN0310,Periyar Railway Station Road Stop,Madurai,Periyar,local_stop,9.91866,78.11151,A,973,1
+TN0311,Periyar Market Junction Stop,Madurai,Periyar,local_stop,9.90666,78.11137,A,902,1
+TN0312,Periyar Government Hospital Stop,Madurai,Periyar,local_stop,9.92019,78.10162,A,878,1
+TN0313,Arapalayam Bus Stand,Madurai,Arapalayam,town_stand,9.933,78.107,A,5289,0
+TN0314,Arapalayam Railway Station Road Stop,Madurai,Arapalayam,local_stop,9.93509,78.0955,A,888,1
+TN0315,Arapalayam Market Junction Stop,Madurai,Arapalayam,local_stop,9.93483,78.11331,A,864,1
+TN0316,Arapalayam Government Hospital Stop,Madurai,Arapalayam,local_stop,9.93229,78.11064,A,891,1
+TN0317,Melur Bus Stand,Madurai,Melur,town_stand,10.032,78.338,A,4885,0
+TN0318,Melur Railway Station Road Stop,Madurai,Melur,local_stop,10.04393,78.33646,A,945,1
+TN0319,Melur Market Junction Stop,Madurai,Melur,local_stop,10.04326,78.33728,A,924,1
+TN0320,Melur Government Hospital Stop,Madurai,Melur,local_stop,10.028,78.34208,A,861,1
+TN0321,Usilampatti Bus Stand,Madurai,Usilampatti,town_stand,9.967,77.784,A,5037,0
+TN0322,Usilampatti Railway Station Road Stop,Madurai,Usilampatti,local_stop,9.96488,77.78389,A,922,1
+TN0323,Usilampatti Market Junction Stop,Madurai,Usilampatti,local_stop,9.97453,77.7852,A,936,1
+TN0324,Usilampatti Government Hospital Stop,Madurai,Usilampatti,local_stop,9.95711,77.77806,A,849,1
+TN0325,Thirumangalam Bus Stand,Madurai,Thirumangalam,town_stand,9.823,77.989,A,5113,0
+TN0326,Thirumangalam Railway Station Road Stop,Madurai,Thirumangalam,local_stop,9.83176,77.9968,A,820,1
+TN0327,Thirumangalam Market Junction Stop,Madurai,Thirumangalam,local_stop,9.82678,77.99002,A,925,1
+TN0328,Thirumangalam Government Hospital Stop,Madurai,Thirumangalam,local_stop,9.8123,77.98944,A,979,1
+TN0329,Vadipatti Bus Stand,Madurai,Vadipatti,town_stand,10.082,77.998,A,5210,0
+TN0330,Vadipatti Railway Station Road Stop,Madurai,Vadipatti,local_stop,10.08501,78.00424,A,872,1
+TN0331,Vadipatti Market Junction Stop,Madurai,Vadipatti,local_stop,10.07641,77.98914,A,893,1
+TN0332,Vadipatti Government Hospital Stop,Madurai,Vadipatti,local_stop,10.08051,78.00276,A,851,1
+TN0333,Thirupparankundram Bus Stand,Madurai,Thirupparankundram,town_stand,9.879,78.07,A,4729,0
+TN0334,Thirupparankundram Railway Station Road Stop,Madurai,Thirupparankundram,local_stop,9.89036,78.07261,A,881,1
+TN0335,Thirupparankundram Market Junction Stop,Madurai,Thirupparankundram,local_stop,9.88403,78.06546,A,823,1
+TN0336,Thirupparankundram Government Hospital Stop,Madurai,Thirupparankundram,local_stop,9.88025,78.06024,A,849,1
+TN0337,Mayiladuthurai Bus Stand,Mayiladuthurai,Mayiladuthurai,main_terminus,11.1018,79.652,C,6172,0
+TN0338,Mayiladuthurai Railway Station Road Stop,Mayiladuthurai,Mayiladuthurai,local_stop,11.11253,79.65555,C,359,1
+TN0339,Mayiladuthurai Market Junction Stop,Mayiladuthurai,Mayiladuthurai,local_stop,11.10176,79.6572,C,450,1
+TN0340,Mayiladuthurai Government Hospital Stop,Mayiladuthurai,Mayiladuthurai,local_stop,11.10673,79.64997,C,443,1
+TN0341,Sirkazhi Bus Stand,Mayiladuthurai,Sirkazhi,town_stand,11.238,79.736,C,2683,0
+TN0342,Sirkazhi Railway Station Road Stop,Mayiladuthurai,Sirkazhi,local_stop,11.23185,79.73723,C,418,1
+TN0343,Sirkazhi Market Junction Stop,Mayiladuthurai,Sirkazhi,local_stop,11.23057,79.73839,C,354,1
+TN0344,Sirkazhi Government Hospital Stop,Mayiladuthurai,Sirkazhi,local_stop,11.24674,79.73063,C,426,1
+TN0345,Kuthalam Bus Stand,Mayiladuthurai,Kuthalam,town_stand,11.01,79.56,C,2548,0
+TN0346,Kuthalam Railway Station Road Stop,Mayiladuthurai,Kuthalam,local_stop,11.02042,79.56019,C,320,1
+TN0347,Kuthalam Market Junction Stop,Mayiladuthurai,Kuthalam,local_stop,11.00479,79.55517,C,470,1
+TN0348,Kuthalam Government Hospital Stop,Mayiladuthurai,Kuthalam,local_stop,11.01192,79.56384,C,358,1
+TN0349,Tharangambadi Bus Stand,Mayiladuthurai,Tharangambadi,town_stand,11.026,79.853,C,2657,0
+TN0350,Tharangambadi Railway Station Road Stop,Mayiladuthurai,Tharangambadi,local_stop,11.02693,79.84928,C,461,1
+TN0351,Tharangambadi Market Junction Stop,Mayiladuthurai,Tharangambadi,local_stop,11.03231,79.85005,C,402,1
+TN0352,Tharangambadi Government Hospital Stop,Mayiladuthurai,Tharangambadi,local_stop,11.03487,79.86454,C,381,1
+TN0353,Poompuhar Bus Stand,Mayiladuthurai,Poompuhar,town_stand,11.147,79.854,C,2785,0
+TN0354,Poompuhar Railway Station Road Stop,Mayiladuthurai,Poompuhar,local_stop,11.14419,79.86254,C,425,1
+TN0355,Poompuhar Market Junction Stop,Mayiladuthurai,Poompuhar,local_stop,11.13605,79.85987,C,417,1
+TN0356,Poompuhar Government Hospital Stop,Mayiladuthurai,Poompuhar,local_stop,11.14427,79.85793,C,358,1
+TN0357,Nagapattinam Bus Stand,Nagapattinam,Nagapattinam,main_terminus,10.7672,79.8449,C,6207,0
+TN0358,Nagapattinam Railway Station Road Stop,Nagapattinam,Nagapattinam,local_stop,10.77836,79.83593,C,471,1
+TN0359,Nagapattinam Market Junction Stop,Nagapattinam,Nagapattinam,local_stop,10.76317,79.83531,C,432,1
+TN0360,Nagapattinam Government Hospital Stop,Nagapattinam,Nagapattinam,local_stop,10.75759,79.85475,C,323,1
+TN0361,Velankanni Bus Stand,Nagapattinam,Velankanni,town_stand,10.68,79.847,C,2347,0
+TN0362,Velankanni Railway Station Road Stop,Nagapattinam,Velankanni,local_stop,10.67784,79.85071,C,359,1
+TN0363,Velankanni Market Junction Stop,Nagapattinam,Velankanni,local_stop,10.6698,79.85376,C,387,1
+TN0364,Velankanni Government Hospital Stop,Nagapattinam,Velankanni,local_stop,10.67613,79.85162,C,340,1
+TN0365,Vedaranyam Bus Stand,Nagapattinam,Vedaranyam,town_stand,10.372,79.851,C,2536,0
+TN0366,Vedaranyam Railway Station Road Stop,Nagapattinam,Vedaranyam,local_stop,10.38046,79.85962,C,417,1
+TN0367,Vedaranyam Market Junction Stop,Nagapattinam,Vedaranyam,local_stop,10.3829,79.85404,C,444,1
+TN0368,Vedaranyam Government Hospital Stop,Nagapattinam,Vedaranyam,local_stop,10.38094,79.83986,C,337,1
+TN0369,Keezhvelur Bus Stand,Nagapattinam,Keezhvelur,town_stand,10.75,79.75,C,2440,0
+TN0370,Keezhvelur Railway Station Road Stop,Nagapattinam,Keezhvelur,local_stop,10.75315,79.7601,C,378,1
+TN0371,Keezhvelur Market Junction Stop,Nagapattinam,Keezhvelur,local_stop,10.75592,79.74842,C,345,1
+TN0372,Keezhvelur Government Hospital Stop,Nagapattinam,Keezhvelur,local_stop,10.75625,79.75489,C,345,1
+TN0373,Thirukkuvalai Bus Stand,Nagapattinam,Thirukkuvalai,town_stand,10.7,79.71,C,2654,0
+TN0374,Thirukkuvalai Railway Station Road Stop,Nagapattinam,Thirukkuvalai,local_stop,10.69199,79.70519,C,327,1
+TN0375,Thirukkuvalai Market Junction Stop,Nagapattinam,Thirukkuvalai,local_stop,10.6891,79.71711,C,395,1
+TN0376,Thirukkuvalai Government Hospital Stop,Nagapattinam,Thirukkuvalai,local_stop,10.6966,79.70834,C,382,1
+TN0377,Namakkal Bus Stand,Namakkal,Namakkal,main_terminus,11.2189,78.1674,B,9243,0
+TN0378,Namakkal Railway Station Road Stop,Namakkal,Namakkal,local_stop,11.21679,78.17176,B,566,1
+TN0379,Namakkal Market Junction Stop,Namakkal,Namakkal,local_stop,11.21098,78.1573,B,617,1
+TN0380,Namakkal Government Hospital Stop,Namakkal,Namakkal,local_stop,11.22177,78.16118,B,669,1
+TN0381,Rasipuram Bus Stand,Namakkal,Rasipuram,town_stand,11.46,78.18,B,3346,0
+TN0382,Rasipuram Railway Station Road Stop,Namakkal,Rasipuram,local_stop,11.45357,78.18331,B,637,1
+TN0383,Rasipuram Market Junction Stop,Namakkal,Rasipuram,local_stop,11.45413,78.16823,B,639,1
+TN0384,Rasipuram Government Hospital Stop,Namakkal,Rasipuram,local_stop,11.46963,78.18426,B,560,1
+TN0385,Tiruchengode Bus Stand,Namakkal,Tiruchengode,town_stand,11.38,77.894,B,3275,0
+TN0386,Tiruchengode Railway Station Road Stop,Namakkal,Tiruchengode,local_stop,11.3786,77.89029,B,670,1
+TN0387,Tiruchengode Market Junction Stop,Namakkal,Tiruchengode,local_stop,11.37518,77.90509,B,584,1
+TN0388,Tiruchengode Government Hospital Stop,Namakkal,Tiruchengode,local_stop,11.37896,77.88925,B,618,1
+TN0389,Paramathi Velur Bus Stand,Namakkal,Paramathi Velur,town_stand,11.11,78.01,B,3694,0
+TN0390,Paramathi Velur Railway Station Road Stop,Namakkal,Paramathi Velur,local_stop,11.10056,78.00715,B,611,1
+TN0391,Paramathi Velur Market Junction Stop,Namakkal,Paramathi Velur,local_stop,11.1118,78.02182,B,595,1
+TN0392,Paramathi Velur Government Hospital Stop,Namakkal,Paramathi Velur,local_stop,11.09853,78.01792,B,621,1
+TN0393,Kumarapalayam Bus Stand,Namakkal,Kumarapalayam,town_stand,11.44,77.73,B,3481,0
+TN0394,Kumarapalayam Railway Station Road Stop,Namakkal,Kumarapalayam,local_stop,11.42819,77.73876,B,532,1
+TN0395,Kumarapalayam Market Junction Stop,Namakkal,Kumarapalayam,local_stop,11.44985,77.73588,B,593,1
+TN0396,Kumarapalayam Government Hospital Stop,Namakkal,Kumarapalayam,local_stop,11.44662,77.72352,B,610,1
+TN0397,Udhagamandalam Bus Stand,Nilgiris,Udhagamandalam,main_terminus,11.4102,76.695,C,5924,0
+TN0398,Udhagamandalam Railway Station Road Stop,Nilgiris,Udhagamandalam,local_stop,11.41348,76.6979,C,355,1
+TN0399,Udhagamandalam Market Junction Stop,Nilgiris,Udhagamandalam,local_stop,11.41328,76.70468,C,330,1
+TN0400,Udhagamandalam Government Hospital Stop,Nilgiris,Udhagamandalam,local_stop,11.40561,76.69358,C,468,1
+TN0401,Coonoor Bus Stand,Nilgiris,Coonoor,town_stand,11.353,76.7959,C,2573,0
+TN0402,Coonoor Railway Station Road Stop,Nilgiris,Coonoor,local_stop,11.35858,76.78606,C,395,1
+TN0403,Coonoor Market Junction Stop,Nilgiris,Coonoor,local_stop,11.34884,76.79387,C,371,1
+TN0404,Coonoor Government Hospital Stop,Nilgiris,Coonoor,local_stop,11.34417,76.79685,C,413,1
+TN0405,Kotagiri Bus Stand,Nilgiris,Kotagiri,town_stand,11.42,76.86,C,2743,0
+TN0406,Kotagiri Railway Station Road Stop,Nilgiris,Kotagiri,local_stop,11.42004,76.85454,C,362,1
+TN0407,Kotagiri Market Junction Stop,Nilgiris,Kotagiri,local_stop,11.41417,76.86779,C,443,1
+TN0408,Kotagiri Government Hospital Stop,Nilgiris,Kotagiri,local_stop,11.43122,76.85508,C,406,1
+TN0409,Gudalur Bus Stand,Nilgiris,Gudalur,town_stand,11.503,76.492,C,2317,0
+TN0410,Gudalur Railway Station Road Stop,Nilgiris,Gudalur,local_stop,11.50224,76.48181,C,377,1
+TN0411,Gudalur Market Junction Stop,Nilgiris,Gudalur,local_stop,11.51164,76.49738,C,421,1
+TN0412,Gudalur Government Hospital Stop,Nilgiris,Gudalur,local_stop,11.51421,76.49931,C,413,1
+TN0413,Pandalur Bus Stand,Nilgiris,Pandalur,town_stand,11.489,76.417,C,2292,0
+TN0414,Pandalur Railway Station Road Stop,Nilgiris,Pandalur,local_stop,11.49598,76.40533,C,457,1
+TN0415,Pandalur Market Junction Stop,Nilgiris,Pandalur,local_stop,11.47997,76.41385,C,387,1
+TN0416,Pandalur Government Hospital Stop,Nilgiris,Pandalur,local_stop,11.49103,76.42474,C,415,1
+TN0417,Perambalur Bus Stand,Perambalur,Perambalur,main_terminus,11.2342,78.8821,C,5810,0
+TN0418,Perambalur Railway Station Road Stop,Perambalur,Perambalur,local_stop,11.2384,78.88142,C,478,1
+TN0419,Perambalur Market Junction Stop,Perambalur,Perambalur,local_stop,11.24342,78.88357,C,476,1
+TN0420,Perambalur Government Hospital Stop,Perambalur,Perambalur,local_stop,11.22751,78.87162,C,438,1
+TN0421,Veppanthattai Bus Stand,Perambalur,Veppanthattai,town_stand,11.29,78.91,C,2509,0
+TN0422,Veppanthattai Railway Station Road Stop,Perambalur,Veppanthattai,local_stop,11.29358,78.9008,C,331,1
+TN0423,Veppanthattai Market Junction Stop,Perambalur,Veppanthattai,local_stop,11.30071,78.9053,C,446,1
+TN0424,Veppanthattai Government Hospital Stop,Perambalur,Veppanthattai,local_stop,11.28079,78.90364,C,457,1
+TN0425,Kunnam Bus Stand,Perambalur,Kunnam,town_stand,11.3,79.05,C,2338,0
+TN0426,Kunnam Railway Station Road Stop,Perambalur,Kunnam,local_stop,11.29733,79.0469,C,458,1
+TN0427,Kunnam Market Junction Stop,Perambalur,Kunnam,local_stop,11.29806,79.05581,C,359,1
+TN0428,Kunnam Government Hospital Stop,Perambalur,Kunnam,local_stop,11.30925,79.05372,C,445,1
+TN0429,Alathur Bus Stand,Perambalur,Alathur,town_stand,11.174,78.84,C,2617,0
+TN0430,Alathur Railway Station Road Stop,Perambalur,Alathur,local_stop,11.18454,78.83471,C,414,1
+TN0431,Alathur Market Junction Stop,Perambalur,Alathur,local_stop,11.16721,78.83867,C,380,1
+TN0432,Alathur Government Hospital Stop,Perambalur,Alathur,local_stop,11.18253,78.83038,C,414,1
+TN0433,Pudukkottai Bus Stand,Pudukkottai,Pudukkottai,main_terminus,10.3797,78.8205,C,6257,0
+TN0434,Pudukkottai Railway Station Road Stop,Pudukkottai,Pudukkottai,local_stop,10.38934,78.82398,C,335,1
+TN0435,Pudukkottai Market Junction Stop,Pudukkottai,Pudukkottai,local_stop,10.37726,78.81306,C,351,1
+TN0436,Pudukkottai Government Hospital Stop,Pudukkottai,Pudukkottai,local_stop,10.39048,78.82828,C,343,1
+TN0437,Aranthangi Bus Stand,Pudukkottai,Aranthangi,town_stand,10.172,79.003,C,2417,0
+TN0438,Aranthangi Railway Station Road Stop,Pudukkottai,Aranthangi,local_stop,10.1754,79.00533,C,325,1
+TN0439,Aranthangi Market Junction Stop,Pudukkottai,Aranthangi,local_stop,10.16121,78.999,C,352,1
+TN0440,Aranthangi Government Hospital Stop,Pudukkottai,Aranthangi,local_stop,10.17889,78.99592,C,461,1
+TN0441,Gandarvakottai Bus Stand,Pudukkottai,Gandarvakottai,town_stand,10.56,78.98,C,2412,0
+TN0442,Gandarvakottai Railway Station Road Stop,Pudukkottai,Gandarvakottai,local_stop,10.56207,78.98751,C,379,1
+TN0443,Gandarvakottai Market Junction Stop,Pudukkottai,Gandarvakottai,local_stop,10.55589,78.97154,C,472,1
+TN0444,Gandarvakottai Government Hospital Stop,Pudukkottai,Gandarvakottai,local_stop,10.54807,78.9886,C,357,1
+TN0445,Illuppur Bus Stand,Pudukkottai,Illuppur,town_stand,10.516,78.619,C,2333,0
+TN0446,Illuppur Railway Station Road Stop,Pudukkottai,Illuppur,local_stop,10.51697,78.62616,C,348,1
+TN0447,Illuppur Market Junction Stop,Pudukkottai,Illuppur,local_stop,10.51987,78.60762,C,323,1
+TN0448,Illuppur Government Hospital Stop,Pudukkottai,Illuppur,local_stop,10.5126,78.62592,C,470,1
+TN0449,Karambakudi Bus Stand,Pudukkottai,Karambakudi,town_stand,10.497,79.11,C,2531,0
+TN0450,Karambakudi Railway Station Road Stop,Pudukkottai,Karambakudi,local_stop,10.48538,79.10437,C,352,1
+TN0451,Karambakudi Market Junction Stop,Pudukkottai,Karambakudi,local_stop,10.5028,79.11063,C,336,1
+TN0452,Karambakudi Government Hospital Stop,Pudukkottai,Karambakudi,local_stop,10.49643,79.11667,C,451,1
+TN0453,Ramanathapuram Bus Stand,Ramanathapuram,Ramanathapuram,main_terminus,9.3639,78.832,C,5811,0
+TN0454,Ramanathapuram Railway Station Road Stop,Ramanathapuram,Ramanathapuram,local_stop,9.36275,78.82532,C,477,1
+TN0455,Ramanathapuram Market Junction Stop,Ramanathapuram,Ramanathapuram,local_stop,9.35294,78.8388,C,453,1
+TN0456,Ramanathapuram Government Hospital Stop,Ramanathapuram,Ramanathapuram,local_stop,9.35914,78.83544,C,327,1
+TN0457,Rameswaram Bus Stand,Ramanathapuram,Rameswaram,town_stand,9.2876,79.3129,C,2262,0
+TN0458,Rameswaram Railway Station Road Stop,Ramanathapuram,Rameswaram,local_stop,9.29957,79.32124,C,429,1
+TN0459,Rameswaram Market Junction Stop,Ramanathapuram,Rameswaram,local_stop,9.29207,79.31267,C,433,1
+TN0460,Rameswaram Government Hospital Stop,Ramanathapuram,Rameswaram,local_stop,9.27736,79.30284,C,475,1
+TN0461,Paramakudi Bus Stand,Ramanathapuram,Paramakudi,town_stand,9.547,78.592,C,2351,0
+TN0462,Paramakudi Railway Station Road Stop,Ramanathapuram,Paramakudi,local_stop,9.53658,78.5866,C,469,1
+TN0463,Paramakudi Market Junction Stop,Ramanathapuram,Paramakudi,local_stop,9.54816,78.5878,C,472,1
+TN0464,Paramakudi Government Hospital Stop,Ramanathapuram,Paramakudi,local_stop,9.54773,78.59089,C,474,1
+TN0465,Mudukulathur Bus Stand,Ramanathapuram,Mudukulathur,town_stand,9.34,78.512,C,2640,0
+TN0466,Mudukulathur Railway Station Road Stop,Ramanathapuram,Mudukulathur,local_stop,9.33038,78.51684,C,461,1
+TN0467,Mudukulathur Market Junction Stop,Ramanathapuram,Mudukulathur,local_stop,9.3453,78.50516,C,435,1
+TN0468,Mudukulathur Government Hospital Stop,Ramanathapuram,Mudukulathur,local_stop,9.34931,78.50993,C,436,1
+TN0469,Kamuthi Bus Stand,Ramanathapuram,Kamuthi,town_stand,9.409,78.373,C,2608,0
+TN0470,Kamuthi Railway Station Road Stop,Ramanathapuram,Kamuthi,local_stop,9.40698,78.36328,C,429,1
+TN0471,Kamuthi Market Junction Stop,Ramanathapuram,Kamuthi,local_stop,9.4045,78.36712,C,359,1
+TN0472,Kamuthi Government Hospital Stop,Ramanathapuram,Kamuthi,local_stop,9.41348,78.37238,C,343,1
+TN0473,Keelakarai Bus Stand,Ramanathapuram,Keelakarai,town_stand,9.23,78.785,C,2287,0
+TN0474,Keelakarai Railway Station Road Stop,Ramanathapuram,Keelakarai,local_stop,9.22024,78.77532,C,415,1
+TN0475,Keelakarai Market Junction Stop,Ramanathapuram,Keelakarai,local_stop,9.23748,78.78635,C,470,1
+TN0476,Keelakarai Government Hospital Stop,Ramanathapuram,Keelakarai,local_stop,9.24096,78.78648,C,351,1
+TN0477,Ranipet Bus Stand,Ranipet,Ranipet,main_terminus,12.9272,79.3331,C,6120,0
+TN0478,Ranipet Railway Station Road Stop,Ranipet,Ranipet,local_stop,12.92369,79.33707,C,428,1
+TN0479,Ranipet Market Junction Stop,Ranipet,Ranipet,local_stop,12.93603,79.33841,C,393,1
+TN0480,Ranipet Government Hospital Stop,Ranipet,Ranipet,local_stop,12.92961,79.32954,C,467,1
+TN0481,Arakkonam Bus Stand,Ranipet,Arakkonam,town_stand,13.084,79.67,C,2719,0
+TN0482,Arakkonam Railway Station Road Stop,Ranipet,Arakkonam,local_stop,13.07711,79.67376,C,377,1
+TN0483,Arakkonam Market Junction Stop,Ranipet,Arakkonam,local_stop,13.09233,79.6664,C,462,1
+TN0484,Arakkonam Government Hospital Stop,Ranipet,Arakkonam,local_stop,13.08082,79.6763,C,466,1
+TN0485,Walajapet Bus Stand,Ranipet,Walajapet,town_stand,12.923,79.368,C,2431,0
+TN0486,Walajapet Railway Station Road Stop,Ranipet,Walajapet,local_stop,12.93037,79.37628,C,479,1
+TN0487,Walajapet Market Junction Stop,Ranipet,Walajapet,local_stop,12.92573,79.37142,C,326,1
+TN0488,Walajapet Government Hospital Stop,Ranipet,Walajapet,local_stop,12.92562,79.37179,C,388,1
+TN0489,Arcot Bus Stand,Ranipet,Arcot,town_stand,12.905,79.319,C,2229,0
+TN0490,Arcot Railway Station Road Stop,Ranipet,Arcot,local_stop,12.89733,79.32386,C,399,1
+TN0491,Arcot Market Junction Stop,Ranipet,Arcot,local_stop,12.91512,79.31542,C,366,1
+TN0492,Arcot Government Hospital Stop,Ranipet,Arcot,local_stop,12.91388,79.32059,C,422,1
+TN0493,Sholinghur Bus Stand,Ranipet,Sholinghur,town_stand,13.117,79.422,C,2271,0
+TN0494,Sholinghur Railway Station Road Stop,Ranipet,Sholinghur,local_stop,13.1084,79.4252,C,327,1
+TN0495,Sholinghur Market Junction Stop,Ranipet,Sholinghur,local_stop,13.1072,79.42273,C,416,1
+TN0496,Sholinghur Government Hospital Stop,Ranipet,Sholinghur,local_stop,13.11508,79.41818,C,414,1
+TN0497,Salem New Bus Stand Bus Stand,Salem,Salem New Bus Stand,main_terminus,11.672,78.142,A,14019,0
+TN0498,Salem New Bus Stand Railway Station Road Stop,Salem,Salem New Bus Stand,local_stop,11.67732,78.14864,A,965,1
+TN0499,Salem New Bus Stand Market Junction Stop,Salem,Salem New Bus Stand,local_stop,11.67431,78.1512,A,859,1
+TN0500,Salem New Bus Stand Government Hospital Stop,Salem,Salem New Bus Stand,local_stop,11.66378,78.14483,A,840,1
+TN0501,Attur Bus Stand,Salem,Attur,town_stand,11.597,78.6,A,4978,0
+TN0502,Attur Railway Station Road Stop,Salem,Attur,local_stop,11.59563,78.59818,A,975,1
+TN0503,Attur Market Junction Stop,Salem,Attur,local_stop,11.59561,78.59456,A,951,1
+TN0504,Attur Government Hospital Stop,Salem,Attur,local_stop,11.58773,78.59832,A,892,1
+TN0505,Mettur Bus Stand,Salem,Mettur,town_stand,11.787,77.801,A,5198,0
+TN0506,Mettur Railway Station Road Stop,Salem,Mettur,local_stop,11.78765,77.7964,A,876,1
+TN0507,Mettur Market Junction Stop,Salem,Mettur,local_stop,11.78449,77.80338,A,821,1
+TN0508,Mettur Government Hospital Stop,Salem,Mettur,local_stop,11.77991,77.81169,A,855,1
+TN0509,Omalur Bus Stand,Salem,Omalur,town_stand,11.744,78.045,A,4961,0
+TN0510,Omalur Railway Station Road Stop,Salem,Omalur,local_stop,11.73895,78.03588,A,947,1
+TN0511,Omalur Market Junction Stop,Salem,Omalur,local_stop,11.74993,78.03722,A,917,1
+TN0512,Omalur Government Hospital Stop,Salem,Omalur,local_stop,11.74478,78.03852,A,963,1
+TN0513,Edappadi Bus Stand,Salem,Edappadi,town_stand,11.587,77.838,A,5062,0
+TN0514,Edappadi Railway Station Road Stop,Salem,Edappadi,local_stop,11.57673,77.84668,A,830,1
+TN0515,Edappadi Market Junction Stop,Salem,Edappadi,local_stop,11.58547,77.83703,A,839,1
+TN0516,Edappadi Government Hospital Stop,Salem,Edappadi,local_stop,11.59569,77.83982,A,966,1
+TN0517,Sankari Bus Stand,Salem,Sankari,town_stand,11.48,77.87,A,5114,0
+TN0518,Sankari Railway Station Road Stop,Salem,Sankari,local_stop,11.48503,77.86802,A,849,1
+TN0519,Sankari Market Junction Stop,Salem,Sankari,local_stop,11.47772,77.88119,A,863,1
+TN0520,Sankari Government Hospital Stop,Salem,Sankari,local_stop,11.48723,77.87284,A,912,1
+TN0521,Sivaganga Bus Stand,Sivaganga,Sivaganga,main_terminus,9.8433,78.4809,C,5790,0
+TN0522,Sivaganga Railway Station Road Stop,Sivaganga,Sivaganga,local_stop,9.84178,78.47144,C,431,1
+TN0523,Sivaganga Market Junction Stop,Sivaganga,Sivaganga,local_stop,9.84543,78.48148,C,421,1
+TN0524,Sivaganga Government Hospital Stop,Sivaganga,Sivaganga,local_stop,9.85219,78.4868,C,376,1
+TN0525,Karaikudi Bus Stand,Sivaganga,Karaikudi,town_stand,10.074,78.78,C,2541,0
+TN0526,Karaikudi Railway Station Road Stop,Sivaganga,Karaikudi,local_stop,10.0807,78.76983,C,349,1
+TN0527,Karaikudi Market Junction Stop,Sivaganga,Karaikudi,local_stop,10.07473,78.77265,C,409,1
+TN0528,Karaikudi Government Hospital Stop,Sivaganga,Karaikudi,local_stop,10.07043,78.791,C,357,1
+TN0529,Devakottai Bus Stand,Sivaganga,Devakottai,town_stand,9.944,78.821,C,2441,0
+TN0530,Devakottai Railway Station Road Stop,Sivaganga,Devakottai,local_stop,9.93447,78.81514,C,364,1
+TN0531,Devakottai Market Junction Stop,Sivaganga,Devakottai,local_stop,9.94646,78.82725,C,339,1
+TN0532,Devakottai Government Hospital Stop,Sivaganga,Devakottai,local_stop,9.93625,78.82755,C,446,1
+TN0533,Manamadurai Bus Stand,Sivaganga,Manamadurai,town_stand,9.696,78.47,C,2675,0
+TN0534,Manamadurai Railway Station Road Stop,Sivaganga,Manamadurai,local_stop,9.70211,78.47624,C,434,1
+TN0535,Manamadurai Market Junction Stop,Sivaganga,Manamadurai,local_stop,9.70035,78.47917,C,479,1
+TN0536,Manamadurai Government Hospital Stop,Sivaganga,Manamadurai,local_stop,9.69176,78.4813,C,400,1
+TN0537,Thirupattur Bus Stand,Sivaganga,Thirupattur,town_stand,10.12,78.57,C,2354,0
+TN0538,Thirupattur Railway Station Road Stop,Sivaganga,Thirupattur,local_stop,10.11855,78.56925,C,397,1
+TN0539,Thirupattur Market Junction Stop,Sivaganga,Thirupattur,local_stop,10.12711,78.57219,C,410,1
+TN0540,Thirupattur Government Hospital Stop,Sivaganga,Thirupattur,local_stop,10.12018,78.56545,C,435,1
+TN0541,Tenkasi Bus Stand,Tenkasi,Tenkasi,main_terminus,8.9594,77.3152,C,5738,0
+TN0542,Tenkasi Railway Station Road Stop,Tenkasi,Tenkasi,local_stop,8.94877,77.32316,C,339,1
+TN0543,Tenkasi Market Junction Stop,Tenkasi,Tenkasi,local_stop,8.96287,77.32666,C,343,1
+TN0544,Tenkasi Government Hospital Stop,Tenkasi,Tenkasi,local_stop,8.96216,77.31537,C,438,1
+TN0545,Sankarankovil Bus Stand,Tenkasi,Sankarankovil,town_stand,9.17,77.545,C,2794,0
+TN0546,Sankarankovil Railway Station Road Stop,Tenkasi,Sankarankovil,local_stop,9.1713,77.552,C,330,1
+TN0547,Sankarankovil Market Junction Stop,Tenkasi,Sankarankovil,local_stop,9.16879,77.55244,C,368,1
+TN0548,Sankarankovil Government Hospital Stop,Tenkasi,Sankarankovil,local_stop,9.16572,77.54442,C,358,1
+TN0549,Courtallam Bus Stand,Tenkasi,Courtallam,town_stand,8.933,77.274,C,2263,0
+TN0550,Courtallam Railway Station Road Stop,Tenkasi,Courtallam,local_stop,8.93181,77.28146,C,407,1
+TN0551,Courtallam Market Junction Stop,Tenkasi,Courtallam,local_stop,8.94458,77.26402,C,364,1
+TN0552,Courtallam Government Hospital Stop,Tenkasi,Courtallam,local_stop,8.92194,77.27898,C,432,1
+TN0553,Shenkottai Bus Stand,Tenkasi,Shenkottai,town_stand,8.974,77.253,C,2736,0
+TN0554,Shenkottai Railway Station Road Stop,Tenkasi,Shenkottai,local_stop,8.97455,77.24481,C,415,1
+TN0555,Shenkottai Market Junction Stop,Tenkasi,Shenkottai,local_stop,8.98403,77.2503,C,406,1
+TN0556,Shenkottai Government Hospital Stop,Tenkasi,Shenkottai,local_stop,8.97829,77.24226,C,405,1
+TN0557,Kadayanallur Bus Stand,Tenkasi,Kadayanallur,town_stand,9.083,77.342,C,2267,0
+TN0558,Kadayanallur Railway Station Road Stop,Tenkasi,Kadayanallur,local_stop,9.07891,77.34339,C,418,1
+TN0559,Kadayanallur Market Junction Stop,Tenkasi,Kadayanallur,local_stop,9.07782,77.34737,C,474,1
+TN0560,Kadayanallur Government Hospital Stop,Tenkasi,Kadayanallur,local_stop,9.09196,77.338,C,469,1
+TN0561,Sivagiri Bus Stand,Tenkasi,Sivagiri,town_stand,9.34,77.43,C,2344,0
+TN0562,Sivagiri Railway Station Road Stop,Tenkasi,Sivagiri,local_stop,9.35,77.42545,C,420,1
+TN0563,Sivagiri Market Junction Stop,Tenkasi,Sivagiri,local_stop,9.33109,77.43501,C,341,1
+TN0564,Sivagiri Government Hospital Stop,Tenkasi,Sivagiri,local_stop,9.33543,77.42704,C,404,1
+TN0565,Thanjavur Bus Stand,Thanjavur,Thanjavur,main_terminus,10.787,79.1378,B,8830,0
+TN0566,Thanjavur Railway Station Road Stop,Thanjavur,Thanjavur,local_stop,10.79108,79.1457,B,654,1
+TN0567,Thanjavur Market Junction Stop,Thanjavur,Thanjavur,local_stop,10.77724,79.14189,B,650,1
+TN0568,Thanjavur Government Hospital Stop,Thanjavur,Thanjavur,local_stop,10.78368,79.1345,B,566,1
+TN0569,Kumbakonam Bus Stand,Thanjavur,Kumbakonam,town_stand,10.9617,79.3881,B,3419,0
+TN0570,Kumbakonam Railway Station Road Stop,Thanjavur,Kumbakonam,local_stop,10.9579,79.39449,B,569,1
+TN0571,Kumbakonam Market Junction Stop,Thanjavur,Kumbakonam,local_stop,10.95514,79.3794,B,539,1
+TN0572,Kumbakonam Government Hospital Stop,Thanjavur,Kumbakonam,local_stop,10.9568,79.39501,B,649,1
+TN0573,Pattukkottai Bus Stand,Thanjavur,Pattukkottai,town_stand,10.426,79.319,B,3752,0
+TN0574,Pattukkottai Railway Station Road Stop,Thanjavur,Pattukkottai,local_stop,10.43404,79.32821,B,529,1
+TN0575,Pattukkottai Market Junction Stop,Thanjavur,Pattukkottai,local_stop,10.42989,79.32803,B,678,1
+TN0576,Pattukkottai Government Hospital Stop,Thanjavur,Pattukkottai,local_stop,10.41715,79.31604,B,561,1
+TN0577,Papanasam Bus Stand,Thanjavur,Papanasam,town_stand,10.928,79.27,B,3385,0
+TN0578,Papanasam Railway Station Road Stop,Thanjavur,Papanasam,local_stop,10.93595,79.27651,B,562,1
+TN0579,Papanasam Market Junction Stop,Thanjavur,Papanasam,local_stop,10.93331,79.25905,B,613,1
+TN0580,Papanasam Government Hospital Stop,Thanjavur,Papanasam,local_stop,10.93223,79.2637,B,633,1
+TN0581,Orathanadu Bus Stand,Thanjavur,Orathanadu,town_stand,10.63,79.2,B,3491,0
+TN0582,Orathanadu Railway Station Road Stop,Thanjavur,Orathanadu,local_stop,10.63606,79.20681,B,579,1
+TN0583,Orathanadu Market Junction Stop,Thanjavur,Orathanadu,local_stop,10.63082,79.19543,B,640,1
+TN0584,Orathanadu Government Hospital Stop,Thanjavur,Orathanadu,local_stop,10.6397,79.19266,B,666,1
+TN0585,Peravurani Bus Stand,Thanjavur,Peravurani,town_stand,10.29,79.19,B,3651,0
+TN0586,Peravurani Railway Station Road Stop,Thanjavur,Peravurani,local_stop,10.28908,79.18476,B,617,1
+TN0587,Peravurani Market Junction Stop,Thanjavur,Peravurani,local_stop,10.29007,79.18805,B,561,1
+TN0588,Peravurani Government Hospital Stop,Thanjavur,Peravurani,local_stop,10.29761,79.19723,B,555,1
+TN0589,Theni Bus Stand,Theni,Theni,main_terminus,10.0104,77.4768,C,5956,0
+TN0590,Theni Railway Station Road Stop,Theni,Theni,local_stop,9.99965,77.47633,C,415,1
+TN0591,Theni Market Junction Stop,Theni,Theni,local_stop,10.01171,77.46726,C,452,1
+TN0592,Theni Government Hospital Stop,Theni,Theni,local_stop,10.01883,77.47164,C,361,1
+TN0593,Periyakulam Bus Stand,Theni,Periyakulam,town_stand,10.12,77.544,C,2479,0
+TN0594,Periyakulam Railway Station Road Stop,Theni,Periyakulam,local_stop,10.11878,77.54432,C,431,1
+TN0595,Periyakulam Market Junction Stop,Theni,Periyakulam,local_stop,10.1102,77.55385,C,435,1
+TN0596,Periyakulam Government Hospital Stop,Theni,Periyakulam,local_stop,10.12923,77.55433,C,426,1
+TN0597,Bodinayakanur Bus Stand,Theni,Bodinayakanur,town_stand,10.01,77.349,C,2254,0
+TN0598,Bodinayakanur Railway Station Road Stop,Theni,Bodinayakanur,local_stop,10.00751,77.34598,C,418,1
+TN0599,Bodinayakanur Market Junction Stop,Theni,Bodinayakanur,local_stop,10.02187,77.346,C,327,1
+TN0600,Bodinayakanur Government Hospital Stop,Theni,Bodinayakanur,local_stop,10.00565,77.33938,C,405,1
+TN0601,Cumbum Bus Stand,Theni,Cumbum,town_stand,9.735,77.286,C,2349,0
+TN0602,Cumbum Railway Station Road Stop,Theni,Cumbum,local_stop,9.7263,77.28089,C,440,1
+TN0603,Cumbum Market Junction Stop,Theni,Cumbum,local_stop,9.73971,77.27733,C,440,1
+TN0604,Cumbum Government Hospital Stop,Theni,Cumbum,local_stop,9.73377,77.27413,C,340,1
+TN0605,Chinnamanur Bus Stand,Theni,Chinnamanur,town_stand,9.843,77.383,C,2219,0
+TN0606,Chinnamanur Railway Station Road Stop,Theni,Chinnamanur,local_stop,9.83714,77.39104,C,460,1
+TN0607,Chinnamanur Market Junction Stop,Theni,Chinnamanur,local_stop,9.85357,77.38561,C,428,1
+TN0608,Chinnamanur Government Hospital Stop,Theni,Chinnamanur,local_stop,9.83367,77.37791,C,397,1
+TN0609,Andipatti Bus Stand,Theni,Andipatti,town_stand,9.997,77.616,C,2324,0
+TN0610,Andipatti Railway Station Road Stop,Theni,Andipatti,local_stop,9.98615,77.61408,C,479,1
+TN0611,Andipatti Market Junction Stop,Theni,Andipatti,local_stop,9.99597,77.60666,C,447,1
+TN0612,Andipatti Government Hospital Stop,Theni,Andipatti,local_stop,9.99932,77.60439,C,451,1
+TN0613,Thoothukudi Bus Stand,Thoothukudi,Thoothukudi,main_terminus,8.7642,78.1348,B,9288,0
+TN0614,Thoothukudi Railway Station Road Stop,Thoothukudi,Thoothukudi,local_stop,8.75801,78.12625,B,629,1
+TN0615,Thoothukudi Market Junction Stop,Thoothukudi,Thoothukudi,local_stop,8.75224,78.13127,B,666,1
+TN0616,Thoothukudi Government Hospital Stop,Thoothukudi,Thoothukudi,local_stop,8.7622,78.13874,B,541,1
+TN0617,Kovilpatti Bus Stand,Thoothukudi,Kovilpatti,town_stand,9.17,77.87,B,3736,0
+TN0618,Kovilpatti Railway Station Road Stop,Thoothukudi,Kovilpatti,local_stop,9.18139,77.85962,B,654,1
+TN0619,Kovilpatti Market Junction Stop,Thoothukudi,Kovilpatti,local_stop,9.17106,77.87687,B,649,1
+TN0620,Kovilpatti Government Hospital Stop,Thoothukudi,Kovilpatti,local_stop,9.1713,77.86737,B,640,1
+TN0621,Tiruchendur Bus Stand,Thoothukudi,Tiruchendur,town_stand,8.495,78.12,B,3244,0
+TN0622,Tiruchendur Railway Station Road Stop,Thoothukudi,Tiruchendur,local_stop,8.49826,78.13154,B,584,1
+TN0623,Tiruchendur Market Junction Stop,Thoothukudi,Tiruchendur,local_stop,8.50094,78.11657,B,537,1
+TN0624,Tiruchendur Government Hospital Stop,Thoothukudi,Tiruchendur,local_stop,8.49128,78.12559,B,680,1
+TN0625,Kayalpattinam Bus Stand,Thoothukudi,Kayalpattinam,town_stand,8.57,78.12,B,3306,0
+TN0626,Kayalpattinam Railway Station Road Stop,Thoothukudi,Kayalpattinam,local_stop,8.57652,78.12564,B,605,1
+TN0627,Kayalpattinam Market Junction Stop,Thoothukudi,Kayalpattinam,local_stop,8.5612,78.11646,B,606,1
+TN0628,Kayalpattinam Government Hospital Stop,Thoothukudi,Kayalpattinam,local_stop,8.57752,78.1122,B,638,1
+TN0629,Sathankulam Bus Stand,Thoothukudi,Sathankulam,town_stand,8.44,77.91,B,3690,0
+TN0630,Sathankulam Railway Station Road Stop,Thoothukudi,Sathankulam,local_stop,8.44316,77.91748,B,536,1
+TN0631,Sathankulam Market Junction Stop,Thoothukudi,Sathankulam,local_stop,8.44519,77.92065,B,529,1
+TN0632,Sathankulam Government Hospital Stop,Thoothukudi,Sathankulam,local_stop,8.43504,77.89905,B,571,1
+TN0633,Ettayapuram Bus Stand,Thoothukudi,Ettayapuram,town_stand,9.145,77.992,B,3242,0
+TN0634,Ettayapuram Railway Station Road Stop,Thoothukudi,Ettayapuram,local_stop,9.14057,77.98744,B,621,1
+TN0635,Ettayapuram Market Junction Stop,Thoothukudi,Ettayapuram,local_stop,9.15674,77.99303,B,584,1
+TN0636,Ettayapuram Government Hospital Stop,Thoothukudi,Ettayapuram,local_stop,9.13388,77.99553,B,593,1
+TN0637,Chatram Bus Stand,Tiruchirappalli,Chatram,main_terminus,10.826,78.69,A,14065,0
+TN0638,Chatram Railway Station Road Stop,Tiruchirappalli,Chatram,local_stop,10.83469,78.67915,A,904,1
+TN0639,Chatram Market Junction Stop,Tiruchirappalli,Chatram,local_stop,10.82056,78.69718,A,931,1
+TN0640,Chatram Government Hospital Stop,Tiruchirappalli,Chatram,local_stop,10.83535,78.69584,A,918,1
+TN0641,Central Bus Stand,Tiruchirappalli,Central,town_stand,10.804,78.685,A,5047,0
+TN0642,Central Railway Station Road Stop,Tiruchirappalli,Central,local_stop,10.81537,78.68491,A,947,1
+TN0643,Central Market Junction Stop,Tiruchirappalli,Central,local_stop,10.80082,78.69213,A,888,1
+TN0644,Central Government Hospital Stop,Tiruchirappalli,Central,local_stop,10.81123,78.69045,A,840,1
+TN0645,Srirangam Bus Stand,Tiruchirappalli,Srirangam,town_stand,10.863,78.69,A,5140,0
+TN0646,Srirangam Railway Station Road Stop,Tiruchirappalli,Srirangam,local_stop,10.86546,78.69774,A,959,1
+TN0647,Srirangam Market Junction Stop,Tiruchirappalli,Srirangam,local_stop,10.85805,78.68046,A,903,1
+TN0648,Srirangam Government Hospital Stop,Tiruchirappalli,Srirangam,local_stop,10.86686,78.68536,A,974,1
+TN0649,Manapparai Bus Stand,Tiruchirappalli,Manapparai,town_stand,10.607,78.425,A,5136,0
+TN0650,Manapparai Railway Station Road Stop,Tiruchirappalli,Manapparai,local_stop,10.599,78.42365,A,934,1
+TN0651,Manapparai Market Junction Stop,Tiruchirappalli,Manapparai,local_stop,10.59602,78.43388,A,910,1
+TN0652,Manapparai Government Hospital Stop,Tiruchirappalli,Manapparai,local_stop,10.60976,78.42344,A,834,1
+TN0653,Musiri Bus Stand,Tiruchirappalli,Musiri,town_stand,10.95,78.44,A,4776,0
+TN0654,Musiri Railway Station Road Stop,Tiruchirappalli,Musiri,local_stop,10.95411,78.43775,A,951,1
+TN0655,Musiri Market Junction Stop,Tiruchirappalli,Musiri,local_stop,10.95723,78.44431,A,827,1
+TN0656,Musiri Government Hospital Stop,Tiruchirappalli,Musiri,local_stop,10.94143,78.44258,A,932,1
+TN0657,Lalgudi Bus Stand,Tiruchirappalli,Lalgudi,town_stand,10.87,78.82,A,4735,0
+TN0658,Lalgudi Railway Station Road Stop,Tiruchirappalli,Lalgudi,local_stop,10.86103,78.81366,A,913,1
+TN0659,Lalgudi Market Junction Stop,Tiruchirappalli,Lalgudi,local_stop,10.86669,78.83079,A,828,1
+TN0660,Lalgudi Government Hospital Stop,Tiruchirappalli,Lalgudi,local_stop,10.87252,78.8243,A,914,1
+TN0661,Thuraiyur Bus Stand,Tiruchirappalli,Thuraiyur,town_stand,11.148,78.598,A,5080,0
+TN0662,Thuraiyur Railway Station Road Stop,Tiruchirappalli,Thuraiyur,local_stop,11.14665,78.58785,A,855,1
+TN0663,Thuraiyur Market Junction Stop,Tiruchirappalli,Thuraiyur,local_stop,11.14871,78.59555,A,891,1
+TN0664,Thuraiyur Government Hospital Stop,Tiruchirappalli,Thuraiyur,local_stop,11.14199,78.58872,A,867,1
+TN0665,Tirunelveli New Bus Stand,Tirunelveli,Tirunelveli New,main_terminus,8.73,77.72,B,9211,0
+TN0666,Tirunelveli New Railway Station Road Stop,Tirunelveli,Tirunelveli New,local_stop,8.73043,77.72993,B,550,1
+TN0667,Tirunelveli New Market Junction Stop,Tirunelveli,Tirunelveli New,local_stop,8.72428,77.71425,B,634,1
+TN0668,Tirunelveli New Government Hospital Stop,Tirunelveli,Tirunelveli New,local_stop,8.72315,77.72269,B,645,1
+TN0669,Palayamkottai Bus Stand,Tirunelveli,Palayamkottai,town_stand,8.727,77.734,B,3404,0
+TN0670,Palayamkottai Railway Station Road Stop,Tirunelveli,Palayamkottai,local_stop,8.71794,77.74247,B,635,1
+TN0671,Palayamkottai Market Junction Stop,Tirunelveli,Palayamkottai,local_stop,8.71914,77.73912,B,542,1
+TN0672,Palayamkottai Government Hospital Stop,Tirunelveli,Palayamkottai,local_stop,8.73445,77.74522,B,601,1
+TN0673,Ambasamudram Bus Stand,Tirunelveli,Ambasamudram,town_stand,8.708,77.453,B,3555,0
+TN0674,Ambasamudram Railway Station Road Stop,Tirunelveli,Ambasamudram,local_stop,8.71303,77.4542,B,594,1
+TN0675,Ambasamudram Market Junction Stop,Tirunelveli,Ambasamudram,local_stop,8.71739,77.46143,B,564,1
+TN0676,Ambasamudram Government Hospital Stop,Tirunelveli,Ambasamudram,local_stop,8.71505,77.45321,B,551,1
+TN0677,Nanguneri Bus Stand,Tirunelveli,Nanguneri,town_stand,8.49,77.659,B,3405,0
+TN0678,Nanguneri Railway Station Road Stop,Tirunelveli,Nanguneri,local_stop,8.49701,77.65268,B,646,1
+TN0679,Nanguneri Market Junction Stop,Tirunelveli,Nanguneri,local_stop,8.47863,77.6603,B,614,1
+TN0680,Nanguneri Government Hospital Stop,Tirunelveli,Nanguneri,local_stop,8.48922,77.67059,B,553,1
+TN0681,Valliyur Bus Stand,Tirunelveli,Valliyur,town_stand,8.383,77.613,B,3288,0
+TN0682,Valliyur Railway Station Road Stop,Tirunelveli,Valliyur,local_stop,8.37258,77.61056,B,642,1
+TN0683,Valliyur Market Junction Stop,Tirunelveli,Valliyur,local_stop,8.38362,77.61946,B,667,1
+TN0684,Valliyur Government Hospital Stop,Tirunelveli,Valliyur,local_stop,8.37277,77.62434,B,538,1
+TN0685,Cheranmahadevi Bus Stand,Tirunelveli,Cheranmahadevi,town_stand,8.683,77.56,B,3660,0
+TN0686,Cheranmahadevi Railway Station Road Stop,Tirunelveli,Cheranmahadevi,local_stop,8.68218,77.56042,B,552,1
+TN0687,Cheranmahadevi Market Junction Stop,Tirunelveli,Cheranmahadevi,local_stop,8.69207,77.56673,B,670,1
+TN0688,Cheranmahadevi Government Hospital Stop,Tirunelveli,Cheranmahadevi,local_stop,8.67537,77.57119,B,630,1
+TN0689,Tirupathur Bus Stand,Tirupathur,Tirupathur,main_terminus,12.4984,78.567,C,6214,0
+TN0690,Tirupathur Railway Station Road Stop,Tirupathur,Tirupathur,local_stop,12.50826,78.55633,C,351,1
+TN0691,Tirupathur Market Junction Stop,Tirupathur,Tirupathur,local_stop,12.49883,78.5623,C,361,1
+TN0692,Tirupathur Government Hospital Stop,Tirupathur,Tirupathur,local_stop,12.49414,78.57202,C,408,1
+TN0693,Vaniyambadi Bus Stand,Tirupathur,Vaniyambadi,town_stand,12.683,78.62,C,2731,0
+TN0694,Vaniyambadi Railway Station Road Stop,Tirupathur,Vaniyambadi,local_stop,12.69248,78.6283,C,384,1
+TN0695,Vaniyambadi Market Junction Stop,Tirupathur,Vaniyambadi,local_stop,12.67571,78.63095,C,390,1
+TN0696,Vaniyambadi Government Hospital Stop,Tirupathur,Vaniyambadi,local_stop,12.674,78.61527,C,456,1
+TN0697,Ambur Bus Stand,Tirupathur,Ambur,town_stand,12.79,78.716,C,2295,0
+TN0698,Ambur Railway Station Road Stop,Tirupathur,Ambur,local_stop,12.79006,78.70805,C,468,1
+TN0699,Ambur Market Junction Stop,Tirupathur,Ambur,local_stop,12.7817,78.71981,C,474,1
+TN0700,Ambur Government Hospital Stop,Tirupathur,Ambur,local_stop,12.7861,78.72617,C,330,1
+TN0701,Natrampalli Bus Stand,Tirupathur,Natrampalli,town_stand,12.57,78.505,C,2229,0
+TN0702,Natrampalli Railway Station Road Stop,Tirupathur,Natrampalli,local_stop,12.55995,78.51577,C,467,1
+TN0703,Natrampalli Market Junction Stop,Tirupathur,Natrampalli,local_stop,12.56435,78.49806,C,466,1
+TN0704,Natrampalli Government Hospital Stop,Tirupathur,Natrampalli,local_stop,12.568,78.50834,C,447,1
+TN0705,Tiruppur Bus Stand,Tiruppur,Tiruppur,main_terminus,11.1085,77.3411,B,9258,0
+TN0706,Tiruppur Railway Station Road Stop,Tiruppur,Tiruppur,local_stop,11.10345,77.35206,B,643,1
+TN0707,Tiruppur Market Junction Stop,Tiruppur,Tiruppur,local_stop,11.10238,77.34848,B,623,1
+TN0708,Tiruppur Government Hospital Stop,Tiruppur,Tiruppur,local_stop,11.10364,77.33085,B,535,1
+TN0709,Avinashi Bus Stand,Tiruppur,Avinashi,town_stand,11.193,77.269,B,3361,0
+TN0710,Avinashi Railway Station Road Stop,Tiruppur,Avinashi,local_stop,11.19155,77.26862,B,572,1
+TN0711,Avinashi Market Junction Stop,Tiruppur,Avinashi,local_stop,11.18916,77.26045,B,601,1
+TN0712,Avinashi Government Hospital Stop,Tiruppur,Avinashi,local_stop,11.19862,77.27766,B,622,1
+TN0713,Palladam Bus Stand,Tiruppur,Palladam,town_stand,10.991,77.283,B,3333,0
+TN0714,Palladam Railway Station Road Stop,Tiruppur,Palladam,local_stop,10.99726,77.28336,B,547,1
+TN0715,Palladam Market Junction Stop,Tiruppur,Palladam,local_stop,10.98666,77.2822,B,588,1
+TN0716,Palladam Government Hospital Stop,Tiruppur,Palladam,local_stop,10.98979,77.27438,B,532,1
+TN0717,Udumalaipettai Bus Stand,Tiruppur,Udumalaipettai,town_stand,10.588,77.249,B,3497,0
+TN0718,Udumalaipettai Railway Station Road Stop,Tiruppur,Udumalaipettai,local_stop,10.59869,77.25774,B,627,1
+TN0719,Udumalaipettai Market Junction Stop,Tiruppur,Udumalaipettai,local_stop,10.58196,77.25777,B,560,1
+TN0720,Udumalaipettai Government Hospital Stop,Tiruppur,Udumalaipettai,local_stop,10.59552,77.25941,B,600,1
+TN0721,Dharapuram Bus Stand,Tiruppur,Dharapuram,town_stand,10.738,77.53,B,3394,0
+TN0722,Dharapuram Railway Station Road Stop,Tiruppur,Dharapuram,local_stop,10.74431,77.52996,B,651,1
+TN0723,Dharapuram Market Junction Stop,Tiruppur,Dharapuram,local_stop,10.7372,77.5391,B,647,1
+TN0724,Dharapuram Government Hospital Stop,Tiruppur,Dharapuram,local_stop,10.72656,77.54069,B,649,1
+TN0725,Kangeyam Bus Stand,Tiruppur,Kangeyam,town_stand,11.007,77.561,B,3668,0
+TN0726,Kangeyam Railway Station Road Stop,Tiruppur,Kangeyam,local_stop,11.0182,77.55416,B,610,1
+TN0727,Kangeyam Market Junction Stop,Tiruppur,Kangeyam,local_stop,10.99617,77.55575,B,672,1
+TN0728,Kangeyam Government Hospital Stop,Tiruppur,Kangeyam,local_stop,11.01618,77.5647,B,640,1
+TN0729,Tiruvallur Bus Stand,Tiruvallur,Tiruvallur,main_terminus,13.1419,79.9071,B,8992,0
+TN0730,Tiruvallur Railway Station Road Stop,Tiruvallur,Tiruvallur,local_stop,13.14278,79.91543,B,630,1
+TN0731,Tiruvallur Market Junction Stop,Tiruvallur,Tiruvallur,local_stop,13.13311,79.90145,B,613,1
+TN0732,Tiruvallur Government Hospital Stop,Tiruvallur,Tiruvallur,local_stop,13.14823,79.90388,B,622,1
+TN0733,Ponneri Bus Stand,Tiruvallur,Ponneri,town_stand,13.338,80.193,B,3252,0
+TN0734,Ponneri Railway Station Road Stop,Tiruvallur,Ponneri,local_stop,13.33969,80.18567,B,661,1
+TN0735,Ponneri Market Junction Stop,Tiruvallur,Ponneri,local_stop,13.33293,80.19027,B,635,1
+TN0736,Ponneri Government Hospital Stop,Tiruvallur,Ponneri,local_stop,13.34435,80.18771,B,679,1
+TN0737,Gummidipoondi Bus Stand,Tiruvallur,Gummidipoondi,town_stand,13.407,80.11,B,3321,0
+TN0738,Gummidipoondi Railway Station Road Stop,Tiruvallur,Gummidipoondi,local_stop,13.39809,80.10032,B,615,1
+TN0739,Gummidipoondi Market Junction Stop,Tiruvallur,Gummidipoondi,local_stop,13.41408,80.10614,B,613,1
+TN0740,Gummidipoondi Government Hospital Stop,Tiruvallur,Gummidipoondi,local_stop,13.41312,80.10278,B,650,1
+TN0741,Uthukottai Bus Stand,Tiruvallur,Uthukottai,town_stand,13.3,79.86,B,3611,0
+TN0742,Uthukottai Railway Station Road Stop,Tiruvallur,Uthukottai,local_stop,13.3,79.84909,B,555,1
+TN0743,Uthukottai Market Junction Stop,Tiruvallur,Uthukottai,local_stop,13.30513,79.8673,B,652,1
+TN0744,Uthukottai Government Hospital Stop,Tiruvallur,Uthukottai,local_stop,13.29897,79.86255,B,651,1
+TN0745,Avadi Bus Stand,Tiruvallur,Avadi,town_stand,13.1067,80.097,B,3343,0
+TN0746,Avadi Railway Station Road Stop,Tiruvallur,Avadi,local_stop,13.10257,80.09971,B,561,1
+TN0747,Avadi Market Junction Stop,Tiruvallur,Avadi,local_stop,13.10413,80.0998,B,596,1
+TN0748,Avadi Government Hospital Stop,Tiruvallur,Avadi,local_stop,13.10895,80.09718,B,650,1
+TN0749,Tiruttani Bus Stand,Tiruvallur,Tiruttani,town_stand,13.179,79.61,B,3745,0
+TN0750,Tiruttani Railway Station Road Stop,Tiruvallur,Tiruttani,local_stop,13.17876,79.61151,B,641,1
+TN0751,Tiruttani Market Junction Stop,Tiruvallur,Tiruttani,local_stop,13.18658,79.60684,B,548,1
+TN0752,Tiruttani Government Hospital Stop,Tiruvallur,Tiruttani,local_stop,13.19052,79.61201,B,526,1
+TN0753,Tiruvannamalai Bus Stand,Tiruvannamalai,Tiruvannamalai,main_terminus,12.2253,79.0747,B,9185,0
+TN0754,Tiruvannamalai Railway Station Road Stop,Tiruvannamalai,Tiruvannamalai,local_stop,12.21967,79.07843,B,668,1
+TN0755,Tiruvannamalai Market Junction Stop,Tiruvannamalai,Tiruvannamalai,local_stop,12.22716,79.08001,B,669,1
+TN0756,Tiruvannamalai Government Hospital Stop,Tiruvannamalai,Tiruvannamalai,local_stop,12.22483,79.07528,B,678,1
+TN0757,Arani Bus Stand,Tiruvannamalai,Arani,town_stand,12.667,79.285,B,3589,0
+TN0758,Arani Railway Station Road Stop,Tiruvannamalai,Arani,local_stop,12.65855,79.28934,B,528,1
+TN0759,Arani Market Junction Stop,Tiruvannamalai,Arani,local_stop,12.66874,79.28981,B,568,1
+TN0760,Arani Government Hospital Stop,Tiruvannamalai,Arani,local_stop,12.65545,79.28053,B,558,1
+TN0761,Polur Bus Stand,Tiruvannamalai,Polur,town_stand,12.515,79.13,B,3622,0
+TN0762,Polur Railway Station Road Stop,Tiruvannamalai,Polur,local_stop,12.51957,79.12785,B,676,1
+TN0763,Polur Market Junction Stop,Tiruvannamalai,Polur,local_stop,12.52509,79.13895,B,535,1
+TN0764,Polur Government Hospital Stop,Tiruvannamalai,Polur,local_stop,12.51994,79.13045,B,663,1
+TN0765,Cheyyar Bus Stand,Tiruvannamalai,Cheyyar,town_stand,12.66,79.54,B,3532,0
+TN0766,Cheyyar Railway Station Road Stop,Tiruvannamalai,Cheyyar,local_stop,12.67195,79.53948,B,616,1
+TN0767,Cheyyar Market Junction Stop,Tiruvannamalai,Cheyyar,local_stop,12.65553,79.53216,B,656,1
+TN0768,Cheyyar Government Hospital Stop,Tiruvannamalai,Cheyyar,local_stop,12.65622,79.5365,B,587,1
+TN0769,Vandavasi Bus Stand,Tiruvannamalai,Vandavasi,town_stand,12.504,79.615,B,3695,0
+TN0770,Vandavasi Railway Station Road Stop,Tiruvannamalai,Vandavasi,local_stop,12.49661,79.60892,B,662,1
+TN0771,Vandavasi Market Junction Stop,Tiruvannamalai,Vandavasi,local_stop,12.49916,79.6256,B,596,1
+TN0772,Vandavasi Government Hospital Stop,Tiruvannamalai,Vandavasi,local_stop,12.51051,79.61992,B,645,1
+TN0773,Tiruvarur Bus Stand,Tiruvarur,Tiruvarur,main_terminus,10.7719,79.6366,C,6024,0
+TN0774,Tiruvarur Railway Station Road Stop,Tiruvarur,Tiruvarur,local_stop,10.77142,79.63805,C,390,1
+TN0775,Tiruvarur Market Junction Stop,Tiruvarur,Tiruvarur,local_stop,10.76681,79.63836,C,459,1
+TN0776,Tiruvarur Government Hospital Stop,Tiruvarur,Tiruvarur,local_stop,10.76901,79.64812,C,408,1
+TN0777,Mannargudi Bus Stand,Tiruvarur,Mannargudi,town_stand,10.665,79.45,C,2349,0
+TN0778,Mannargudi Railway Station Road Stop,Tiruvarur,Mannargudi,local_stop,10.65997,79.4449,C,340,1
+TN0779,Mannargudi Market Junction Stop,Tiruvarur,Mannargudi,local_stop,10.66131,79.44862,C,385,1
+TN0780,Mannargudi Government Hospital Stop,Tiruvarur,Mannargudi,local_stop,10.67094,79.44314,C,457,1
+TN0781,Thiruthuraipoondi Bus Stand,Tiruvarur,Thiruthuraipoondi,town_stand,10.529,79.64,C,2477,0
+TN0782,Thiruthuraipoondi Railway Station Road Stop,Tiruvarur,Thiruthuraipoondi,local_stop,10.53939,79.64471,C,355,1
+TN0783,Thiruthuraipoondi Market Junction Stop,Tiruvarur,Thiruthuraipoondi,local_stop,10.51962,79.64578,C,381,1
+TN0784,Thiruthuraipoondi Government Hospital Stop,Tiruvarur,Thiruthuraipoondi,local_stop,10.52282,79.64408,C,455,1
+TN0785,Nannilam Bus Stand,Tiruvarur,Nannilam,town_stand,10.87,79.63,C,2431,0
+TN0786,Nannilam Railway Station Road Stop,Tiruvarur,Nannilam,local_stop,10.87331,79.61926,C,425,1
+TN0787,Nannilam Market Junction Stop,Tiruvarur,Nannilam,local_stop,10.86593,79.62934,C,355,1
+TN0788,Nannilam Government Hospital Stop,Tiruvarur,Nannilam,local_stop,10.85812,79.63121,C,360,1
+TN0789,Vellore Bus Stand,Vellore,Vellore,main_terminus,12.9165,79.1325,B,9116,0
+TN0790,Vellore Railway Station Road Stop,Vellore,Vellore,local_stop,12.92017,79.14164,B,641,1
+TN0791,Vellore Market Junction Stop,Vellore,Vellore,local_stop,12.91596,79.12529,B,593,1
+TN0792,Vellore Government Hospital Stop,Vellore,Vellore,local_stop,12.91221,79.136,B,542,1
+TN0793,Katpadi Bus Stand,Vellore,Katpadi,town_stand,12.971,79.16,B,3787,0
+TN0794,Katpadi Railway Station Road Stop,Vellore,Katpadi,local_stop,12.96457,79.16573,B,529,1
+TN0795,Katpadi Market Junction Stop,Vellore,Katpadi,local_stop,12.98092,79.1522,B,565,1
+TN0796,Katpadi Government Hospital Stop,Vellore,Katpadi,local_stop,12.98141,79.14887,B,621,1
+TN0797,Gudiyatham Bus Stand,Vellore,Gudiyatham,town_stand,12.945,78.872,B,3707,0
+TN0798,Gudiyatham Railway Station Road Stop,Vellore,Gudiyatham,local_stop,12.93747,78.87798,B,594,1
+TN0799,Gudiyatham Market Junction Stop,Vellore,Gudiyatham,local_stop,12.95404,78.86022,B,665,1
+TN0800,Gudiyatham Government Hospital Stop,Vellore,Gudiyatham,local_stop,12.94747,78.88228,B,605,1
+TN0801,Anaicut Bus Stand,Vellore,Anaicut,town_stand,12.87,79.25,B,3491,0
+TN0802,Anaicut Railway Station Road Stop,Vellore,Anaicut,local_stop,12.8689,79.25339,B,654,1
+TN0803,Anaicut Market Junction Stop,Vellore,Anaicut,local_stop,12.86985,79.26053,B,649,1
+TN0804,Anaicut Government Hospital Stop,Vellore,Anaicut,local_stop,12.86923,79.24263,B,548,1
+TN0805,Pernambut Bus Stand,Vellore,Pernambut,town_stand,12.94,78.72,B,3538,0
+TN0806,Pernambut Railway Station Road Stop,Vellore,Pernambut,local_stop,12.9319,78.71901,B,585,1
+TN0807,Pernambut Market Junction Stop,Vellore,Pernambut,local_stop,12.94525,78.70834,B,606,1
+TN0808,Pernambut Government Hospital Stop,Vellore,Pernambut,local_stop,12.94698,78.72163,B,569,1
+TN0809,Viluppuram Bus Stand,Viluppuram,Viluppuram,main_terminus,11.9401,79.4861,B,8879,0
+TN0810,Viluppuram Railway Station Road Stop,Viluppuram,Viluppuram,local_stop,11.94276,79.48943,B,623,1
+TN0811,Viluppuram Market Junction Stop,Viluppuram,Viluppuram,local_stop,11.94795,79.48647,B,542,1
+TN0812,Viluppuram Government Hospital Stop,Viluppuram,Viluppuram,local_stop,11.93772,79.47639,B,555,1
+TN0813,Tindivanam Bus Stand,Viluppuram,Tindivanam,town_stand,12.24,79.65,B,3688,0
+TN0814,Tindivanam Railway Station Road Stop,Viluppuram,Tindivanam,local_stop,12.23577,79.64395,B,586,1
+TN0815,Tindivanam Market Junction Stop,Viluppuram,Tindivanam,local_stop,12.23721,79.64872,B,588,1
+TN0816,Tindivanam Government Hospital Stop,Viluppuram,Tindivanam,local_stop,12.2509,79.64525,B,666,1
+TN0817,Gingee Bus Stand,Viluppuram,Gingee,town_stand,12.253,79.417,B,3211,0
+TN0818,Gingee Railway Station Road Stop,Viluppuram,Gingee,local_stop,12.24728,79.41363,B,580,1
+TN0819,Gingee Market Junction Stop,Viluppuram,Gingee,local_stop,12.24249,79.40784,B,598,1
+TN0820,Gingee Government Hospital Stop,Viluppuram,Gingee,local_stop,12.24483,79.42147,B,599,1
+TN0821,Vikravandi Bus Stand,Viluppuram,Vikravandi,town_stand,11.99,79.54,B,3320,0
+TN0822,Vikravandi Railway Station Road Stop,Viluppuram,Vikravandi,local_stop,11.99333,79.55058,B,614,1
+TN0823,Vikravandi Market Junction Stop,Viluppuram,Vikravandi,local_stop,11.99275,79.53326,B,554,1
+TN0824,Vikravandi Government Hospital Stop,Viluppuram,Vikravandi,local_stop,11.98948,79.53892,B,675,1
+TN0825,Marakkanam Bus Stand,Viluppuram,Marakkanam,town_stand,12.2,79.94,B,3582,0
+TN0826,Marakkanam Railway Station Road Stop,Viluppuram,Marakkanam,local_stop,12.19798,79.94118,B,640,1
+TN0827,Marakkanam Market Junction Stop,Viluppuram,Marakkanam,local_stop,12.20618,79.94725,B,575,1
+TN0828,Marakkanam Government Hospital Stop,Viluppuram,Marakkanam,local_stop,12.20628,79.94433,B,672,1
+TN0829,Virudhunagar Bus Stand,Virudhunagar,Virudhunagar,main_terminus,9.5872,77.9616,B,8783,0
+TN0830,Virudhunagar Railway Station Road Stop,Virudhunagar,Virudhunagar,local_stop,9.58781,77.96228,B,612,1
+TN0831,Virudhunagar Market Junction Stop,Virudhunagar,Virudhunagar,local_stop,9.57707,77.96314,B,535,1
+TN0832,Virudhunagar Government Hospital Stop,Virudhunagar,Virudhunagar,local_stop,9.59509,77.97127,B,571,1
+TN0833,Sivakasi Bus Stand,Virudhunagar,Sivakasi,town_stand,9.449,77.797,B,3786,0
+TN0834,Sivakasi Railway Station Road Stop,Virudhunagar,Sivakasi,local_stop,9.44988,77.78895,B,653,1
+TN0835,Sivakasi Market Junction Stop,Virudhunagar,Sivakasi,local_stop,9.4476,77.80133,B,669,1
+TN0836,Sivakasi Government Hospital Stop,Virudhunagar,Sivakasi,local_stop,9.44873,77.80657,B,634,1
+TN0837,Rajapalayam Bus Stand,Virudhunagar,Rajapalayam,town_stand,9.453,77.556,B,3256,0
+TN0838,Rajapalayam Railway Station Road Stop,Virudhunagar,Rajapalayam,local_stop,9.45188,77.55632,B,636,1
+TN0839,Rajapalayam Market Junction Stop,Virudhunagar,Rajapalayam,local_stop,9.45453,77.55741,B,598,1
+TN0840,Rajapalayam Government Hospital Stop,Virudhunagar,Rajapalayam,local_stop,9.45836,77.5535,B,520,1
+TN0841,Aruppukkottai Bus Stand,Virudhunagar,Aruppukkottai,town_stand,9.513,78.096,B,3423,0
+TN0842,Aruppukkottai Railway Station Road Stop,Virudhunagar,Aruppukkottai,local_stop,9.51488,78.08509,B,608,1
+TN0843,Aruppukkottai Market Junction Stop,Virudhunagar,Aruppukkottai,local_stop,9.51781,78.09699,B,535,1
+TN0844,Aruppukkottai Government Hospital Stop,Virudhunagar,Aruppukkottai,local_stop,9.52343,78.08566,B,640,1
+TN0845,Srivilliputhur Bus Stand,Virudhunagar,Srivilliputhur,town_stand,9.512,77.632,B,3232,0
+TN0846,Srivilliputhur Railway Station Road Stop,Virudhunagar,Srivilliputhur,local_stop,9.50689,77.62432,B,554,1
+TN0847,Srivilliputhur Market Junction Stop,Virudhunagar,Srivilliputhur,local_stop,9.51838,77.64348,B,627,1
+TN0848,Srivilliputhur Government Hospital Stop,Virudhunagar,Srivilliputhur,local_stop,9.50899,77.64139,B,634,1
+TN0849,Sattur Bus Stand,Virudhunagar,Sattur,town_stand,9.357,77.923,B,3586,0
+TN0850,Sattur Railway Station Road Stop,Virudhunagar,Sattur,local_stop,9.35402,77.92739,B,658,1
+TN0851,Sattur Market Junction Stop,Virudhunagar,Sattur,local_stop,9.34819,77.93165,B,550,1
+TN0852,Sattur Government Hospital Stop,Virudhunagar,Sattur,local_stop,9.34928,77.92389,B,655,1

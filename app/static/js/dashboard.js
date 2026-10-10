@@ -52,9 +52,13 @@ async function initDashboard() {
 }
 
 function initMap() {
+    const tnBounds = L.latLngBounds([[8.05, 76.15], [13.60, 80.40]]);
     map = L.map('dashboard-map', {
         zoomControl: true,
-        attributionControl: false
+        attributionControl: false,
+        maxBounds: tnBounds,
+        maxBoundsViscosity: 1.0,
+        minZoom: 7
     }).setView([10.8505, 78.6569], 7);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

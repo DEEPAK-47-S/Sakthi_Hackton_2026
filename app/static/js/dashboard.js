@@ -35,29 +35,40 @@ window.drawDispatchRoute = async function(fromLatLng, toLatLng, color) {
             className: 'animated-route'
         }).addTo(map);
 
-        // Create a small moving bus icon
+        // Top-down Bus Marker
         const busIcon = L.divIcon({
             className: 'moving-bus-icon',
-            html: `<div style="background-color: ${color || '#8b5cf6'}; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 6px rgba(0,0,0,0.5); z-index: 1000;"><span style="font-size: 13px; color: white;">🚌</span></div>`,
-            iconSize: [26, 26],
-            iconAnchor: [13, 13]
+            html: `
+            <div class="tracker-bus" style="width: 16px; height: 32px; background: ${color || '#8b5cf6'}; border-radius: 4px; border: 2px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.5); position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 3px 0; box-sizing: border-box; transition: transform 0.1s linear;">
+               <div style="width: 70%; height: 5px; background: rgba(255,255,255,0.7); margin: 0 auto; border-radius: 1px;"></div>
+               <div style="width: 70%; height: 2px; background: rgba(255,255,255,0.7); margin: 0 auto; border-radius: 1px;"></div>
+            </div>`,
+            iconSize: [16, 32],
+            iconAnchor: [8, 16]
         });
         
         const movingMarker = L.marker(coordinates[0], {icon: busIcon}).addTo(map);
 
-        // Scale animation time based on actual duration. 
-        // We clamp it between 10s and 60s for demo purposes so it's realistic but watchable.
         let demoDurationMs = (route.duration / 60) * 1000; 
         if (demoDurationMs < 10000) demoDurationMs = 10000;
         if (demoDurationMs > 60000) demoDurationMs = 60000;
         
         const startFrame = performance.now();
+        
+        function getBearing(lat1, lng1, lat2, lng2) {
+            const toRad = Math.PI / 180;
+            const toDeg = 180 / Math.PI;
+            const dLng = (lng2 - lng1) * toRad;
+            const y = Math.sin(dLng) * Math.cos(lat2 * toRad);
+            const x = Math.cos(lat1 * toRad) * Math.sin(lat2 * toRad) -
+                      Math.sin(lat1 * toRad) * Math.cos(lat2 * toRad) * Math.cos(dLng);
+            return (Math.atan2(y, x) * toDeg + 360) % 360;
+        }
 
         function animateBus(time) {
             const elapsed = time - startFrame;
             const progress = Math.min(elapsed / demoDurationMs, 1.0);
             
-            // Find current segment in coordinates array
             const totalPoints = coordinates.length - 1;
             const exactPoint = progress * totalPoints;
             const index = Math.floor(exactPoint);
@@ -68,12 +79,21 @@ window.drawDispatchRoute = async function(fromLatLng, toLatLng, color) {
                 const currentLat = coordinates[index][0] + (coordinates[nextIndex][0] - coordinates[index][0]) * segmentProgress;
                 const currentLng = coordinates[index][1] + (coordinates[nextIndex][1] - coordinates[index][1]) * segmentProgress;
                 movingMarker.setLatLng([currentLat, currentLng]);
+                
+                // Rotate the bus
+                const angle = getBearing(coordinates[index][0], coordinates[index][1], coordinates[nextIndex][0], coordinates[nextIndex][1]);
+                const iconEl = movingMarker.getElement();
+                if (iconEl) {
+                    const busDiv = iconEl.querySelector('.tracker-bus');
+                    if (busDiv) {
+                        busDiv.style.transform = `rotate(${angle}deg)`;
+                    }
+                }
             }
             
             if (progress < 1.0) {
                 requestAnimationFrame(animateBus);
             } else {
-                // Remove from map after animation completes
                 if(map.hasLayer(polyline)) map.removeLayer(polyline);
                 if(map.hasLayer(movingMarker)) map.removeLayer(movingMarker);
             }

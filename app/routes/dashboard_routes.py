@@ -6,8 +6,17 @@ bp = Blueprint('dashboard', __name__)
 def index():
     return render_template('public.html')
 
-@bp.route('/login')
+from flask import request, redirect, url_for
+
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if username == 'admin' and password == 'admin123':
+            return redirect(url_for('dashboard.dashboard_view'))
+        else:
+            return render_template('login.html', error="Invalid credentials. Please try again.")
     return render_template('login.html')
 
 @bp.route('/dashboard')

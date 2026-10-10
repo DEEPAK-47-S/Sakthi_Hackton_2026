@@ -66,9 +66,15 @@
             Higher Authorities & Dispatch AI Access
         </p>
         
-        <form action="/dashboard" method="GET">
-            <input type="text" class="login-input" placeholder="Admin ID or Email" required>
-            <input type="password" class="login-input" placeholder="Password" required>
+        {% if error %}
+        <div style="background: #fee2e2; border-left: 4px solid #ef4444; color: #b91c1c; padding: 10px; margin-bottom: 20px; font-size: 0.9rem; text-align: left;">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form action="/login" method="POST">
+            <input type="text" name="username" class="login-input" placeholder="Admin ID or Email" required autocomplete="username">
+            <input type="password" name="password" class="login-input" placeholder="Password" required autocomplete="current-password">
             
             <button type="submit" class="login-btn">Secure Login</button>
         </form>

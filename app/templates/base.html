@@ -58,14 +58,14 @@
                     <div class="header-item">
                         <div class="header-item-icon">📅</div>
                         <div class="header-item-text">
-                            <strong>18 May 2025</strong>
-                            <span class="muted">(Closing Night)</span>
+                            <strong id="live-header-date">18 May 2026</strong>
+                            <span class="muted">(Live System)</span>
                         </div>
                     </div>
                     <div class="header-item">
                         <div class="header-item-icon">🕒</div>
                         <div class="header-item-text">
-                            <strong>07:42 PM</strong>
+                            <strong id="live-header-time">07:42 PM</strong>
                             <span>Live Updates</span>
                         </div>
                     </div>
@@ -140,6 +140,31 @@
                 setTimeout(() => toast.remove(), 300);
             }, 4500);
         };
+    </script>
+    <script>
+        function updateLiveClock() {
+            const now = new Date();
+            
+            // Format time as hh:mm A
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes} ${ampm}`;
+            
+            // Format date as DD Month YYYY
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const dateString = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+            
+            const timeEl = document.getElementById('live-header-time');
+            const dateEl = document.getElementById('live-header-date');
+            if(timeEl) timeEl.innerText = timeString;
+            if(dateEl) dateEl.innerText = dateString;
+        }
+        
+        setInterval(updateLiveClock, 60000); // Update every minute
+        updateLiveClock(); // initial call
     </script>
     {% block extra_js %}{% endblock %}
 </body>

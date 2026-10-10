@@ -105,7 +105,7 @@
                         <span class="badge badge-danger" id="badge-cmbt">115% LOAD</span>
                     </div>
                     <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 14,249 pax • Deficit: <strong style="color: #ef4444;">-45 Buses</strong>
+                        Capacity: 14,249 pax • Deficit: <strong id="deficit-cmbt" style="color: #ef4444;">-45 Buses</strong>
                     </div>
                 </div>
                 <button class="btn-dispatch" onclick="dispatchBuses('Chennai CMBT Koyambedu', 'Villupuram Reserve Depot', 45, 'hub-cmbt', 'badge-cmbt', 'bar-cmbt')">
@@ -121,7 +121,7 @@
                         <span class="badge badge-danger" id="badge-mdu">108% LOAD</span>
                     </div>
                     <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 13,761 pax • Deficit: <strong style="color: #ef4444;">-30 Buses</strong>
+                        Capacity: 13,761 pax • Deficit: <strong id="deficit-mdu" style="color: #ef4444;">-30 Buses</strong>
                     </div>
                 </div>
                 <button class="btn-dispatch" onclick="dispatchBuses('Madurai Mattuthavani', 'Dindigul Central Depot', 30, 'hub-mdu', 'badge-mdu', 'bar-mdu')">
@@ -137,7 +137,7 @@
                         <span class="badge badge-warning" id="badge-cbe" style="color: white;">98% LOAD</span>
                     </div>
                     <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 14,116 pax • Deficit: <strong style="color: #f59e0b;">-25 Buses</strong>
+                        Capacity: 14,116 pax • Deficit: <strong id="deficit-cbe" style="color: #f59e0b;">-25 Buses</strong>
                     </div>
                 </div>
                 <button class="btn-dispatch" onclick="dispatchBuses('CBE Gandhipuram', 'Erode Central Depot', 25, 'hub-cbe', 'badge-cbe', 'bar-cbe')">
@@ -153,7 +153,7 @@
                         <span class="badge badge-warning" id="badge-try" style="color: white;">94% LOAD</span>
                     </div>
                     <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 14,065 pax • Deficit: <strong style="color: #f59e0b;">-20 Buses</strong>
+                        Capacity: 14,065 pax • Deficit: <strong id="deficit-try" style="color: #f59e0b;">-20 Buses</strong>
                     </div>
                 </div>
                 <button class="btn-dispatch" onclick="dispatchBuses('Trichy Chatram', 'Pudukkottai Regional Depot', 20, 'hub-try', 'badge-try', 'bar-try')">
@@ -226,12 +226,12 @@
 
 {% block extra_js %}
 <script>
-    const scenarios = [
+    let scenarios = [
         { id: 'OPT-101', from: 'Erode Central Depot', to: 'CBE Gandhipuram', buses: 15, status: 'Executing', eta: '35 mins', impact: 'Resolves critical evening crowd in CBE', progress: 75 },
-        { id: 'OPT-102', from: 'Maraimalai Nagar Depot', to: 'CMBT Koyambedu', buses: 20, status: 'Executing', eta: '18 mins', impact: 'Balances Chennai outbound surge', progress: 88 },
-        { id: 'OPT-103', from: 'Salem Depot', to: 'Trichy Chatram', buses: 18, status: 'Pending Approval', eta: '1 hr 15 mins', impact: 'Cauvery delta corridor clearance', progress: 0 },
-        { id: 'OPT-104', from: 'Virudhunagar Standby', to: 'Madurai Mattuthavani', buses: 12, status: 'Pending Approval', eta: '40 mins', impact: 'Temple festival queue prevention', progress: 0 }
+        { id: 'OPT-102', from: 'Maraimalai Nagar Depot', to: 'CMBT Koyambedu', buses: 20, status: 'Executing', eta: '18 mins', impact: 'Balances Chennai outbound surge', progress: 88 }
     ];
+
+    let optCounter = 103;
 
     function renderScenarios() {
         const container = document.getElementById('opt-list');
@@ -272,7 +272,7 @@
                     <div>
                         <div class="auto-style-71172">
                             <span>Dispatch Completion</span>
-                            <span id="scen-pct-${idx}">${s.progress}%</span>
+                            <span id="scen-pct-${idx}">${Math.floor(s.progress)}%</span>
                         </div>
                         <div class="auto-style-94056">
                             <div id="scen-bar-${idx}" class="auto-style-43115" style="width: ${s.progress}%; height: 100%; background: ${pColor}; transition: width 0.6s ease;"></div>
@@ -285,17 +285,42 @@
         container.innerHTML = html;
     }
 
+    function animateScenario(idx) {
+        const interval = setInterval(() => {
+            if(scenarios[idx].progress >= 100) {
+                scenarios[idx].progress = 100;
+                scenarios[idx].status = 'Dispatched';
+                renderScenarios();
+                clearInterval(interval);
+                return;
+            }
+            scenarios[idx].progress += (Math.random() * 5 + 1);
+            if (scenarios[idx].progress > 100) scenarios[idx].progress = 100;
+            renderScenarios();
+        }, 3000);
+    }
+
     window.dispatchBuses = function(stopName, sourceDepot, count, cardId, badgeId, barId) {
+        // Change button state
         const btn = document.querySelector(`#${cardId} button`);
         if (btn) {
             btn.innerText = '🚀 Dispatched!';
             btn.disabled = true;
         }
 
+        // Change card badge state
         const badge = document.getElementById(badgeId);
         if (badge) {
             badge.innerText = 'BALANCED (74%)';
             badge.className = 'badge badge-success';
+        }
+
+        // Resolve Deficit text
+        const deficitId = cardId.replace('hub-', 'deficit-');
+        const deficitEl = document.getElementById(deficitId);
+        if (deficitEl) {
+            deficitEl.innerText = 'Resolved (0 Buses)';
+            deficitEl.style.color = '#10b981'; // green color
         }
 
         // Update load balancing bar
@@ -318,6 +343,25 @@
         if (reallocEl) {
             reallocEl.innerText = (parseInt(reallocEl.innerText.replace(/,/g, '')) + count).toLocaleString();
         }
+
+        // Dynamically add a new scenario
+        const newIdx = scenarios.length;
+        scenarios.unshift({
+            id: 'OPT-' + (optCounter++),
+            from: sourceDepot,
+            to: stopName,
+            buses: count,
+            status: 'Executing',
+            eta: Math.floor(Math.random() * 25 + 15) + ' mins',
+            impact: 'AI Auto-Warden Live Emergency Dispatch',
+            progress: 5
+        });
+        
+        // Limit to 4 scenarios on screen
+        if(scenarios.length > 4) scenarios.pop();
+        
+        renderScenarios();
+        animateScenario(0); // animate the one we just unshifted
 
         // Show global Toast confirmation!
         if (window.showDispatchNotification) {
@@ -374,9 +418,14 @@
                         badge.className = data.risk_level === 'CRITICAL' ? 'badge badge-danger' : 
                                          (data.risk_level === 'HIGH' ? 'badge badge-warning' : 'badge badge-success');
                         
-                        const defectLabel = document.querySelector(`#${hub.card} .auto-style-19596, #${hub.card} strong[style="color: #ef4444;"], #${hub.card} strong[style="color: #f59e0b;"]`);
+                        const deficitId = hub.card.replace('hub-', 'deficit-');
+                        const defectLabel = document.getElementById(deficitId);
                         if (defectLabel && data.recommended_extra_buses > 0) {
                             defectLabel.innerText = `-${data.recommended_extra_buses} Buses`;
+                            // Update the button text to show the correct live number of buses
+                            btn.innerText = `🚀 Dispatch ${data.recommended_extra_buses} Buses`;
+                            // Update onclick parameters
+                            btn.setAttribute('onclick', `dispatchBuses('${hub.name}', '${hub.depot}', ${data.recommended_extra_buses}, '${hub.card}', '${hub.badge}', '${hub.bar}')`);
                         }
                     }
 

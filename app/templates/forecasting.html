@@ -573,6 +573,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch(err) { console.error('Inference error:', err); }
         finally { btn.innerText = ' Run 5-Model Ensemble'; btn.disabled = false; }
     });
+
+    // Auto-run on page load
+    setTimeout(() => {
+        const btn = document.getElementById('btn-run-inference');
+        if(btn) btn.click();
+    }, 1000);
+
+    // Auto-refresh every 60 seconds
+    setInterval(() => {
+        const btn = document.getElementById('btn-run-inference');
+        if(btn && !btn.disabled) btn.click();
+    }, 60000);
 });
 </script>
 {% endblock %}

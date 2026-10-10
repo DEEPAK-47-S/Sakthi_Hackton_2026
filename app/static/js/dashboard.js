@@ -142,7 +142,14 @@ async function loadData() {
         
         // Add dynamic simulation properties to each stop
         stopsData.stops.forEach(s => {
-            const ratio = s.type === 'main_terminus' ? 0.72 : (s.type === 'town_stand' ? 0.58 : 0.42);
+            let ratio = s.type === 'main_terminus' ? 0.72 : (s.type === 'town_stand' ? 0.58 : 0.42);
+            
+            // Instantly spike critical hubs to High Alert (RED) on load!
+            const criticalHubs = ['TN0045', 'TN0305', 'TN0077', 'TN0637']; // Chennai, Madurai, Coimbatore, Trichy
+            if (criticalHubs.includes(s.id)) {
+                ratio = 0.94; // 94% capacity -> instantly red on map!
+            }
+            
             s.crowd = Math.round(s.capacity * ratio);
             s.max = s.capacity;
             s.totalBuses = s.type === 'main_terminus' ? 85 : (s.type === 'town_stand' ? 40 : 15);

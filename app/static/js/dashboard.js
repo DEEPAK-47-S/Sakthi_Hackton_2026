@@ -10,13 +10,11 @@ let allHubs = {};
 let selectedHubId = null;
 
 function initMap() {
-    // Center around Tamil Nadu
     map = L.map('dashboard-map', {
         zoomControl: true,
         attributionControl: false
     }).setView([10.8505, 78.6569], 7);
 
-    // Free OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap contributors'
@@ -38,56 +36,60 @@ function initMap() {
     const smallOrange = createIcon('#f59e0b', 16);
     const smallGreen = createIcon('#10b981', 16);
 
-    // 3-4 Bus Stands per Major District
-    allHubs = {
-        // Coimbatore District
-        'cbe-gandhipuram': { coords: [11.0183, 76.9654], name: "Gandhipuram", district: "Coimbatore", crowd: 8800, max: 9000, buses: 65, totalBuses: 70, color: '#ef4444', icon: redIcon, isMain: true },
-        'cbe-ukkadam': { coords: [10.9926, 76.9613], name: "Ukkadam", district: "Coimbatore", crowd: 4100, max: 5000, buses: 25, totalBuses: 30, color: '#f59e0b', icon: smallOrange },
-        'cbe-singanallur': { coords: [11.0026, 77.0270], name: "Singanallur", district: "Coimbatore", crowd: 3200, max: 4000, buses: 20, totalBuses: 25, color: '#10b981', icon: smallGreen },
-        'cbe-mettupalayam': { coords: [11.3000, 76.9333], name: "Mettupalayam Stand", district: "Coimbatore", crowd: 1500, max: 2000, buses: 12, totalBuses: 15, color: '#10b981', icon: smallGreen },
-
-        // Chennai District
-        'chn-cmbt': { coords: [13.0674, 80.1923], name: "CMBT Koyambedu", district: "Chennai", crowd: 14500, max: 15000, buses: 120, totalBuses: 140, color: '#ef4444', icon: redIcon, isMain: true },
-        'chn-broadway': { coords: [13.0883, 80.2833], name: "Broadway", district: "Chennai", crowd: 8200, max: 9000, buses: 60, totalBuses: 65, color: '#ef4444', icon: smallRed },
-        'chn-tambaram': { coords: [12.9249, 80.1000], name: "Tambaram", district: "Chennai", crowd: 6500, max: 8000, buses: 45, totalBuses: 50, color: '#f59e0b', icon: smallOrange },
-        'chn-tnagar': { coords: [13.0418, 80.2341], name: "T. Nagar Stand", district: "Chennai", crowd: 5100, max: 6000, buses: 35, totalBuses: 40, color: '#f59e0b', icon: smallOrange },
-
-        // Madurai District
-        'mdu-mattuthavani': { coords: [9.9533, 78.1504], name: "Mattuthavani", district: "Madurai", crowd: 7200, max: 8000, buses: 50, totalBuses: 60, color: '#f59e0b', icon: redIcon, isMain: true },
-        'mdu-arappalayam': { coords: [9.9298, 78.1065], name: "Arappalayam", district: "Madurai", crowd: 4500, max: 5000, buses: 30, totalBuses: 35, color: '#ef4444', icon: smallRed },
-        'mdu-periyar': { coords: [9.9173, 78.1130], name: "Periyar Stand", district: "Madurai", crowd: 3100, max: 4000, buses: 20, totalBuses: 25, color: '#10b981', icon: smallGreen },
-
-        // Trichy District
-        'try-central': { coords: [10.8050, 78.6856], name: "Trichy Central", district: "Trichy", crowd: 6500, max: 7000, buses: 45, totalBuses: 50, color: '#ef4444', icon: redIcon, isMain: true },
-        'try-chatram': { coords: [10.8286, 78.6942], name: "Chatram Stand", district: "Trichy", crowd: 3800, max: 4500, buses: 25, totalBuses: 30, color: '#f59e0b', icon: smallOrange },
-        'try-thiruverumbur': { coords: [10.7675, 78.7831], name: "Thiruverumbur", district: "Trichy", crowd: 1200, max: 2000, buses: 10, totalBuses: 15, color: '#10b981', icon: smallGreen },
-
-        // Salem District
-        'slm-new': { coords: [11.6643, 78.1460], name: "Salem New Stand", district: "Salem", crowd: 4500, max: 6000, buses: 35, totalBuses: 45, color: '#10b981', icon: redIcon, isMain: true },
-        'slm-old': { coords: [11.6500, 78.1500], name: "Salem Old Stand", district: "Salem", crowd: 2800, max: 4000, buses: 20, totalBuses: 25, color: '#10b981', icon: smallGreen },
-        'slm-attur': { coords: [11.5950, 78.6010], name: "Attur Stand", district: "Salem", crowd: 1800, max: 3000, buses: 12, totalBuses: 18, color: '#10b981', icon: smallGreen },
-
-        // Erode District
-        'erd-central': { coords: [11.3410, 77.7172], name: "Erode Central", district: "Erode", crowd: 2100, max: 3500, buses: 18, totalBuses: 25, color: '#10b981', icon: redIcon, isMain: true },
-        'erd-solar': { coords: [11.2990, 77.7490], name: "Solar Stand", district: "Erode", crowd: 1100, max: 2000, buses: 8, totalBuses: 12, color: '#10b981', icon: smallGreen },
-        'erd-bhavani': { coords: [11.4500, 77.6833], name: "Bhavani Stand", district: "Erode", crowd: 1400, max: 2500, buses: 10, totalBuses: 15, color: '#10b981', icon: smallGreen },
+    const districts = [{"name": "Ariyalur", "lat": 11.14, "lng": 79.0786}, {"name": "Chengalpattu", "lat": 12.6939, "lng": 79.9756}, {"name": "Chennai", "lat": 13.0827, "lng": 80.2707}, {"name": "Coimbatore", "lat": 11.0168, "lng": 76.9558}, {"name": "Cuddalore", "lat": 11.748, "lng": 79.7714}, {"name": "Dharmapuri", "lat": 12.1211, "lng": 78.1582}, {"name": "Dindigul", "lat": 10.3673, "lng": 77.9803}, {"name": "Erode", "lat": 11.341, "lng": 77.7172}, {"name": "Kallakurichi", "lat": 11.7383, "lng": 78.9639}, {"name": "Kanchipuram", "lat": 12.8185, "lng": 79.6947}, {"name": "Kanyakumari", "lat": 8.0883, "lng": 77.5385}, {"name": "Karur", "lat": 10.9601, "lng": 78.0766}, {"name": "Krishnagiri", "lat": 12.5186, "lng": 78.2137}, {"name": "Madurai", "lat": 9.9252, "lng": 78.1198}, {"name": "Mayiladuthurai", "lat": 11.1085, "lng": 79.6534}, {"name": "Nagapattinam", "lat": 10.7672, "lng": 79.8449}, {"name": "Namakkal", "lat": 11.2189, "lng": 78.1674}, {"name": "Nilgiris", "lat": 11.4916, "lng": 76.7337}, {"name": "Perambalur", "lat": 11.2342, "lng": 78.8821}, {"name": "Pudukkottai", "lat": 10.3797, "lng": 78.8205}, {"name": "Ramanathapuram", "lat": 9.3639, "lng": 78.832}, {"name": "Ranipet", "lat": 12.9272, "lng": 79.3331}, {"name": "Salem", "lat": 11.6643, "lng": 78.146}, {"name": "Sivaganga", "lat": 9.8433, "lng": 78.4809}, {"name": "Tenkasi", "lat": 8.9564, "lng": 77.3151}, {"name": "Thanjavur", "lat": 10.7818, "lng": 79.1352}, {"name": "Theni", "lat": 10.0104, "lng": 77.4768}, {"name": "Thoothukudi", "lat": 8.7642, "lng": 78.1348}, {"name": "Tiruchirappalli", "lat": 10.7905, "lng": 78.7047}, {"name": "Tirunelveli", "lat": 8.7139, "lng": 77.7567}, {"name": "Tirupathur", "lat": 12.4984, "lng": 78.567}, {"name": "Tiruppur", "lat": 11.1085, "lng": 77.3411}, {"name": "Tiruvallur", "lat": 13.1419, "lng": 79.9071}, {"name": "Tiruvannamalai", "lat": 12.2253, "lng": 79.0747}, {"name": "Tiruvarur", "lat": 10.7719, "lng": 79.6366}, {"name": "Vellore", "lat": 12.9165, "lng": 79.1325}, {"name": "Viluppuram", "lat": 11.9401, "lng": 79.4861}, {"name": "Virudhunagar", "lat": 9.5872, "lng": 77.9616}];
+    
+    // Generate hubs for all 38 districts
+    districts.forEach((d, i) => {
+        let baseCrowd = Math.floor(Math.random() * 8000) + 2000;
+        if(['Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem'].includes(d.name)) {
+            baseCrowd += 5000;
+        }
         
-        // Tiruppur District
-        'tup-old': { coords: [11.1085, 77.3411], name: "Tiruppur Old Stand", district: "Tiruppur", crowd: 3800, max: 4500, buses: 30, totalBuses: 35, color: '#f59e0b', icon: redIcon, isMain: true },
-        'tup-new': { coords: [11.1350, 77.3350], name: "PN Road New Stand", district: "Tiruppur", crowd: 2900, max: 4000, buses: 22, totalBuses: 30, color: '#10b981', icon: smallGreen },
-        'tup-kangeyam': { coords: [11.0000, 77.5667], name: "Kangeyam Stand", district: "Tiruppur", crowd: 1100, max: 2000, buses: 8, totalBuses: 12, color: '#10b981', icon: smallGreen }
-    };
+        let crowd = baseCrowd;
+        let max = baseCrowd + Math.floor(Math.random() * 2000) + 500;
+        let ratio = crowd / max;
+        let color = ratio > 0.85 ? '#ef4444' : (ratio > 0.6 ? '#f59e0b' : '#10b981');
+        let icon = ratio > 0.85 ? redIcon : (ratio > 0.6 ? orangeIcon : greenIcon);
 
-    // Draw lines between Main Hubs only
-    const routes = [
-        [allHubs['chn-cmbt'].coords, allHubs['try-central'].coords, allHubs['mdu-mattuthavani'].coords],
-        [allHubs['chn-cmbt'].coords, allHubs['slm-new'].coords, allHubs['erd-central'].coords, allHubs['tup-old'].coords, allHubs['cbe-gandhipuram'].coords],
-        [allHubs['cbe-gandhipuram'].coords, allHubs['mdu-mattuthavani'].coords],
-        [allHubs['try-central'].coords, allHubs['slm-new'].coords]
-    ];
+        // Main Stand
+        allHubs[d.name.toLowerCase() + '-main'] = {
+            coords: [d.lat, d.lng],
+            name: d.name + " Main Stand",
+            district: d.name,
+            crowd: crowd,
+            max: max,
+            buses: Math.floor(crowd / 100),
+            totalBuses: Math.floor(max / 100) + 5,
+            color: color,
+            icon: icon,
+            isMain: true
+        };
 
-    routes.forEach((route) => {
-        L.polyline(route, { color: '#3b82f6', weight: 2, dashArray: '5, 5', opacity: 0.4 }).addTo(map);
+        // 2 Sub stands per district
+        for(let j=1; j<=2; j++) {
+            let subCrowd = Math.floor(crowd * 0.4);
+            let subMax = Math.floor(max * 0.4);
+            let subRatio = subCrowd / subMax;
+            let subColor = subRatio > 0.85 ? '#ef4444' : (subRatio > 0.6 ? '#f59e0b' : '#10b981');
+            let subIcon = subRatio > 0.85 ? smallRed : (subRatio > 0.6 ? smallOrange : smallGreen);
+            
+            // Offset coordinates slightly for sub stands
+            let offsetLat = d.lat + (Math.random() * 0.08 - 0.04);
+            let offsetLng = d.lng + (Math.random() * 0.08 - 0.04);
+            
+            allHubs[d.name.toLowerCase() + '-sub-' + j] = {
+                coords: [offsetLat, offsetLng],
+                name: d.name + " Local Stand " + j,
+                district: d.name,
+                crowd: subCrowd,
+                max: subMax,
+                buses: Math.floor(subCrowd / 100),
+                totalBuses: Math.floor(subMax / 100) + 2,
+                color: subColor,
+                icon: subIcon,
+                isMain: false
+            };
+        }
     });
 
     Object.keys(allHubs).forEach(key => {
@@ -98,28 +100,29 @@ function initMap() {
         
         const popupContent = `
             <div style="min-width: 180px; font-family: 'Inter', sans-serif;">
-                <strong style="font-size: 1.1rem; display: block; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-bottom: 8px;">${p.name} (${p.district})</strong>
+                <strong style="font-size: 1.1rem; display: block; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-bottom: 8px;">\${p.name} (\${p.district})</strong>
                 <div style="margin-bottom: 5px;">
                     <span style="color: #64748b; font-size: 0.85rem;">Live Crowd:</span><br>
-                    <strong style="font-size: 1rem; color: ${p.color};" id="popup-${p.id}">${p.crowd.toLocaleString()} (${Math.round((p.crowd/p.max)*100)}%)</strong>
+                    <strong style="font-size: 1rem; color: \${p.color};" id="popup-\${p.id}">\${p.crowd.toLocaleString()} (\${Math.round((p.crowd/p.max)*100)}%)</strong>
                 </div>
                 <div>
                     <span style="color: #64748b; font-size: 0.85rem;">Active Buses:</span><br>
-                    <strong style="font-size: 0.95rem;">${p.buses} / ${p.totalBuses}</strong>
+                    <strong style="font-size: 0.95rem;">\${p.buses} / \${p.totalBuses}</strong>
+                </div>
+                <div style="margin-top: 10px;">
+                    <a href="/optimization" class="badge badge-info" style="text-decoration: none; display: block; text-align: center;">View AI Allocations</a>
                 </div>
             </div>
         `;
         
         marker.bindPopup(popupContent, { className: 'custom-popup' });
         
-        // When clicking a bus stand, update the top KPIs to show data for THIS specific stand
         marker.on('click', () => {
             selectedHubId = key;
             updateKPIsForHub(p);
         });
     });
 
-    // Reset to statewide if clicking on the map background
     map.on('click', (e) => {
         if(!e.originalEvent.target.closest('.leaflet-marker-icon')) {
             selectedHubId = null;
@@ -129,113 +132,54 @@ function initMap() {
 }
 
 function updateKPIsForHub(hub) {
-    document.getElementById('kpi-title-passengers').innerText = `Total Passengers (${hub.name})`;
+    document.getElementById('kpi-title-passengers').innerText = `Total Passengers (\${hub.name})`;
     document.getElementById('total-passengers').innerText = hub.crowd.toLocaleString();
-    document.getElementById('kpi-subtitle-passengers').innerText = `Location: ${hub.district} District`;
+    document.getElementById('kpi-subtitle-passengers').innerText = `Location: \${hub.district} District`;
     
-    document.getElementById('kpi-title-buses').innerText = `Active Buses (${hub.name})`;
+    document.getElementById('kpi-title-buses').innerText = `Active Buses (\${hub.name})`;
     document.getElementById('total-buses').innerText = hub.buses.toLocaleString();
-    document.getElementById('kpi-subtitle-buses').innerText = `of ${hub.totalBuses} allocated`;
-    document.getElementById('kpi-progress-buses').style.width = `${Math.round((hub.buses/hub.totalBuses)*100)}%`;
+    document.getElementById('kpi-subtitle-buses').innerText = `of \${hub.totalBuses} allocated`;
+    document.getElementById('kpi-progress-buses').style.width = `\${Math.round((hub.buses/hub.totalBuses)*100)}%`;
     
-    let isCritical = (hub.crowd/hub.max) > 0.9;
+    let isCritical = (hub.crowd/hub.max) > 0.85;
     document.getElementById('kpi-title-critical').innerText = `Status Level`;
     document.getElementById('critical-stops-count').innerText = isCritical ? "CRITICAL" : "NORMAL";
-    document.getElementById('kpi-subtitle-critical').innerText = `Capacity: ${Math.round((hub.crowd/hub.max)*100)}%`;
+    document.getElementById('kpi-subtitle-critical').innerText = `Capacity: \${Math.round((hub.crowd/hub.max)*100)}%`;
     
-    document.getElementById('kpi-title-surge').innerText = `Next Surge (${hub.name})`;
+    document.getElementById('kpi-title-surge').innerText = `Next Surge (\${hub.name})`;
     document.getElementById('surge-time').innerText = "In ~45 mins";
     document.getElementById('kpi-subtitle-surge').innerText = "Based on historical trend";
 }
 
 function updateKPIsForStatewide() {
     document.getElementById('kpi-title-passengers').innerText = `Total Passengers (Statewide)`;
-    // The interval function will naturally update this to the aggregate sum
-    
-    document.getElementById('kpi-title-buses').innerText = `Active Buses`;
-    document.getElementById('total-buses').innerText = "1,452";
-    document.getElementById('kpi-subtitle-buses').innerText = `of 1,500 available`;
-    document.getElementById('kpi-progress-buses').style.width = `96%`;
+    document.getElementById('kpi-title-buses').innerText = `Active Buses (Statewide)`;
+    document.getElementById('total-buses').innerText = "4,250";
+    document.getElementById('kpi-subtitle-buses').innerText = `of 4,500 available`;
+    document.getElementById('kpi-progress-buses').style.width = `94%`;
     
     document.getElementById('kpi-title-critical').innerText = `Critical Stops`;
-    document.getElementById('critical-stops-count').innerText = "4";
+    document.getElementById('critical-stops-count').innerText = "28";
     document.getElementById('kpi-subtitle-critical').innerText = `(> 90% capacity)`;
     
-    document.getElementById('kpi-title-surge').innerText = `Next Major Surge`;
-    document.getElementById('surge-time').innerText = "7:45 PM - 9:00 PM";
-    document.getElementById('kpi-subtitle-surge').innerText = "(Chennai & Coimbatore)";
+    document.getElementById('kpi-title-surge').innerText = `Next Major Festival`;
+    document.getElementById('surge-time').innerText = "Pongal (Jan 14)";
+    document.getElementById('kpi-subtitle-surge').innerText = "Statewide High Alert";
 }
 
 function initChart() {
     const ctx = document.getElementById('demandChart').getContext('2d');
     
-    const surgeLinePlugin = {
-        id: 'surgeLine',
-        afterDraw: (chart) => {
-            const ctx = chart.ctx;
-            const xAxis = chart.scales.x;
-            const yAxis = chart.scales.y;
-            
-            const x = xAxis.getPixelForTick(3); // 8 PM
-            
-            ctx.save();
-            ctx.beginPath();
-            ctx.setLineDash([5, 5]);
-            ctx.moveTo(x, yAxis.top);
-            ctx.lineTo(x, yAxis.bottom);
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = '#ef4444';
-            ctx.stroke();
-            
-            ctx.fillStyle = '#ef4444';
-            ctx.beginPath();
-            ctx.roundRect(x - 70, yAxis.top + 5, 140, 35, 4);
-            ctx.fill();
-            
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'center';
-            ctx.font = '10px Inter';
-            ctx.fillText('Expected Surge', x, yAxis.top + 17);
-            ctx.font = 'bold 11px Inter';
-            ctx.fillText('7:45 PM - 9:00 PM', x, yAxis.top + 31);
-            
-            ctx.restore();
-        }
-    };
-
-    Chart.register(surgeLinePlugin);
-
     new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM'],
+            labels: ['Pongal', 'Thaipusam', 'Tamil New Year', 'Aadi Perukku', 'Vinayagar Chaturthi', 'Deepavali'],
             datasets: [
                 {
-                    label: 'Chennai',
-                    data: [8500, 10000, 11500, 14000, 12500, 9500],
-                    borderColor: '#f59e0b',
-                    borderWidth: 2,
-                    tension: 0.4,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#f59e0b'
-                },
-                {
-                    label: 'Coimbatore',
-                    data: [5000, 6800, 8200, 10500, 9000, 6100],
-                    borderColor: '#ef4444',
-                    borderWidth: 2,
-                    tension: 0.4,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#ef4444'
-                },
-                {
-                    label: 'Madurai',
-                    data: [4500, 5500, 6800, 8500, 7200, 5500],
-                    borderColor: '#3b82f6',
-                    borderWidth: 2,
-                    tension: 0.4,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#3b82f6'
+                    label: 'Predicted Crowd (Millions)',
+                    data: [8.5, 4.2, 3.8, 5.1, 6.2, 9.8],
+                    backgroundColor: ['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ef4444'],
+                    borderRadius: 4
                 }
             ]
         },
@@ -243,20 +187,11 @@ function initChart() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    position: 'top',
-                    labels: { color: '#64748b', boxWidth: 12, usePointStyle: true, pointStyle: 'line' }
-                }
+                legend: { display: false }
             },
             scales: {
-                y: {
-                    grid: { color: '#e2e8f0', drawBorder: false },
-                    ticks: { color: '#64748b', callback: (val) => val >= 1000 ? (val/1000) + 'K' : val }
-                },
-                x: {
-                    grid: { display: false },
-                    ticks: { color: '#64748b' }
-                }
+                y: { grid: { color: '#e2e8f0' } },
+                x: { grid: { display: false } }
             }
         }
     });
@@ -268,40 +203,37 @@ function loadAIRecommendations() {
     let html = `
         <div class="ai-recommendation high-priority">
             <div class="ai-header">
-                <span class="badge badge-danger">High Priority</span>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Live</span>
+                <span class="badge badge-danger">High Priority Event</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Pongal Festival (Jan 14-17)</span>
             </div>
-            <div class="ai-action">Move 15 buses from Erode ➔ CBE Gandhipuram</div>
+            <div class="ai-action">AI Prediction: Massive outbound travel from Chennai</div>
             <div class="ai-impact">
-                <span style="color: var(--success);">Gain: +15 buses (CBE)</span> | 
-                <span style="color: var(--danger);">Loss: -15 buses (Erode)</span><br>
-                <span>ETA: 1.5 hrs | Impact: Resolves critical crowd in CBE</span>
+                <span style="color: var(--success);">Action: Allocate +500 Reserve Buses to CMBT</span><br>
+                <span>Impact: Prevents 90% of expected congestion</span>
             </div>
         </div>
         
-        <div class="ai-recommendation high-priority">
+        <div class="ai-recommendation medium-priority">
             <div class="ai-header">
-                <span class="badge badge-danger" style="background: var(--danger); color: white;">High Priority</span>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Live</span>
+                <span class="badge badge-warning" style="color: white;">Regional Alert</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Chithirai Festival (May)</span>
             </div>
-            <div class="ai-action">Move 10 buses from Tambaram ➔ CMBT Koyambedu</div>
+            <div class="ai-action">AI Prediction: Heavy influx to Madurai District</div>
             <div class="ai-impact">
-                <span style="color: var(--success);">Gain: +10 buses (CMBT)</span> | 
-                <span style="color: var(--danger);">Loss: -10 buses (Tambaram)</span><br>
-                <span>ETA: 45 mins | Impact: Balances heavy load at Chennai Main Hub</span>
+                <span style="color: var(--success);">Action: Divert 150 buses from Trichy/Dindigul</span><br>
+                <span>Impact: Balances Madurai Mattuthavani load</span>
             </div>
         </div>
         
         <div class="ai-recommendation plan-ahead">
             <div class="ai-header">
-                <span class="badge badge-info">Plan Ahead</span>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">8:30 PM</span>
+                <span class="badge badge-info">Statewide Plan</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Deepavali (Nov)</span>
             </div>
-            <div class="ai-action">Deploy 20 Reserve Buses to Madurai Mattuthavani</div>
+            <div class="ai-action">AI Prediction: Highest state-wide travel volume</div>
             <div class="ai-impact">
-                <span style="color: var(--success);">Gain: +20 buses (Madurai)</span> | 
-                <span style="color: var(--text-muted);">Loss: -20 buses (Depot)</span><br>
-                <span>ETA: 30 min | Impact: Prevents massive night surge in South TN</span>
+                <span style="color: var(--success);">Action: 100% Fleet Utilization Required</span><br>
+                <span>Impact: All depots must suspend maintenance</span>
             </div>
         </div>
     `;
@@ -309,40 +241,37 @@ function loadAIRecommendations() {
     container.innerHTML = html;
 }
 
-// Simulate real-time data changes across Tamil Nadu
 function startRealTimeSimulation() {
     setInterval(() => {
         let totalStatewideCrowd = 0;
+        let criticalCount = 0;
         
-        // Loop through all hubs and randomly update their crowd values
         Object.keys(allHubs).forEach(key => {
             let hub = allHubs[key];
-            let fluctuation = Math.floor(Math.random() * 80) - 35; // small fluctuation
+            let fluctuation = Math.floor(Math.random() * 80) - 35;
             hub.crowd = Math.max(0, hub.crowd + fluctuation);
             totalStatewideCrowd += hub.crowd;
             
-            let percent = Math.round((hub.crowd / hub.max) * 100);
+            let ratio = hub.crowd / hub.max;
+            if (ratio > 0.85) criticalCount++;
             
-            // Update popup if open
-            let popupEl = document.getElementById(`popup-${hub.id}`);
+            let percent = Math.round(ratio * 100);
+            let popupEl = document.getElementById(`popup-\${hub.id}`);
             if (popupEl) {
-                popupEl.innerHTML = `${hub.crowd.toLocaleString()} (${percent}%)`;
+                popupEl.innerHTML = `\${hub.crowd.toLocaleString()} (\${percent}%)`;
             }
         });
 
-        // Add an arbitrary base for unlisted stops to look realistic
-        totalStatewideCrowd += 85000;
-        
-        // Update top KPIs based on what is selected
         if (selectedHubId) {
             let hub = allHubs[selectedHubId];
             document.getElementById('total-passengers').innerText = hub.crowd.toLocaleString();
-            let isCritical = (hub.crowd/hub.max) > 0.9;
+            let isCritical = (hub.crowd/hub.max) > 0.85;
             document.getElementById('critical-stops-count').innerText = isCritical ? "CRITICAL" : "NORMAL";
-            document.getElementById('kpi-subtitle-critical').innerText = `Capacity: ${Math.round((hub.crowd/hub.max)*100)}%`;
+            document.getElementById('kpi-subtitle-critical').innerText = `Capacity: \${Math.round((hub.crowd/hub.max)*100)}%`;
         } else {
             document.getElementById('total-passengers').innerText = totalStatewideCrowd.toLocaleString();
+            document.getElementById('critical-stops-count').innerText = criticalCount;
         }
         
-    }, 3000); // Update every 3 seconds
+    }, 3000);
 }

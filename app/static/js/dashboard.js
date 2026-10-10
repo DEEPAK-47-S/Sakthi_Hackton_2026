@@ -236,14 +236,14 @@ function initMap() {
         
         const popupContent = `
             <div style="min-width: 180px; font-family: 'Inter', sans-serif;">
-                <strong style="font-size: 1.1rem; display: block; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-bottom: 8px;">\${p.name} (\${p.district})</strong>
+                <strong style="font-size: 1.1rem; display: block; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-bottom: 8px;">${p.name} (${p.district})</strong>
                 <div style="margin-bottom: 5px;">
                     <span style="color: #64748b; font-size: 0.85rem;">Live Crowd:</span><br>
-                    <strong style="font-size: 1rem; color: \${p.color};" id="popup-\${p.id}">\${p.crowd.toLocaleString()} (\${Math.round((p.crowd/p.max)*100)}%)</strong>
+                    <strong style="font-size: 1rem; color: ${p.color};" id="popup-${p.id}">${p.crowd.toLocaleString()} (${Math.round((p.crowd/p.max)*100)}%)</strong>
                 </div>
                 <div>
                     <span style="color: #64748b; font-size: 0.85rem;">Active Buses:</span><br>
-                    <strong style="font-size: 0.95rem;">\${p.buses} / \${p.totalBuses}</strong>
+                    <strong style="font-size: 0.95rem;">${p.buses} / ${p.totalBuses}</strong>
                 </div>
                 <div style="margin-top: 10px;">
                     <a href="/optimization" class="badge badge-info" style="text-decoration: none; display: block; text-align: center;">View AI Allocations</a>
@@ -268,21 +268,21 @@ function initMap() {
 }
 
 function updateKPIsForHub(hub) {
-    document.getElementById('kpi-title-passengers').innerText = `Total Passengers (\${hub.name})`;
+    document.getElementById('kpi-title-passengers').innerText = `Total Passengers (${hub.name})`;
     document.getElementById('total-passengers').innerText = hub.crowd.toLocaleString();
-    document.getElementById('kpi-subtitle-passengers').innerText = `Location: \${hub.district} District`;
+    document.getElementById('kpi-subtitle-passengers').innerText = `Location: ${hub.district} District`;
     
-    document.getElementById('kpi-title-buses').innerText = `Active Buses (\${hub.name})`;
+    document.getElementById('kpi-title-buses').innerText = `Active Buses (${hub.name})`;
     document.getElementById('total-buses').innerText = hub.buses.toLocaleString();
-    document.getElementById('kpi-subtitle-buses').innerText = `of \${hub.totalBuses} allocated`;
-    document.getElementById('kpi-progress-buses').style.width = `\${Math.round((hub.buses/hub.totalBuses)*100)}%`;
+    document.getElementById('kpi-subtitle-buses').innerText = `of ${hub.totalBuses} allocated`;
+    document.getElementById('kpi-progress-buses').style.width = `${Math.round((hub.buses/hub.totalBuses)*100)}%`;
     
     let isCritical = (hub.crowd/hub.max) > 0.85;
     document.getElementById('kpi-title-critical').innerText = `Status Level`;
     document.getElementById('critical-stops-count').innerText = isCritical ? "CRITICAL" : "NORMAL";
-    document.getElementById('kpi-subtitle-critical').innerText = `Capacity: \${Math.round((hub.crowd/hub.max)*100)}%`;
+    document.getElementById('kpi-subtitle-critical').innerText = `Capacity: ${Math.round((hub.crowd/hub.max)*100)}%`;
     
-    document.getElementById('kpi-title-surge').innerText = `Next Surge (\${hub.name})`;
+    document.getElementById('kpi-title-surge').innerText = `Next Surge (${hub.name})`;
     document.getElementById('surge-time').innerText = "In ~45 mins";
     document.getElementById('kpi-subtitle-surge').innerText = "Based on historical trend";
 }
@@ -392,9 +392,9 @@ function startRealTimeSimulation() {
             if (ratio > 0.85) criticalCount++;
             
             let percent = Math.round(ratio * 100);
-            let popupEl = document.getElementById(`popup-\${hub.id}`);
+            let popupEl = document.getElementById(`popup-${hub.id}`);
             if (popupEl) {
-                popupEl.innerHTML = `\${hub.crowd.toLocaleString()} (\${percent}%)`;
+                popupEl.innerHTML = `${hub.crowd.toLocaleString()} (${percent}%)`;
             }
         });
 
@@ -403,7 +403,7 @@ function startRealTimeSimulation() {
             document.getElementById('total-passengers').innerText = hub.crowd.toLocaleString();
             let isCritical = (hub.crowd/hub.max) > 0.85;
             document.getElementById('critical-stops-count').innerText = isCritical ? "CRITICAL" : "NORMAL";
-            document.getElementById('kpi-subtitle-critical').innerText = `Capacity: \${Math.round((hub.crowd/hub.max)*100)}%`;
+            document.getElementById('kpi-subtitle-critical').innerText = `Capacity: ${Math.round((hub.crowd/hub.max)*100)}%`;
         } else {
             document.getElementById('total-passengers').innerText = totalStatewideCrowd.toLocaleString();
             document.getElementById('critical-stops-count').innerText = criticalCount;

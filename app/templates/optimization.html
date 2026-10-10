@@ -127,7 +127,7 @@
                         <span class="badge ${s.status === 'Executing' ? 'badge-success' : (s.status === 'Pending Approval' ? 'badge-warning' : 'badge-info')}">${s.status}</span>
                     </div>
                     <div class="auto-style-49196">
-                        <div class="auto-style-74943">
+                        <div class="auto-style-74943-b">
                             <div class="auto-style-84209">Source</div>
                             <div class="auto-style-43987">${s.from}</div>
                             <div class="auto-style-19596">- ${s.buses} buses</div>
@@ -149,7 +149,7 @@
                             <span>${s.progress}%</span>
                         </div>
                         <div class="auto-style-94056">
-                            <div class="auto-style-43115"></div>
+                            <div class="auto-style-43115" style="width: ${s.progress}%; height: 100%; background: ${pColor};"></div>
                         </div>
                     </div>
                 </div>

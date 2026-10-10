@@ -426,25 +426,46 @@
                         badge.className = data.risk_level === 'CRITICAL' ? 'badge badge-danger' : 
                                          (data.risk_level === 'HIGH' ? 'badge badge-warning' : 'badge badge-success');
                         
+                        
                         const deficitId = hub.card.replace('hub-', 'deficit-');
                         const defectLabel = document.getElementById(deficitId);
-                        if (defectLabel && data.recommended_extra_buses > 0) {
-                            defectLabel.innerText = `-${data.recommended_extra_buses} Buses`;
-                            // Update the status text to show what AI is planning
-                            statusEl.innerHTML = `⚠️ Preparing to dispatch ${data.recommended_extra_buses} Buses...`;
-                        }
-                    }
-
-                    // If CRITICAL risk and needs buses -> Auto Dispatch!
-                    if (data.risk_level === 'CRITICAL' || data.risk_level === 'HIGH') {
-                        if (data.recommended_extra_buses > 0) {
-                            const maxAvailable = hub.maxBuses || Math.floor(Math.random() * 20 + 30);
-                            const actualDispatch = Math.min(data.recommended_extra_buses, maxAvailable);
-                            
-                            console.log(`Auto-dispatching ${actualDispatch} (capped by depot) to ${hub.name}...`);
-                            setTimeout(() => {
-                                dispatchBuses(hub.name, hub.depot, actualDispatch, hub.card, hub.badge, hub.bar);
-                            }, Math.random() * 3000 + 1000); // Stagger dispatches
+                        
+                        if (data.risk_level === 'CRITICAL' || data.risk_level === 'HIGH') {
+                            if (defectLabel && data.recommended_extra_buses > 0) {
+                                defectLabel.innerText = `-${data.recommended_extra_buses} Buses`;
+                                
+                                // Step 1: The station automatically REQUESTS the buses
+                                statusEl.innerHTML = `📡 Auto-Requesting ${data.recommended_extra_buses} Buses...`;
+                                statusEl.dataset.dispatched = 'requesting'; // mark as in-progress to prevent spam
+                                
+                                if (window.showDispatchNotification) {
+                                    window.showDispatchNotification(
+                                        `🚨 Emergency Request from ${hub.name}`,
+                                        `Station overloaded. Requesting AI for ${data.recommended_extra_buses} extra buses...`,
+                                        '📡'
+                                    );
+                                }
+                                
+                                const maxAvailable = hub.maxBuses || Math.floor(Math.random() * 20 + 30);
+                                const actualDispatch = Math.min(data.recommended_extra_buses, maxAvailable);
+                                
+                                // Step 2: AI Automatically Approves and DISPATCHES after 3.5 seconds
+                                setTimeout(() => {
+                                    if (window.showDispatchNotification) {
+                                        window.showDispatchNotification(
+                                            `🤖 AI Auto-Warden Approved`,
+                                            `Allocating ${actualDispatch} buses from ${hub.depot} to ${hub.name}.`,
+                                            '⚡'
+                                        );
+                                    }
+                                    statusEl.innerHTML = `⚠️ Preparing to dispatch ${actualDispatch} Buses...`;
+                                    
+                                    setTimeout(() => {
+                                        dispatchBuses(hub.name, hub.depot, actualDispatch, hub.card, hub.badge, hub.bar);
+                                    }, 1500);
+                                    
+                                }, 3500);
+                            }
                         }
                     }
                 } catch (e) {

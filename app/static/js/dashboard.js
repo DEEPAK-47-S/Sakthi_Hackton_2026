@@ -373,13 +373,21 @@ function updateKPIsForStatewide() {
     const totalCrowd = stopsData.stops.reduce((sum, s) => sum + s.crowd, 0);
     const critical = stopsData.stops.filter(s => (s.crowd / s.max) > 0.85).length;
 
+    const totalStops = stopsData.stops.length;
+    let totalStatewideBuses = 0;
+    stopsData.districts.forEach(d => {
+        const dStops = stopsData.stops.filter(s => s.district === d).length;
+        totalStatewideBuses += Math.round(dStops * 4.2) + 20;
+    });
+    const activeBuses = Math.round(totalStatewideBuses * 0.968); // 96.8% active
+
     document.getElementById('kpi-title-passengers').innerText = `Total Passengers (Statewide)`;
     document.getElementById('total-passengers').innerText = totalCrowd.toLocaleString();
-    document.getElementById('kpi-subtitle-passengers').innerText = `👥 Across 38 Districts (852 Stops)`;
+    document.getElementById('kpi-subtitle-passengers').innerText = `👥 Across 38 Districts (${totalStops} Stops)`;
 
     document.getElementById('kpi-title-buses').innerText = `Active Buses (Statewide)`;
-    document.getElementById('total-buses').innerText = "1,452";
-    document.getElementById('kpi-subtitle-buses').innerText = `of 1,500 registered fleet`;
+    document.getElementById('total-buses').innerText = activeBuses.toLocaleString();
+    document.getElementById('kpi-subtitle-buses').innerText = `of ${totalStatewideBuses.toLocaleString()} registered fleet`;
     document.getElementById('kpi-progress-buses').style.width = `96.8%`;
 
     document.getElementById('kpi-title-critical').innerText = `Critical Stops`;
@@ -712,13 +720,25 @@ function startRealTimeSimulation() {
             
             s.crowd = Math.max(10, Math.min(s.max, s.crowd + delta));
 
+            const ratio = s.crowd / s.max;
+            let color = ratio > 0.85 ? '#ef4444' : (ratio > 0.65 ? '#f59e0b' : '#10b981');
+            
             const popupEl = document.getElementById(`popup-${s.id}`);
             if (popupEl) {
-                const ratio = s.crowd / s.max;
                 const percent = Math.round(ratio * 100);
-                let color = ratio > 0.85 ? '#ef4444' : (ratio > 0.65 ? '#f59e0b' : '#10b981');
                 popupEl.style.color = color;
                 popupEl.innerHTML = `${s.crowd.toLocaleString()} / ${s.max.toLocaleString()} (${percent}%)`;
+            }
+
+            // Dynamically update the marker icon color on the map so they turn red!
+            if (currentMarkers[s.id]) {
+                const label = s.type === 'main_terminus' ? '🏢' : (s.type === 'town_stand' ? '🚏' : '📍');
+                const size = s.type === 'main_terminus' ? 28 : (s.type === 'town_stand' ? 22 : 18);
+                if (s.type === 'main_terminus' && ratio <= 0.65) color = '#3b82f6';
+                if (s.type !== 'main_terminus' && s.type !== 'town_stand' && ratio <= 0.65) color = '#64748b';
+                
+                // To avoid massive DOM re-renders, we only update if it crosses threshold (simplified: just set it)
+                currentMarkers[s.id].marker.setIcon(createIcon(color, size, label));
             }
         });
 

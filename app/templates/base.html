@@ -27,15 +27,16 @@
     </div>
 
     <style>
-        @keyframes zoomInOutIntro {
-            0% { transform: scale(0.3); opacity: 0; }
-            40% { transform: scale(1.15); opacity: 1; }
-            65% { transform: scale(1.0); opacity: 1; }
-            90% { transform: scale(1.2); opacity: 0; }
-            100% { transform: scale(1.5); opacity: 0; }
+        @keyframes fastZoomInOut {
+            0% { transform: scale(0); opacity: 0; filter: blur(15px); }
+            15% { transform: scale(1.1); opacity: 1; filter: blur(0px); }
+            25% { transform: scale(1.0); opacity: 1; }
+            70% { transform: scale(1.0); opacity: 1; }
+            90% { transform: scale(4.0); opacity: 0; filter: blur(10px); }
+            100% { transform: scale(5.0); opacity: 0; }
         }
         .intro-animate {
-            animation: zoomInOutIntro 2.8s ease-in-out forwards;
+            animation: fastZoomInOut 1.8s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
         }
     </style>
 
@@ -49,8 +50,8 @@
                     setTimeout(() => {
                         intro.style.display = 'none';
                         sessionStorage.setItem('introPlayed', 'true'); // Play once per session
-                    }, 500);
-                }, 2800); // Intro lasts ~3 seconds total
+                    }, 300);
+                }, 1600); // Fast snappy intro
             } else {
                 intro.style.display = 'none';
             }

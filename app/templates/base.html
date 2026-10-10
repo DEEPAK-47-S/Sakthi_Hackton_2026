@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
     
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/logo.jpg') }}">
+    
     <!-- Leaflet CSS for Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
@@ -20,7 +22,7 @@
     <div class="app-layout">
         <aside class="sidebar">
             <div class="sidebar-brand">
-                <div class="logo-icon">🚌</div>
+                <div class="logo-icon"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="FestivalFlow AI Logo" style="width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: block;"></div>
                 <div class="brand-text">
                     <h2>FestivalFlow AI</h2>
                     <p>Smarter Buses. Safer Journeys.</p>
@@ -46,7 +48,7 @@
         <main class="main-content">
             <header class="top-header">
                 <div class="header-location">
-                    <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/TamilNadu_Logo.svg/512px-TamilNadu_Logo.svg.png" alt="TN Logo" class="auto-style-5198"></div>
+                    <div class="icon"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="TN Smart Transit Logo" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.25);"></div>
                     <div>
                         <h3>Tamil Nadu Smart Transit</h3>
                         <p>Statewide Real-Time Crowd & Bus Management</p>

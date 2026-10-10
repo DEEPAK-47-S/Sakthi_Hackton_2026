@@ -278,8 +278,8 @@ function updateKPIsForStatewide() {
     document.getElementById('kpi-subtitle-critical').innerText = `(> 85% capacity)`;
 
     document.getElementById('kpi-title-surge').innerText = `Next Major Festival`;
-    document.getElementById('surge-time').innerText = "Pongal (Jan 14-17)";
-    document.getElementById('kpi-subtitle-surge').innerText = "Statewide High Alert";
+    document.getElementById('surge-time').innerText = "Deepavali (Nov 8, 2026)";
+    document.getElementById('kpi-subtitle-surge').innerText = "Statewide MAXIMUM Alert";
 }
 
 /* ========================================================

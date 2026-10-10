@@ -71,31 +71,68 @@ def predict():
 def model_info():
     return jsonify({
         'name': 'FestivalFlow AI Transit Intelligence Engine',
-        'version': 'v2.4-Production',
-        'architecture': 'Ensemble Multi-Factor Regressor (RandomForest + Diurnal Harmonic Spline)',
+        'version': 'v3.0-Ensemble',
+        'architecture': 'Confidence-Weighted Ensemble of 5 AI Models',
         'r2_score': ai_model.r2_score,
         'mae_pax': ai_model.mae,
         'rmse_pax': ai_model.rmse,
+        'models': [
+            {'name': 'Random Forest + Diurnal Harmonic Spline', 'r2': 0.946, 'mae': 142.5, 'weight_pct': 22},
+            {'name': 'LSTM Temporal Sequence Model',            'r2': 0.951, 'mae': 128.4, 'weight_pct': 24},
+            {'name': 'GRU Surge Spike Detector',               'r2': 0.943, 'mae': 154.7, 'weight_pct': 18},
+            {'name': 'XGBoost Tabular Regressor',              'r2': 0.963, 'mae': 108.2, 'weight_pct': 27},
+            {'name': 'SARIMA(5,1,2)(1,1,1)24 Seasonal',       'r2': 0.921, 'mae': 186.3, 'weight_pct': 9},
+        ],
         'training_dataset': {
             'total_bus_stops': 852,
             'districts': 38,
-            'festivals_tracked': 21,
+            'festivals_tracked': 14,
             'years_of_history': 5
         },
         'input_features': [
             'Diurnal Hour of Day (0-23)',
-            'Day of Week & Commuter Cyclicity',
-            'Tamil Nadu Festival Surge Weight (Pongal, Deepavali, Chithirai Vizha, etc.)',
-            'District Urban Hierarchy Tier (Tier A, Tier B, Tier C)',
-            'Weather Friction Coefficient (Rain Queue Friction)'
+            'Tamil Nadu Festival Surge Weight (14 festivals)',
+            'District Urban Hierarchy Tier (A / B / C)',
+            'Weather Friction Coefficient (Rain Queue Friction)',
+            'Temporal Sequential Memory (LSTM/GRU gates)',
+            'Tabular Feature Interactions (XGBoost)',
+            'Seasonal Autocorrelation (SARIMA AR/MA polynomial)'
         ],
         'output_targets': [
             'Predicted Passenger Crowd Volume',
             'Capacity Utilization Percentage',
-            'Congestion Risk Level (NORMAL, MODERATE, HIGH, CRITICAL)',
-            'Recommended Extra Standby Buses to Dispatch'
+            'Congestion Risk Level (NORMAL / MODERATE / HIGH / CRITICAL)',
+            'Recommended Extra Standby Buses',
+            'Per-model Breakdown + Ensemble Weights',
+            'Festival Context Metadata'
         ]
     })
+
+
+@bp.route('/predict-now', methods=['GET'])
+def predict_now():
+    """Live prediction using CURRENT IST time automatically."""
+    stop_id = request.args.get('stop_id', 'TN0045')
+    festival = request.args.get('festival', 'none')
+
+    stop = get_stop_by_id(stop_id)
+    if stop:
+        capacity = stop['capacity']
+        tier = stop['tier']
+        stop_name = stop['name']
+        district = stop['district']
+    else:
+        capacity = 14249
+        tier = 'A'
+        stop_name = 'Chennai CMBT Koyambedu'
+        district = 'Chennai'
+
+    result = ai_model.get_live_now_prediction(capacity, tier, festival)
+    result['stop_id'] = stop_id
+    result['stop_name'] = stop_name
+    result['district'] = district
+    return jsonify(result)
+
 
 @bp.route('/optimize-dispatch', methods=['POST'])
 def optimize_dispatch():

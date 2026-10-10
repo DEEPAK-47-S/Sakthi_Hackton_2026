@@ -2,9 +2,16 @@ from flask import Blueprint, render_template
 
 bp = Blueprint('dashboard', __name__)
 
-@bp.route('/dashboard')
 @bp.route('/')
 def index():
+    return render_template('public.html')
+
+@bp.route('/login')
+def login():
+    return render_template('login.html')
+
+@bp.route('/dashboard')
+def dashboard_view():
     return render_template('dashboard.html')
 
 @bp.route('/optimization')

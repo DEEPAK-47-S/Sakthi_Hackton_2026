@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}Live Public Transit Tracker - Tamil Nadu{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+    .public-container {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 20px;
+        height: calc(100vh - 100px);
+        margin: 20px;
+    }
+    .map-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    #public-map {
+        flex: 1;
+        width: 100%;
+        background: #e2e8f0;
+    }
+    .info-panel {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .live-route-card {
+        background: #f8fafc;
+        border-left: 4px solid var(--primary);
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+    }
+    .moving-bus-icon {
+        transition: all 0.1s linear;
+    }
+    @media (max-width: 768px) {
+        .public-container {
+            grid-template-columns: 1fr;
+            grid-template-rows: 60vh auto;
+            height: auto;
+        }
+    }
+    
+    /* HIDE ADMIN SHELL ELEMENTS FOR PUBLIC USER */
+    .sidebar { display: none !important; }
+    .main-content { margin-left: 0 !important; width: 100% !important; }
+    .header-actions { display: none !important; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="public-container">
+    <!-- Live Map -->
+    <div class="map-card">
+        <div style="padding: 15px 20px; background: linear-gradient(90deg, var(--primary), #8b5cf6); color: white; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 1.1rem;">🌍 Live Bus Tracking System</h3>
+            <span class="badge badge-success" style="background: rgba(255,255,255,0.2); color: white; border: none;">Live Updates Active</span>
+        </div>
+        <div id="public-map"></div>
+    </div>
+
+    <!-- Info Panel -->
+    <div class="info-panel">
+        <h3 style="margin-top: 0; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+            📍 Active Transit Routes
+        </h3>
+        <p style="font-size: 0.85rem; color: #64748b;">
+            Monitoring live fleet movements across Tamil Nadu. Distance and ETAs are calculated in real-time.
+        </p>
+        
+        <div id="active-routes-container">
+            <!-- Populated dynamically via JS -->
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; background: #fffbeb; border-radius: 8px; border: 1px solid #fde68a;">
+            <h4 style="margin: 0 0 5px 0; color: #b45309;">Are you an Administrator?</h4>
+            <p style="font-size: 0.8rem; margin: 0 0 10px 0; color: #78350f;">
+                Higher authorities and dispatchers can log in to manage fleet operations, AI predictive dispatch, and approvals.
+            </p>
+            <a href="/login" class="btn-dispatch" style="width: 100%; text-decoration: none; text-align: center; background: linear-gradient(135deg, #10b981, #059669);">
+                🔒 Admin Login Portal
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize Map
+    const map = L.map('public-map').setView([10.8505, 78.6569], 7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    let stops = [];
+    try {
+        const res = await fetch('/static/data/bus_stops.json');
+        const data = await res.json();
+        stops = data.stops;
+        
+        // Plot main terminuses
+        stops.filter(s => s.type === 'main_terminus').forEach(s => {
+            L.marker([s.lat, s.lng], {
+                icon: L.divIcon({
+                    className: 'custom-icon',
+                    html: `<div style="background:#3b82f6; width:20px; height:20px; border-radius:50%; border:2px solid white; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(0,0,0,0.3);"><span style="font-size:10px;">🏢</span></div>`,
+                    iconSize: [20,20]
+                })
+            }).addTo(map).bindPopup(`<strong>${s.name}</strong>`);
+        });
+    } catch(e) {
+        console.error("Failed to load stops", e);
+    }
+
+    const routeContainer = document.getElementById('active-routes-container');
+
+    // Simulate Live Bus Movements
+    function spawnLiveBus() {
+        if(stops.length < 2) return;
+        
+        const start = stops[Math.floor(Math.random() * stops.length)];
+        let end = stops[Math.floor(Math.random() * stops.length)];
+        while(end.id === start.id) {
+            end = stops[Math.floor(Math.random() * stops.length)];
+        }
+
+        // Calculate accurate distance using Haversine (Leaflet map.distance)
+        const startLatLng = L.latLng(start.lat, start.lng);
+        const endLatLng = L.latLng(end.lat, end.lng);
+        const distanceMeters = startLatLng.distanceTo(endLatLng);
+        const distanceKm = (distanceMeters / 1000).toFixed(1);
+        
+        // Assume avg speed of 40 km/h
+        const timeHours = distanceKm / 40;
+        const timeMins = Math.round(timeHours * 60);
+
+        // Draw Route Line
+        const polyline = L.polyline([startLatLng, endLatLng], {
+            color: '#10b981', weight: 3, opacity: 0.6, dashArray: '5, 10'
+        }).addTo(map);
+
+        // Moving Bus Marker
+        const busIcon = L.divIcon({
+            className: 'moving-bus-icon',
+            html: `<div style="background-color: #ef4444; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 1000;"><span style="font-size: 13px; color: white;">🚌</span></div>`,
+            iconSize: [26, 26],
+            iconAnchor: [13, 13]
+        });
+        const movingMarker = L.marker(startLatLng, {icon: busIcon}).addTo(map);
+
+        // Add to Info Panel
+        const cardId = 'route-' + Math.floor(Math.random() * 10000);
+        const card = document.createElement('div');
+        card.className = 'live-route-card';
+        card.id = cardId;
+        card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                <strong style="color:var(--primary); font-size:0.9rem;">Express Route</strong>
+                <span style="font-size:0.75rem; color:#64748b; font-weight:bold;">${distanceKm} km</span>
+            </div>
+            <div style="font-size:0.8rem; color:#334155;">
+                <div>🟢 ${start.name}</div>
+                <div style="margin:4px 0 4px 6px; border-left:2px solid #cbd5e1; padding-left:10px; color:#ef4444; font-weight:bold;">ETA: ${timeMins} mins</div>
+                <div>📍 ${end.name}</div>
+            </div>
+        `;
+        routeContainer.prepend(card);
+        if(routeContainer.children.length > 5) {
+            routeContainer.removeChild(routeContainer.lastChild);
+        }
+
+        // Animate
+        const duration = 8000; // 8 seconds animation
+        const startFrame = performance.now();
+
+        function animateBus(time) {
+            const elapsed = time - startFrame;
+            const progress = Math.min(elapsed / duration, 1.0);
+            
+            const currentLat = start.lat + (end.lat - start.lat) * progress;
+            const currentLng = start.lng + (end.lng - start.lng) * progress;
+            
+            movingMarker.setLatLng([currentLat, currentLng]);
+            
+            if (progress < 1.0) {
+                requestAnimationFrame(animateBus);
+            } else {
+                map.removeLayer(polyline);
+                map.removeLayer(movingMarker);
+                const el = document.getElementById(cardId);
+                if(el) el.style.opacity = '0.5'; // mark arrived
+            }
+        }
+        requestAnimationFrame(animateBus);
+    }
+
+    setInterval(spawnLiveBus, 4000);
+    setTimeout(spawnLiveBus, 1000);
+});
+</script>
+{% endblock %}

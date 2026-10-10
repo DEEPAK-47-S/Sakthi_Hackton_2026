@@ -7,25 +7,25 @@
         <div class="card kpi-card blue">
             <div class="kpi-icon blue">👥</div>
             <div class="kpi-info-flex">
-                <h4>Total Passengers (Active)</h4>
-                <h2 id="total-passengers">45,210</h2>
-                <p>👥 High Volume across CBE District</p>
+                <h4>Total Passengers (Statewide)</h4>
+                <h2 id="total-passengers">185,210</h2>
+                <p>👥 High Volume across Tamil Nadu</p>
             </div>
         </div>
         <div class="card kpi-card green">
             <div class="kpi-icon green">🚍</div>
             <div class="kpi-info-flex">
                 <h4>Active Buses</h4>
-                <h2>342</h2>
-                <p>of 350 available</p>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 97%"></div></div>
+                <h2>1,452</h2>
+                <p>of 1,500 available</p>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 96%"></div></div>
             </div>
         </div>
         <div class="card kpi-card red">
             <div class="kpi-icon red">⚠️</div>
             <div class="kpi-info-flex">
                 <h4>Critical Stops</h4>
-                <h2 id="critical-stops-count">4</h2>
+                <h2 id="critical-stops-count">12</h2>
                 <p>(> 90% capacity)</p>
             </div>
         </div>
@@ -33,8 +33,8 @@
             <div class="kpi-icon purple">🕒</div>
             <div class="kpi-info-flex">
                 <h4>Next Major Surge</h4>
-                <h2>6:00 PM - 8:30 PM</h2>
-                <p>(Gandhipuram Bus Stand)</p>
+                <h2>7:45 PM - 9:00 PM</h2>
+                <p>(Chennai & Coimbatore)</p>
             </div>
         </div>
     </div>
@@ -42,13 +42,12 @@
     <!-- Map Panel -->
     <div class="card map-panel">
         <div class="panel-title mb-0">
-            <span>Live Map – Western Region Transit</span>
+            <span>Live Map – Tamil Nadu State Transit</span>
             <div class="map-legend">
                 <span><span class="status-dot dot-green"></span>Low</span>
                 <span><span class="status-dot dot-orange"></span>Moderate</span>
                 <span><span class="status-dot dot-red"></span>High</span>
-                <span class="legend-divider">🚍 Main Hub</span>
-                <span>🚏 Local Stop</span>
+                <span class="legend-divider">👆 Click any stop for live stats</span>
             </div>
         </div>
         <div id="dashboard-map" class="map-container"></div>
@@ -66,7 +65,7 @@
         
         <div class="ai-footer-note">
             <div class="ai-footer-icon">ℹ️</div>
-            <div>Recommendations update automatically based on real-time traffic and crowd data.</div>
+            <div>Statewide recommendations update automatically based on real-time traffic and crowd data.</div>
         </div>
     </div>
 
@@ -90,28 +89,28 @@
                 <div class="activity-icon green">🚍</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
                     <span class="activity-time">Just now</span>
-                    <span><strong>TN-38-N-1122</strong> arrived at Singanallur</span>
+                    <span><strong>TN-38-N-1122</strong> arrived at Trichy Central</span>
                 </div>
             </li>
             <li>
                 <div class="activity-icon red">⚠️</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
                     <span class="activity-time">2m ago</span>
-                    <span>Crowd at Gandhipuram crossed 95%</span>
+                    <span>Crowd at Chennai CMBT crossed 95%</span>
                 </div>
             </li>
             <li>
                 <div class="activity-icon blue">🚐</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
                     <span class="activity-time">5m ago</span>
-                    <span>Extra bus deployed from Tiruppur depot</span>
+                    <span>12 Extra buses deployed to Coimbatore</span>
                 </div>
             </li>
             <li>
                 <div class="activity-icon purple">🌧️</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
                     <span class="activity-time">15m ago</span>
-                    <span>Weather alert <span class="text-muted">(Rain expected in Pollachi)</span></span>
+                    <span>Weather alert <span class="text-muted">(Rain expected in Madurai)</span></span>
                 </div>
             </li>
         </ul>
@@ -120,25 +119,25 @@
     <!-- Bottom Row: Fleet Status -->
     <div class="card fleet-panel">
         <div class="panel-title">
-            <span class="panel-title-flex">🚍 Regional Fleet Status</span>
+            <span class="panel-title-flex">🚍 Statewide Fleet Status</span>
             <a href="/fleet" class="view-all-link">View All</a>
         </div>
         
         <div class="fleet-circles">
             <div class="fleet-circle-item">
-                <div class="fleet-circle red" id="fleet-gandhipuram" style="border-color: var(--danger); color: var(--danger);">42</div>
-                <span class="fleet-label">Gandhipuram</span>
+                <div class="fleet-circle red" id="fleet-gandhipuram" style="border-color: var(--danger); color: var(--danger);">314</div>
+                <span class="fleet-label">At Main Hubs</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle orange" id="fleet-singanallur">28</div>
-                <span class="fleet-label">Singanallur</span>
+                <div class="fleet-circle orange" id="fleet-singanallur">152</div>
+                <span class="fleet-label">At Local Stops</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle blue" id="fleet-route">264</div>
+                <div class="fleet-circle blue" id="fleet-route">938</div>
                 <span class="fleet-label">On Route</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle gray">8</div>
+                <div class="fleet-circle gray">48</div>
                 <span class="fleet-label">In Depot</span>
             </div>
         </div>
@@ -146,8 +145,8 @@
         <div class="quick-info-box">
             <div>
                 <h4 style="color: var(--warning); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">💡 System Status</h4>
-                <div style="color: var(--success); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.25rem;">✓ AI Optimization Active</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Real-time tracking for CBE, Tiruppur, Erode, Salem, Karur & Pollachi.</div>
+                <div style="color: var(--success); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.25rem;">✓ Statewide AI Active</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Real-time tracking for all 38 districts of Tamil Nadu.</div>
             </div>
             <div style="font-size: 2.5rem; opacity: 0.8;">🚌</div>
         </div>

@@ -7,34 +7,34 @@
         <div class="card kpi-card blue">
             <div class="kpi-icon blue">👥</div>
             <div class="kpi-info-flex">
-                <h4>Total Passengers (estimated)</h4>
-                <h2>40,000</h2>
-                <p>👥 Expected to leave in 2 hours</p>
+                <h4>Total Passengers (Active)</h4>
+                <h2 id="total-passengers">45,210</h2>
+                <p>👥 High Volume across CBE District</p>
             </div>
         </div>
         <div class="card kpi-card green">
             <div class="kpi-icon green">🚍</div>
             <div class="kpi-info-flex">
-                <h4>Buses in Operation</h4>
-                <h2>16</h2>
-                <p>of 16 available</p>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 100%"></div></div>
+                <h4>Active Buses</h4>
+                <h2>342</h2>
+                <p>of 350 available</p>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 97%"></div></div>
             </div>
         </div>
         <div class="card kpi-card red">
             <div class="kpi-icon red">⚠️</div>
-            <div class="kpi-info">
-                <h4>High Crowd Risk Stops</h4>
-                <h2>2</h2>
-                <p>(> 85% capacity)</p>
+            <div class="kpi-info-flex">
+                <h4>Critical Stops</h4>
+                <h2 id="critical-stops-count">4</h2>
+                <p>(> 90% capacity)</p>
             </div>
         </div>
         <div class="card kpi-card purple">
             <div class="kpi-icon purple">🕒</div>
-            <div class="kpi-info">
+            <div class="kpi-info-flex">
                 <h4>Next Major Surge</h4>
-                <h2>7:45 PM - 8:30 PM</h2>
-                <p>(Main Bus Stand)</p>
+                <h2>6:00 PM - 8:30 PM</h2>
+                <p>(Gandhipuram Bus Stand)</p>
             </div>
         </div>
     </div>
@@ -42,13 +42,13 @@
     <!-- Map Panel -->
     <div class="card map-panel">
         <div class="panel-title mb-0">
-            <span>Live Map – Bus Stands & Crowd Levels</span>
+            <span>Live Map – Western Region Transit</span>
             <div class="map-legend">
                 <span><span class="status-dot dot-green"></span>Low</span>
                 <span><span class="status-dot dot-orange"></span>Moderate</span>
                 <span><span class="status-dot dot-red"></span>High</span>
-                <span class="legend-divider">🚍 Bus Stand</span>
-                <span>🚏 Bus</span>
+                <span class="legend-divider">🚍 Main Hub</span>
+                <span>🚏 Local Stop</span>
             </div>
         </div>
         <div id="dashboard-map" class="map-container"></div>
@@ -66,14 +66,14 @@
         
         <div class="ai-footer-note">
             <div class="ai-footer-icon">ℹ️</div>
-            <div>Each move shows the benefit and the service impact at the stop that loses the bus.</div>
+            <div>Recommendations update automatically based on real-time traffic and crowd data.</div>
         </div>
     </div>
 
     <!-- Bottom Row: Chart -->
     <div class="card chart-panel">
         <div class="panel-title">
-            <span class="panel-title-flex">📊 Passenger Demand Forecast</span>
+            <span class="panel-title-flex">📊 Demand Forecast (Real-time)</span>
         </div>
         <div class="chart-container">
             <canvas id="demandChart"></canvas>
@@ -83,42 +83,35 @@
     <!-- Bottom Row: Activity -->
     <div class="card activity-panel">
         <div class="panel-title">
-            <span class="panel-title-flex">🕒 Recent Activity</span>
+            <span class="panel-title-flex">🕒 Live Event Log</span>
         </div>
-        <ul class="activity-list">
+        <ul class="activity-list" id="activity-log">
             <li>
                 <div class="activity-icon green">🚍</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
-                    <span class="activity-time">07:35 PM</span>
-                    <span><strong>TN-01-N-2345</strong> arrived at Periyar Stand</span>
+                    <span class="activity-time">Just now</span>
+                    <span><strong>TN-38-N-1122</strong> arrived at Singanallur</span>
                 </div>
             </li>
             <li>
                 <div class="activity-icon red">⚠️</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
-                    <span class="activity-time">07:28 PM</span>
-                    <span>Crowd level at Main Stand crossed 100%</span>
+                    <span class="activity-time">2m ago</span>
+                    <span>Crowd at Gandhipuram crossed 95%</span>
                 </div>
             </li>
             <li>
                 <div class="activity-icon blue">🚐</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
-                    <span class="activity-time">07:12 PM</span>
-                    <span>Bus TN-01-N-1768 departed to Main Stand</span>
+                    <span class="activity-time">5m ago</span>
+                    <span>Extra bus deployed from Tiruppur depot</span>
                 </div>
             </li>
             <li>
-                <div class="activity-icon purple">⛅</div>
+                <div class="activity-icon purple">🌧️</div>
                 <div style="flex-grow: 1; display: flex; gap: 1rem;">
-                    <span class="activity-time">06:58 PM</span>
-                    <span>Weather updated <span class="text-muted">(Light rain expected after 9 PM)</span></span>
-                </div>
-            </li>
-            <li>
-                <div class="activity-icon green">📈</div>
-                <div style="flex-grow: 1; display: flex; gap: 1rem;">
-                    <span class="activity-time">06:42 PM</span>
-                    <span>Demand forecast <span class="text-muted">for next 2 hours updated</span></span>
+                    <span class="activity-time">15m ago</span>
+                    <span>Weather alert <span class="text-muted">(Rain expected in Pollachi)</span></span>
                 </div>
             </li>
         </ul>
@@ -127,34 +120,34 @@
     <!-- Bottom Row: Fleet Status -->
     <div class="card fleet-panel">
         <div class="panel-title">
-            <span class="panel-title-flex">🚍 Bus Fleet Status</span>
+            <span class="panel-title-flex">🚍 Regional Fleet Status</span>
             <a href="/fleet" class="view-all-link">View All</a>
         </div>
         
         <div class="fleet-circles">
             <div class="fleet-circle-item">
-                <div class="fleet-circle green">12</div>
-                <span class="fleet-label">At Main Stand</span>
+                <div class="fleet-circle red" id="fleet-gandhipuram" style="border-color: var(--danger); color: var(--danger);">42</div>
+                <span class="fleet-label">Gandhipuram</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle orange">4</div>
-                <span class="fleet-label">At East Stop</span>
+                <div class="fleet-circle orange" id="fleet-singanallur">28</div>
+                <span class="fleet-label">Singanallur</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle blue">0</div>
+                <div class="fleet-circle blue" id="fleet-route">264</div>
                 <span class="fleet-label">On Route</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle gray">0</div>
+                <div class="fleet-circle gray">8</div>
                 <span class="fleet-label">In Depot</span>
             </div>
         </div>
         
         <div class="quick-info-box">
             <div>
-                <h4 style="color: var(--warning); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">💡 Quick Info</h4>
-                <div style="color: var(--success); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.25rem;">✓ All systems operational</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Maps, forecasts and recommendations are live.</div>
+                <h4 style="color: var(--warning); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">💡 System Status</h4>
+                <div style="color: var(--success); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.25rem;">✓ AI Optimization Active</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Real-time tracking for CBE, Tiruppur, Erode, Salem, Karur & Pollachi.</div>
             </div>
             <div style="font-size: 2.5rem; opacity: 0.8;">🚌</div>
         </div>

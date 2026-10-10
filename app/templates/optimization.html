@@ -74,9 +74,9 @@
         <div class="card kpi-card purple">
             <div class="kpi-icon purple">⛽</div>
             <div class="kpi-info-flex">
-                <h4>Fuel Optimization</h4>
-                <h2>14.2%</h2>
-                <p>Saved via deadhead reduction</p>
+                <h4>Fleet Consolidation</h4>
+                <h2>Active</h2>
+                <p>Merging rural buses (Max 50 pax/bus)</p>
             </div>
         </div>
         <div class="card kpi-card orange">
@@ -305,7 +305,7 @@
         }, 3000);
     }
 
-    window.dispatchBuses = function(stopName, sourceDepot, count, cardId, badgeId, barId) {
+    window.dispatchBuses = function(stopName, sourceDepot, count, cardId, badgeId, barId, customImpact) {
         // Change status indicator state
         const statusEl = document.getElementById(`status-${cardId}`);
         if (statusEl) {
@@ -391,7 +391,7 @@
             buses: count,
             status: 'Executing',
             eta: Math.floor(Math.random() * 25 + 15) + ' mins',
-            impact: 'AI Auto-Warden Live Emergency Dispatch',
+            impact: customImpact || 'AI Auto-Warden Live Emergency Dispatch',
             progress: 5
         });
         
@@ -481,17 +481,28 @@
                                 
                                 // Step 2: AI Automatically Approves and DISPATCHES after 3.5 seconds
                                 setTimeout(() => {
+                                    const isConsolidation = Math.random() > 0.4;
+                                    let finalDepot = hub.depot;
+                                    let actionMsg = `Allocating ${actualDispatch} buses from ${hub.depot} to ${hub.name}.`;
+                                    let impactMsg = 'Reserve fleet mobilized based on AI demand prediction.';
+                                    
+                                    if (isConsolidation) {
+                                        finalDepot = 'Nearby Rural Stops (Consolidated)';
+                                        actionMsg = `Combined 2 under-utilized buses (4 pax each) at nearby rural routes into 1 bus. Freed up ${actualDispatch} buses for ${hub.name}!`;
+                                        impactMsg = `Smart Consolidation: Merged empty buses to free up fleet. Max capacity 50 pax/bus respected.`;
+                                    }
+
                                     if (window.showDispatchNotification) {
                                         window.showDispatchNotification(
                                             `🤖 AI Auto-Warden Approved`,
-                                            `Allocating ${actualDispatch} buses from ${hub.depot} to ${hub.name}.`,
+                                            actionMsg,
                                             '⚡'
                                         );
                                     }
                                     statusEl.innerHTML = `⚠️ Preparing to dispatch ${actualDispatch} Buses...`;
                                     
                                     setTimeout(() => {
-                                        dispatchBuses(hub.name, hub.depot, actualDispatch, hub.card, hub.badge, hub.bar);
+                                        dispatchBuses(hub.name, finalDepot, actualDispatch, hub.card, hub.badge, hub.bar, impactMsg);
                                     }, 1500);
                                     
                                 }, 3500);

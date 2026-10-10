@@ -10,6 +10,26 @@ let currentMarkers = {};
 let selectedStopId = null;
 let currentDistrict = 'all';
 
+// Animated map routing
+window.drawDispatchRoute = function(fromLatLng, toLatLng, color) {
+    if(!map) return;
+    const polyline = L.polyline([fromLatLng, toLatLng], {
+        color: color || '#8b5cf6', // purple
+        weight: 4,
+        dashArray: '10, 15',
+        opacity: 0.8,
+        lineCap: 'round',
+        className: 'animated-route'
+    }).addTo(map);
+
+    // Remove after 6 seconds to clean up the map
+    setTimeout(() => {
+        if(map.hasLayer(polyline)) {
+            map.removeLayer(polyline);
+        }
+    }, 6000);
+};
+
 // Fleet Tracking State
 let fleetState = {
     statewide: {
@@ -780,6 +800,43 @@ function startRealTimeSimulation() {
             generateDynamicEvent();
         } else {
             renderEventLog();
+        }
+
+        // ==========================================
+        // RURAL BUS CONSOLIDATION STATEWIDE LOOP
+        // ==========================================
+        // Every ~5 ticks (15 seconds), run a state-wide rural consolidation event
+        if (tickCount % 5 === 0) {
+            // Find minor/rural stops
+            const ruralStops = stopsData.stops.filter(s => s.type === 'village_stop' || s.type === 'town_stand');
+            if (ruralStops.length >= 2) {
+                // Pick a needy rural stop
+                const needyStop = ruralStops[Math.floor(Math.random() * ruralStops.length)];
+                // Pick an under-utilized rural stop nearby (just pick random for simulation)
+                const senderStop = ruralStops[Math.floor(Math.random() * ruralStops.length)];
+                
+                if (needyStop.id !== senderStop.id && window.drawDispatchRoute) {
+                    // Draw visual route on the map!
+                    window.drawDispatchRoute([senderStop.lat, senderStop.lng], [needyStop.lat, needyStop.lng], '#f59e0b');
+                    
+                    // Push live event
+                    pushLiveEvent({
+                        icon: 'orange',
+                        symbol: '⛽',
+                        secondsAgo: 0,
+                        title: `Rural Fleet Consolidation`,
+                        text: `Combined 2 under-utilized buses (4 pax each) from ${senderStop.name} to free up 1 bus (Max 50 pax) for ${needyStop.name}.`
+                    });
+                    
+                    if (window.showDispatchNotification && Math.random() > 0.6) {
+                        window.showDispatchNotification(
+                            'State-Wide Route Optimization', 
+                            `Merged empty buses at ${senderStop.name} and redirected to ${needyStop.name}.`,
+                            '🚏'
+                        );
+                    }
+                }
+            }
         }
 
     }, 3000);

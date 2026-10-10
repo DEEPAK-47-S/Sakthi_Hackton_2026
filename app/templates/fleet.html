@@ -19,7 +19,7 @@
                 <h4>Active On Route</h4>
                 <h2 id="fleet-active">1,452</h2>
                 <p>96.8% Utilization</p>
-                <div class="progress-bar-container"><div class="progress-bar" style="width: 96.8%"></div></div>
+                <div class="progress-bar-container"><div class="progress-bar auto-style-32708" ></div></div>
             </div>
         </div>
         <div class="card kpi-card orange">
@@ -41,24 +41,24 @@
     </div>
 
     <!-- Fleet Table -->
-    <div class="card" style="grid-column: 1 / -1; min-height: 500px;">
+    <div class="card auto-style-96259" >
         <div class="panel-title">
             <span class="panel-title-flex">📋 Live Vehicle Tracking</span>
-            <div style="display: flex; gap: 1rem;">
-                <input type="text" placeholder="Search vehicle or route..." style="padding: 0.5rem; border: 1px solid var(--panel-border); border-radius: 4px; font-family: inherit;">
-                <button class="badge badge-info" style="border: none; cursor: pointer;">Filter</button>
+            <div class="auto-style-79943">
+                <input type="text" placeholder="Search vehicle or route..." class="auto-style-72348">
+                <button class="badge badge-info auto-style-39094" >Filter</button>
             </div>
         </div>
         
-        <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 1rem;">
+        <table class="auto-style-94611">
             <thead>
-                <tr style="border-bottom: 2px solid var(--panel-border); color: var(--text-muted);">
-                    <th style="padding: 1rem;">Vehicle No.</th>
-                    <th style="padding: 1rem;">Current Route</th>
-                    <th style="padding: 1rem;">Last Location</th>
-                    <th style="padding: 1rem;">Status</th>
-                    <th style="padding: 1rem;">Crowd Level</th>
-                    <th style="padding: 1rem;">Driver Contact</th>
+                <tr class="auto-style-13843">
+                    <th class="auto-style-80867">Vehicle No.</th>
+                    <th class="auto-style-80867">Current Route</th>
+                    <th class="auto-style-80867">Last Location</th>
+                    <th class="auto-style-80867">Status</th>
+                    <th class="auto-style-80867">Crowd Level</th>
+                    <th class="auto-style-80867">Driver Contact</th>
                 </tr>
             </thead>
             <tbody id="fleet-table-body">
@@ -90,23 +90,23 @@
                 let crowd = Math.floor(Math.random() * 100);
                 let crowdColor = crowd > 85 ? 'red' : (crowd > 60 ? 'orange' : 'green');
                 
-                html += \`
-                    <tr style="border-bottom: 1px solid var(--panel-border);">
-                        <td style="padding: 1rem; font-weight: 600;">TN-\${Math.floor(Math.random() * 90 + 10)}-N-\${Math.floor(Math.random() * 8999 + 1000)}</td>
-                        <td style="padding: 1rem;">\${route.r}</td>
-                        <td style="padding: 1rem;">\${route.loc}</td>
-                        <td style="padding: 1rem;"><span class="badge \${route.badge}">\${route.status}</span></td>
-                        <td style="padding: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 60px; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden;">
-                                    <div style="width: \${crowd}%; height: 100%; background: var(--\${crowdColor === 'red' ? 'danger' : (crowdColor === 'orange' ? 'warning' : 'success')});"></div>
+                html += `
+                    <tr class="auto-style-25218">
+                        <td class="auto-style-35673">TN-\${Math.floor(Math.random() * 90 + 10)}-N-\${Math.floor(Math.random() * 8999 + 1000)}</td>
+                        <td class="auto-style-80867">\${route.r}</td>
+                        <td class="auto-style-80867">\${route.loc}</td>
+                        <td class="auto-style-80867"><span class="badge \${route.badge}">\${route.status}</span></td>
+                        <td class="auto-style-80867">
+                            <div class="auto-style-92488">
+                                <div class="auto-style-65468">
+                                    <div class="auto-style-58649"></div>
                                 </div>
-                                <span style="font-size: 0.85rem;">\${crowd}%</span>
+                                <span class="auto-style-10176">\${crowd}%</span>
                             </div>
                         </td>
-                        <td style="padding: 1rem; color: var(--primary);">📞 \${Math.floor(Math.random() * 900000000 + 9000000000)}</td>
+                        <td class="auto-style-85427">📞 \${Math.floor(Math.random() * 900000000 + 9000000000)}</td>
                     </tr>
-                \`;
+                `;
             }
             tbody.innerHTML = html;
         };

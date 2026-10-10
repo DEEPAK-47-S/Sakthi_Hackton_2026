@@ -27,8 +27,10 @@ if not exist ".env" (
 
 echo ===================================================
 echo Server is launching at: http://127.0.0.1:5000
+echo Opening browser automatically...
 echo Press Ctrl+C in this window to stop the server.
 echo ===================================================
+start http://127.0.0.1:5000
 python wsgi.py
 
 pause

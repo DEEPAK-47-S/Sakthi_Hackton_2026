@@ -496,24 +496,23 @@
                                     let actionMsg = `Allocating ${actualDispatch} buses from ${hub.depot} to ${hub.name}.`;
                                     let impactMsg = 'Reserve fleet mobilized based on AI demand prediction.';
                                     
-                                    if (isConsolidation) {
-                                        finalDepot = 'Nearby Rural Stops (Consolidated)';
-                                        actionMsg = `Combined 2 under-utilized buses (4 pax each) at nearby rural routes into 1 bus. Freed up ${actualDispatch} buses for ${hub.name}!`;
-                                        impactMsg = `Smart Consolidation: Merged empty buses to free up fleet. Max capacity 50 pax/bus respected.`;
+                                    if (isConsolidation && typeof window.findConsolidations === 'function') {
+                                        // Automated AI Trigger
+                                        window.findConsolidations(true);
+                                    } else {
+                                        if (window.showDispatchNotification) {
+                                            window.showDispatchNotification(
+                                                `🤖 AI Auto-Warden Approved`,
+                                                actionMsg,
+                                                '⚡'
+                                            );
+                                        }
+                                        statusEl.innerHTML = `⚠️ Preparing to dispatch ${actualDispatch} Buses...`;
+                                        
+                                        setTimeout(() => {
+                                            dispatchBuses(hub.name, hub.depot, actualDispatch, hub.card, hub.badge, hub.bar, impactMsg);
+                                        }, 1500);
                                     }
-
-                                    if (window.showDispatchNotification) {
-                                        window.showDispatchNotification(
-                                            `🤖 AI Auto-Warden Approved`,
-                                            actionMsg,
-                                            '⚡'
-                                        );
-                                    }
-                                    statusEl.innerHTML = `⚠️ Preparing to dispatch ${actualDispatch} Buses...`;
-                                    
-                                    setTimeout(() => {
-                                        dispatchBuses(hub.name, finalDepot, actualDispatch, hub.card, hub.badge, hub.bar, impactMsg);
-                                    }, 1500);
                                     
                                 }, 3500);
                             }
@@ -558,10 +557,10 @@
         }
 
         // New Phase 3: Admin Approval Workflow for Consolidation
-        window.findConsolidations = async function() {
+        window.findConsolidations = async function(isAutoTriggered = false) {
             try {
                 const btn = document.querySelector('button[onclick="findConsolidations()"]');
-                btn.innerText = "⏳ Analyzing Routes...";
+                if (btn) btn.innerText = "⏳ Analyzing Routes...";
                 
                 const response = await fetch('/api/v1/optimization/run', { method: 'POST' });
                 const data = await response.json();
@@ -579,13 +578,21 @@
                     `;
                     
                     panel.style.display = 'block';
+                    
+                    if (isAutoTriggered && window.showDispatchNotification) {
+                         window.showDispatchNotification(
+                             '🚨 Action Required!',
+                             'AI found a consolidation opportunity! Please review and approve in the scenario panel.',
+                             '⚠️'
+                         );
+                    }
                 } else {
-                    alert("No consolidation opportunities found at this time.");
+                    if (!isAutoTriggered) alert("No consolidation opportunities found at this time.");
                 }
-                btn.innerHTML = "🔍 Find Consolidation Opportunities";
+                if (btn) btn.innerHTML = "🔍 Find Consolidation Opportunities";
             } catch (e) {
                 console.error(e);
-                alert("Error running optimization engine.");
+                if (!isAutoTriggered) alert("Error running optimization engine.");
             }
         };
         

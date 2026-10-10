@@ -10,9 +10,11 @@ let currentMarkers = {};
 let selectedStopId = null;
 let currentDistrict = 'all';
 
-// Animated map routing
+// Animated map routing with moving bus
 window.drawDispatchRoute = function(fromLatLng, toLatLng, color) {
     if(!map) return;
+    
+    // Draw the dashed line
     const polyline = L.polyline([fromLatLng, toLatLng], {
         color: color || '#8b5cf6', // purple
         weight: 4,
@@ -22,12 +24,39 @@ window.drawDispatchRoute = function(fromLatLng, toLatLng, color) {
         className: 'animated-route'
     }).addTo(map);
 
-    // Remove after 6 seconds to clean up the map
-    setTimeout(() => {
-        if(map.hasLayer(polyline)) {
-            map.removeLayer(polyline);
+    // Create a small moving bus icon
+    const busIcon = L.divIcon({
+        className: 'moving-bus-icon',
+        html: `<div style="background-color: ${color || '#8b5cf6'}; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 6px rgba(0,0,0,0.5); z-index: 1000;"><span style="font-size: 11px; color: white;">🚌</span></div>`,
+        iconSize: [24, 24],
+        iconAnchor: [12, 12]
+    });
+    
+    const movingMarker = L.marker(fromLatLng, {icon: busIcon}).addTo(map);
+
+    const duration = 6000; // 6 seconds for the bus to travel
+    const startFrame = performance.now();
+
+    function animateBus(time) {
+        const elapsed = time - startFrame;
+        const progress = Math.min(elapsed / duration, 1.0);
+        
+        // Math to calculate intermediate point
+        const currentLat = fromLatLng[0] + (toLatLng[0] - fromLatLng[0]) * progress;
+        const currentLng = fromLatLng[1] + (toLatLng[1] - fromLatLng[1]) * progress;
+        
+        movingMarker.setLatLng([currentLat, currentLng]);
+        
+        if (progress < 1.0) {
+            requestAnimationFrame(animateBus);
+        } else {
+            // Remove from map after animation completes
+            if(map.hasLayer(polyline)) map.removeLayer(polyline);
+            if(map.hasLayer(movingMarker)) map.removeLayer(movingMarker);
         }
-    }, 6000);
+    }
+    
+    requestAnimationFrame(animateBus);
 };
 
 // Fleet Tracking State

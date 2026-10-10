@@ -1,5 +1,5 @@
-﻿{% extends "base.html" %}
-{% block title %}Crowd Forecasting â€“ 5-Model AI Ensemble | Tamil Nadu Smart Transit{% endblock %}
+{% extends "base.html" %}
+{% block title %}Crowd Forecasting  5-Model AI Ensemble | Tamil Nadu Smart Transit{% endblock %}
 
 
 {% block extra_css %}
@@ -87,23 +87,23 @@
 
     <div class="metric-row">
         <div class="card kpi-card blue">
-            <div class="kpi-icon blue">ðŸ¤–</div>
+            <div class="kpi-icon blue"></div>
             <div class="kpi-info-flex">
                 <h4>Ensemble AI Accuracy</h4>
                 <h2>96.8%</h2>
-                <p>RÂ² = 0.968 | MAE: 97 pax</p>
+                <p>R = 0.968 | MAE: 97 pax</p>
             </div>
         </div>
         <div class="card kpi-card green">
-            <div class="kpi-icon green">ðŸ“ˆ</div>
+            <div class="kpi-icon green"></div>
             <div class="kpi-info-flex">
                 <h4>Peak Deepavali Demand</h4>
                 <h2>9.8M</h2>
-                <p>Statewide â€” Nov 8, 2026</p>
+                <p>Statewide  Nov 8, 2026</p>
             </div>
         </div>
         <div class="card kpi-card red">
-            <div class="kpi-icon red">âš¡</div>
+            <div class="kpi-icon red"></div>
             <div class="kpi-info-flex">
                 <h4>Highest Inflow Hub</h4>
                 <h2>Chennai CMBT</h2>
@@ -111,10 +111,10 @@
             </div>
         </div>
         <div class="card kpi-card purple">
-            <div class="kpi-icon purple">â±ï¸</div>
+            <div class="kpi-icon purple"></div>
             <div class="kpi-info-flex">
                 <h4>Critical Night Window</h4>
-                <h2>8 PM â€“ 11 PM IST</h2>
+                <h2>8 PM  11 PM IST</h2>
                 <p>Deepavali Night Peak</p>
             </div>
         </div>
@@ -125,41 +125,41 @@
         <div style="position:relative; z-index:1;">
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
                 <span class="live-pulse-dot"></span>
-                <span style="color:#10b981; font-weight:700; font-size:0.9rem;">LIVE AI PREDICTION â€” RIGHT NOW</span>
+                <span style="color:#10b981; font-weight:700; font-size:0.9rem;">LIVE AI PREDICTION  RIGHT NOW</span>
                 <span id="live-time-display" style="background:rgba(255,255,255,0.08); padding:2px 10px; border-radius:8px; color:#cbd5e1; font-size:0.78rem;"></span>
             </div>
             <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;">
                 <div>
                     <div class="live-time-label">Predicted Crowd @ CMBT Now</div>
-                    <div class="live-crowd-num" id="live-crowd">Loadingâ€¦</div>
+                    <div class="live-crowd-num" id="live-crowd">Loading</div>
                 </div>
                 <div>
                     <div class="live-time-label">Capacity Load</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#e2e8f0;" id="live-load">â€”</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#e2e8f0;" id="live-load"></div>
                 </div>
                 <div>
                     <div class="live-time-label">Extra Buses Needed</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#f97316;" id="live-buses">â€”</div>
+                    <div style="font-size:1.6rem; font-weight:700; color:#f97316;" id="live-buses"></div>
                 </div>
             </div>
             <div style="margin-top:8px;">
-                <span id="live-risk-pill" class="live-risk-pill NORMAL">Loadingâ€¦</span>
+                <span id="live-risk-pill" class="live-risk-pill NORMAL">Loading</span>
                 <span id="live-surge-val" style="color:#94a3b8; font-size:0.78rem; margin-left:10px;"></span>
             </div>
         </div>
         <div style="text-align:right; position:relative; z-index:1;">
             <div style="font-size:0.78rem; color:#64748b; margin-bottom:6px;">Select Festival Context</div>
             <select id="live-festival-sel" style="padding:8px 14px; border-radius:8px; border:1px solid #334155; background:#1e293b; color:white; font-size:0.85rem; font-weight:600; cursor:pointer;">
-                <option value="none">ðŸ“… Regular Day</option>
-                <option value="pongal">ðŸŒ¾ Pongal (Jan 14-17)</option>
-                <option value="thaipusam">ðŸ® Thaipusam (Jan 19-22)</option>
-                <option value="chithirai">ðŸ›ï¸ Chithirai Vizha (Apr-May)</option>
-                <option value="vinayagar">ðŸ˜ Vinayagar Chaturthi</option>
-                <option value="navaratri">ðŸŒº Navaratri (Oct)</option>
-                <option value="karthigai">ðŸ”† Karthigai Deepam (Dec)</option>
-                <option value="deepavali">ðŸª” Deepavali (Nov 8)</option>
+                <option value="none"> Regular Day</option>
+                <option value="pongal"> Pongal (Jan 14-17)</option>
+                <option value="thaipusam"> Thaipusam (Jan 19-22)</option>
+                <option value="chithirai"> Chithirai Vizha (Apr-May)</option>
+                <option value="vinayagar"> Vinayagar Chaturthi</option>
+                <option value="navaratri"> Navaratri (Oct)</option>
+                <option value="karthigai"> Karthigai Deepam (Dec)</option>
+                <option value="deepavali"> Deepavali (Nov 8)</option>
             </select>
-            <div style="margin-top:8px; font-size:0.72rem; color:#475569;">âŸ³ Auto-refreshes every 60 seconds</div>
+            <div style="margin-top:8px; font-size:0.72rem; color:#475569;"> Auto-refreshes every 60 seconds</div>
         </div>
     </div>
 
@@ -167,14 +167,14 @@
     <div class="card" style="grid-column: 1 / -1; border-top: 4px solid #0ea5e9;">
         <div class="panel-title" style="justify-content:space-between; flex-wrap:wrap; gap:10px;">
             <div>
-                <span style="font-size:1.1rem; font-weight:700;">ðŸ§  FestivalFlow AI Ensemble v3.0 â€” 5-Model Architecture</span>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin:3px 0 0;">Confidence-Weighted Ensemble. Ensemble RÂ² = 0.968 | MAE = 97 pax (beats every individual model)</p>
+                <span style="font-size:1.1rem; font-weight:700;"> FestivalFlow AI Ensemble v3.0  5-Model Architecture</span>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin:3px 0 0;">Confidence-Weighted Ensemble. Ensemble R = 0.968 | MAE = 97 pax (beats every individual model)</p>
             </div>
-            <span class="badge badge-success">âœ“ All 5 Models Active</span>
+            <span class="badge badge-success"> All 5 Models Active</span>
         </div>
         <div class="model-grid">
             <div class="model-card">
-                <div class="model-icon">ðŸŒ²</div>
+                <div class="model-icon"></div>
                 <div class="model-name">Random Forest<br>+ Diurnal Spline</div>
                 <div class="model-r2">94.6%</div>
                 <div class="model-mae">MAE: 142 pax</div>
@@ -182,7 +182,7 @@
                 <div style="font-size:0.7rem; color:#94a3b8;">Weight: 22% | n=300 trees</div>
             </div>
             <div class="model-card">
-                <div class="model-icon">ðŸ”</div>
+                <div class="model-icon"></div>
                 <div class="model-name">LSTM Temporal<br>Sequence Model</div>
                 <div class="model-r2">95.1%</div>
                 <div class="model-mae">MAE: 128 pax</div>
@@ -190,7 +190,7 @@
                 <div style="font-size:0.7rem; color:#94a3b8;">Weight: 24% | 2-layer (128u)</div>
             </div>
             <div class="model-card">
-                <div class="model-icon">âš¡</div>
+                <div class="model-icon"></div>
                 <div class="model-name">GRU Surge<br>Spike Detector</div>
                 <div class="model-r2">94.3%</div>
                 <div class="model-mae">MAE: 155 pax</div>
@@ -198,8 +198,8 @@
                 <div style="font-size:0.7rem; color:#94a3b8;">Weight: 18% | Attention head</div>
             </div>
             <div class="model-card" style="border:1px solid #0ea5e9;">
-                <div class="best-model-badge">â˜… BEST</div>
-                <div class="model-icon">ðŸš€</div>
+                <div class="best-model-badge"> BEST</div>
+                <div class="model-icon"></div>
                 <div class="model-name">XGBoost<br>Tabular Regressor</div>
                 <div class="model-r2" style="color:#0ea5e9;">96.3%</div>
                 <div class="model-mae">MAE: 108 pax</div>
@@ -207,8 +207,8 @@
                 <div style="font-size:0.7rem; color:#94a3b8;">Weight: 27% | 214 features</div>
             </div>
             <div class="model-card">
-                <div class="model-icon">ðŸ“Š</div>
-                <div class="model-name">SARIMA(5,1,2)<br>(1,1,1)â‚‚â‚„ Seasonal</div>
+                <div class="model-icon"></div>
+                <div class="model-name">SARIMA(5,1,2)<br>(1,1,1) Seasonal</div>
                 <div class="model-r2">92.1%</div>
                 <div class="model-mae">MAE: 186 pax</div>
                 <div style="background:#e2e8f0; height:5px; border-radius:3px; margin:8px 0 4px; overflow:hidden;"><div style="height:100%; width:9%; background:#f97316;"></div></div>
@@ -221,106 +221,106 @@
     <div class="card" style="grid-column: 1 / -1; border-top: 4px solid var(--primary);">
         <div class="panel-title" style="justify-content:space-between; flex-wrap:wrap; gap:8px;">
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                <span style="font-size:1.1rem; font-weight:700;">âš¡ Interactive AI Inference â€” All 5 Models + Ensemble Output</span>
-                <span class="badge badge-success">âœ“ Live API</span>
+                <span style="font-size:1.1rem; font-weight:700;"> Interactive AI Inference  All 5 Models + Ensemble Output</span>
+                <span class="badge badge-success"> Live API</span>
             </div>
-            <span style="font-size:0.8rem; color:var(--text-muted);">852 stops Ã— 14 festivals Ã— 5 years training data</span>
+            <span style="font-size:0.8rem; color:var(--text-muted);">852 stops  14 festivals  5 years training data</span>
         </div>
         <div class="inference-form-grid">
             <div class="inference-field">
-                <label>ðŸšŒ Target Bus Stop</label>
+                <label> Target Bus Stop</label>
                 <select id="inf-stop">
-                    <option value="TN0045" data-cap="14249" data-tier="A">Chennai â€” CMBT Koyambedu</option>
-                    <option value="TN0077" data-cap="14116" data-tier="A">Coimbatore â€” Gandhipuram</option>
-                    <option value="TN0305" data-cap="13761" data-tier="A">Madurai â€” Mattuthavani</option>
-                    <option value="TN0637" data-cap="14065" data-tier="A">Trichy â€” Chatram Stand</option>
-                    <option value="TN0497" data-cap="14019" data-tier="A">Salem â€” New Bus Stand</option>
-                    <option value="TN0665" data-cap="9211"  data-tier="B">Tirunelveli â€” New BS</option>
-                    <option value="TN0173" data-cap="9152"  data-tier="B">Erode â€” Central BS</option>
-                    <option value="TN0565" data-cap="8830"  data-tier="B">Thanjavur â€” New BS</option>
-                    <option value="TN0789" data-cap="9116"  data-tier="B">Vellore â€” Central BS</option>
-                    <option value="TN0001" data-cap="5814"  data-tier="C">Ariyalur â€” Main BS</option>
+                    <option value="TN0045" data-cap="14249" data-tier="A">Chennai  CMBT Koyambedu</option>
+                    <option value="TN0077" data-cap="14116" data-tier="A">Coimbatore  Gandhipuram</option>
+                    <option value="TN0305" data-cap="13761" data-tier="A">Madurai  Mattuthavani</option>
+                    <option value="TN0637" data-cap="14065" data-tier="A">Trichy  Chatram Stand</option>
+                    <option value="TN0497" data-cap="14019" data-tier="A">Salem  New Bus Stand</option>
+                    <option value="TN0665" data-cap="9211"  data-tier="B">Tirunelveli  New BS</option>
+                    <option value="TN0173" data-cap="9152"  data-tier="B">Erode  Central BS</option>
+                    <option value="TN0565" data-cap="8830"  data-tier="B">Thanjavur  New BS</option>
+                    <option value="TN0789" data-cap="9116"  data-tier="B">Vellore  Central BS</option>
+                    <option value="TN0001" data-cap="5814"  data-tier="C">Ariyalur  Main BS</option>
                 </select>
             </div>
             <div class="inference-field">
-                <label>ðŸ• Time of Day</label>
+                <label> Time of Day</label>
                 <select id="inf-hour">
-                    <option value="5">05:00 AM â€” Pre-Dawn Pilgrim</option>
-                    <option value="6">06:00 AM â€” Early Commute</option>
-                    <option value="9">09:00 AM â€” Morning Peak</option>
-                    <option value="14">02:00 PM â€” Afternoon</option>
-                    <option value="17">05:00 PM â€” Pre-Evening</option>
-                    <option value="18">06:00 PM â€” Evening Surge</option>
-                    <option value="20" selected>08:00 PM â€” Festival Night Peak</option>
-                    <option value="21">09:00 PM â€” Peak Night</option>
-                    <option value="23">11:00 PM â€” Tapering</option>
+                    <option value="5">05:00 AM  Pre-Dawn Pilgrim</option>
+                    <option value="6">06:00 AM  Early Commute</option>
+                    <option value="9">09:00 AM  Morning Peak</option>
+                    <option value="14">02:00 PM  Afternoon</option>
+                    <option value="17">05:00 PM  Pre-Evening</option>
+                    <option value="18">06:00 PM  Evening Surge</option>
+                    <option value="20" selected>08:00 PM  Festival Night Peak</option>
+                    <option value="21">09:00 PM  Peak Night</option>
+                    <option value="23">11:00 PM  Tapering</option>
                 </select>
             </div>
             <div class="inference-field">
-                <label>ðŸŽ‰ 2026 Festival (14 events)</label>
+                <label> 2026 Festival (14 events)</label>
                 <select id="inf-festival">
-                    <option value="none">ðŸ“… Regular Day (1.00x)</option>
-                    <option value="pongal">ðŸŒ¾ Pongal (2.85x)</option>
-                    <option value="thaipusam">ðŸ® Thaipusam (1.95x)</option>
-                    <option value="masi_magam">ðŸŒŠ Masi Magam (1.60x)</option>
-                    <option value="panguni_uthiram">ðŸŒ¸ Panguni Uthiram (1.75x)</option>
-                    <option value="tamil_new_year">ðŸŒŸ Tamil New Year (1.62x)</option>
-                    <option value="chithirai" selected>ðŸ›ï¸ Chithirai Vizha (2.45x)</option>
-                    <option value="adi_amavasai">ðŸŒ‘ Adi Amavasai (1.55x)</option>
-                    <option value="aadi_perukku">ðŸ’§ Aadi Perukku (1.50x)</option>
-                    <option value="vinayagar">ðŸ˜ Vinayagar Chaturthi (1.80x)</option>
-                    <option value="navaratri">ðŸŒº Navaratri (1.70x)</option>
-                    <option value="vaikunta_ekadasi">ðŸ™ Vaikunta Ekadasi (1.70x)</option>
-                    <option value="karthigai">ðŸ”† Karthigai Deepam (2.15x)</option>
-                    <option value="deepavali">ðŸª” Deepavali (3.10x â€” MAX)</option>
+                    <option value="none"> Regular Day (1.00x)</option>
+                    <option value="pongal"> Pongal (2.85x)</option>
+                    <option value="thaipusam"> Thaipusam (1.95x)</option>
+                    <option value="masi_magam"> Masi Magam (1.60x)</option>
+                    <option value="panguni_uthiram"> Panguni Uthiram (1.75x)</option>
+                    <option value="tamil_new_year"> Tamil New Year (1.62x)</option>
+                    <option value="chithirai" selected> Chithirai Vizha (2.45x)</option>
+                    <option value="adi_amavasai"> Adi Amavasai (1.55x)</option>
+                    <option value="aadi_perukku"> Aadi Perukku (1.50x)</option>
+                    <option value="vinayagar"> Vinayagar Chaturthi (1.80x)</option>
+                    <option value="navaratri"> Navaratri (1.70x)</option>
+                    <option value="vaikunta_ekadasi"> Vaikunta Ekadasi (1.70x)</option>
+                    <option value="karthigai"> Karthigai Deepam (2.15x)</option>
+                    <option value="deepavali"> Deepavali (3.10x  MAX)</option>
                 </select>
             </div>
             <div class="inference-field">
-                <label>ðŸŒ¤ï¸ Weather</label>
+                <label> Weather</label>
                 <select id="inf-weather">
-                    <option value="clear" selected>â˜€ï¸ Clear (1.0x baseline)</option>
-                    <option value="rain">ðŸŒ§ï¸ Monsoon Rain (+18% queue)</option>
+                    <option value="clear" selected> Clear (1.0x baseline)</option>
+                    <option value="rain"> Monsoon Rain (+18% queue)</option>
                 </select>
             </div>
             <div class="inference-field" style="justify-content:flex-end;">
                 <label>&nbsp;</label>
                 <button id="btn-run-inference" style="padding:11px 18px; background:linear-gradient(135deg,#0ea5e9,#2563eb); color:white; border:none; border-radius:8px; font-weight:700; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:6px; transition:opacity 0.2s;">
-                    âš¡ Run 5-Model Ensemble
+                     Run 5-Model Ensemble
                 </button>
             </div>
         </div>
         <div class="inference-result-box" id="inference-output">
             <div class="res-stat">
                 <h4>Ensemble Prediction</h4>
-                <h3 id="res-crowd" style="color:#0c4a6e;">â€” pax</h3>
+                <h3 id="res-crowd" style="color:#0c4a6e;"> pax</h3>
                 <span style="font-size:0.73rem; color:#0369a1;" id="res-ci">Run inference above</span>
             </div>
             <div class="res-stat">
                 <h4>Capacity Load</h4>
-                <h3 id="res-load">â€”%</h3>
+                <h3 id="res-load">%</h3>
                 <span id="res-risk" class="badge badge-info">PENDING</span>
             </div>
             <div class="res-stat">
                 <h4>Surge Multiplier</h4>
-                <h3 id="res-multiplier">â€”x</h3>
+                <h3 id="res-multiplier">x</h3>
                 <span style="font-size:0.73rem; color:#0369a1;">vs Normal Day</span>
             </div>
             <div class="res-stat">
                 <h4>Extra Buses Needed</h4>
-                <h3 id="res-buses" style="color:#dc2626;">â€”</h3>
+                <h3 id="res-buses" style="color:#dc2626;"></h3>
                 <span style="font-size:0.73rem; color:#0369a1;">AI dispatch required</span>
             </div>
             <div class="res-stat">
                 <h4>Festival</h4>
-                <h3 id="res-fest-icon" style="font-size:1.8rem;">ðŸŽ¯</h3>
+                <h3 id="res-fest-icon" style="font-size:1.8rem;"></h3>
                 <span style="font-size:0.73rem; color:#0369a1;" id="res-fest-name">Select festival</span>
             </div>
         </div>
         <div id="model-breakdown-container" style="margin-top:14px; display:none;">
-            <div style="font-size:0.82rem; font-weight:700; color:#475569; margin-bottom:8px;">ðŸ“Š Per-Model Predictions vs Ensemble</div>
+            <div style="font-size:0.82rem; font-weight:700; color:#475569; margin-bottom:8px;"> Per-Model Predictions vs Ensemble</div>
             <table id="model-breakdown-table">
                 <thead>
-                    <tr><th>Model</th><th>Predicted Crowd</th><th>Ensemble Weight</th><th>RÂ²</th><th>MAE</th></tr>
+                    <tr><th>Model</th><th>Predicted Crowd</th><th>Ensemble Weight</th><th>R</th><th>MAE</th></tr>
                 </thead>
                 <tbody id="model-breakdown-body"></tbody>
             </table>
@@ -330,85 +330,85 @@
     <!-- FESTIVAL CARDS -->
     <div class="card" style="grid-column: 1 / -1;">
         <div class="panel-title">
-            <span>ðŸŽŠ Tamil Nadu 2026 â€” All Festival Surge Profiles (Public Guide)</span>
+            <span> Tamil Nadu 2026  All Festival Surge Profiles (Public Guide)</span>
         </div>
         <div class="festival-grid">
             <div class="festival-card" style="border-top-color:#f59e0b;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸŒ¾</span><div><div class="festival-name-en">Pongal Festival</div><div class="festival-name-ta">à®ªà¯Šà®™à¯à®•à®²à¯</div></div></div>
-                <div class="festival-date-tag">Jan 14â€“17, 2026</div>
-                <div class="festival-surge" style="color:#f59e0b;">2.85Ã— Surge â€” CRITICAL</div>
-                <div class="festival-desc">Harvest festival. Massive outbound migration â€” cities to native villages across all 38 districts.</div>
-                <div class="festival-hotspot">ðŸ”´ Chennai CMBT, Madurai Mattuthavani, CBE Gandhipuram</div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Pongal Festival</div></div></div>
+                <div class="festival-date-tag">Jan 1417, 2026</div>
+                <div class="festival-surge" style="color:#f59e0b;">2.85 Surge  CRITICAL</div>
+                <div class="festival-desc">Harvest festival. Massive outbound migration  cities to native villages across all 38 districts.</div>
+                <div class="festival-hotspot"> Chennai CMBT, Madurai Mattuthavani, CBE Gandhipuram</div>
             </div>
             <div class="festival-card" style="border-top-color:#8b5cf6;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸ®</span><div><div class="festival-name-en">Thaipusam</div><div class="festival-name-ta">à®¤à¯ˆà®ªà¯à®ªà¯‚à®šà®®à¯</div></div></div>
-                <div class="festival-date-tag">Jan 19â€“22, 2026</div>
-                <div class="festival-surge" style="color:#8b5cf6;">1.95Ã— Surge â€” HIGH</div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Thaipusam</div></div></div>
+                <div class="festival-date-tag">Jan 1922, 2026</div>
+                <div class="festival-surge" style="color:#8b5cf6;">1.95 Surge  HIGH</div>
                 <div class="festival-desc">Murugan temple festival. High pilgrimage traffic to Palani, Tiruchendur and Thiruvannamalai.</div>
-                <div class="festival-hotspot">ðŸ”´ Palani Stop, Tiruchendur, Dindigul BS</div>
+                <div class="festival-hotspot"> Palani Stop, Tiruchendur, Dindigul BS</div>
             </div>
             <div class="festival-card" style="border-top-color:#06b6d4;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸŒŠ</span><div><div class="festival-name-en">Masi Magam</div><div class="festival-name-ta">à®®à®¾à®šà®¿ à®®à®•à®®à¯</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Masi Magam</div></div></div>
                 <div class="festival-date-tag">Feb 2026</div>
-                <div class="festival-surge" style="color:#06b6d4;">1.60Ã— Surge â€” MODERATE</div>
+                <div class="festival-surge" style="color:#06b6d4;">1.60 Surge  MODERATE</div>
                 <div class="festival-desc">Coastal and temple procession festival. Beachside events draw pilgrims to coastal districts.</div>
-                <div class="festival-hotspot">ðŸŸ¡ Nagapattinam, Thanjavur, Cuddalore</div>
+                <div class="festival-hotspot"> Nagapattinam, Thanjavur, Cuddalore</div>
             </div>
             <div class="festival-card" style="border-top-color:#ec4899;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸŒ¸</span><div><div class="festival-name-en">Panguni Uthiram</div><div class="festival-name-ta">à®ªà®™à¯à®•à¯à®©à®¿ à®‰à®¤à¯à®¤à®¿à®°à®®à¯</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Panguni Uthiram</div></div></div>
                 <div class="festival-date-tag">Mar 18, 2026</div>
-                <div class="festival-surge" style="color:#ec4899;">1.75Ã— Surge â€” HIGH</div>
-                <div class="festival-desc">Major temple festival â€” celestial wedding of deities. Statewide temple visits and processions.</div>
-                <div class="festival-hotspot">ðŸŸ¡ Chennai, Tiruppur, Coimbatore</div>
+                <div class="festival-surge" style="color:#ec4899;">1.75 Surge  HIGH</div>
+                <div class="festival-desc">Major temple festival  celestial wedding of deities. Statewide temple visits and processions.</div>
+                <div class="festival-hotspot"> Chennai, Tiruppur, Coimbatore</div>
             </div>
             <div class="festival-card" style="border-top-color:#10b981;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸŒŸ</span><div><div class="festival-name-en">Tamil New Year</div><div class="festival-name-ta">à®¤à®®à®¿à®´à¯ à®ªà¯à®¤à¯à®¤à®¾à®£à¯à®Ÿà¯</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Tamil New Year</div></div></div>
                 <div class="festival-date-tag">Apr 14, 2026</div>
-                <div class="festival-surge" style="color:#10b981;">1.62Ã— Surge â€” HIGH</div>
-                <div class="festival-desc">Puthandu â€” Urban exodus to native towns. All major bus stands see sustained high volumes all day.</div>
-                <div class="festival-hotspot">ðŸŸ¡ Chennai CMBT, Salem, Madurai</div>
+                <div class="festival-surge" style="color:#10b981;">1.62 Surge  HIGH</div>
+                <div class="festival-desc">Puthandu  Urban exodus to native towns. All major bus stands see sustained high volumes all day.</div>
+                <div class="festival-hotspot"> Chennai CMBT, Salem, Madurai</div>
             </div>
             <div class="festival-card" style="border-top-color:#ef4444;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸ›ï¸</span><div><div class="festival-name-en">Madurai Chithirai Vizha</div><div class="festival-name-ta">à®šà®¿à®¤à¯à®¤à®¿à®°à¯ˆ à®µà®¿à®´à®¾</div></div></div>
-                <div class="festival-date-tag">Apr 25 â€“ May 10, 2026</div>
-                <div class="festival-surge" style="color:#ef4444;">2.45Ã— Surge â€” CRITICAL</div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Madurai Chithirai Vizha</div></div></div>
+                <div class="festival-date-tag">Apr 25  May 10, 2026</div>
+                <div class="festival-surge" style="color:#ef4444;">2.45 Surge  CRITICAL</div>
                 <div class="festival-desc">South India's largest temple festival. 2M+ pilgrims converge on Madurai Meenakshi Amman Temple over 15 days.</div>
-                <div class="festival-hotspot">ðŸ”´ Madurai Mattuthavani, Dindigul, Ramanathapuram</div>
+                <div class="festival-hotspot"> Madurai Mattuthavani, Dindigul, Ramanathapuram</div>
             </div>
             <div class="festival-card" style="border-top-color:#64748b;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸŒ‘</span><div><div class="festival-name-en">Adi Amavasai</div><div class="festival-name-ta">à®†à®Ÿà®¿ à®…à®®à®¾à®µà®¾à®šà¯ˆ</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Adi Amavasai</div></div></div>
                 <div class="festival-date-tag">Jul-Aug 2026</div>
-                <div class="festival-surge" style="color:#64748b;">1.55Ã— Surge â€” MODERATE</div>
+                <div class="festival-surge" style="color:#64748b;">1.55 Surge  MODERATE</div>
                 <div class="festival-desc">Ancestor memorial day. Coastal and riverside locations see moderate pilgrimage traffic.</div>
-                <div class="festival-hotspot">ðŸŸ¡ Rameswaram, Kanyakumari, Mahabalipuram</div>
+                <div class="festival-hotspot"> Rameswaram, Kanyakumari, Mahabalipuram</div>
             </div>
             <div class="festival-card" style="border-top-color:#f59e0b;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸ˜</span><div><div class="festival-name-en">Vinayagar Chaturthi</div><div class="festival-name-ta">à®µà®¿à®©à®¾à®¯à®•à®°à¯ à®šà®¤à¯à®°à¯à®¤à¯à®¤à®¿</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Vinayagar Chaturthi</div></div></div>
                 <div class="festival-date-tag">Sep 2026 (TBC)</div>
-                <div class="festival-surge" style="color:#f59e0b;">1.80Ã— Surge â€” HIGH</div>
+                <div class="festival-surge" style="color:#f59e0b;">1.80 Surge  HIGH</div>
                 <div class="festival-desc">Lord Ganesha festival. Urban processions and temple visits drive evening transit spikes across cities.</div>
-                <div class="festival-hotspot">ðŸŸ¡ Chennai, Coimbatore, Salem</div>
+                <div class="festival-hotspot"> Chennai, Coimbatore, Salem</div>
             </div>
             <div class="festival-card" style="border-top-color:#ec4899;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸŒº</span><div><div class="festival-name-en">Navaratri</div><div class="festival-name-ta">à®¨à®µà®°à®¾à®¤à¯à®¤à®¿à®°à®¿</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Navaratri</div></div></div>
                 <div class="festival-date-tag">Oct 2026</div>
-                <div class="festival-surge" style="color:#ec4899;">1.70Ã— Surge â€” HIGH</div>
+                <div class="festival-surge" style="color:#ec4899;">1.70 Surge  HIGH</div>
                 <div class="festival-desc">Nine-night Devi festival. Golu displays and evening temple visits drive concentrated transit peaks.</div>
-                <div class="festival-hotspot">ðŸŸ¡ Chennai, Coimbatore, Mysore Road stops</div>
+                <div class="festival-hotspot"> Chennai, Coimbatore, Mysore Road stops</div>
             </div>
             <div class="festival-card" style="border-top-color:#f97316; border: 2px solid #f97316;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸª”</span><div><div class="festival-name-en">Deepavali</div><div class="festival-name-ta">à®¤à¯€à®ªà®¾à®µà®³à®¿</div></div></div>
-                <div class="festival-date-tag">Nov 8, 2026 âš ï¸ MAX ALERT</div>
-                <div class="festival-surge" style="color:#ef4444; font-size:0.9rem;">3.10Ã— Surge â€” ðŸ”¥ MAXIMUM</div>
-                <div class="festival-desc">Highest statewide transit demand of the year. Night 8â€“11 PM is most critical. Full AI dispatch protocol activated statewide.</div>
-                <div class="festival-hotspot">ðŸ”´ All Tier-A: Chennai, CBE, Madurai, Trichy, Salem</div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Deepavali</div></div></div>
+                <div class="festival-date-tag">Nov 8, 2026  MAX ALERT</div>
+                <div class="festival-surge" style="color:#ef4444; font-size:0.9rem;">3.10 Surge   MAXIMUM</div>
+                <div class="festival-desc">Highest statewide transit demand of the year. Night 811 PM is most critical. Full AI dispatch protocol activated statewide.</div>
+                <div class="festival-hotspot"> All Tier-A: Chennai, CBE, Madurai, Trichy, Salem</div>
             </div>
             <div class="festival-card" style="border-top-color:#fbbf24;">
-                <div class="festival-card-header"><span class="festival-icon-big">ðŸ”†</span><div><div class="festival-name-en">Karthigai Deepam</div><div class="festival-name-ta">à®•à®¾à®°à¯à®¤à¯à®¤à®¿à®•à¯ˆ à®¤à¯€à®ªà®®à¯</div></div></div>
+                <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Karthigai Deepam</div></div></div>
                 <div class="festival-date-tag">Dec 3, 2026</div>
-                <div class="festival-surge" style="color:#d97706;">2.20Ã— Surge â€” CRITICAL</div>
+                <div class="festival-surge" style="color:#d97706;">2.20 Surge  CRITICAL</div>
                 <div class="festival-desc">Sacred lamp festival. Thiruvannamalai Girivalam draws 3M+ overnight pilgrims. Night buses 24/7.</div>
-                <div class="festival-hotspot">ðŸ”´ Thiruvannamalai BS, Vellore Central</div>
+                <div class="festival-hotspot"> Thiruvannamalai BS, Vellore Central</div>
             </div>
         </div>
     </div>
@@ -417,15 +417,15 @@
     <div class="card" style="grid-column: 1 / -1;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
             <div>
-                <span style="font-size:1.05rem; font-weight:700;">ðŸ”® 24-Hour AI Festival Demand Curve â€” Ensemble Projection</span>
+                <span style="font-size:1.05rem; font-weight:700;"> 24-Hour AI Festival Demand Curve  Ensemble Projection</span>
                 <p style="font-size:0.78rem; color:var(--text-muted); margin:3px 0 0;">Predicted statewide hourly arrivals (thousands). Select festival to compare surges.</p>
             </div>
             <select id="scenario-selector" style="padding:7px 14px; border-radius:8px; border:1px solid var(--border); font-size:0.87rem; font-weight:600; background:white; cursor:pointer;">
-                <option value="pongal">ðŸŒ¾ Pongal (Jan 14-17) â€” Massive Outbound</option>
-                <option value="chithirai">ðŸ›ï¸ Chithirai Vizha (Apr-May) â€” Temple Influx</option>
-                <option value="deepavali" selected>ðŸª” Deepavali (Nov 08) â€” Statewide Peak</option>
-                <option value="thaipusam">ðŸ® Thaipusam (Jan 19-22) â€” Murugan Temples</option>
-                <option value="karthigai">ðŸ”† Karthigai Deepam (Dec) â€” Overnight Pilgrimage</option>
+                <option value="pongal"> Pongal (Jan 14-17)  Massive Outbound</option>
+                <option value="chithirai"> Chithirai Vizha (Apr-May)  Temple Influx</option>
+                <option value="deepavali" selected> Deepavali (Nov 08)  Statewide Peak</option>
+                <option value="thaipusam"> Thaipusam (Jan 19-22)  Murugan Temples</option>
+                <option value="karthigai"> Karthigai Deepam (Dec)  Overnight Pilgrimage</option>
             </select>
         </div>
         <div style="height:360px; position:relative; margin-top:18px;">
@@ -435,7 +435,7 @@
 
     <!-- TOP HUBS TABLE -->
     <div class="card" style="grid-column: 1 / -1;">
-        <div class="panel-title"><span>ðŸ“Š Top 10 Transit Hubs â€” Deepavali 2026 AI Surge Projection</span></div>
+        <div class="panel-title"><span> Top 10 Transit Hubs  Deepavali 2026 AI Surge Projection</span></div>
         <div style="overflow-x:auto;">
             <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
                 <thead>
@@ -503,8 +503,8 @@ document.addEventListener('DOMContentLoaded', () => {
         data: {
             labels: scenarioData.deepavali.labels,
             datasets: [
-                { label: 'AI Ensemble Surge Forecast (Ã—1000 pax/hr)', data: scenarioData.deepavali.surge, borderColor: '#f97316', backgroundColor: 'rgba(249,115,22,0.10)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 4, pointBackgroundColor: '#f97316' },
-                { label: 'Normal Day Baseline (Ã—1000 pax/hr)', data: scenarioData.deepavali.regular, borderColor: '#94a3b8', borderDash: [6,4], borderWidth: 2, fill: false, tension: 0.4, pointRadius: 2 }
+                { label: 'AI Ensemble Surge Forecast (1000 pax/hr)', data: scenarioData.deepavali.surge, borderColor: '#f97316', backgroundColor: 'rgba(249,115,22,0.10)', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 4, pointBackgroundColor: '#f97316' },
+                { label: 'Normal Day Baseline (1000 pax/hr)', data: scenarioData.deepavali.regular, borderColor: '#94a3b8', borderDash: [6,4], borderWidth: 2, fill: false, tension: 0.4, pointRadius: 2 }
             ]
         },
         options: {
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. AI Inference
     document.getElementById('btn-run-inference').addEventListener('click', async () => {
         const btn = document.getElementById('btn-run-inference');
-        btn.innerText = 'â³ Running 5 Modelsâ€¦'; btn.disabled = true;
+        btn.innerText = ' Running 5 Models'; btn.disabled = true;
         const payload = {
             stop_id: document.getElementById('inf-stop').value,
             hour: parseInt(document.getElementById('inf-hour').value),
@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch('/api/v1/ai/predict', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
             const d = await res.json();
             document.getElementById('res-crowd').innerText = d.predicted_crowd.toLocaleString() + ' pax';
-            document.getElementById('res-ci').innerText = `95% CI: ${d.confidence_interval[0].toLocaleString()} â€“ ${d.confidence_interval[1].toLocaleString()}`;
+            document.getElementById('res-ci').innerText = `95% CI: ${d.confidence_interval[0].toLocaleString()}  ${d.confidence_interval[1].toLocaleString()}`;
             document.getElementById('res-load').innerText = d.utilization_pct + '%';
             document.getElementById('res-multiplier').innerText = d.surge_multiplier + 'x';
             document.getElementById('res-buses').innerText = `+${d.recommended_extra_buses} Buses`;
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
             riskEl.className = 'badge ' + ({'CRITICAL':'badge-danger','HIGH':'badge-warning','MODERATE':'badge-info','NORMAL':'badge-success'}[d.risk_level] || 'badge-info');
             if (['CRITICAL','HIGH'].includes(d.risk_level)) riskEl.style.color = 'white';
             if (d.festival_meta) {
-                document.getElementById('res-fest-icon').innerText = d.festival_meta.icon || 'ðŸŽ¯';
+                document.getElementById('res-fest-icon').innerText = d.festival_meta.icon || '';
                 document.getElementById('res-fest-name').innerText = d.festival_meta.name || '';
             }
             if (d.model_breakdown && d.model_breakdown.length) {
@@ -558,20 +558,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 d.model_breakdown.forEach(m => {
                     const tr = document.createElement('tr');
                     const isBest = m.r2 === maxR2;
-                    tr.innerHTML = `<td style="padding:8px 12px; font-weight:${isBest?700:400}; color:${isBest?'#0ea5e9':'inherit'}">${isBest?'â˜… ':''}${m.model}</td><td style="padding:8px 12px; font-weight:600;">${m.prediction.toLocaleString()} pax</td><td style="padding:8px 12px;"><div style="background:#e2e8f0;height:6px;border-radius:3px;width:80px;overflow:hidden;"><div style="height:100%;width:${m.weight}%;background:#0ea5e9;border-radius:3px;"></div></div><span style="font-size:0.72rem;color:#64748b;">${m.weight}%</span></td><td style="padding:8px 12px;">${(m.r2*100).toFixed(1)}%</td><td style="padding:8px 12px;">${m.mae} pax</td>`;
+                    tr.innerHTML = `<td style="padding:8px 12px; font-weight:${isBest?700:400}; color:${isBest?'#0ea5e9':'inherit'}">${isBest?' ':''}${m.model}</td><td style="padding:8px 12px; font-weight:600;">${m.prediction.toLocaleString()} pax</td><td style="padding:8px 12px;"><div style="background:#e2e8f0;height:6px;border-radius:3px;width:80px;overflow:hidden;"><div style="height:100%;width:${m.weight}%;background:#0ea5e9;border-radius:3px;"></div></div><span style="font-size:0.72rem;color:#64748b;">${m.weight}%</span></td><td style="padding:8px 12px;">${(m.r2*100).toFixed(1)}%</td><td style="padding:8px 12px;">${m.mae} pax</td>`;
                     tbody.appendChild(tr);
                 });
                 const ensRow = document.createElement('tr');
                 ensRow.style.background = '#eff6ff';
-                ensRow.innerHTML = `<td style="padding:8px 12px;font-weight:800;color:#1e40af;">ðŸ§  Ensemble (Final)</td><td style="padding:8px 12px;font-weight:800;color:#1e40af;">${d.predicted_crowd.toLocaleString()} pax</td><td style="padding:8px 12px;color:#64748b;">All 5 models</td><td style="padding:8px 12px;font-weight:700;color:#1e40af;">${(d.model_info.r2_accuracy*100).toFixed(1)}%</td><td style="padding:8px 12px;font-weight:700;color:#1e40af;">${d.model_info.mae_error} pax</td>`;
+                ensRow.innerHTML = `<td style="padding:8px 12px;font-weight:800;color:#1e40af;"> Ensemble (Final)</td><td style="padding:8px 12px;font-weight:800;color:#1e40af;">${d.predicted_crowd.toLocaleString()} pax</td><td style="padding:8px 12px;color:#64748b;">All 5 models</td><td style="padding:8px 12px;font-weight:700;color:#1e40af;">${(d.model_info.r2_accuracy*100).toFixed(1)}%</td><td style="padding:8px 12px;font-weight:700;color:#1e40af;">${d.model_info.mae_error} pax</td>`;
                 tbody.appendChild(ensRow);
                 document.getElementById('model-breakdown-container').style.display = 'block';
             }
             if (window.showDispatchNotification) {
-                window.showDispatchNotification('ðŸ§  AI Inference Complete', `Ensemble: ${d.predicted_crowd.toLocaleString()} pax | ${d.risk_level} | +${d.recommended_extra_buses} buses needed`, 'ðŸ“Š');
+                window.showDispatchNotification(' AI Inference Complete', `Ensemble: ${d.predicted_crowd.toLocaleString()} pax | ${d.risk_level} | +${d.recommended_extra_buses} buses needed`, '');
             }
         } catch(err) { console.error('Inference error:', err); }
-        finally { btn.innerText = 'âš¡ Run 5-Model Ensemble'; btn.disabled = false; }
+        finally { btn.innerText = ' Run 5-Model Ensemble'; btn.disabled = false; }
     });
 });
 </script>

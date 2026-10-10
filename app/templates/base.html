@@ -19,6 +19,45 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+    <!-- 3-Second Intro Splash Screen -->
+    <div id="app-intro" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0f172a; z-index:999999; display:flex; flex-direction:column; justify-content:center; align-items:center; transition:opacity 0.5s ease;">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="intro-animate" style="width:140px; height:140px; border-radius:28px; box-shadow:0 15px 40px rgba(139, 92, 246, 0.4);">
+        <h1 class="intro-animate" style="color:white; margin-top:24px; font-family:'Inter', sans-serif; font-size:2.5rem; letter-spacing:1px;">FestivalFlow AI</h1>
+        <p class="intro-animate" style="color:#94a3b8; font-family:'Inter', sans-serif; font-size:1.1rem; letter-spacing:3px; text-transform:uppercase;">Tamil Nadu Smart Transit</p>
+    </div>
+
+    <style>
+        @keyframes zoomInOutIntro {
+            0% { transform: scale(0.3); opacity: 0; }
+            40% { transform: scale(1.15); opacity: 1; }
+            65% { transform: scale(1.0); opacity: 1; }
+            90% { transform: scale(1.2); opacity: 0; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .intro-animate {
+            animation: zoomInOutIntro 2.8s ease-in-out forwards;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const intro = document.getElementById('app-intro');
+            // Play intro only on the dashboard/home page to avoid annoying the user on every tab click
+            if (!sessionStorage.getItem('introPlayed') && (window.location.pathname === '/' || window.location.pathname === '/dashboard')) {
+                setTimeout(() => {
+                    intro.style.opacity = '0';
+                    setTimeout(() => {
+                        intro.style.display = 'none';
+                        sessionStorage.setItem('introPlayed', 'true'); // Play once per session
+                    }, 500);
+                }, 2800); // Intro lasts ~3 seconds total
+            } else {
+                intro.style.display = 'none';
+            }
+        });
+    </script>
+    <!-- End Intro -->
+
     <div class="app-layout">
         <aside class="sidebar">
             <div class="sidebar-brand">

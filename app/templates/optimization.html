@@ -123,30 +123,30 @@
             html += `
                 <div class="auto-style-28765">
                     <div class="auto-style-62813">
-                        <span class="auto-style-21277">\${s.id}</span>
-                        <span class="badge \${s.status === 'Executing' ? 'badge-success' : (s.status === 'Pending Approval' ? 'badge-warning' : 'badge-info')}">\${s.status}</span>
+                        <span class="auto-style-21277">${s.id}</span>
+                        <span class="badge ${s.status === 'Executing' ? 'badge-success' : (s.status === 'Pending Approval' ? 'badge-warning' : 'badge-info')}">${s.status}</span>
                     </div>
                     <div class="auto-style-49196">
                         <div class="auto-style-74943">
                             <div class="auto-style-84209">Source</div>
-                            <div class="auto-style-43987">\${s.from}</div>
-                            <div class="auto-style-19596">- \${s.buses} buses</div>
+                            <div class="auto-style-43987">${s.from}</div>
+                            <div class="auto-style-19596">- ${s.buses} buses</div>
                         </div>
                         <div class="auto-style-63479">➔</div>
                         <div class="auto-style-71564">
                             <div class="auto-style-84209">Destination</div>
-                            <div class="auto-style-43987">\${s.to}</div>
-                            <div class="auto-style-80188">+ \${s.buses} buses</div>
+                            <div class="auto-style-43987">${s.to}</div>
+                            <div class="auto-style-80188">+ ${s.buses} buses</div>
                         </div>
                     </div>
                     <div class="auto-style-32286">
-                        <span><strong>Impact:</strong> \${s.impact}</span>
-                        <span><strong>ETA:</strong> \${s.eta}</span>
+                        <span><strong>Impact:</strong> ${s.impact}</span>
+                        <span><strong>ETA:</strong> ${s.eta}</span>
                     </div>
                     <div>
                         <div class="auto-style-71172">
                             <span>Completion</span>
-                            <span>\${s.progress}%</span>
+                            <span>${s.progress}%</span>
                         </div>
                         <div class="auto-style-94056">
                             <div class="auto-style-43115"></div>

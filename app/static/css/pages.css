@@ -320,7 +320,7 @@
 .auto-style-35673 { padding: 1rem; font-weight: 600; }
 .auto-style-92488 { display: flex; align-items: center; gap: 0.5rem; }
 .auto-style-65468 { width: 60px; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
-.auto-style-58649 { width: \${crowd}%; height: 100%; background: var(--\${crowdColor === 'red' ? 'danger' : (crowdColor === 'orange' ? 'warning' : 'success')}); }
+
 .auto-style-10176 { font-size: 0.85rem; }
 .auto-style-85427 { padding: 1rem; color: var(--primary); }
 .auto-style-30471 { text-align: center; padding: 4rem; }
@@ -355,5 +355,4 @@
 .auto-style-80188 { color: var(--success); font-size: 0.85rem; margin-top: 0.25rem; }
 .auto-style-32286 { background: #f8fafc; padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; margin-bottom: 1rem; }
 .auto-style-71172 { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem; }
-.auto-style-94056 { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
-.auto-style-43115 { width: \${s.progress}%; height: 100%; background: \${pColor}; }
+.auto-style-94056 { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }

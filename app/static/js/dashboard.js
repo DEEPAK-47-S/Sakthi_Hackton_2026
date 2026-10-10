@@ -588,7 +588,16 @@ function startRealTimeSimulation() {
 
         // 1. Simulate crowd fluctuation across stops
         stopsData.stops.forEach(s => {
-            const delta = Math.floor(Math.random() * 25) - 12;
+            let delta = Math.floor(Math.random() * 25) - 12;
+            
+            // Spike critical hubs so they genuinely turn RED (Critical Situation)
+            const criticalHubs = ['TN0045', 'TN0305', 'TN0077', 'TN0637'];
+            if (criticalHubs.includes(s.id)) {
+                if (s.crowd / s.max < 0.95) {
+                    delta = Math.floor(Math.random() * 80) + 120; // Aggressive Spike!
+                }
+            }
+            
             s.crowd = Math.max(10, Math.min(s.max, s.crowd + delta));
 
             const popupEl = document.getElementById(`popup-${s.id}`);

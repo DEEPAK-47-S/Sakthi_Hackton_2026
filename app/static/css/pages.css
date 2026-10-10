@@ -356,3 +356,13 @@
 .auto-style-32286 { background: #f8fafc; padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; margin-bottom: 1rem; }
 .auto-style-71172 { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem; }
 .auto-style-94056 { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}

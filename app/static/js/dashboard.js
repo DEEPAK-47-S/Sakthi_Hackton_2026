@@ -10,6 +10,34 @@ let currentMarkers = {};
 let selectedStopId = null;
 let currentDistrict = 'all';
 
+// Fleet Tracking State
+let fleetState = {
+    statewide: {
+        total: 1500,
+        mainHubs: 314,
+        localStops: 152,
+        onRoute: 938,
+        inDepot: 48
+    },
+    district: null
+};
+
+// Live Event Stream State
+let liveEventLogs = [];
+
+const districtRTO = {
+    'Ariyalur': '61', 'Chengalpattu': '19', 'Chennai': '01', 'Coimbatore': '38',
+    'Cuddalore': '31', 'Dharmapuri': '29', 'Dindigul': '57', 'Erode': '33',
+    'Kallakurichi': '15', 'Kanchipuram': '21', 'Kanyakumari': '74', 'Karur': '47',
+    'Krishnagiri': '24', 'Madurai': '58', 'Mayiladuthurai': '82', 'Nagapattinam': '51',
+    'Namakkal': '28', 'Nilgiris': '43', 'Perambalur': '46', 'Pudukkottai': '55',
+    'Ramanathapuram': '65', 'Ranipet': '73', 'Salem': '30', 'Sivaganga': '63',
+    'Tenkasi': '79', 'Thanjavur': '49', 'Theni': '60', 'Thoothukudi': '69',
+    'Tiruchirappalli': '45', 'Tirunelveli': '72', 'Tirupathur': '83', 'Tiruppur': '39',
+    'Tiruvallur': '20', 'Tiruvannamalai': '25', 'Tiruvarur': '50', 'Vellore': '23',
+    'Viluppuram': '32', 'Virudhunagar': '67'
+};
+
 async function initDashboard() {
     initMap();
     initChart();
@@ -17,6 +45,9 @@ async function initDashboard() {
     populateDistrictSelector();
     renderMarkers();
     loadAIRecommendations();
+    initLiveEventLog();
+    updateFleetStatus();
+    updateSystemStatus();
     startRealTimeSimulation();
 }
 
@@ -92,6 +123,8 @@ function populateDistrictSelector() {
     selector.addEventListener('change', (e) => {
         currentDistrict = e.target.value;
         renderMarkers();
+        updateFleetStatus();
+        updateSystemStatus();
     });
 }
 
@@ -105,13 +138,11 @@ function renderMarkers() {
     const counterBadge = document.getElementById('map-stop-counter');
 
     if (currentDistrict === 'all') {
-        // Statewide: Render 38 Main Terminuses + major Town Stands
         stopsToRender = stopsData.stops.filter(s => s.type === 'main_terminus' || s.type === 'town_stand');
         if (counterBadge) counterBadge.textContent = `${stopsToRender.length} Main Hubs (Statewide)`;
         map.setView([10.8505, 78.6569], 7);
         updateKPIsForStatewide();
     } else {
-        // District-specific: Render ALL stops in this district
         stopsToRender = stopsData.stops.filter(s => s.district === currentDistrict);
         if (counterBadge) counterBadge.textContent = `${stopsToRender.length} Stops in ${currentDistrict}`;
         
@@ -124,7 +155,7 @@ function renderMarkers() {
 
     stopsToRender.forEach(s => {
         const ratio = s.crowd / s.max;
-        let color = '#10b981'; // low
+        let color = '#10b981';
         let label = '📍';
         let size = 18;
 
@@ -231,7 +262,6 @@ function updateKPIsForDistrict(district) {
 function updateKPIsForStatewide() {
     if (!stopsData) return;
     const totalCrowd = stopsData.stops.reduce((sum, s) => sum + s.crowd, 0);
-    const totalBuses = stopsData.stops.reduce((sum, s) => sum + s.buses, 0);
     const critical = stopsData.stops.filter(s => (s.crowd / s.max) > 0.85).length;
 
     document.getElementById('kpi-title-passengers').innerText = `Total Passengers (Statewide)`;
@@ -250,6 +280,222 @@ function updateKPIsForStatewide() {
     document.getElementById('kpi-title-surge').innerText = `Next Major Festival`;
     document.getElementById('surge-time').innerText = "Pongal (Jan 14-17)";
     document.getElementById('kpi-subtitle-surge').innerText = "Statewide High Alert";
+}
+
+/* ========================================================
+   FLEET STATUS DYNAMIC UPDATE
+   ======================================================== */
+function updateFleetStatus() {
+    const titleEl = document.getElementById('fleet-panel-title');
+    const mainEl = document.getElementById('fleet-main-hubs');
+    const localEl = document.getElementById('fleet-local-stops');
+    const routeEl = document.getElementById('fleet-route');
+    const depotEl = document.getElementById('fleet-depot');
+    const labelMain = document.getElementById('fleet-label-main');
+    const labelLocal = document.getElementById('fleet-label-local');
+
+    if (!mainEl || !localEl || !routeEl || !depotEl) return;
+
+    if (currentDistrict === 'all') {
+        if (titleEl) titleEl.innerText = '🚍 Statewide Fleet Status';
+        if (labelMain) labelMain.innerText = 'At Main Hubs';
+        if (labelLocal) labelLocal.innerText = 'At Local Stops';
+
+        // Fluctuating statewide active distribution
+        mainEl.innerText = fleetState.statewide.mainHubs.toLocaleString();
+        localEl.innerText = fleetState.statewide.localStops.toLocaleString();
+        routeEl.innerText = fleetState.statewide.onRoute.toLocaleString();
+        depotEl.innerText = fleetState.statewide.inDepot.toLocaleString();
+    } else {
+        if (!stopsData) return;
+        const districtStops = stopsData.stops.filter(s => s.district === currentDistrict);
+        const terminus = districtStops.find(s => s.type === 'main_terminus');
+        const terminusName = terminus ? terminus.town : currentDistrict;
+
+        if (titleEl) titleEl.innerText = `🚍 ${currentDistrict} Fleet Status`;
+        if (labelMain) labelMain.innerText = `At ${terminusName}`;
+        if (labelLocal) labelLocal.innerText = 'At Town/Local Stops';
+
+        // Compute district fleet based on stop count
+        const stopCount = districtStops.length;
+        const totalDistrictFleet = Math.round(stopCount * 4.2) + 20;
+        const mainCount = Math.round(totalDistrictFleet * 0.38);
+        const localCount = Math.round(totalDistrictFleet * 0.22);
+        const routeCount = Math.round(totalDistrictFleet * 0.35);
+        const depotCount = Math.max(2, totalDistrictFleet - mainCount - localCount - routeCount);
+
+        mainEl.innerText = mainCount.toLocaleString();
+        localEl.innerText = localCount.toLocaleString();
+        routeEl.innerText = routeCount.toLocaleString();
+        depotEl.innerText = depotCount.toLocaleString();
+    }
+}
+
+/* ========================================================
+   SYSTEM STATUS DYNAMIC UPDATE
+   ======================================================== */
+function updateSystemStatus() {
+    const titleEl = document.getElementById('system-status-title');
+    const textEl = document.getElementById('system-status-text');
+    const subtextEl = document.getElementById('system-status-subtext');
+
+    if (!titleEl || !textEl || !subtextEl) return;
+
+    if (currentDistrict === 'all') {
+        titleEl.innerText = '💡 System Status';
+        textEl.innerText = '✓ Statewide AI Active';
+        subtextEl.innerText = 'Real-time tracking for all 38 districts of Tamil Nadu (852 stops active).';
+    } else {
+        const stopCount = stopsData ? stopsData.stops.filter(s => s.district === currentDistrict).length : 22;
+        titleEl.innerText = `💡 ${currentDistrict} Live Status`;
+        textEl.innerText = `✓ ${currentDistrict} AI Active`;
+        subtextEl.innerText = `Connected to ${stopCount} bus stops and depot corridors across ${currentDistrict}.`;
+    }
+}
+
+/* ========================================================
+   LIVE EVENT LOG STREAMING
+   ======================================================== */
+function initLiveEventLog() {
+    // Initial events based on authentic Tamil Nadu transport data
+    liveEventLogs = [
+        {
+            icon: 'green',
+            symbol: '🚍',
+            secondsAgo: 5,
+            title: 'TN-45-N-3821',
+            text: 'arrived at Chatram Bus Stand (Tiruchirappalli)'
+        },
+        {
+            icon: 'red',
+            symbol: '⚠️',
+            secondsAgo: 85,
+            title: 'Crowd Alert',
+            text: 'Chennai CMBT Koyambedu crossed 92% capacity'
+        },
+        {
+            icon: 'blue',
+            symbol: '🚐',
+            secondsAgo: 210,
+            title: 'Fleet Dispatch',
+            text: '12 Extra buses deployed to Gandhipuram (Coimbatore)'
+        },
+        {
+            icon: 'purple',
+            symbol: '🌧️',
+            secondsAgo: 450,
+            title: 'Weather Alert',
+            text: 'Rain forecast for Madurai corridor – speeds moderated'
+        }
+    ];
+
+    renderEventLog();
+}
+
+function renderEventLog() {
+    const container = document.getElementById('activity-log');
+    if (!container) return;
+
+    let html = '';
+    liveEventLogs.slice(0, 6).forEach(ev => {
+        let timeStr = 'Just now';
+        if (ev.secondsAgo >= 60) {
+            timeStr = `${Math.floor(ev.secondsAgo / 60)}m ago`;
+        }
+
+        html += `
+            <li style="animation: fadeIn 0.4s ease;">
+                <div class="activity-icon ${ev.icon}">${ev.symbol}</div>
+                <div class="auto-style-39760">
+                    <span class="activity-time">${timeStr}</span>
+                    <span><strong>${ev.title}</strong> ${ev.text}</span>
+                </div>
+            </li>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+function pushLiveEvent(newEvent) {
+    liveEventLogs.unshift(newEvent);
+    if (liveEventLogs.length > 8) liveEventLogs.pop();
+    renderEventLog();
+
+    const badge = document.getElementById('event-log-badge');
+    if (badge) {
+        badge.style.background = '#10b981';
+        badge.innerText = '● UPDATE RECEIVED';
+        setTimeout(() => {
+            badge.innerText = '● LIVE UPDATES';
+        }, 1500);
+    }
+}
+
+function generateDynamicEvent() {
+    if (!stopsData || !stopsData.stops.length) return;
+
+    // Filter candidate stops
+    let pool = stopsData.stops;
+    if (currentDistrict !== 'all') {
+        const districtPool = stopsData.stops.filter(s => s.district === currentDistrict);
+        if (districtPool.length > 0) pool = districtPool;
+    }
+
+    const randomStop = pool[Math.floor(Math.random() * pool.length)];
+    const rto = districtRTO[randomStop.district] || '38';
+    const regNum = `TN-${rto}-N-${Math.floor(Math.random() * 8999 + 1000)}`;
+    const ratio = randomStop.crowd / randomStop.max;
+
+    const eventTypes = ['arrival', 'departure', 'dispatch', 'crowd', 'transit'];
+    const chosenType = eventTypes[Math.floor(Math.random() * eventTypes.length)];
+
+    let eventObj = null;
+
+    if (chosenType === 'crowd' && ratio > 0.70) {
+        eventObj = {
+            icon: 'red',
+            symbol: '⚠️',
+            secondsAgo: 0,
+            title: 'High Load Alert',
+            text: `Crowd at ${randomStop.name} (${randomStop.town}) reached ${Math.round(ratio * 100)}%`
+        };
+    } else if (chosenType === 'dispatch') {
+        const busCount = Math.floor(Math.random() * 6) + 3;
+        eventObj = {
+            icon: 'blue',
+            symbol: '🚐',
+            secondsAgo: 0,
+            title: 'AI Re-allocation',
+            text: `${busCount} Standby buses diverted to ${randomStop.name} (${randomStop.district})`
+        };
+    } else if (chosenType === 'departure') {
+        eventObj = {
+            icon: 'green',
+            symbol: '🚍',
+            secondsAgo: 0,
+            title: regNum,
+            text: `departed from ${randomStop.name} on scheduled route`
+        };
+    } else if (chosenType === 'transit') {
+        eventObj = {
+            icon: 'purple',
+            symbol: '🛣️',
+            secondsAgo: 0,
+            title: regNum,
+            text: `en route through ${randomStop.town} junction (Clear traffic)`
+        };
+    } else {
+        eventObj = {
+            icon: 'green',
+            symbol: '🚍',
+            secondsAgo: 0,
+            title: regNum,
+            text: `arrived at ${randomStop.name} (${randomStop.town})`
+        };
+    }
+
+    pushLiveEvent(eventObj);
 }
 
 function initChart() {
@@ -330,10 +576,13 @@ function loadAIRecommendations() {
 }
 
 function startRealTimeSimulation() {
+    let tickCount = 0;
+
     setInterval(() => {
+        tickCount++;
         if (!stopsData) return;
 
-        // Simulate crowd fluctuation across stops
+        // 1. Simulate crowd fluctuation across stops
         stopsData.stops.forEach(s => {
             const delta = Math.floor(Math.random() * 25) - 12;
             s.crowd = Math.max(10, Math.min(s.max, s.crowd + delta));
@@ -348,6 +597,16 @@ function startRealTimeSimulation() {
             }
         });
 
+        // 2. Fluctuate statewide fleet distribution slightly
+        if (currentDistrict === 'all') {
+            const shift = Math.floor(Math.random() * 7) - 3;
+            fleetState.statewide.mainHubs = Math.max(290, Math.min(340, fleetState.statewide.mainHubs + shift));
+            fleetState.statewide.localStops = Math.max(140, Math.min(170, fleetState.statewide.localStops - Math.floor(shift / 2)));
+            fleetState.statewide.onRoute = Math.max(910, Math.min(960, fleetState.statewide.onRoute - Math.ceil(shift / 2)));
+            fleetState.statewide.inDepot = 1500 - (fleetState.statewide.mainHubs + fleetState.statewide.localStops + fleetState.statewide.onRoute);
+        }
+
+        // 3. Update active KPIs and Fleet Status
         if (selectedStopId) {
             const stop = stopsData.stops.find(s => s.id === selectedStopId);
             if (stop) updateKPIsForStop(stop);
@@ -355,6 +614,20 @@ function startRealTimeSimulation() {
             updateKPIsForDistrict(currentDistrict);
         } else {
             updateKPIsForStatewide();
+        }
+
+        updateFleetStatus();
+
+        // 4. Update age of live event logs
+        liveEventLogs.forEach(ev => {
+            ev.secondsAgo += 3;
+        });
+
+        // 5. Generate a new live event every ~4 seconds (alternate ticks)
+        if (tickCount % 2 === 0) {
+            generateDynamicEvent();
+        } else {
+            renderEventLog();
         }
 
     }, 3000);

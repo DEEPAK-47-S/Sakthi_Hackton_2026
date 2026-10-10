@@ -87,74 +87,48 @@
 
     <!-- Bottom Row: Activity -->
     <div class="card activity-panel">
-        <div class="panel-title">
+        <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center;">
             <span class="panel-title-flex">🕒 Live Event Log</span>
+            <span class="badge badge-success" id="event-log-badge" style="font-size: 0.72rem; letter-spacing: 0.5px;">● LIVE UPDATES</span>
         </div>
-        <ul class="activity-list" id="activity-log">
-            <li>
-                <div class="activity-icon green">🚍</div>
-                <div class="auto-style-39760">
-                    <span class="activity-time">Just now</span>
-                    <span><strong>TN-38-N-1122</strong> arrived at Trichy Central</span>
-                </div>
-            </li>
-            <li>
-                <div class="activity-icon red">⚠️</div>
-                <div class="auto-style-39760">
-                    <span class="activity-time">2m ago</span>
-                    <span>Crowd at Chennai CMBT crossed 95%</span>
-                </div>
-            </li>
-            <li>
-                <div class="activity-icon blue">🚐</div>
-                <div class="auto-style-39760">
-                    <span class="activity-time">5m ago</span>
-                    <span>12 Extra buses deployed to Coimbatore</span>
-                </div>
-            </li>
-            <li>
-                <div class="activity-icon purple">🌧️</div>
-                <div class="auto-style-39760">
-                    <span class="activity-time">15m ago</span>
-                    <span>Weather alert <span class="text-muted">(Rain expected in Madurai)</span></span>
-                </div>
-            </li>
+        <ul class="activity-list" id="activity-log" style="max-height: 235px; overflow-y: auto; padding-right: 4px;">
+            <!-- Populated and dynamically animated by JS -->
         </ul>
     </div>
 
     <!-- Bottom Row: Fleet Status -->
     <div class="card fleet-panel">
         <div class="panel-title">
-            <span class="panel-title-flex">🚍 Statewide Fleet Status</span>
+            <span class="panel-title-flex" id="fleet-panel-title">🚍 Statewide Fleet Status</span>
             <a href="/fleet" class="view-all-link">View All</a>
         </div>
         
         <div class="fleet-circles">
             <div class="fleet-circle-item">
-                <div class="fleet-circle red auto-style-55359" id="fleet-gandhipuram" >314</div>
-                <span class="fleet-label">At Main Hubs</span>
+                <div class="fleet-circle red auto-style-55359" id="fleet-main-hubs">314</div>
+                <span class="fleet-label" id="fleet-label-main">At Main Hubs</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle orange" id="fleet-singanallur">152</div>
-                <span class="fleet-label">At Local Stops</span>
+                <div class="fleet-circle orange" id="fleet-local-stops">152</div>
+                <span class="fleet-label" id="fleet-label-local">At Local Stops</span>
             </div>
             <div class="fleet-circle-item">
                 <div class="fleet-circle blue" id="fleet-route">938</div>
                 <span class="fleet-label">On Route</span>
             </div>
             <div class="fleet-circle-item">
-                <div class="fleet-circle gray">48</div>
+                <div class="fleet-circle gray" id="fleet-depot">48</div>
                 <span class="fleet-label">In Depot</span>
             </div>
         </div>
         
         <div class="quick-info-box">
             <div>
-                <h4 class="auto-style-28710">💡 System Status</h4>
-                <div class="auto-style-62452">✓ Statewide AI Active</div>
-                <div class="auto-style-81471">Real-time tracking for all 38 districts of Tamil Nadu.</div>
+                <h4 class="auto-style-28710" id="system-status-title">💡 System Status</h4>
+                <div class="auto-style-62452" id="system-status-text">✓ Statewide AI Active</div>
+                <div class="auto-style-81471" id="system-status-subtext">Real-time tracking for all 38 districts of Tamil Nadu (852 stops active).</div>
             </div>
-            <div class="auto-style-27908">🚌</div>
+            <div class="auto-style-27908" id="system-status-icon">🚌</div>
         </div>
     </div>
 </div>

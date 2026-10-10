@@ -98,9 +98,7 @@
                     AI detected high queue accumulation. Click to instantly mobilize reserve depot buses to needy bus stands.
                 </p>
             </div>
-            <button id="btn-auto-dispatch-all" class="badge badge-danger" style="padding: 10px 18px; font-size: 0.9rem; cursor: pointer; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
-                ⚡ Auto-Dispatch Buses to All Needy Stops
-            </button>
+            <div id="btn-auto-dispatch-all" style="display: none;"></div>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 14px;">
@@ -115,9 +113,9 @@
                         Capacity: 14,249 pax • Deficit: <strong id="deficit-cmbt" style="color: #ef4444;">-45 Buses</strong>
                     </div>
                 </div>
-                <button class="btn-dispatch" onclick="dispatchBuses('Chennai CMBT Koyambedu', 'Villupuram Reserve Depot', 45, 'hub-cmbt', 'badge-cmbt', 'bar-cmbt')">
-                    🚀 Dispatch 45 Buses
-                </button>
+                <div id="status-hub-cmbt" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                    🤖 AI Auto-Warden Monitoring...
+                </div>
             </div>
 
             <!-- Stop 2: Madurai Mattuthavani -->
@@ -131,9 +129,9 @@
                         Capacity: 13,761 pax • Deficit: <strong id="deficit-mdu" style="color: #ef4444;">-30 Buses</strong>
                     </div>
                 </div>
-                <button class="btn-dispatch" onclick="dispatchBuses('Madurai Mattuthavani', 'Dindigul Central Depot', 30, 'hub-mdu', 'badge-mdu', 'bar-mdu')">
-                    🚀 Dispatch 30 Buses
-                </button>
+                <div id="status-hub-mdu" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                    🤖 AI Auto-Warden Monitoring...
+                </div>
             </div>
 
             <!-- Stop 3: Coimbatore Gandhipuram -->
@@ -147,9 +145,9 @@
                         Capacity: 14,116 pax • Deficit: <strong id="deficit-cbe" style="color: #f59e0b;">-25 Buses</strong>
                     </div>
                 </div>
-                <button class="btn-dispatch" onclick="dispatchBuses('CBE Gandhipuram', 'Erode Central Depot', 25, 'hub-cbe', 'badge-cbe', 'bar-cbe')">
-                    🚀 Dispatch 25 Buses
-                </button>
+                <div id="status-hub-cbe" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                    🤖 AI Auto-Warden Monitoring...
+                </div>
             </div>
 
             <!-- Stop 4: Trichy Chatram -->
@@ -163,9 +161,9 @@
                         Capacity: 14,065 pax • Deficit: <strong id="deficit-try" style="color: #f59e0b;">-20 Buses</strong>
                     </div>
                 </div>
-                <button class="btn-dispatch" onclick="dispatchBuses('Trichy Chatram', 'Pudukkottai Regional Depot', 20, 'hub-try', 'badge-try', 'bar-try')">
-                    🚀 Dispatch 20 Buses
-                </button>
+                <div id="status-hub-try" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                    🤖 AI Auto-Warden Monitoring...
+                </div>
             </div>
         </div>
     </div>
@@ -308,11 +306,14 @@
     }
 
     window.dispatchBuses = function(stopName, sourceDepot, count, cardId, badgeId, barId) {
-        // Change button state
-        const btn = document.querySelector(`#${cardId} button`);
-        if (btn) {
-            btn.innerText = '🚀 Dispatched!';
-            btn.disabled = true;
+        // Change status indicator state
+        const statusEl = document.getElementById(`status-${cardId}`);
+        if (statusEl) {
+            statusEl.innerHTML = '🚀 Dispatched Automatically!';
+            statusEl.style.background = '#ecfdf5';
+            statusEl.style.color = '#10b981';
+            statusEl.style.border = '1px solid #10b981';
+            statusEl.dataset.dispatched = 'true';
         }
 
         // Change card badge state
@@ -411,9 +412,9 @@
         ];
 
         for (const hub of activeHubs) {
-            const btn = document.querySelector(`#${hub.card} button`);
+            const statusEl = document.getElementById(`status-${hub.card}`);
             // Only poll if it hasn't been dispatched yet
-            if (btn && !btn.disabled) {
+            if (statusEl && statusEl.dataset.dispatched !== 'true') {
                 try {
                     const r = await fetch(`/api/v1/ai/predict-now?stop_id=${hub.id}&festival=deepavali`);
                     const data = await r.json();
@@ -429,10 +430,8 @@
                         const defectLabel = document.getElementById(deficitId);
                         if (defectLabel && data.recommended_extra_buses > 0) {
                             defectLabel.innerText = `-${data.recommended_extra_buses} Buses`;
-                            // Update the button text to show the correct live number of buses
-                            btn.innerText = `🚀 Dispatch ${data.recommended_extra_buses} Buses`;
-                            // Update onclick parameters
-                            btn.setAttribute('onclick', `dispatchBuses('${hub.name}', '${hub.depot}', ${data.recommended_extra_buses}, '${hub.card}', '${hub.badge}', '${hub.bar}')`);
+                            // Update the status text to show what AI is planning
+                            statusEl.innerHTML = `⚠️ Preparing to dispatch ${data.recommended_extra_buses} Buses...`;
                         }
                     }
 

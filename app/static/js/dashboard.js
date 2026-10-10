@@ -175,6 +175,15 @@ function populateDistrictSelector() {
     });
 }
 
+function getWeatherForLocation(name) {
+    let sum = 0;
+    for(let i=0; i<name.length; i++) sum += name.charCodeAt(i);
+    return {
+        temp: 35 + (sum % 11), // 35 to 45 °C
+        isRaining: (sum % 100) < 35 // 35% chance
+    };
+}
+
 function updateWeatherForDistrict(district) {
     const icon = document.getElementById('header-weather-icon');
     const temp = document.getElementById('header-weather-temp');
@@ -183,26 +192,46 @@ function updateWeatherForDistrict(district) {
     if(!icon || !temp || !desc) return;
     
     if (district === 'all') {
-        icon.innerText = '⛅'; temp.innerText = '28°C'; desc.innerHTML = 'Partly Cloudy<br>Chennai, TN';
+        icon.innerText = '⛅'; temp.innerText = '--°C'; desc.innerHTML = 'Select Location<br>to view weather';
         return;
     }
     
-    // Simulate Weather and Rain Prediction
-    const isRaining = Math.random() > 0.65; // 35% chance of rain prediction
-    const temperature = Math.floor(Math.random() * 8) + 26; // 26 to 33 C
+    const w = getWeatherForLocation(district);
     
-    if (isRaining) {
+    if (w.isRaining) {
         icon.innerText = '🌧️';
-        temp.innerText = `${temperature}°C`;
+        temp.innerText = `${w.temp}°C`;
         desc.innerHTML = `Rain Predicted<br>${district}, TN`;
         desc.style.color = '#3b82f6';
         if(window.showDispatchNotification) {
             window.showDispatchNotification('🌧️ Weather Alert', `Rain predicted in ${district}. Adjusting transit speeds...`, '☔');
         }
     } else {
-        icon.innerText = Math.random() > 0.5 ? '☀️' : '⛅';
-        temp.innerText = `${temperature}°C`;
+        icon.innerText = w.temp > 40 ? '☀️' : '⛅';
+        temp.innerText = `${w.temp}°C`;
         desc.innerHTML = `Clear Skies<br>${district}, TN`;
+        desc.style.color = 'inherit';
+    }
+}
+
+function updateWeatherForStop(stop) {
+    const icon = document.getElementById('header-weather-icon');
+    const temp = document.getElementById('header-weather-temp');
+    const desc = document.getElementById('header-weather-desc');
+    
+    if(!icon || !temp || !desc) return;
+    
+    const w = getWeatherForLocation(stop.id);
+    
+    if (w.isRaining) {
+        icon.innerText = '🌧️';
+        temp.innerText = `${w.temp}°C`;
+        desc.innerHTML = `Rain Predicted<br>${stop.name}`;
+        desc.style.color = '#3b82f6';
+    } else {
+        icon.innerText = w.temp > 40 ? '☀️' : '⛅';
+        temp.innerText = `${w.temp}°C`;
+        desc.innerHTML = `Clear Skies<br>${stop.name}`;
         desc.style.color = 'inherit';
     }
 }
@@ -285,6 +314,7 @@ function renderMarkers() {
         marker.on('click', () => {
             selectedStopId = s.id;
             updateKPIsForStop(s);
+            updateWeatherForStop(s);
         });
     });
 }
@@ -664,6 +694,13 @@ function startRealTimeSimulation() {
         // 1. Simulate crowd fluctuation across stops
         stopsData.stops.forEach(s => {
             let delta = Math.floor(Math.random() * 25) - 12;
+            
+            // Check weather for this specific stop
+            const w = getWeatherForLocation(s.id);
+            if (w.isRaining) {
+                // If it rains, people rush to bus stops for shelter and to commute home faster
+                delta += Math.floor(Math.random() * 20) + 15;
+            }
             
             // Spike critical hubs so they genuinely turn RED (Critical Situation)
             const criticalHubs = ['TN0045', 'TN0305', 'TN0077', 'TN0637'];

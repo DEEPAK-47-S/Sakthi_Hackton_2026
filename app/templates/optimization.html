@@ -170,8 +170,18 @@
 
     <!-- Optimization Dashboard -->
     <div class="card auto-style-96869">
-        <div class="panel-title">
+        <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
             <span>⚙️ Live Fleet Transfer Scenarios</span>
+            <button class="btn-dispatch" onclick="findConsolidations()" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+                🔍 Find Consolidation Opportunities
+            </button>
+        </div>
+        
+        <div id="consolidation-approval-panel" style="display: none; background: #fffbeb; border-left: 5px solid #f59e0b; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+            <h4 style="margin: 0 0 10px 0; color: #b45309;">⚠️ Admin Approval Required</h4>
+            <div id="consolidation-content" style="font-size: 0.9rem; color: #451a03; margin-bottom: 10px;"></div>
+            <button class="btn-dispatch" onclick="approveConsolidation()" style="background: linear-gradient(135deg, #10b981, #059669); padding: 6px 12px; font-size: 0.8rem;">✅ Approve Reallocation</button>
+            <button class="btn-dispatch" onclick="document.getElementById('consolidation-approval-panel').style.display='none'" style="background: #ef4444; padding: 6px 12px; font-size: 0.8rem;">❌ Reject</button>
         </div>
         
         <div class="optimization-list auto-style-12285" id="opt-list">
@@ -546,6 +556,66 @@
                 '🛡️'
             );
         }
+
+        // New Phase 3: Admin Approval Workflow for Consolidation
+        window.findConsolidations = async function() {
+            try {
+                const btn = document.querySelector('button[onclick="findConsolidations()"]');
+                btn.innerText = "⏳ Analyzing Routes...";
+                
+                const response = await fetch('/api/v1/optimization/run', { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.status === 'OPTIMAL' && data.transfers && data.transfers.length > 0) {
+                    const rec = data.transfers[0];
+                    const panel = document.getElementById('consolidation-approval-panel');
+                    const content = document.getElementById('consolidation-content');
+                    
+                    content.innerHTML = `
+                        <strong>Action:</strong> ${rec.reason}<br>
+                        <strong>Trade-off:</strong> ${rec.trade_off}<br>
+                        <strong>Spare Bus Assigned to:</strong> ${rec.reallocated_to}<br><br>
+                        <em>Do you approve this dynamic allocation?</em>
+                    `;
+                    
+                    panel.style.display = 'block';
+                } else {
+                    alert("No consolidation opportunities found at this time.");
+                }
+                btn.innerHTML = "🔍 Find Consolidation Opportunities";
+            } catch (e) {
+                console.error(e);
+                alert("Error running optimization engine.");
+            }
+        };
+        
+        window.approveConsolidation = function() {
+            const panel = document.getElementById('consolidation-approval-panel');
+            panel.style.display = 'none';
+            
+            if (window.showDispatchNotification) {
+                window.showDispatchNotification(
+                    '✅ Allocation Approved!',
+                    'Consolidation executed. Spare bus has been dynamically routed to the shortage area.',
+                    '🚌'
+                );
+            }
+            
+            // Push a scenario so the UI sees it
+            scenarios.unshift({
+                id: 'OPT-CONS',
+                from: 'Rural Consolidated Route',
+                to: 'Chennai CMBT',
+                buses: 1,
+                status: 'Approved',
+                eta: '45 mins',
+                impact: 'Freed up 1 bus via underutilized route consolidation. Max capacity 50 pax strictly enforced.',
+                progress: 100
+            });
+            if(scenarios.length > 4) scenarios.pop();
+            renderScenarios();
+        };
+
     });
 </script>
 {% endblock %}

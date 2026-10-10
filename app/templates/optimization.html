@@ -1,5 +1,48 @@
 {% extends "base.html" %}
-{% block title %}Optimization Engine - Tamil Nadu Smart Transit{% endblock %}
+{% block title %}Optimization Engine & AI Fleet Dispatch - Tamil Nadu Smart Transit{% endblock %}
+
+{% block extra_css %}
+<style>
+.dispatch-hub-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+}
+.dispatch-hub-card:hover {
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+.btn-dispatch {
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+.btn-dispatch:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+}
+.btn-dispatch:disabled {
+    background: #10b981;
+    cursor: default;
+    transform: none;
+}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="dashboard-grid">
@@ -9,15 +52,15 @@
             <div class="kpi-icon green">🤖</div>
             <div class="kpi-info-flex">
                 <h4>AI Engine Status</h4>
-                <h2>Active</h2>
-                <p>Google OR-Tools SCIP backend</p>
+                <h2 id="engine-status">Active</h2>
+                <p>Ensemble AI + Constraint Solver</p>
             </div>
         </div>
         <div class="card kpi-card blue">
             <div class="kpi-icon blue">⚡</div>
             <div class="kpi-info-flex">
                 <h4>Average Delay Reduction</h4>
-                <h2 id="delay-reduction">34%</h2>
+                <h2 id="delay-reduction">34.8%</h2>
                 <p>Compared to static routing</p>
             </div>
         </div>
@@ -25,79 +68,157 @@
             <div class="kpi-icon purple">⛽</div>
             <div class="kpi-info-flex">
                 <h4>Fuel Optimization</h4>
-                <h2>12.4%</h2>
+                <h2>14.2%</h2>
                 <p>Saved via deadhead reduction</p>
             </div>
         </div>
         <div class="card kpi-card orange">
             <div class="kpi-icon orange">🚌</div>
             <div class="kpi-info-flex">
-                <h4>Buses Reallocated</h4>
-                <h2 id="buses-reallocated">142</h2>
-                <p>In the last 24 hours</p>
+                <h4>Total Buses Reallocated</h4>
+                <h2 id="buses-reallocated">157</h2>
+                <p>Live active dispatches</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Priority Fleet Allocation Control Panel -->
+    <div class="card" style="grid-column: 1 / -1; border-top: 4px solid var(--primary);">
+        <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+                <span style="font-size: 1.15rem; font-weight: 700;">🚨 AI Priority Bus Allocation (High-Deficit Stops)</span>
+                <p style="margin: 3px 0 0 0; font-size: 0.82rem; color: var(--text-muted);">
+                    AI detected high queue accumulation. Click to instantly mobilize reserve depot buses to needy bus stands.
+                </p>
+            </div>
+            <button id="btn-auto-dispatch-all" class="badge badge-danger" style="padding: 10px 18px; font-size: 0.9rem; cursor: pointer; border: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+                ⚡ Auto-Dispatch Buses to All Needy Stops
+            </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 14px;">
+            <!-- Stop 1: Chennai CMBT -->
+            <div class="dispatch-hub-card" id="hub-cmbt">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <strong style="font-size: 1rem;">Chennai CMBT Koyambedu</strong>
+                        <span class="badge badge-danger" id="badge-cmbt">115% LOAD</span>
+                    </div>
+                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
+                        Capacity: 14,249 pax • Deficit: <strong style="color: #ef4444;">-45 Buses</strong>
+                    </div>
+                </div>
+                <button class="btn-dispatch" onclick="dispatchBuses('Chennai CMBT Koyambedu', 'Villupuram Reserve Depot', 45, 'hub-cmbt', 'badge-cmbt', 'bar-cmbt')">
+                    🚀 Dispatch 45 Buses
+                </button>
+            </div>
+
+            <!-- Stop 2: Madurai Mattuthavani -->
+            <div class="dispatch-hub-card" id="hub-mdu">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <strong style="font-size: 1rem;">Madurai Mattuthavani</strong>
+                        <span class="badge badge-danger" id="badge-mdu">108% LOAD</span>
+                    </div>
+                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
+                        Capacity: 13,761 pax • Deficit: <strong style="color: #ef4444;">-30 Buses</strong>
+                    </div>
+                </div>
+                <button class="btn-dispatch" onclick="dispatchBuses('Madurai Mattuthavani', 'Dindigul Central Depot', 30, 'hub-mdu', 'badge-mdu', 'bar-mdu')">
+                    🚀 Dispatch 30 Buses
+                </button>
+            </div>
+
+            <!-- Stop 3: Coimbatore Gandhipuram -->
+            <div class="dispatch-hub-card" id="hub-cbe">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <strong style="font-size: 1rem;">CBE Gandhipuram Central</strong>
+                        <span class="badge badge-warning" id="badge-cbe" style="color: white;">98% LOAD</span>
+                    </div>
+                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
+                        Capacity: 14,116 pax • Deficit: <strong style="color: #f59e0b;">-25 Buses</strong>
+                    </div>
+                </div>
+                <button class="btn-dispatch" onclick="dispatchBuses('CBE Gandhipuram', 'Erode Central Depot', 25, 'hub-cbe', 'badge-cbe', 'bar-cbe')">
+                    🚀 Dispatch 25 Buses
+                </button>
+            </div>
+
+            <!-- Stop 4: Trichy Chatram -->
+            <div class="dispatch-hub-card" id="hub-try">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <strong style="font-size: 1rem;">Trichy Chatram Bus Stand</strong>
+                        <span class="badge badge-warning" id="badge-try" style="color: white;">94% LOAD</span>
+                    </div>
+                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
+                        Capacity: 14,065 pax • Deficit: <strong style="color: #f59e0b;">-20 Buses</strong>
+                    </div>
+                </div>
+                <button class="btn-dispatch" onclick="dispatchBuses('Trichy Chatram', 'Pudukkottai Regional Depot', 20, 'hub-try', 'badge-try', 'bar-try')">
+                    🚀 Dispatch 20 Buses
+                </button>
             </div>
         </div>
     </div>
 
     <!-- Optimization Dashboard -->
-    <div class="card auto-style-96869" >
+    <div class="card auto-style-96869">
         <div class="panel-title">
-            <span>⚙️ Active Reallocation Scenarios (Statewide)</span>
+            <span>⚙️ Live Fleet Transfer Scenarios</span>
         </div>
         
-        <div class="optimization-list auto-style-12285" id="opt-list" >
+        <div class="optimization-list auto-style-12285" id="opt-list">
             <!-- Handled by JS -->
         </div>
     </div>
 
-    <div class="card auto-style-95171" >
+    <!-- Load Balancing Impact -->
+    <div class="card auto-style-95171">
         <div class="panel-title">
-            <span>📊 Load Balancing Impact</span>
+            <span>📊 Live Load Balancing Impact</span>
         </div>
         <div class="auto-style-627">
-            
             <div>
                 <div class="auto-style-97930">
-                    <strong>Chennai CMBT (Pre-AI)</strong>
-                    <span class="auto-style-47427">115% Capacity</span>
+                    <strong>Chennai CMBT</strong>
+                    <span id="label-cmbt" class="auto-style-47427">115% Capacity</span>
                 </div>
                 <div class="auto-style-63532">
-                    <div class="auto-style-65748"></div>
+                    <div id="bar-cmbt" class="auto-style-65748" style="width: 100%; transition: width 0.8s ease, background 0.8s ease;"></div>
                 </div>
             </div>
             
             <div>
                 <div class="auto-style-97930">
-                    <strong>Chennai CMBT (Post-AI)</strong>
-                    <span class="auto-style-6128">88% Capacity</span>
+                    <strong>Madurai Mattuthavani</strong>
+                    <span id="label-mdu" class="auto-style-47427">108% Capacity</span>
                 </div>
                 <div class="auto-style-63532">
-                    <div class="auto-style-91121"></div>
-                </div>
-            </div>
-            
-            <hr class="auto-style-67518">
-
-            <div>
-                <div class="auto-style-97930">
-                    <strong>CBE Gandhipuram (Pre-AI)</strong>
-                    <span class="auto-style-47427">98% Capacity</span>
-                </div>
-                <div class="auto-style-63532">
-                    <div class="auto-style-43533"></div>
-                </div>
-            </div>
-            
-            <div>
-                <div class="auto-style-97930">
-                    <strong>CBE Gandhipuram (Post-AI)</strong>
-                    <span class="auto-style-17551">75% Capacity</span>
-                </div>
-                <div class="auto-style-63532">
-                    <div class="auto-style-86189"></div>
+                    <div id="bar-mdu" class="auto-style-65748" style="width: 95%; transition: width 0.8s ease, background 0.8s ease;"></div>
                 </div>
             </div>
 
+            <div>
+                <div class="auto-style-97930">
+                    <strong>CBE Gandhipuram</strong>
+                    <span id="label-cbe" class="auto-style-47427">98% Capacity</span>
+                </div>
+                <div class="auto-style-63532">
+                    <div id="bar-cbe" class="auto-style-43533" style="width: 88%; transition: width 0.8s ease, background 0.8s ease;"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="auto-style-97930">
+                    <strong>Trichy Chatram</strong>
+                    <span id="label-try" class="auto-style-6128">94% Capacity</span>
+                </div>
+                <div class="auto-style-63532">
+                    <div id="bar-try" class="auto-style-91121" style="width: 84%; transition: width 0.8s ease, background 0.8s ease;"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -105,38 +226,43 @@
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    const scenarios = [
+        { id: 'OPT-101', from: 'Erode Central Depot', to: 'CBE Gandhipuram', buses: 15, status: 'Executing', eta: '35 mins', impact: 'Resolves critical evening crowd in CBE', progress: 75 },
+        { id: 'OPT-102', from: 'Maraimalai Nagar Depot', to: 'CMBT Koyambedu', buses: 20, status: 'Executing', eta: '18 mins', impact: 'Balances Chennai outbound surge', progress: 88 },
+        { id: 'OPT-103', from: 'Salem Depot', to: 'Trichy Chatram', buses: 18, status: 'Pending Approval', eta: '1 hr 15 mins', impact: 'Cauvery delta corridor clearance', progress: 0 },
+        { id: 'OPT-104', from: 'Virudhunagar Standby', to: 'Madurai Mattuthavani', buses: 12, status: 'Pending Approval', eta: '40 mins', impact: 'Temple festival queue prevention', progress: 0 }
+    ];
+
+    function renderScenarios() {
         const container = document.getElementById('opt-list');
-        
-        const scenarios = [
-            { id: 'OPT-101', from: 'Erode Central', to: 'CBE Gandhipuram', buses: 15, status: 'Executing', eta: '45 mins', impact: 'Resolves critical crowd in CBE', progress: 65 },
-            { id: 'OPT-102', from: 'Tambaram', to: 'CMBT Koyambedu', buses: 10, status: 'Executing', eta: '20 mins', impact: 'Balances Chennai evening surge', progress: 85 },
-            { id: 'OPT-103', from: 'Salem Depot', to: 'Trichy Central', buses: 8, status: 'Pending Approval', eta: '2 hrs', impact: 'Pre-allocation for festival traffic', progress: 0 },
-            { id: 'OPT-104', from: 'Madurai Depot', to: 'Tirunelveli', buses: 5, status: 'Analyzing', eta: '--', impact: 'Checking route feasibility', progress: 15 }
-        ];
+        if (!container) return;
 
         let html = '';
-        scenarios.forEach(s => {
-            let pColor = s.progress > 80 ? 'var(--success)' : (s.progress > 50 ? 'var(--warning)' : 'var(--primary)');
-            if (s.status === 'Pending Approval') pColor = '#cbd5e1';
-            
+        scenarios.forEach((s, idx) => {
+            let pColor = s.progress >= 80 ? 'var(--success)' : (s.progress > 40 ? 'var(--warning)' : '#cbd5e1');
+            let badgeClass = s.status === 'Executing' || s.status === 'Dispatched' ? 'badge-success' : 'badge-warning';
+            let isPending = s.status === 'Pending Approval';
+
             html += `
-                <div class="auto-style-28765">
+                <div class="auto-style-28765" id="scenario-card-${idx}">
                     <div class="auto-style-62813">
                         <span class="auto-style-21277">${s.id}</span>
-                        <span class="badge ${s.status === 'Executing' ? 'badge-success' : (s.status === 'Pending Approval' ? 'badge-warning' : 'badge-info')}">${s.status}</span>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <span class="badge ${badgeClass}" id="scen-badge-${idx}">${s.status}</span>
+                            ${isPending ? `<button class="btn-dispatch" style="padding:4px 10px; font-size:0.78rem;" onclick="approveScenario(${idx})">⚡ Approve & Send</button>` : ''}
+                        </div>
                     </div>
                     <div class="auto-style-49196">
                         <div class="auto-style-74943-b">
-                            <div class="auto-style-84209">Source</div>
+                            <div class="auto-style-84209">Origin Depot</div>
                             <div class="auto-style-43987">${s.from}</div>
-                            <div class="auto-style-19596">- ${s.buses} buses</div>
+                            <div class="auto-style-19596">- ${s.buses} buses allocated</div>
                         </div>
                         <div class="auto-style-63479">➔</div>
                         <div class="auto-style-71564">
-                            <div class="auto-style-84209">Destination</div>
+                            <div class="auto-style-84209">Needy Bus Stop</div>
                             <div class="auto-style-43987">${s.to}</div>
-                            <div class="auto-style-80188">+ ${s.buses} buses</div>
+                            <div class="auto-style-80188">+ ${s.buses} buses dispatched</div>
                         </div>
                     </div>
                     <div class="auto-style-32286">
@@ -145,30 +271,93 @@
                     </div>
                     <div>
                         <div class="auto-style-71172">
-                            <span>Completion</span>
-                            <span>${s.progress}%</span>
+                            <span>Dispatch Completion</span>
+                            <span id="scen-pct-${idx}">${s.progress}%</span>
                         </div>
                         <div class="auto-style-94056">
-                            <div class="auto-style-43115" style="width: ${s.progress}%; height: 100%; background: ${pColor};"></div>
+                            <div id="scen-bar-${idx}" class="auto-style-43115" style="width: ${s.progress}%; height: 100%; background: ${pColor}; transition: width 0.6s ease;"></div>
                         </div>
                     </div>
                 </div>
             `;
         });
-        
-        container.innerHTML = html;
 
-        // Simulate KPI changes
-        setInterval(() => {
-            let reduction = (34 + Math.random() * 2 - 1).toFixed(1);
-            document.getElementById('delay-reduction').innerText = reduction + '%';
-            
-            // Occasionally increment reallocated buses
-            if (Math.random() > 0.8) {
-                let realloc = parseInt(document.getElementById('buses-reallocated').innerText) + 1;
-                document.getElementById('buses-reallocated').innerText = realloc;
+        container.innerHTML = html;
+    }
+
+    window.dispatchBuses = function(stopName, sourceDepot, count, cardId, badgeId, barId) {
+        const btn = document.querySelector(`#${cardId} button`);
+        if (btn) {
+            btn.innerText = '🚀 Dispatched!';
+            btn.disabled = true;
+        }
+
+        const badge = document.getElementById(badgeId);
+        if (badge) {
+            badge.innerText = 'BALANCED (74%)';
+            badge.className = 'badge badge-success';
+        }
+
+        // Update load balancing bar
+        const bar = document.getElementById(barId);
+        if (bar) {
+            bar.style.width = '68%';
+            bar.style.background = 'var(--success)';
+        }
+
+        // Increment reallocated buses KPI
+        const reallocEl = document.getElementById('buses-reallocated');
+        if (reallocEl) {
+            reallocEl.innerText = (parseInt(reallocEl.innerText) + count).toLocaleString();
+        }
+
+        // Show global Toast confirmation!
+        if (window.showDispatchNotification) {
+            window.showDispatchNotification(
+                `✅ ${count} Buses Dispatched!`,
+                `Successfully routed from ${sourceDepot} to ${stopName}. Queue load normalized.`,
+                '🚌'
+            );
+        }
+    };
+
+    window.approveScenario = function(idx) {
+        const s = scenarios[idx];
+        s.status = 'Dispatched';
+        s.progress = 100;
+        renderScenarios();
+
+        const reallocEl = document.getElementById('buses-reallocated');
+        if (reallocEl) {
+            reallocEl.innerText = (parseInt(reallocEl.innerText) + s.buses).toLocaleString();
+        }
+
+        if (window.showDispatchNotification) {
+            window.showDispatchNotification(
+                `✅ ${s.buses} Buses En Route to ${s.to}!`,
+                `Origin: ${s.from} • ETA: ${s.eta}. ${s.impact}`,
+                '🚀'
+            );
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderScenarios();
+
+        document.getElementById('btn-auto-dispatch-all').addEventListener('click', () => {
+            const allBtns = document.querySelectorAll('.dispatch-hub-card button');
+            allBtns.forEach(btn => {
+                if (!btn.disabled) btn.click();
+            });
+
+            if (window.showDispatchNotification) {
+                window.showDispatchNotification(
+                    '⚡ Statewide AI Dispatch Complete!',
+                    '120 Reserve Buses successfully dispatched to all 4 critical Tamil Nadu transit hubs!',
+                    '🌟'
+                );
             }
-        }, 2500);
+        });
     });
 </script>
 {% endblock %}

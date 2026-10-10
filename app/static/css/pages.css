@@ -366,3 +366,9 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
 }
+
+
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}

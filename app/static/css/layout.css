@@ -154,64 +154,103 @@
     overflow-y: auto;
 }
 
-/* --- Mobile Responsiveness --- */
+/* ========================================================
+   PREMIUM MOBILE RESPONSIVENESS (Max-width: 768px)
+   ======================================================== */
 @media (max-width: 768px) {
-    /* Hamburger Menu & Header */
+    /* 1. Layout & Spacing */
+    .app-layout { flex-direction: column; }
+    .content-area { padding: 0.75rem !important; }
+    
+    /* 2. Header & Branding */
+    .top-header {
+        height: 60px !important;
+        padding: 0 1rem !important;
+    }
+    .header-location { gap: 0.5rem !important; }
+    .header-location .icon img { width: 36px !important; height: 36px !important; }
+    .header-location h3 { font-size: 0.9rem !important; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+    .header-location p { display: none; /* Hide subtitle on mobile to save space */ }
+    
     #mobile-menu-btn { 
-        display: block !important; 
+        display: flex !important; 
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: #f1f5f9;
+        border-radius: 8px;
+        color: var(--primary-blue);
+        margin-right: 0.25rem !important;
     }
-    .header-actions { 
-        display: none !important; 
-    }
-    .header-location h3 { 
-        font-size: 0.95rem; 
-    }
-    .header-location p { 
-        font-size: 0.75rem; 
-    }
+    
+    .header-actions { display: none !important; } /* Hide heavy header actions */
 
-    /* Sidebar toggle */
+    /* 3. Sidebar Drawer */
     .sidebar { 
-        position: absolute; 
-        z-index: 9999; 
-        height: 100vh; 
+        position: fixed !important;
+        top: 0; left: 0;
+        z-index: 999999 !important; 
+        height: 100dvh !important; 
+        width: 260px !important;
         transform: translateX(-100%); 
-        transition: transform 0.3s ease; 
-        box-shadow: 2px 0 10px rgba(0,0,0,0.5); 
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+        box-shadow: 10px 0 25px rgba(0,0,0,0.5) !important; 
     }
-    .sidebar.open { 
-        transform: translateX(0); 
-    }
+    .sidebar.open { transform: translateX(0) !important; }
 
-    /* Grid Resets */
-    .dashboard-grid, .metric-row, .inference-form-grid { 
+    /* 4. Grid System & Cards */
+    .dashboard-grid { 
         grid-template-columns: 1fr !important; 
         display: flex !important; 
         flex-direction: column !important; 
-        gap: 15px;
+        gap: 12px !important;
     }
     
+    .card { padding: 1rem !important; border-radius: 12px !important; }
+    .panel-title { font-size: 1.05rem !important; flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+    .panel-title span { font-size: 1rem !important; }
+
+    /* 5. KPI Metrics */
     .metric-row {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important; /* Keep 2 items on mobile for KPIs */
+        grid-template-columns: 1fr !important; /* Stack KPIs entirely on mobile */
+        gap: 10px !important;
     }
+    .kpi-card { padding: 1rem !important; }
+    .kpi-icon { font-size: 1.5rem !important; width: 40px !important; height: 40px !important; }
+    .kpi-info-flex h2 { font-size: 1.4rem !important; }
+    .kpi-info-flex h4 { font-size: 0.8rem !important; }
+    .kpi-info-flex p { font-size: 0.75rem !important; }
 
-    /* Map Specific Fixes */
-    .map-container { 
-        height: 400px !important; 
-    }
+    /* 6. Map Display */
+    .map-container { height: 350px !important; border-radius: 12px !important; }
     .map-overlay { 
-        position: static !important; 
+        position: relative !important; 
+        top: auto !important; right: auto !important; bottom: auto !important; left: auto !important;
         width: 100% !important; 
-        border-radius: 0 !important; 
-        margin-bottom: 10px !important; 
+        border-radius: 8px !important; 
+        margin-bottom: 12px !important; 
+        padding: 0.75rem !important;
+        box-shadow: none !important;
+        border: 1px solid var(--border);
     }
+    .filters-row { flex-direction: column !important; gap: 8px !important; }
+    .filter-item { width: 100% !important; flex: 1 !important; }
+    .filter-item select, .filter-item input { width: 100% !important; font-size: 0.9rem !important; padding: 10px !important; }
 
-    /* Filtering inputs */
-    .filters-row { 
-        flex-direction: column !important; 
-    }
-    .filter-item { 
-        width: 100% !important; 
-    }
+    /* 7. Optimization Hub Cards */
+    .dispatch-hub-card { padding: 12px !important; gap: 10px !important; }
+    .dispatch-hub-card strong { font-size: 0.95rem !important; }
+    .btn-dispatch { width: 100% !important; padding: 12px !important; }
+    
+    /* 8. Modals & Forms */
+    .inference-form-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    
+    /* 9. Typography Adjustments */
+    h1 { font-size: 1.5rem !important; }
+    h2 { font-size: 1.25rem !important; }
+    h3 { font-size: 1.1rem !important; }
+    p { font-size: 0.85rem !important; }
+    .badge { padding: 4px 8px !important; font-size: 0.7rem !important; }
 }

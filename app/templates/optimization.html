@@ -304,18 +304,26 @@
             bar.style.width = '68%';
             bar.style.background = 'var(--success)';
         }
+        
+        // Update label
+        const labelId = barId.replace('bar-', 'label-');
+        const label = document.getElementById(labelId);
+        if (label) {
+            label.innerText = '74% Capacity';
+            label.className = 'auto-style-17551';
+        }
 
         // Increment reallocated buses KPI
         const reallocEl = document.getElementById('buses-reallocated');
         if (reallocEl) {
-            reallocEl.innerText = (parseInt(reallocEl.innerText) + count).toLocaleString();
+            reallocEl.innerText = (parseInt(reallocEl.innerText.replace(/,/g, '')) + count).toLocaleString();
         }
 
         // Show global Toast confirmation!
         if (window.showDispatchNotification) {
             window.showDispatchNotification(
-                `✅ ${count} Buses Dispatched!`,
-                `Successfully routed from ${sourceDepot} to ${stopName}. Queue load normalized.`,
+                `✅ ${count} Buses Auto-Dispatched!`,
+                `AI detected critical load at ${stopName}. Routed from ${sourceDepot}.`,
                 '🚌'
             );
         }
@@ -329,7 +337,7 @@
 
         const reallocEl = document.getElementById('buses-reallocated');
         if (reallocEl) {
-            reallocEl.innerText = (parseInt(reallocEl.innerText) + s.buses).toLocaleString();
+            reallocEl.innerText = (parseInt(reallocEl.innerText.replace(/,/g, '')) + s.buses).toLocaleString();
         }
 
         if (window.showDispatchNotification) {
@@ -340,6 +348,53 @@
             );
         }
     };
+
+    // Auto-Warden Background System
+    async function runAutoWarden() {
+        console.log("AI Warden checking live crowd levels...");
+        const activeHubs = [
+            { id: 'TN0045', name: 'Chennai CMBT Koyambedu', depot: 'Villupuram Reserve Depot', card: 'hub-cmbt', badge: 'badge-cmbt', bar: 'bar-cmbt' },
+            { id: 'TN0305', name: 'Madurai Mattuthavani', depot: 'Dindigul Central Depot', card: 'hub-mdu', badge: 'badge-mdu', bar: 'bar-mdu' },
+            { id: 'TN0077', name: 'CBE Gandhipuram', depot: 'Erode Central Depot', card: 'hub-cbe', badge: 'badge-cbe', bar: 'bar-cbe' },
+            { id: 'TN0637', name: 'Trichy Chatram', depot: 'Pudukkottai Regional Depot', card: 'hub-try', badge: 'badge-try', bar: 'bar-try' }
+        ];
+
+        for (const hub of activeHubs) {
+            const btn = document.querySelector(`#${hub.card} button`);
+            // Only poll if it hasn't been dispatched yet
+            if (btn && !btn.disabled) {
+                try {
+                    const r = await fetch(`/api/v1/ai/predict-now?stop_id=${hub.id}&festival=deepavali`);
+                    const data = await r.json();
+                    
+                    // Update UI live with model prediction
+                    const badge = document.getElementById(hub.badge);
+                    if (badge) {
+                        badge.innerText = `${data.utilization_pct}% LOAD`;
+                        badge.className = data.risk_level === 'CRITICAL' ? 'badge badge-danger' : 
+                                         (data.risk_level === 'HIGH' ? 'badge badge-warning' : 'badge badge-success');
+                        
+                        const defectLabel = document.querySelector(`#${hub.card} .auto-style-19596, #${hub.card} strong[style="color: #ef4444;"], #${hub.card} strong[style="color: #f59e0b;"]`);
+                        if (defectLabel && data.recommended_extra_buses > 0) {
+                            defectLabel.innerText = `-${data.recommended_extra_buses} Buses`;
+                        }
+                    }
+
+                    // If CRITICAL risk and needs buses -> Auto Dispatch!
+                    if (data.risk_level === 'CRITICAL' || data.risk_level === 'HIGH') {
+                        if (data.recommended_extra_buses > 0) {
+                            console.log(`Auto-dispatching ${data.recommended_extra_buses} to ${hub.name}...`);
+                            setTimeout(() => {
+                                dispatchBuses(hub.name, hub.depot, data.recommended_extra_buses, hub.card, hub.badge, hub.bar);
+                            }, Math.random() * 3000 + 1000); // Stagger dispatches
+                        }
+                    }
+                } catch (e) {
+                    console.error("AutoWarden Error", e);
+                }
+            }
+        }
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         renderScenarios();
@@ -353,11 +408,24 @@
             if (window.showDispatchNotification) {
                 window.showDispatchNotification(
                     '⚡ Statewide AI Dispatch Complete!',
-                    '120 Reserve Buses successfully dispatched to all 4 critical Tamil Nadu transit hubs!',
+                    'Reserve Buses successfully dispatched to all critical Tamil Nadu transit hubs!',
                     '🌟'
                 );
             }
         });
+        
+        // Start Auto Warden Polling every 5 seconds for demonstration
+        setInterval(runAutoWarden, 5000);
+        // Run immediately once
+        setTimeout(runAutoWarden, 2000);
+        
+        if (window.showDispatchNotification) {
+            window.showDispatchNotification(
+                '🤖 AI Auto-Warden Active',
+                'Live monitoring engaged. The system will automatically dispatch buses if CRITICAL crowd spikes are detected.',
+                '🛡️'
+            );
+        }
     });
 </script>
 {% endblock %}

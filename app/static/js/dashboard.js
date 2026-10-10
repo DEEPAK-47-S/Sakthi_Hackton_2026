@@ -49,6 +49,48 @@ async function initDashboard() {
     updateFleetStatus();
     updateSystemStatus();
     startRealTimeSimulation();
+    initCustomEventModal();
+}
+
+function initCustomEventModal() {
+    const btnOpen = document.getElementById('btn-custom-event');
+    const modal = document.getElementById('custom-event-modal');
+    const btnCancel = document.getElementById('btn-ce-cancel');
+    const btnSubmit = document.getElementById('btn-ce-submit');
+    
+    if(!btnOpen || !modal) return;
+    
+    btnOpen.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+    btnCancel.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    
+    btnSubmit.addEventListener('click', () => {
+        const name = document.getElementById('ce-name').value || 'Unplanned Gathering';
+        const district = document.getElementById('ce-district').value;
+        modal.style.display = 'none';
+        
+        if(window.showDispatchNotification) {
+            window.showDispatchNotification('⚡ AI Pre-loading Event...', `Analyzing crowd prediction for ${name} at ${district}.`, '🤖');
+            
+            setTimeout(() => {
+                const buses = Math.floor(Math.random() * 25) + 15;
+                window.showDispatchNotification('✅ Allocation Complete!', `AI predicts massive influx for ${name}. Automatically routed +${buses} Reserve Buses to ${district}.`, '🚌');
+                
+                // Add to live events
+                pushLiveEvent({ icon: 'purple', symbol: '⚡', secondsAgo: 1, title: 'AI Auto-Dispatch', text: `${name} detected. +${buses} buses allocated.` });
+                
+                // Force district switch to show the effect
+                const selector = document.getElementById('district-selector');
+                if(selector) {
+                    selector.value = district;
+                    selector.dispatchEvent(new Event('change'));
+                }
+            }, 3000);
+        }
+    });
 }
 
 function initMap() {
@@ -129,7 +171,40 @@ function populateDistrictSelector() {
         renderMarkers();
         updateFleetStatus();
         updateSystemStatus();
+        updateWeatherForDistrict(currentDistrict);
     });
+}
+
+function updateWeatherForDistrict(district) {
+    const icon = document.getElementById('header-weather-icon');
+    const temp = document.getElementById('header-weather-temp');
+    const desc = document.getElementById('header-weather-desc');
+    
+    if(!icon || !temp || !desc) return;
+    
+    if (district === 'all') {
+        icon.innerText = '⛅'; temp.innerText = '28°C'; desc.innerHTML = 'Partly Cloudy<br>Chennai, TN';
+        return;
+    }
+    
+    // Simulate Weather and Rain Prediction
+    const isRaining = Math.random() > 0.65; // 35% chance of rain prediction
+    const temperature = Math.floor(Math.random() * 8) + 26; // 26 to 33 C
+    
+    if (isRaining) {
+        icon.innerText = '🌧️';
+        temp.innerText = `${temperature}°C`;
+        desc.innerHTML = `Rain Predicted<br>${district}, TN`;
+        desc.style.color = '#3b82f6';
+        if(window.showDispatchNotification) {
+            window.showDispatchNotification('🌧️ Weather Alert', `Rain predicted in ${district}. Adjusting transit speeds...`, '☔');
+        }
+    } else {
+        icon.innerText = Math.random() > 0.5 ? '☀️' : '⛅';
+        temp.innerText = `${temperature}°C`;
+        desc.innerHTML = `Clear Skies<br>${district}, TN`;
+        desc.style.color = 'inherit';
+    }
 }
 
 function renderMarkers() {

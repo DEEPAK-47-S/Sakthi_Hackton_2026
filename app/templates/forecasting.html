@@ -149,7 +149,7 @@
         </div>
         <div style="text-align:right; position:relative; z-index:1;">
             <div style="font-size:0.78rem; color:#64748b; margin-bottom:6px;">Select Festival Context</div>
-            <select id="live-festival-sel" style="padding:8px 14px; border-radius:8px; border:1px solid #334155; background:#1e293b; color:white; font-size:0.85rem; font-weight:600; cursor:pointer;">
+            <select id="live-festival-sel" title="Select Festival Scenario" style="padding:8px 14px; border-radius:8px; border:1px solid #334155; background:#1e293b; color:white; font-size:0.85rem; font-weight:600; cursor:pointer;">
                 <option value="none"> Regular Day</option>
                 <option value="pongal"> Pongal (Jan 14-17)</option>
                 <option value="thaipusam"> Thaipusam (Jan 19-22)</option>
@@ -229,7 +229,7 @@
         <div class="inference-form-grid">
             <div class="inference-field">
                 <label> Target Bus Stop</label>
-                <select id="inf-stop">
+                <select id="inf-stop" title="Select Bus Stop">
                     <option value="TN0045" data-cap="14249" data-tier="A">Chennai  CMBT Koyambedu</option>
                     <option value="TN0077" data-cap="14116" data-tier="A">Coimbatore  Gandhipuram</option>
                     <option value="TN0305" data-cap="13761" data-tier="A">Madurai  Mattuthavani</option>
@@ -244,7 +244,7 @@
             </div>
             <div class="inference-field">
                 <label> Time of Day</label>
-                <select id="inf-hour">
+                <select id="inf-hour" title="Select Time of Day">
                     <option value="5">05:00 AM  Pre-Dawn Pilgrim</option>
                     <option value="6">06:00 AM  Early Commute</option>
                     <option value="9">09:00 AM  Morning Peak</option>
@@ -258,7 +258,7 @@
             </div>
             <div class="inference-field">
                 <label> 2026 Festival (14 events)</label>
-                <select id="inf-festival">
+                <select id="inf-festival" title="Select Festival Season">
                     <option value="none"> Regular Day (1.00x)</option>
                     <option value="pongal"> Pongal (2.85x)</option>
                     <option value="thaipusam"> Thaipusam (1.95x)</option>
@@ -277,7 +277,7 @@
             </div>
             <div class="inference-field">
                 <label> Weather</label>
-                <select id="inf-weather">
+                <select id="inf-weather" title="Select Weather Condition">
                     <option value="clear" selected> Clear (1.0x baseline)</option>
                     <option value="rain"> Monsoon Rain (+18% queue)</option>
                 </select>
@@ -420,7 +420,7 @@
                 <span style="font-size:1.05rem; font-weight:700;"> 24-Hour AI Festival Demand Curve  Ensemble Projection</span>
                 <p style="font-size:0.78rem; color:var(--text-muted); margin:3px 0 0;">Predicted statewide hourly arrivals (thousands). Select festival to compare surges.</p>
             </div>
-            <select id="scenario-selector" style="padding:7px 14px; border-radius:8px; border:1px solid var(--border); font-size:0.87rem; font-weight:600; background:white; cursor:pointer;">
+            <select id="scenario-selector" title="Select Impact Scenario" style="padding:7px 14px; border-radius:8px; border:1px solid var(--border); font-size:0.87rem; font-weight:600; background:white; cursor:pointer;">
                 <option value="pongal"> Pongal (Jan 14-17)  Massive Outbound</option>
                 <option value="chithirai"> Chithirai Vizha (Apr-May)  Temple Influx</option>
                 <option value="deepavali" selected> Deepavali (Nov 08)  Statewide Peak</option>

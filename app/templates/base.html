@@ -28,13 +28,13 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="/dashboard" class="active">🏠 Home</a></li>
-                    <li><a href="/map">📍 Live Map</a></li>
-                    <li><a href="/forecasting">📊 Crowd Forecast</a></li>
-                    <li><a href="/optimization">🚍 Bus Allocation</a></li>
-                    <li><a href="/routes">🛤️ Routes & Stops</a></li>
-                    <li><a href="/schedule">📅 Festival Schedule</a></li>
-                    <li><a href="/reports">📄 Reports</a></li>
+                    <li><a href="/dashboard" class="{% if request.path == '/dashboard' or request.path == '/' %}active{% endif %}">🏠 Home</a></li>
+                    <li><a href="/map" class="{% if request.path == '/map' %}active{% endif %}">📍 Live Map</a></li>
+                    <li><a href="/forecasting" class="{% if request.path == '/forecasting' %}active{% endif %}">📊 Crowd Forecast</a></li>
+                    <li><a href="/optimization" class="{% if request.path == '/optimization' %}active{% endif %}">🚍 Bus Allocation</a></li>
+                    <li><a href="/routes" class="{% if request.path == '/routes' %}active{% endif %}">🛤️ Routes & Stops</a></li>
+                    <li><a href="/schedule" class="{% if request.path == '/schedule' %}active{% endif %}">📅 Festival Schedule</a></li>
+                    <li><a href="/reports" class="{% if request.path == '/reports' %}active{% endif %}">📄 Reports</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">

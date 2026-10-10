@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Live Map - FestivalFlow AI{% endblock %}
+{% block content %}
+<div class="card" style="height: calc(100vh - 120px); display: flex; flex-direction: column;">
+    <div class="panel-title">
+        <span>📍 Full Screen Live Map</span>
+    </div>
+    <div id="full-map" style="flex-grow: 1; border-radius: 8px; border: 1px solid var(--panel-border);"></div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const map = L.map('full-map').setView([10.2289, 78.4326], 8);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(map);
+    });
+</script>
+{% endblock %}

@@ -1,43 +1,10 @@
 {% extends "base.html" %}
-
-{% block title %}Optimization & Allocation - Smart Government Platform{% endblock %}
-
-{% block breadcrumbs %}Optimization{% endblock %}
-
+{% block title %}Optimization - FestivalFlow AI{% endblock %}
 {% block content %}
-<div class="header">
-    <h1>Fixed-Fleet Bus Optimization</h1>
-    <p>Reallocate resources without exceeding the fixed fleet constraints.</p>
+<div class="card" style="text-align: center; padding: 4rem;">
+    <div style="font-size: 4rem; margin-bottom: 1rem;">🚍</div>
+    <h2>Bus Fleet Allocation & Optimization Engine</h2>
+    <p class="text-muted">Interactive scenario builder and advanced optimization constraints are configured here.</p>
+    <a href="/dashboard" class="badge badge-info" style="display: inline-block; margin-top: 2rem; padding: 0.75rem 1.5rem; text-decoration: none;">Return to Dashboard</a>
 </div>
-
-<div class="actions">
-    <button id="run-optimization-btn" class="btn btn-primary">Run Fleet Optimization</button>
-</div>
-
-<div id="optimization-results" style="display:none; margin-top: 2rem;">
-    <h2>Optimization Results</h2>
-    <div class="card">
-        <h3>Proposed Transfers</h3>
-        <table id="transfers-table" class="data-table">
-            <thead>
-                <tr>
-                    <th>Source</th>
-                    <th>Destination</th>
-                    <th>Vehicle</th>
-                    <th>Source Impact (Loss)</th>
-                    <th>Destination Impact (Gain)</th>
-                    <th>Net Benefit</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Populated via JS -->
-            </tbody>
-        </table>
-    </div>
-</div>
-{% endblock %}
-
-{% block extra_js %}
-<script src="{{ url_for('static', filename='js/optimization.js') }}"></script>
 {% endblock %}

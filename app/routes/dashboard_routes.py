@@ -19,6 +19,12 @@ def live_map():
 def forecasting():
     return render_template('forecasting.html')
 
+@bp.route('/crowd-monitoring')
+@bp.route('/crowd_monitoring')
+def crowd_monitoring():
+    return render_template('crowd_monitoring.html')
+
+
 @bp.route('/routes')
 def routes():
     return render_template('routes.html')

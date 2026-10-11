@@ -3,24 +3,8 @@ from flask import Blueprint, render_template
 bp = Blueprint('dashboard', __name__)
 
 @bp.route('/')
-def index():
-    return render_template('public.html')
-
-from flask import request, redirect, url_for
-
-@bp.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        if username == 'admin' and password == 'admin123':
-            return redirect(url_for('dashboard.dashboard_view'))
-        else:
-            return render_template('login.html', error="Invalid credentials. Please try again.")
-    return render_template('login.html')
-
 @bp.route('/dashboard')
-def dashboard_view():
+def index():
     return render_template('dashboard.html')
 
 @bp.route('/optimization')

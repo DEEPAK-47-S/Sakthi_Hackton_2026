@@ -374,7 +374,7 @@
             if (label) {
                 label.innerText = '90% Capacity';
             }
-        }, Math.floor(Math.random() * 10000) + 15000);
+        }, Math.floor(Math.random() * 5000) + 8000); // 8-13 seconds for faster demo loops
 
         // Increment reallocated buses KPI
         const reallocEl = document.getElementById('buses-reallocated');
@@ -488,7 +488,7 @@
                                     
                                     if (isConsolidation && typeof window.executeAutoConsolidation === 'function') {
                                         // Fully Automated AI Consolidation Trigger
-                                        window.executeAutoConsolidation(hub.name);
+                                        window.executeAutoConsolidation(hub.name, hub.card, hub.badge, hub.bar);
                                     } else {
                                         if (window.showDispatchNotification) {
                                             window.showDispatchNotification(
@@ -547,7 +547,7 @@
         }
 
         // New Phase 3: Fully Automated AI Consolidation Workflow
-        window.executeAutoConsolidation = async function(targetHubName) {
+        window.executeAutoConsolidation = async function(targetHubName, cardId, badgeId, barId) {
             try {
                 const response = await fetch('/api/v1/optimization/run', { method: 'POST' });
                 const data = await response.json();
@@ -571,19 +571,8 @@
                          );
                     }
                     
-                    // Push a scenario so the UI sees it
-                    scenarios.unshift({
-                        id: 'AUTO-CONS',
-                        from: 'Rural Consolidated Route',
-                        to: targetHubName,
-                        buses: 1,
-                        status: 'Dispatched',
-                        eta: Math.floor(Math.random() * 30 + 15) + ' mins',
-                        impact: `${actionMsg} ${dispatchMsg}`,
-                        progress: 100
-                    });
-                    if(scenarios.length > 4) scenarios.pop();
-                    renderScenarios();
+                    // Trigger dispatchBuses to properly animate the scenario list and reset the hub state
+                    dispatchBuses(targetHubName, 'Rural Consolidated Route', 1, cardId, badgeId, barId, `${actionMsg} ${dispatchMsg}`);
                 }
             } catch (e) {
                 console.error("Auto Consolidation failed", e);

@@ -90,30 +90,30 @@
     </div>
 
     <!-- AI Priority Fleet Allocation Control Panel -->
-    <div class="card" style="grid-column: 1 / -1; border-top: 4px solid var(--primary);">
-        <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+    <div class="card auto-style-101f3c09" >
+        <div class="panel-title auto-style-889a9d9e" >
             <div>
-                <span style="font-size: 1.15rem; font-weight: 700;">🚨 AI Priority Bus Allocation (High-Deficit Stops)</span>
-                <p style="margin: 3px 0 0 0; font-size: 0.82rem; color: var(--text-muted);">
+                <span  class="auto-style-a8a9b279">🚨 AI Priority Bus Allocation (High-Deficit Stops)</span>
+                <p  class="auto-style-390ae8de">
                     AI detected high queue accumulation. Click to instantly mobilize reserve depot buses to needy bus stands.
                 </p>
             </div>
-            <div id="btn-auto-dispatch-all" style="display: none;"></div>
+            <div id="btn-auto-dispatch-all"  class="auto-style-224b51a7"></div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 14px;">
+        <div  class="auto-style-cc6e1636">
             <!-- Stop 1: Chennai CMBT -->
             <div class="dispatch-hub-card" id="hub-cmbt">
                 <div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <strong style="font-size: 1rem;">Chennai CMBT Koyambedu</strong>
+                    <div  class="auto-style-bd9db1cb">
+                        <strong  class="auto-style-1f026128">Chennai CMBT Koyambedu</strong>
                         <span class="badge badge-danger" id="badge-cmbt">115% LOAD</span>
                     </div>
-                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 14,249 pax • Deficit: <strong id="deficit-cmbt" style="color: #ef4444;">-45 Buses</strong>
+                    <div  class="auto-style-8e0d0566">
+                        Capacity: 14,249 pax • Deficit: <strong id="deficit-cmbt"  class="auto-style-ecc5dd78">-45 Buses</strong>
                     </div>
                 </div>
-                <div id="status-hub-cmbt" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                <div id="status-hub-cmbt" data-dispatched="false"  class="auto-style-840717e1">
                     🤖 AI Auto-Warden Monitoring...
                 </div>
             </div>
@@ -121,15 +121,15 @@
             <!-- Stop 2: Madurai Mattuthavani -->
             <div class="dispatch-hub-card" id="hub-mdu">
                 <div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <strong style="font-size: 1rem;">Madurai Mattuthavani</strong>
+                    <div  class="auto-style-bd9db1cb">
+                        <strong  class="auto-style-1f026128">Madurai Mattuthavani</strong>
                         <span class="badge badge-danger" id="badge-mdu">108% LOAD</span>
                     </div>
-                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 13,761 pax • Deficit: <strong id="deficit-mdu" style="color: #ef4444;">-30 Buses</strong>
+                    <div  class="auto-style-8e0d0566">
+                        Capacity: 13,761 pax • Deficit: <strong id="deficit-mdu"  class="auto-style-ecc5dd78">-30 Buses</strong>
                     </div>
                 </div>
-                <div id="status-hub-mdu" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                <div id="status-hub-mdu" data-dispatched="false"  class="auto-style-840717e1">
                     🤖 AI Auto-Warden Monitoring...
                 </div>
             </div>
@@ -137,15 +137,15 @@
             <!-- Stop 3: Coimbatore Gandhipuram -->
             <div class="dispatch-hub-card" id="hub-cbe">
                 <div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <strong style="font-size: 1rem;">CBE Gandhipuram Central</strong>
-                        <span class="badge badge-warning" id="badge-cbe" style="color: white;">98% LOAD</span>
+                    <div  class="auto-style-bd9db1cb">
+                        <strong  class="auto-style-1f026128">CBE Gandhipuram Central</strong>
+                        <span class="badge badge-warning auto-style-f6234f9f" id="badge-cbe" >98% LOAD</span>
                     </div>
-                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 14,116 pax • Deficit: <strong id="deficit-cbe" style="color: #f59e0b;">-25 Buses</strong>
+                    <div  class="auto-style-8e0d0566">
+                        Capacity: 14,116 pax • Deficit: <strong id="deficit-cbe"  class="auto-style-b7dbe9cd">-25 Buses</strong>
                     </div>
                 </div>
-                <div id="status-hub-cbe" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                <div id="status-hub-cbe" data-dispatched="false"  class="auto-style-840717e1">
                     🤖 AI Auto-Warden Monitoring...
                 </div>
             </div>
@@ -153,15 +153,15 @@
             <!-- Stop 4: Trichy Chatram -->
             <div class="dispatch-hub-card" id="hub-try">
                 <div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <strong style="font-size: 1rem;">Trichy Chatram Bus Stand</strong>
-                        <span class="badge badge-warning" id="badge-try" style="color: white;">94% LOAD</span>
+                    <div  class="auto-style-bd9db1cb">
+                        <strong  class="auto-style-1f026128">Trichy Chatram Bus Stand</strong>
+                        <span class="badge badge-warning auto-style-f6234f9f" id="badge-try" >94% LOAD</span>
                     </div>
-                    <div style="font-size: 0.82rem; color: #64748b; margin-top: 4px;">
-                        Capacity: 14,065 pax • Deficit: <strong id="deficit-try" style="color: #f59e0b;">-20 Buses</strong>
+                    <div  class="auto-style-8e0d0566">
+                        Capacity: 14,065 pax • Deficit: <strong id="deficit-try"  class="auto-style-b7dbe9cd">-20 Buses</strong>
                     </div>
                 </div>
-                <div id="status-hub-try" data-dispatched="false" style="margin-top: 10px; padding: 10px; text-align: center; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #64748b; border: 1px dashed #cbd5e1;">
+                <div id="status-hub-try" data-dispatched="false"  class="auto-style-840717e1">
                     🤖 AI Auto-Warden Monitoring...
                 </div>
             </div>
@@ -191,7 +191,7 @@
                     <span id="label-cmbt" class="auto-style-47427">115% Capacity</span>
                 </div>
                 <div class="auto-style-63532">
-                    <div id="bar-cmbt" class="auto-style-65748" style="width: 100%; transition: width 0.8s ease, background 0.8s ease;"></div>
+                    <div id="bar-cmbt" class="auto-style-65748 auto-style-a47d715d" ></div>
                 </div>
             </div>
             
@@ -201,7 +201,7 @@
                     <span id="label-mdu" class="auto-style-47427">108% Capacity</span>
                 </div>
                 <div class="auto-style-63532">
-                    <div id="bar-mdu" class="auto-style-65748" style="width: 95%; transition: width 0.8s ease, background 0.8s ease;"></div>
+                    <div id="bar-mdu" class="auto-style-65748 auto-style-9eceb699" ></div>
                 </div>
             </div>
 
@@ -211,7 +211,7 @@
                     <span id="label-cbe" class="auto-style-47427">98% Capacity</span>
                 </div>
                 <div class="auto-style-63532">
-                    <div id="bar-cbe" class="auto-style-43533" style="width: 88%; transition: width 0.8s ease, background 0.8s ease;"></div>
+                    <div id="bar-cbe" class="auto-style-43533 auto-style-e4a8da22" ></div>
                 </div>
             </div>
 
@@ -221,7 +221,7 @@
                     <span id="label-try" class="auto-style-6128">94% Capacity</span>
                 </div>
                 <div class="auto-style-63532">
-                    <div id="bar-try" class="auto-style-91121" style="width: 84%; transition: width 0.8s ease, background 0.8s ease;"></div>
+                    <div id="bar-try" class="auto-style-91121 auto-style-5fee1b09" ></div>
                 </div>
             </div>
         </div>
@@ -252,9 +252,9 @@
                 <div class="auto-style-28765" id="scenario-card-${idx}">
                     <div class="auto-style-62813">
                         <span class="auto-style-21277">${s.id}</span>
-                        <div style="display:flex; align-items:center; gap:8px;">
+                        <div  class="auto-style-492ec04a">
                             <span class="badge ${badgeClass}" id="scen-badge-${idx}">${s.status}</span>
-                            ${isPending ? `<button class="btn-dispatch" style="padding:4px 10px; font-size:0.78rem;" onclick="approveScenario(${idx})">⚡ Approve & Send</button>` : ''}
+                            ${isPending ? `<button class="btn-dispatch auto-style-3d0248cd"  onclick="approveScenario(${idx})">⚡ Approve & Send</button>` : ''}
                         </div>
                     </div>
                     <div class="auto-style-49196">
@@ -280,7 +280,7 @@
                             <span id="scen-pct-${idx}">${Math.floor(s.progress)}%</span>
                         </div>
                         <div class="auto-style-94056">
-                            <div id="scen-bar-${idx}" class="auto-style-43115" style="width: ${s.progress}%; height: 100%; background: ${pColor}; transition: width 0.6s ease;"></div>
+                            <div id="scen-bar-${idx}" class="auto-style-43115 auto-style-e488a585" ></div>
                         </div>
                     </div>
                 </div>

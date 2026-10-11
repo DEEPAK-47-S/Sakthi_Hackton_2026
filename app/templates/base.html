@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/extracted.css') }}">
     
     <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/logo.jpg') }}">
     
@@ -20,10 +21,10 @@
 </head>
 <body>
     <!-- 3-Second Intro Splash Screen -->
-    <div id="app-intro" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0f172a; z-index:999999; display:flex; flex-direction:column; justify-content:center; align-items:center; transition:opacity 0.5s ease;">
-        <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="intro-animate" style="width:140px; height:140px; border-radius:28px; box-shadow:0 15px 40px rgba(139, 92, 246, 0.4);" alt="FestivalFlow AI Logo">
-        <h1 class="intro-animate" style="color:white; margin-top:24px; font-family:'Inter', sans-serif; font-size:2.5rem; letter-spacing:1px;">FestivalFlow AI</h1>
-        <p class="intro-animate" style="color:#94a3b8; font-family:'Inter', sans-serif; font-size:1.1rem; letter-spacing:3px; text-transform:uppercase;">Tamil Nadu Smart Transit</p>
+    <div id="app-intro"  class="auto-style-e07db071">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="intro-animate auto-style-ff1f2528"  alt="FestivalFlow AI Logo">
+        <h1 class="intro-animate auto-style-885462a1" >FestivalFlow AI</h1>
+        <p class="intro-animate auto-style-06b6f8c9" >Tamil Nadu Smart Transit</p>
     </div>
 
     <style>
@@ -62,7 +63,7 @@
     <div class="app-layout">
         <aside class="sidebar">
             <div class="sidebar-brand">
-                <div class="logo-icon"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="FestivalFlow AI Logo" style="width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: block;"></div>
+                <div class="logo-icon"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="FestivalFlow AI Logo"  class="auto-style-2e881f38"></div>
                 <div class="brand-text">
                     <h2>FestivalFlow AI</h2>
                     <p>Smarter Buses. Safer Journeys.</p>
@@ -87,8 +88,8 @@
         <main class="main-content">
             <header class="top-header">
                 <div class="header-location">
-                    <div id="mobile-menu-btn" style="display: none; font-size: 1.5rem; cursor: pointer; margin-right: 10px;">☰</div>
-                    <div class="icon"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="TN Smart Transit Logo" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.25);"></div>
+                    <div id="mobile-menu-btn"  class="auto-style-9294a3fb">☰</div>
+                    <div class="icon"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="TN Smart Transit Logo"  class="auto-style-302e934e"></div>
                     <div>
                         <h3>Tamil Nadu Smart Transit</h3>
                         <p>Statewide Real-Time Crowd & Bus Management</p>
@@ -133,7 +134,7 @@
     </div>
 
     <!-- Global Toast Dispatch Notification -->
-    <div id="global-toast-container" style="position: fixed; top: 24px; right: 24px; z-index: 99999; display: flex; flex-direction: column; gap: 10px; pointer-events: none;"></div>
+    <div id="global-toast-container"  class="auto-style-543a4235"></div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -163,12 +164,12 @@
             `;
 
             toast.innerHTML = `
-                <div style="font-size: 1.8rem;">${icon}</div>
-                <div style="flex: 1;">
-                    <div style="font-weight: 700; font-size: 0.95rem; color: #f8fafc; margin-bottom: 2px;">${title}</div>
-                    <div style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.35;">${message}</div>
+                <div  class="auto-style-40b72cba">${icon}</div>
+                <div  class="auto-style-49cdf874">
+                    <div  class="auto-style-7b535cad">${title}</div>
+                    <div  class="auto-style-83d7d6b3">${message}</div>
                 </div>
-                <button style="background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; padding: 0 4px;" onclick="this.parentElement.remove()">✕</button>
+                <button  onclick="this.parentElement.remove()" class="auto-style-aaf0be82">✕</button>
             `;
 
             container.appendChild(toast);

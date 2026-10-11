@@ -145,7 +145,7 @@
 
     <!-- Filter & Search Controls -->
     <div class="filters-bar">
-        <div class="filter-item" style="flex: 2;">
+        <div class="filter-item auto-style-36ae11e9" >
             <label>Search Stops</label>
             <input type="text" id="search-input" placeholder="Search by Stop Name, Town, or ID (e.g., CMBT, Ariyalur, TN0001)...">
         </div>
@@ -164,7 +164,7 @@
                 <option value="local_stop">Local Stop (639)</option>
             </select>
         </div>
-        <div class="filter-item" style="flex: 0.8;">
+        <div class="filter-item auto-style-d0991ab0" >
             <label>Tier</label>
             <select id="tier-filter" title="Filter by Priority Tier">
                 <option value="all">All Tiers</option>
@@ -194,7 +194,7 @@
                 </thead>
                 <tbody id="stops-table-body">
                     <tr>
-                        <td colspan="9" style="text-align: center; padding: 40px; color: #64748b;">
+                        <td colspan="9"  class="auto-style-422d2e62">
                             Loading stops from database...
                         </td>
                     </tr>
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         applyFilters();
     } catch (err) {
         console.error('Failed to load stops:', err);
-        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:red;">Failed to load data</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="9"  class="auto-style-04ef969d">Failed to load data</td></tr>';
     }
 
     function applyFilters() {
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const pageItems = filteredStops.slice(start, end);
 
         if (total === 0) {
-            tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 30px; color: #64748b;">No stops matching your search criteria.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="9"  class="auto-style-a2ffb71a">No stops matching your search criteria.</td></tr>';
             pageInfo.textContent = 'Showing 0 stops';
             btnPrev.disabled = true;
             btnNext.disabled = true;
@@ -291,12 +291,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (s.type === 'main_terminus') {
                 typeBadge = '<span class="badge badge-danger">Main Terminus</span>';
             } else if (s.type === 'town_stand') {
-                typeBadge = '<span class="badge badge-warning" style="color:white;">Town Stand</span>';
+                typeBadge = '<span class="badge badge-warning auto-style-6a5e8cb9" >Town Stand</span>';
             } else {
                 typeBadge = '<span class="badge badge-info">Local Stop</span>';
             }
 
-            let tierBadge = `<span class="badge" style="background:#f1f5f9; color:#475569;">Tier ${s.tier}</span>`;
+            let tierBadge = `<span class="badge auto-style-26fb9c4f" >Tier ${s.tier}</span>`;
 
             html += `
                 <tr>
@@ -307,9 +307,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${typeBadge}</td>
                     <td>${tierBadge}</td>
                     <td><strong>${s.capacity.toLocaleString()}</strong></td>
-                    <td style="color:#64748b; font-size:0.8rem;">${s.lat.toFixed(4)}, ${s.lng.toFixed(4)}</td>
+                    <td  class="auto-style-cf11704a">${s.lat.toFixed(4)}, ${s.lng.toFixed(4)}</td>
                     <td>
-                        <a href="/map?stop=${s.id}&district=${s.district}" class="badge badge-info" style="text-decoration:none;">📍 Map</a>
+                        <a href="/map?stop=${s.id}&district=${s.district}" class="badge badge-info auto-style-8fdce8d5" >📍 Map</a>
                     </td>
                 </tr>
             `;

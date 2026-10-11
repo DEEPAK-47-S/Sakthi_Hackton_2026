@@ -41,14 +41,14 @@
 
     <!-- Map Panel -->
     <div class="card map-panel">
-        <div class="panel-title mb-0" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <div class="panel-title mb-0 auto-style-f4dbfe08" >
+            <div  class="auto-style-9f3f2d3d">
                 <span>Live Map – Tamil Nadu State Transit</span>
-                <select id="district-selector" title="Select District for Data" style="padding: 4px 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; font-weight: 500; background: white; color: #1e293b; cursor: pointer;">
+                <select id="district-selector" title="Select District for Data"  class="auto-style-e0872af2">
                     <option value="all">🗺️ All 38 Districts (Statewide)</option>
                 </select>
-                <span id="map-stop-counter" class="badge badge-info" style="font-size: 0.75rem;">Loading stops...</span>
-                <button id="btn-custom-event" class="btn-dispatch" style="padding:4px 12px; font-size:0.8rem; background:#8b5cf6;">➕ Add Custom Event</button>
+                <span id="map-stop-counter" class="badge badge-info auto-style-af89d6d6" >Loading stops...</span>
+                <button id="btn-custom-event" class="btn-dispatch auto-style-8911790b" >➕ Add Custom Event</button>
             </div>
             <div class="map-legend">
                 <span><span class="status-dot dot-green"></span>Low</span>
@@ -59,23 +59,23 @@
         </div>
         
         <!-- Custom Event Modal -->
-        <div id="custom-event-modal" style="display:none; position:absolute; top:50px; left:20px; z-index:9999; background:white; padding:15px; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.2); width:320px; border:2px solid #8b5cf6;">
-            <div style="font-weight:700; margin-bottom:10px; color:#1e293b;">⚡ Custom Event (AI Prediction)</div>
-            <input type="text" id="ce-name" placeholder="E.g. Political Rally, Local Thiruvizha" style="width:100%; padding:8px; border-radius:4px; border:1px solid #cbd5e1; margin-bottom:10px; font-size:0.85rem;">
-            <select id="ce-district" title="Select District for Custom Event" style="width:100%; padding:8px; border-radius:4px; border:1px solid #cbd5e1; margin-bottom:10px; font-size:0.85rem;">
+        <div id="custom-event-modal"  class="auto-style-5140d466">
+            <div  class="auto-style-d6a64ef6">⚡ Custom Event (AI Prediction)</div>
+            <input type="text" id="ce-name" placeholder="E.g. Political Rally, Local Thiruvizha"  class="auto-style-141c27f8">
+            <select id="ce-district" title="Select District for Custom Event"  class="auto-style-141c27f8">
                 <option value="Chennai">Chennai</option>
                 <option value="Madurai">Madurai</option>
                 <option value="Coimbatore">Coimbatore</option>
                 <option value="Trichy">Trichy</option>
                 <option value="Salem">Salem</option>
             </select>
-            <div style="display:flex; justify-content:space-between; gap:10px;">
-                <button id="btn-ce-cancel" style="padding:6px 12px; border-radius:4px; border:1px solid #cbd5e1; background:white; cursor:pointer;">Cancel</button>
-                <button id="btn-ce-submit" style="padding:6px 12px; border-radius:4px; border:none; background:#8b5cf6; color:white; cursor:pointer; font-weight:bold;">Predict & Allocate</button>
+            <div  class="auto-style-c9b0ec93">
+                <button id="btn-ce-cancel"  class="auto-style-68c01e2f">Cancel</button>
+                <button id="btn-ce-submit"  class="auto-style-65c9994d">Predict & Allocate</button>
             </div>
         </div>
         
-        <div id="dashboard-map" class="map-container" style="position:relative;"></div>
+        <div id="dashboard-map" class="map-container auto-style-4cb8ceeb" ></div>
     </div>
 
     <!-- AI Panel -->
@@ -106,11 +106,11 @@
 
     <!-- Bottom Row: Activity -->
     <div class="card activity-panel">
-        <div class="panel-title" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="panel-title auto-style-948e6d6e" >
             <span class="panel-title-flex">🕒 Live Event Log</span>
-            <span class="badge badge-success" id="event-log-badge" style="font-size: 0.72rem; letter-spacing: 0.5px;">● LIVE UPDATES</span>
+            <span class="badge badge-success auto-style-bd1b19ff" id="event-log-badge" >● LIVE UPDATES</span>
         </div>
-        <ul class="activity-list" id="activity-log" style="max-height: 235px; overflow-y: auto; padding-right: 4px;">
+        <ul class="activity-list auto-style-89512252" id="activity-log" >
             <!-- Populated and dynamically animated by JS -->
         </ul>
     </div>

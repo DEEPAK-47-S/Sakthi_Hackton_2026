@@ -107,7 +107,7 @@
     <!-- Controls Header -->
     <div class="map-controls-card">
         <div class="controls-group">
-            <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+            <span  class="auto-style-ad6643ac">
                 📍 Statewide Live Transit Map
             </span>
             <select id="district-filter" class="map-select" title="Select District">
@@ -123,7 +123,7 @@
                 <button class="btn-filter" data-type="town_stand">🚏 Town Stands (175)</button>
                 <button class="btn-filter" data-type="local_stop">📍 Local Stops (639)</button>
             </div>
-            <span id="visible-counter" class="badge badge-info" style="font-size: 0.8rem;">852 Stops Visible</span>
+            <span id="visible-counter" class="badge badge-info auto-style-fb2a7115" >852 Stops Visible</span>
         </div>
     </div>
 
@@ -133,22 +133,22 @@
 
         <!-- Floating Quick Stats -->
         <div class="map-floating-panel">
-            <div style="font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 8px; color: var(--text-main);">
+            <div  class="auto-style-236306b3">
                 🗺️ Transit Coverage
             </div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <div  class="auto-style-952640c5">
                 <span class="text-muted">Total Stops:</span>
                 <strong>852 stops</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <div  class="auto-style-952640c5">
                 <span class="text-muted">Districts:</span>
                 <strong>38 / 38 Covered</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <div  class="auto-style-be1ee3ff">
                 <span class="text-muted">State Capacity:</span>
-                <strong style="color: var(--primary);">1,283,703 pax</strong>
+                <strong  class="auto-style-009cc8c1">1,283,703 pax</strong>
             </div>
-            <div style="border-top: 1px solid #e2e8f0; padding-top: 6px; font-size: 0.78rem; color: #64748b;">
+            <div  class="auto-style-f71e6b51">
                 🔴 Terminus &nbsp; 🟠 Town Stand &nbsp; 🔵 Local
             </div>
         </div>
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const createPin = (color, size, label) => {
         return L.divIcon({
             className: 'custom-div-icon',
-            html: `<div style="background-color: ${color}; width: ${size}px; height: ${size}px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"><span style="font-size: ${size/2.2}px; color: white;">${label}</span></div>`,
+            html: `<div  class="auto-style-c173ce14"><span  class="auto-style-4d2fa605">${label}</span></div>`,
             iconSize: [size, size],
             iconAnchor: [size/2, size/2]
         });
@@ -267,21 +267,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const badgeHtml = s.type === 'main_terminus' 
                 ? '<span class="badge badge-danger">Main Terminus</span>' 
-                : (s.type === 'town_stand' ? '<span class="badge badge-warning" style="color:white;">Town Stand</span>' : '<span class="badge badge-info">Local Stop</span>');
+                : (s.type === 'town_stand' ? '<span class="badge badge-warning auto-style-6a5e8cb9" >Town Stand</span>' : '<span class="badge badge-info">Local Stop</span>');
 
             const popup = `
-                <div style="min-width: 210px; font-family: 'Inter', sans-serif;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
-                        <span style="font-weight:700; color:#64748b; font-size:0.75rem;">${s.id}</span>
+                <div  class="auto-style-ffb3435f">
+                    <div  class="auto-style-e0a46d17">
+                        <span  class="auto-style-3d94ff8c">${s.id}</span>
                         ${badgeHtml}
                     </div>
-                    <strong style="font-size: 1.05rem; display:block; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; margin-bottom: 6px;">${s.name}</strong>
-                    <div style="font-size:0.85rem; margin-bottom: 3px;"><strong>District:</strong> ${s.district}</div>
-                    <div style="font-size:0.85rem; margin-bottom: 3px;"><strong>Town:</strong> ${s.town}</div>
-                    <div style="font-size:0.85rem; margin-bottom: 3px;"><strong>Capacity:</strong> ${s.capacity.toLocaleString()} pax (Tier ${s.tier})</div>
-                    <div style="font-size:0.75rem; color:#64748b; margin-bottom: 6px;">Coords: ${s.lat.toFixed(4)}, ${s.lng.toFixed(4)}</div>
-                    <div style="margin-top: 6px; border-top: 1px solid #e2e8f0; padding-top: 6px;">
-                        <a href="/optimization" class="badge badge-info" style="display:block; text-align:center; text-decoration:none; padding:4px;">⚡ Optimize Route Allocations</a>
+                    <strong  class="auto-style-6866433f">${s.name}</strong>
+                    <div  class="auto-style-7dee6626"><strong>District:</strong> ${s.district}</div>
+                    <div  class="auto-style-7dee6626"><strong>Town:</strong> ${s.town}</div>
+                    <div  class="auto-style-7dee6626"><strong>Capacity:</strong> ${s.capacity.toLocaleString()} pax (Tier ${s.tier})</div>
+                    <div  class="auto-style-efff0b16">Coords: ${s.lat.toFixed(4)}, ${s.lng.toFixed(4)}</div>
+                    <div  class="auto-style-c0f4e7e0">
+                        <a href="/optimization" class="badge badge-info auto-style-ceb96575" >⚡ Optimize Route Allocations</a>
                     </div>
                 </div>
             `;

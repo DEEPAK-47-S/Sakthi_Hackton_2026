@@ -122,34 +122,34 @@
 
     <!-- LIVE NOW BANNER -->
     <div class="live-now-banner">
-        <div style="position:relative; z-index:1;">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <div  class="auto-style-977f4249">
+            <div  class="auto-style-196e663f">
                 <span class="live-pulse-dot"></span>
-                <span style="color:#10b981; font-weight:700; font-size:0.9rem;">LIVE AI PREDICTION  RIGHT NOW</span>
-                <span id="live-time-display" style="background:rgba(255,255,255,0.08); padding:2px 10px; border-radius:8px; color:#cbd5e1; font-size:0.78rem;"></span>
+                <span  class="auto-style-3ddaa9bc">LIVE AI PREDICTION  RIGHT NOW</span>
+                <span id="live-time-display"  class="auto-style-3078addb"></span>
             </div>
-            <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;">
+            <div  class="auto-style-fe28ebaa">
                 <div>
                     <div class="live-time-label">Predicted Crowd @ CMBT Now</div>
                     <div class="live-crowd-num" id="live-crowd">Loading</div>
                 </div>
                 <div>
                     <div class="live-time-label">Capacity Load</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#e2e8f0;" id="live-load"></div>
+                    <div  id="live-load" class="auto-style-f5f1fea0"></div>
                 </div>
                 <div>
                     <div class="live-time-label">Extra Buses Needed</div>
-                    <div style="font-size:1.6rem; font-weight:700; color:#f97316;" id="live-buses"></div>
+                    <div  id="live-buses" class="auto-style-e602762b"></div>
                 </div>
             </div>
-            <div style="margin-top:8px;">
+            <div  class="auto-style-d79ce2bc">
                 <span id="live-risk-pill" class="live-risk-pill NORMAL">Loading</span>
-                <span id="live-surge-val" style="color:#94a3b8; font-size:0.78rem; margin-left:10px;"></span>
+                <span id="live-surge-val"  class="auto-style-40f7f8f2"></span>
             </div>
         </div>
-        <div style="text-align:right; position:relative; z-index:1;">
-            <div style="font-size:0.78rem; color:#64748b; margin-bottom:6px;">Select Festival Context</div>
-            <select id="live-festival-sel" title="Select Festival Scenario" style="padding:8px 14px; border-radius:8px; border:1px solid #334155; background:#1e293b; color:white; font-size:0.85rem; font-weight:600; cursor:pointer;">
+        <div  class="auto-style-076428a0">
+            <div  class="auto-style-1465772b">Select Festival Context</div>
+            <select id="live-festival-sel" title="Select Festival Scenario"  class="auto-style-b2ac5343">
                 <option value="none"> Regular Day</option>
                 <option value="pongal"> Pongal (Jan 14-17)</option>
                 <option value="thaipusam"> Thaipusam (Jan 19-22)</option>
@@ -159,16 +159,16 @@
                 <option value="karthigai"> Karthigai Deepam (Dec)</option>
                 <option value="deepavali"> Deepavali (Nov 8)</option>
             </select>
-            <div style="margin-top:8px; font-size:0.72rem; color:#475569;"> Auto-refreshes every 60 seconds</div>
+            <div  class="auto-style-988d44ce"> Auto-refreshes every 60 seconds</div>
         </div>
     </div>
 
     <!-- 5-MODEL ARCHITECTURE -->
-    <div class="card" style="grid-column: 1 / -1; border-top: 4px solid #0ea5e9;">
-        <div class="panel-title" style="justify-content:space-between; flex-wrap:wrap; gap:10px;">
+    <div class="card auto-style-d1a3c110" >
+        <div class="panel-title auto-style-f1718ce9" >
             <div>
-                <span style="font-size:1.1rem; font-weight:700;"> FestivalFlow AI Ensemble v3.0  5-Model Architecture</span>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin:3px 0 0;">Confidence-Weighted Ensemble. Ensemble R = 0.968 | MAE = 97 pax (beats every individual model)</p>
+                <span  class="auto-style-0f5db182"> FestivalFlow AI Ensemble v3.0  5-Model Architecture</span>
+                <p  class="auto-style-b9285588">Confidence-Weighted Ensemble. Ensemble R = 0.968 | MAE = 97 pax (beats every individual model)</p>
             </div>
             <span class="badge badge-success"> All 5 Models Active</span>
         </div>
@@ -178,53 +178,53 @@
                 <div class="model-name">Random Forest<br>+ Diurnal Spline</div>
                 <div class="model-r2">94.6%</div>
                 <div class="model-mae">MAE: 142 pax</div>
-                <div style="background:#e2e8f0; height:5px; border-radius:3px; margin:8px 0 4px; overflow:hidden;"><div style="height:100%; width:22%; background:#10b981;"></div></div>
-                <div style="font-size:0.7rem; color:#94a3b8;">Weight: 22% | n=300 trees</div>
+                <div  class="auto-style-bd846e1b"><div  class="auto-style-a3fab7fb"></div></div>
+                <div  class="auto-style-83dd53d9">Weight: 22% | n=300 trees</div>
             </div>
             <div class="model-card">
                 <div class="model-icon"></div>
                 <div class="model-name">LSTM Temporal<br>Sequence Model</div>
                 <div class="model-r2">95.1%</div>
                 <div class="model-mae">MAE: 128 pax</div>
-                <div style="background:#e2e8f0; height:5px; border-radius:3px; margin:8px 0 4px; overflow:hidden;"><div style="height:100%; width:24%; background:#3b82f6;"></div></div>
-                <div style="font-size:0.7rem; color:#94a3b8;">Weight: 24% | 2-layer (128u)</div>
+                <div  class="auto-style-bd846e1b"><div  class="auto-style-8218f035"></div></div>
+                <div  class="auto-style-83dd53d9">Weight: 24% | 2-layer (128u)</div>
             </div>
             <div class="model-card">
                 <div class="model-icon"></div>
                 <div class="model-name">GRU Surge<br>Spike Detector</div>
                 <div class="model-r2">94.3%</div>
                 <div class="model-mae">MAE: 155 pax</div>
-                <div style="background:#e2e8f0; height:5px; border-radius:3px; margin:8px 0 4px; overflow:hidden;"><div style="height:100%; width:18%; background:#8b5cf6;"></div></div>
-                <div style="font-size:0.7rem; color:#94a3b8;">Weight: 18% | Attention head</div>
+                <div  class="auto-style-bd846e1b"><div  class="auto-style-cad64ff2"></div></div>
+                <div  class="auto-style-83dd53d9">Weight: 18% | Attention head</div>
             </div>
-            <div class="model-card" style="border:1px solid #0ea5e9;">
+            <div class="model-card auto-style-2e927d03" >
                 <div class="best-model-badge"> BEST</div>
                 <div class="model-icon"></div>
                 <div class="model-name">XGBoost<br>Tabular Regressor</div>
-                <div class="model-r2" style="color:#0ea5e9;">96.3%</div>
+                <div class="model-r2 auto-style-12328f01" >96.3%</div>
                 <div class="model-mae">MAE: 108 pax</div>
-                <div style="background:#e2e8f0; height:5px; border-radius:3px; margin:8px 0 4px; overflow:hidden;"><div style="height:100%; width:27%; background:#0ea5e9;"></div></div>
-                <div style="font-size:0.7rem; color:#94a3b8;">Weight: 27% | 214 features</div>
+                <div  class="auto-style-bd846e1b"><div  class="auto-style-96cb0646"></div></div>
+                <div  class="auto-style-83dd53d9">Weight: 27% | 214 features</div>
             </div>
             <div class="model-card">
                 <div class="model-icon"></div>
                 <div class="model-name">SARIMA(5,1,2)<br>(1,1,1) Seasonal</div>
                 <div class="model-r2">92.1%</div>
                 <div class="model-mae">MAE: 186 pax</div>
-                <div style="background:#e2e8f0; height:5px; border-radius:3px; margin:8px 0 4px; overflow:hidden;"><div style="height:100%; width:9%; background:#f97316;"></div></div>
-                <div style="font-size:0.7rem; color:#94a3b8;">Weight: 9% | AR/MA Seasonal</div>
+                <div  class="auto-style-bd846e1b"><div  class="auto-style-3b179ac5"></div></div>
+                <div  class="auto-style-83dd53d9">Weight: 9% | AR/MA Seasonal</div>
             </div>
         </div>
     </div>
 
     <!-- INFERENCE PANEL -->
-    <div class="card" style="grid-column: 1 / -1; border-top: 4px solid var(--primary);">
-        <div class="panel-title" style="justify-content:space-between; flex-wrap:wrap; gap:8px;">
-            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                <span style="font-size:1.1rem; font-weight:700;"> Interactive AI Inference  All 5 Models + Ensemble Output</span>
+    <div class="card auto-style-101f3c09" >
+        <div class="panel-title auto-style-887a9bcb" >
+            <div  class="auto-style-77dbb894">
+                <span  class="auto-style-0f5db182"> Interactive AI Inference  All 5 Models + Ensemble Output</span>
                 <span class="badge badge-success"> Live API</span>
             </div>
-            <span style="font-size:0.8rem; color:var(--text-muted);">852 stops  14 festivals  5 years training data</span>
+            <span  class="auto-style-7d7b3c90">852 stops  14 festivals  5 years training data</span>
         </div>
         <div class="inference-form-grid">
             <div class="inference-field">
@@ -282,9 +282,9 @@
                     <option value="rain"> Monsoon Rain (+18% queue)</option>
                 </select>
             </div>
-            <div class="inference-field" style="justify-content:flex-end;">
+            <div class="inference-field auto-style-34adf3ae" >
                 <label>&nbsp;</label>
-                <button id="btn-run-inference" style="padding:11px 18px; background:linear-gradient(135deg,#0ea5e9,#2563eb); color:white; border:none; border-radius:8px; font-weight:700; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:6px; transition:opacity 0.2s;">
+                <button id="btn-run-inference"  class="auto-style-292389dc">
                      Run 5-Model Ensemble
                 </button>
             </div>
@@ -292,8 +292,8 @@
         <div class="inference-result-box" id="inference-output">
             <div class="res-stat">
                 <h4>Ensemble Prediction</h4>
-                <h3 id="res-crowd" style="color:#0c4a6e;"> pax</h3>
-                <span style="font-size:0.73rem; color:#0369a1;" id="res-ci">Run inference above</span>
+                <h3 id="res-crowd"  class="auto-style-ba1b323c"> pax</h3>
+                <span  id="res-ci" class="auto-style-2b48adfc">Run inference above</span>
             </div>
             <div class="res-stat">
                 <h4>Capacity Load</h4>
@@ -303,21 +303,21 @@
             <div class="res-stat">
                 <h4>Surge Multiplier</h4>
                 <h3 id="res-multiplier">x</h3>
-                <span style="font-size:0.73rem; color:#0369a1;">vs Normal Day</span>
+                <span  class="auto-style-2b48adfc">vs Normal Day</span>
             </div>
             <div class="res-stat">
                 <h4>Extra Buses Needed</h4>
-                <h3 id="res-buses" style="color:#dc2626;"></h3>
-                <span style="font-size:0.73rem; color:#0369a1;">AI dispatch required</span>
+                <h3 id="res-buses"  class="auto-style-f0a97dba"></h3>
+                <span  class="auto-style-2b48adfc">AI dispatch required</span>
             </div>
             <div class="res-stat">
                 <h4>Festival</h4>
-                <h3 id="res-fest-icon" style="font-size:1.8rem;"></h3>
-                <span style="font-size:0.73rem; color:#0369a1;" id="res-fest-name">Select festival</span>
+                <h3 id="res-fest-icon"  class="auto-style-5d3a7f31"></h3>
+                <span  id="res-fest-name" class="auto-style-2b48adfc">Select festival</span>
             </div>
         </div>
-        <div id="model-breakdown-container" style="margin-top:14px; display:none;">
-            <div style="font-size:0.82rem; font-weight:700; color:#475569; margin-bottom:8px;"> Per-Model Predictions vs Ensemble</div>
+        <div id="model-breakdown-container"  class="auto-style-c50239a4">
+            <div  class="auto-style-aa2f3bd7"> Per-Model Predictions vs Ensemble</div>
             <table id="model-breakdown-table">
                 <thead>
                     <tr><th>Model</th><th>Predicted Crowd</th><th>Ensemble Weight</th><th>R</th><th>MAE</th></tr>
@@ -328,85 +328,85 @@
     </div>
 
     <!-- FESTIVAL CARDS -->
-    <div class="card" style="grid-column: 1 / -1;">
+    <div class="card auto-style-e86cdd0b" >
         <div class="panel-title">
             <span> Tamil Nadu 2026  All Festival Surge Profiles (Public Guide)</span>
         </div>
         <div class="festival-grid">
-            <div class="festival-card" style="border-top-color:#f59e0b;">
+            <div class="festival-card auto-style-ddc3873b" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Pongal Festival</div></div></div>
                 <div class="festival-date-tag">Jan 1417, 2026</div>
-                <div class="festival-surge" style="color:#f59e0b;">2.85 Surge  CRITICAL</div>
+                <div class="festival-surge auto-style-953f8fcf" >2.85 Surge  CRITICAL</div>
                 <div class="festival-desc">Harvest festival. Massive outbound migration  cities to native villages across all 38 districts.</div>
                 <div class="festival-hotspot"> Chennai CMBT, Madurai Mattuthavani, CBE Gandhipuram</div>
             </div>
-            <div class="festival-card" style="border-top-color:#8b5cf6;">
+            <div class="festival-card auto-style-e1a3502b" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Thaipusam</div></div></div>
                 <div class="festival-date-tag">Jan 1922, 2026</div>
-                <div class="festival-surge" style="color:#8b5cf6;">1.95 Surge  HIGH</div>
+                <div class="festival-surge auto-style-1901d1fb" >1.95 Surge  HIGH</div>
                 <div class="festival-desc">Murugan temple festival. High pilgrimage traffic to Palani, Tiruchendur and Thiruvannamalai.</div>
                 <div class="festival-hotspot"> Palani Stop, Tiruchendur, Dindigul BS</div>
             </div>
-            <div class="festival-card" style="border-top-color:#06b6d4;">
+            <div class="festival-card auto-style-0bf3ce49" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Masi Magam</div></div></div>
                 <div class="festival-date-tag">Feb 2026</div>
-                <div class="festival-surge" style="color:#06b6d4;">1.60 Surge  MODERATE</div>
+                <div class="festival-surge auto-style-89c90341" >1.60 Surge  MODERATE</div>
                 <div class="festival-desc">Coastal and temple procession festival. Beachside events draw pilgrims to coastal districts.</div>
                 <div class="festival-hotspot"> Nagapattinam, Thanjavur, Cuddalore</div>
             </div>
-            <div class="festival-card" style="border-top-color:#ec4899;">
+            <div class="festival-card auto-style-1c27a83f" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Panguni Uthiram</div></div></div>
                 <div class="festival-date-tag">Mar 18, 2026</div>
-                <div class="festival-surge" style="color:#ec4899;">1.75 Surge  HIGH</div>
+                <div class="festival-surge auto-style-7d5e3af8" >1.75 Surge  HIGH</div>
                 <div class="festival-desc">Major temple festival  celestial wedding of deities. Statewide temple visits and processions.</div>
                 <div class="festival-hotspot"> Chennai, Tiruppur, Coimbatore</div>
             </div>
-            <div class="festival-card" style="border-top-color:#10b981;">
+            <div class="festival-card auto-style-b965b0c4" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Tamil New Year</div></div></div>
                 <div class="festival-date-tag">Apr 14, 2026</div>
-                <div class="festival-surge" style="color:#10b981;">1.62 Surge  HIGH</div>
+                <div class="festival-surge auto-style-d4f914d1" >1.62 Surge  HIGH</div>
                 <div class="festival-desc">Puthandu  Urban exodus to native towns. All major bus stands see sustained high volumes all day.</div>
                 <div class="festival-hotspot"> Chennai CMBT, Salem, Madurai</div>
             </div>
-            <div class="festival-card" style="border-top-color:#ef4444;">
+            <div class="festival-card auto-style-67015a93" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Madurai Chithirai Vizha</div></div></div>
                 <div class="festival-date-tag">Apr 25  May 10, 2026</div>
-                <div class="festival-surge" style="color:#ef4444;">2.45 Surge  CRITICAL</div>
+                <div class="festival-surge auto-style-25cb8a6a" >2.45 Surge  CRITICAL</div>
                 <div class="festival-desc">South India's largest temple festival. 2M+ pilgrims converge on Madurai Meenakshi Amman Temple over 15 days.</div>
                 <div class="festival-hotspot"> Madurai Mattuthavani, Dindigul, Ramanathapuram</div>
             </div>
-            <div class="festival-card" style="border-top-color:#64748b;">
+            <div class="festival-card auto-style-3faafe6f" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Adi Amavasai</div></div></div>
                 <div class="festival-date-tag">Jul-Aug 2026</div>
-                <div class="festival-surge" style="color:#64748b;">1.55 Surge  MODERATE</div>
+                <div class="festival-surge auto-style-d114d319" >1.55 Surge  MODERATE</div>
                 <div class="festival-desc">Ancestor memorial day. Coastal and riverside locations see moderate pilgrimage traffic.</div>
                 <div class="festival-hotspot"> Rameswaram, Kanyakumari, Mahabalipuram</div>
             </div>
-            <div class="festival-card" style="border-top-color:#f59e0b;">
+            <div class="festival-card auto-style-ddc3873b" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Vinayagar Chaturthi</div></div></div>
                 <div class="festival-date-tag">Sep 2026 (TBC)</div>
-                <div class="festival-surge" style="color:#f59e0b;">1.80 Surge  HIGH</div>
+                <div class="festival-surge auto-style-953f8fcf" >1.80 Surge  HIGH</div>
                 <div class="festival-desc">Lord Ganesha festival. Urban processions and temple visits drive evening transit spikes across cities.</div>
                 <div class="festival-hotspot"> Chennai, Coimbatore, Salem</div>
             </div>
-            <div class="festival-card" style="border-top-color:#ec4899;">
+            <div class="festival-card auto-style-1c27a83f" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Navaratri</div></div></div>
                 <div class="festival-date-tag">Oct 2026</div>
-                <div class="festival-surge" style="color:#ec4899;">1.70 Surge  HIGH</div>
+                <div class="festival-surge auto-style-7d5e3af8" >1.70 Surge  HIGH</div>
                 <div class="festival-desc">Nine-night Devi festival. Golu displays and evening temple visits drive concentrated transit peaks.</div>
                 <div class="festival-hotspot"> Chennai, Coimbatore, Mysore Road stops</div>
             </div>
-            <div class="festival-card" style="border-top-color:#f97316; border: 2px solid #f97316;">
+            <div class="festival-card auto-style-f269f181" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Deepavali</div></div></div>
                 <div class="festival-date-tag">Nov 8, 2026  MAX ALERT</div>
-                <div class="festival-surge" style="color:#ef4444; font-size:0.9rem;">3.10 Surge   MAXIMUM</div>
+                <div class="festival-surge auto-style-9cbf82e9" >3.10 Surge   MAXIMUM</div>
                 <div class="festival-desc">Highest statewide transit demand of the year. Night 811 PM is most critical. Full AI dispatch protocol activated statewide.</div>
                 <div class="festival-hotspot"> All Tier-A: Chennai, CBE, Madurai, Trichy, Salem</div>
             </div>
-            <div class="festival-card" style="border-top-color:#fbbf24;">
+            <div class="festival-card auto-style-e1d5555b" >
                 <div class="festival-card-header"><span class="festival-icon-big"></span><div><div class="festival-name-en">Karthigai Deepam</div></div></div>
                 <div class="festival-date-tag">Dec 3, 2026</div>
-                <div class="festival-surge" style="color:#d97706;">2.20 Surge  CRITICAL</div>
+                <div class="festival-surge auto-style-061f410a" >2.20 Surge  CRITICAL</div>
                 <div class="festival-desc">Sacred lamp festival. Thiruvannamalai Girivalam draws 3M+ overnight pilgrims. Night buses 24/7.</div>
                 <div class="festival-hotspot"> Thiruvannamalai BS, Vellore Central</div>
             </div>
@@ -414,13 +414,13 @@
     </div>
 
     <!-- CHART -->
-    <div class="card" style="grid-column: 1 / -1;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+    <div class="card auto-style-e86cdd0b" >
+        <div  class="auto-style-1ea8a986">
             <div>
-                <span style="font-size:1.05rem; font-weight:700;"> 24-Hour AI Festival Demand Curve  Ensemble Projection</span>
-                <p style="font-size:0.78rem; color:var(--text-muted); margin:3px 0 0;">Predicted statewide hourly arrivals (thousands). Select festival to compare surges.</p>
+                <span  class="auto-style-14898144"> 24-Hour AI Festival Demand Curve  Ensemble Projection</span>
+                <p  class="auto-style-0b25a5a2">Predicted statewide hourly arrivals (thousands). Select festival to compare surges.</p>
             </div>
-            <select id="scenario-selector" title="Select Impact Scenario" style="padding:7px 14px; border-radius:8px; border:1px solid var(--border); font-size:0.87rem; font-weight:600; background:white; cursor:pointer;">
+            <select id="scenario-selector" title="Select Impact Scenario"  class="auto-style-cdf8099f">
                 <option value="pongal"> Pongal (Jan 14-17)  Massive Outbound</option>
                 <option value="chithirai"> Chithirai Vizha (Apr-May)  Temple Influx</option>
                 <option value="deepavali" selected> Deepavali (Nov 08)  Statewide Peak</option>
@@ -428,35 +428,35 @@
                 <option value="karthigai"> Karthigai Deepam (Dec)  Overnight Pilgrimage</option>
             </select>
         </div>
-        <div style="height:360px; position:relative; margin-top:18px;">
+        <div  class="auto-style-1ad3aa2c">
             <canvas id="forecastChart"></canvas>
         </div>
     </div>
 
     <!-- TOP HUBS TABLE -->
-    <div class="card" style="grid-column: 1 / -1;">
+    <div class="card auto-style-e86cdd0b" >
         <div class="panel-title"><span> Top 10 Transit Hubs  Deepavali 2026 AI Surge Projection</span></div>
-        <div style="overflow-x:auto;">
-            <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+        <div  class="auto-style-77c8140b">
+            <table  class="auto-style-194e2c94">
                 <thead>
-                    <tr style="background:#f8fafc; border-bottom:2px solid #e2e8f0; text-align:left;">
-                        <th style="padding:10px 14px;">Hub</th><th style="padding:10px 14px;">District</th>
-                        <th style="padding:10px 14px;">Tier</th><th style="padding:10px 14px;">Capacity</th>
-                        <th style="padding:10px 14px;">AI Peak Crowd</th><th style="padding:10px 14px;">Surge</th>
-                        <th style="padding:10px 14px;">Extra Buses</th><th style="padding:10px 14px;">Risk</th>
+                    <tr  class="auto-style-33fe4d5f">
+                        <th  class="auto-style-c742a7c4">Hub</th><th  class="auto-style-c742a7c4">District</th>
+                        <th  class="auto-style-c742a7c4">Tier</th><th  class="auto-style-c742a7c4">Capacity</th>
+                        <th  class="auto-style-c742a7c4">AI Peak Crowd</th><th  class="auto-style-c742a7c4">Surge</th>
+                        <th  class="auto-style-c742a7c4">Extra Buses</th><th  class="auto-style-c742a7c4">Risk</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>CMBT Koyambedu</strong></td><td style="padding:10px 14px;">Chennai</td><td style="padding:10px 14px;"><span class="badge badge-danger">A</span></td><td style="padding:10px 14px;">14,249</td><td style="padding:10px 14px;"><strong>39,400</strong></td><td style="padding:10px 14px;"><span class="badge badge-danger">2.77x</span></td><td style="padding:10px 14px;">190 Buses</td><td style="padding:10px 14px;"><span class="badge badge-danger">CRITICAL</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Gandhipuram Central</strong></td><td style="padding:10px 14px;">Coimbatore</td><td style="padding:10px 14px;"><span class="badge badge-danger">A</span></td><td style="padding:10px 14px;">14,116</td><td style="padding:10px 14px;"><strong>33,200</strong></td><td style="padding:10px 14px;"><span class="badge badge-danger">2.35x</span></td><td style="padding:10px 14px;">145 Buses</td><td style="padding:10px 14px;"><span class="badge badge-danger">CRITICAL</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Mattuthavani Stand</strong></td><td style="padding:10px 14px;">Madurai</td><td style="padding:10px 14px;"><span class="badge badge-danger">A</span></td><td style="padding:10px 14px;">13,761</td><td style="padding:10px 14px;"><strong>31,800</strong></td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">2.31x</span></td><td style="padding:10px 14px;">128 Buses</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">HIGH</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Chatram Bus Stand</strong></td><td style="padding:10px 14px;">Tiruchirappalli</td><td style="padding:10px 14px;"><span class="badge badge-danger">A</span></td><td style="padding:10px 14px;">14,065</td><td style="padding:10px 14px;"><strong>30,100</strong></td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">2.14x</span></td><td style="padding:10px 14px;">112 Buses</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">HIGH</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Salem New Bus Stand</strong></td><td style="padding:10px 14px;">Salem</td><td style="padding:10px 14px;"><span class="badge badge-danger">A</span></td><td style="padding:10px 14px;">14,019</td><td style="padding:10px 14px;"><strong>28,800</strong></td><td style="padding:10px 14px;"><span class="badge badge-info">2.05x</span></td><td style="padding:10px 14px;">98 Buses</td><td style="padding:10px 14px;"><span class="badge badge-info">MANAGED</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Tirunelveli New BS</strong></td><td style="padding:10px 14px;">Tirunelveli</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">B</span></td><td style="padding:10px 14px;">9,211</td><td style="padding:10px 14px;"><strong>18,900</strong></td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">2.05x</span></td><td style="padding:10px 14px;">64 Buses</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">HIGH</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Erode Central BS</strong></td><td style="padding:10px 14px;">Erode</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">B</span></td><td style="padding:10px 14px;">9,152</td><td style="padding:10px 14px;"><strong>17,600</strong></td><td style="padding:10px 14px;"><span class="badge badge-info">1.92x</span></td><td style="padding:10px 14px;">58 Buses</td><td style="padding:10px 14px;"><span class="badge badge-info">MANAGED</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Thanjavur New BS</strong></td><td style="padding:10px 14px;">Thanjavur</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">B</span></td><td style="padding:10px 14px;">8,830</td><td style="padding:10px 14px;"><strong>16,200</strong></td><td style="padding:10px 14px;"><span class="badge badge-info">1.83x</span></td><td style="padding:10px 14px;">50 Buses</td><td style="padding:10px 14px;"><span class="badge badge-info">MANAGED</span></td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px;"><strong>Vellore Central BS</strong></td><td style="padding:10px 14px;">Vellore</td><td style="padding:10px 14px;"><span class="badge badge-warning" style="color:white">B</span></td><td style="padding:10px 14px;">9,116</td><td style="padding:10px 14px;"><strong>16,800</strong></td><td style="padding:10px 14px;"><span class="badge badge-info">1.84x</span></td><td style="padding:10px 14px;">52 Buses</td><td style="padding:10px 14px;"><span class="badge badge-info">MANAGED</span></td></tr>
-                    <tr><td style="padding:10px 14px;"><strong>Ariyalur Main BS</strong></td><td style="padding:10px 14px;">Ariyalur</td><td style="padding:10px 14px;"><span class="badge badge-success">C</span></td><td style="padding:10px 14px;">5,814</td><td style="padding:10px 14px;"><strong>8,900</strong></td><td style="padding:10px 14px;"><span class="badge badge-success">1.53x</span></td><td style="padding:10px 14px;">22 Buses</td><td style="padding:10px 14px;"><span class="badge badge-success">NORMAL</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>CMBT Koyambedu</strong></td><td  class="auto-style-c742a7c4">Chennai</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">A</span></td><td  class="auto-style-c742a7c4">14,249</td><td  class="auto-style-c742a7c4"><strong>39,400</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">2.77x</span></td><td  class="auto-style-c742a7c4">190 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">CRITICAL</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Gandhipuram Central</strong></td><td  class="auto-style-c742a7c4">Coimbatore</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">A</span></td><td  class="auto-style-c742a7c4">14,116</td><td  class="auto-style-c742a7c4"><strong>33,200</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">2.35x</span></td><td  class="auto-style-c742a7c4">145 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">CRITICAL</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Mattuthavani Stand</strong></td><td  class="auto-style-c742a7c4">Madurai</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">A</span></td><td  class="auto-style-c742a7c4">13,761</td><td  class="auto-style-c742a7c4"><strong>31,800</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >2.31x</span></td><td  class="auto-style-c742a7c4">128 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >HIGH</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Chatram Bus Stand</strong></td><td  class="auto-style-c742a7c4">Tiruchirappalli</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">A</span></td><td  class="auto-style-c742a7c4">14,065</td><td  class="auto-style-c742a7c4"><strong>30,100</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >2.14x</span></td><td  class="auto-style-c742a7c4">112 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >HIGH</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Salem New Bus Stand</strong></td><td  class="auto-style-c742a7c4">Salem</td><td  class="auto-style-c742a7c4"><span class="badge badge-danger">A</span></td><td  class="auto-style-c742a7c4">14,019</td><td  class="auto-style-c742a7c4"><strong>28,800</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-info">2.05x</span></td><td  class="auto-style-c742a7c4">98 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-info">MANAGED</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Tirunelveli New BS</strong></td><td  class="auto-style-c742a7c4">Tirunelveli</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >B</span></td><td  class="auto-style-c742a7c4">9,211</td><td  class="auto-style-c742a7c4"><strong>18,900</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >2.05x</span></td><td  class="auto-style-c742a7c4">64 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >HIGH</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Erode Central BS</strong></td><td  class="auto-style-c742a7c4">Erode</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >B</span></td><td  class="auto-style-c742a7c4">9,152</td><td  class="auto-style-c742a7c4"><strong>17,600</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-info">1.92x</span></td><td  class="auto-style-c742a7c4">58 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-info">MANAGED</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Thanjavur New BS</strong></td><td  class="auto-style-c742a7c4">Thanjavur</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >B</span></td><td  class="auto-style-c742a7c4">8,830</td><td  class="auto-style-c742a7c4"><strong>16,200</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-info">1.83x</span></td><td  class="auto-style-c742a7c4">50 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-info">MANAGED</span></td></tr>
+                    <tr  class="auto-style-dbce9461"><td  class="auto-style-c742a7c4"><strong>Vellore Central BS</strong></td><td  class="auto-style-c742a7c4">Vellore</td><td  class="auto-style-c742a7c4"><span class="badge badge-warning auto-style-63044726" >B</span></td><td  class="auto-style-c742a7c4">9,116</td><td  class="auto-style-c742a7c4"><strong>16,800</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-info">1.84x</span></td><td  class="auto-style-c742a7c4">52 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-info">MANAGED</span></td></tr>
+                    <tr><td  class="auto-style-c742a7c4"><strong>Ariyalur Main BS</strong></td><td  class="auto-style-c742a7c4">Ariyalur</td><td  class="auto-style-c742a7c4"><span class="badge badge-success">C</span></td><td  class="auto-style-c742a7c4">5,814</td><td  class="auto-style-c742a7c4"><strong>8,900</strong></td><td  class="auto-style-c742a7c4"><span class="badge badge-success">1.53x</span></td><td  class="auto-style-c742a7c4">22 Buses</td><td  class="auto-style-c742a7c4"><span class="badge badge-success">NORMAL</span></td></tr>
                 </tbody>
             </table>
         </div>
@@ -558,12 +558,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 d.model_breakdown.forEach(m => {
                     const tr = document.createElement('tr');
                     const isBest = m.r2 === maxR2;
-                    tr.innerHTML = `<td style="padding:8px 12px; font-weight:${isBest?700:400}; color:${isBest?'#0ea5e9':'inherit'}">${isBest?' ':''}${m.model}</td><td style="padding:8px 12px; font-weight:600;">${m.prediction.toLocaleString()} pax</td><td style="padding:8px 12px;"><div style="background:#e2e8f0;height:6px;border-radius:3px;width:80px;overflow:hidden;"><div style="height:100%;width:${m.weight}%;background:#0ea5e9;border-radius:3px;"></div></div><span style="font-size:0.72rem;color:#64748b;">${m.weight}%</span></td><td style="padding:8px 12px;">${(m.r2*100).toFixed(1)}%</td><td style="padding:8px 12px;">${m.mae} pax</td>`;
+                    tr.innerHTML = `<td  class="auto-style-9a426008">${isBest?' ':''}${m.model}</td><td  class="auto-style-3705439b">${m.prediction.toLocaleString()} pax</td><td  class="auto-style-12fb79ab"><div  class="auto-style-4232fc8e"><div  class="auto-style-998b8207"></div></div><span  class="auto-style-10c4c6ba">${m.weight}%</span></td><td  class="auto-style-12fb79ab">${(m.r2*100).toFixed(1)}%</td><td  class="auto-style-12fb79ab">${m.mae} pax</td>`;
                     tbody.appendChild(tr);
                 });
                 const ensRow = document.createElement('tr');
                 ensRow.style.background = '#eff6ff';
-                ensRow.innerHTML = `<td style="padding:8px 12px;font-weight:800;color:#1e40af;"> Ensemble (Final)</td><td style="padding:8px 12px;font-weight:800;color:#1e40af;">${d.predicted_crowd.toLocaleString()} pax</td><td style="padding:8px 12px;color:#64748b;">All 5 models</td><td style="padding:8px 12px;font-weight:700;color:#1e40af;">${(d.model_info.r2_accuracy*100).toFixed(1)}%</td><td style="padding:8px 12px;font-weight:700;color:#1e40af;">${d.model_info.mae_error} pax</td>`;
+                ensRow.innerHTML = `<td  class="auto-style-f53a82d6"> Ensemble (Final)</td><td  class="auto-style-f53a82d6">${d.predicted_crowd.toLocaleString()} pax</td><td  class="auto-style-75efa134">All 5 models</td><td  class="auto-style-4f5e1a53">${(d.model_info.r2_accuracy*100).toFixed(1)}%</td><td  class="auto-style-4f5e1a53">${d.model_info.mae_error} pax</td>`;
                 tbody.appendChild(ensRow);
                 document.getElementById('model-breakdown-container').style.display = 'block';
             }
